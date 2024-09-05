@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CardManager : MonoBehaviour
+public class CardManager : MonoBehaviour, IPointerClickHandler
 {
     public bool hasBeenPlayed;
     public int handIndex;
@@ -14,24 +15,12 @@ public class CardManager : MonoBehaviour
     {
         deckManager = FindObjectOfType<DeckManager>();
     }
-
-    private void OnMouseEnter()
+    
+    public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("VAR");
-    }
-
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("VAR");
-    }
-
-    private void OnMouseDown()
-    {
-        Debug.Log("XXX");
         if (hasBeenPlayed == false)
         {
-            transform.position += Vector3.up * 5;
+            transform.position += Vector3.up * 50;
             hasBeenPlayed = true;
             deckManager.availableCardSlots[handIndex] = true;
             Invoke("MoveToDiscardPile", 2f);
