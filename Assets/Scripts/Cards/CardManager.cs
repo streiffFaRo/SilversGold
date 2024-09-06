@@ -10,20 +10,30 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
     public int handIndex;
 
     private DeckManager deckManager;
+    private int cardCommandPowerCost;
 
     private void Start()
     {
         deckManager = FindObjectOfType<DeckManager>();
+        cardCommandPowerCost = GetComponent<CardDisplay>().card.cost;
     }
     
     public void OnPointerClick(PointerEventData eventData)
     {
         if (hasBeenPlayed == false)
         {
-            transform.position += Vector3.up * 50;
-            hasBeenPlayed = true;
-            deckManager.availableCardSlots[handIndex] = true;
-            Invoke("MoveToDiscardPile", 2f);
+            if (deckManager.currentCommandPower >= cardCommandPowerCost)
+            {
+                transform.position += Vector3.up * 400;
+                hasBeenPlayed = true;
+                deckManager.availableCardSlots[handIndex] = true;
+                deckManager.UpdateCommandPower(cardCommandPowerCost);
+                Invoke("MoveToDiscardPile", 2f);
+            }
+            else
+            {
+                Debug.LogWarning("Zu wenig Comman Power!");
+            }
         }
     }
 

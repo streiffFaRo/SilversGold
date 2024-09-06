@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class DeckManager : MonoBehaviour
@@ -16,13 +17,21 @@ public class DeckManager : MonoBehaviour
 
     public TextMeshProUGUI deckSizeText;
     public TextMeshProUGUI discardPileText;
+    public TextMeshProUGUI commandPowerText;
+
+    public int currentCommandPower;
     
     private void Update()
     {
         deckSizeText.text = deck.Count.ToString();
         discardPileText.text = discardPile.Count.ToString();
     }
-    
+
+    private void Start()
+    {
+        ResetCommandPower();
+    }
+
     public void DrawCards()
     {
         if (deck.Count >= 1)
@@ -46,16 +55,34 @@ public class DeckManager : MonoBehaviour
             }
         }
     }
-
+    
     public void Shuffle()
     {
         if (discardPile.Count >=1)
         {
+            ResetCommandPower();
             foreach (CardManager cM in discardPile)
             {
                 deck.Add(cM);
             }
             discardPile.Clear();
         }
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene("Scene_Content");
+    }
+
+    public void ResetCommandPower()
+    {
+        currentCommandPower = GameManager.instance.startCommandPower;
+        commandPowerText.text = currentCommandPower.ToString();
+    }    
+    
+    public void UpdateCommandPower(int commandPowerCost)
+    {
+        currentCommandPower -= commandPowerCost;
+        commandPowerText.text = currentCommandPower.ToString();
     }
 }

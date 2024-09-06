@@ -19,5 +19,13 @@ public class UISound : MonoBehaviour
             audioManager.platzhalterTeller.Play();
         }
     }
+    
+    public void PlayPlatzhalterFlasche()
+    {
+        if (audioManager != null)
+        {
+            audioManager.platzhalterFlasche.Play();
+        }
+    }
 
 }

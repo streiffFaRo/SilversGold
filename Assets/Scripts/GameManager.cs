@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +11,9 @@ public class GameManager : MonoBehaviour
     public int currentLevel;
     public int gold;
     public int maxCommandPower;
-    public int currentCommandPower;
+    public int startCommandPower;
     public int maxShipHealth;
-    public int currentShipHealth;
+    public int startShipHealth;
     public int deckCardLimit;
     //Deck
 
@@ -35,7 +36,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
+    private void Start()
+    {
+        //Startdeck setzten
+        //Alle Stats resetten
+    }
+
+
     public void SetUpNewGame()
     {
         
