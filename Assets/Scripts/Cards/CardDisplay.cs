@@ -8,29 +8,38 @@ public class CardDisplay : MonoBehaviour
 {
     public Card card;
 
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI descriptionText;
-    public TextMeshProUGUI positionText;
+    [Header("HandCard")]
+    public TextMeshProUGUI handNameText;
+    public TextMeshProUGUI handDescriptionText;
+    public TextMeshProUGUI handPositionText;
 
-    public Image artworkImage;
+    public Image handArtworkImage;
     
-    public TextMeshProUGUI costText;
-    public TextMeshProUGUI attackText;
-    public TextMeshProUGUI defenseText;
+    public TextMeshProUGUI handCostText;
+    public TextMeshProUGUI handAttackText;
+    public TextMeshProUGUI handDefenseText;
     
+    [Header("IngameCard")]
+    public Image inGameArtworkImage;
+    
+    public TextMeshProUGUI inGameAttackText;
+    public TextMeshProUGUI inGameDefenseText;
     
     void Start()
     {
-        nameText.text = card.name;
+        handNameText.text = card.name;
         if (card.description != null)
         {
-            descriptionText.text = card.description;
+            handDescriptionText.text = card.description;
         }
-        positionText.text = card.position;
-        artworkImage.sprite = card.artwork;
-        costText.text = card.cost.ToString();
-        attackText.text = card.attack.ToString();
-        defenseText.text = card.defense.ToString();
+        handPositionText.text = card.position;
+        handArtworkImage.sprite = card.artwork;
+        inGameArtworkImage.sprite = card.artwork;
+        handCostText.text = card.cost.ToString();
+        inGameAttackText.text = card.attack.ToString();
+        handAttackText.text = card.attack.ToString();
+        inGameDefenseText.text = card.defense.ToString();
+        handDefenseText.text = card.defense.ToString();
     }
 
     

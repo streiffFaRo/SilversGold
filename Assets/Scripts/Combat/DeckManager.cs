@@ -20,6 +20,9 @@ public class DeckManager : MonoBehaviour
     public TextMeshProUGUI commandPowerText;
 
     public int currentCommandPower;
+
+    private BattleSystem battleSystem;
+    
     
     private void Update()
     {
@@ -29,13 +32,16 @@ public class DeckManager : MonoBehaviour
 
     private void Start()
     {
+        battleSystem = FindObjectOfType<BattleSystem>();
         ResetCommandPower();
     }
 
     public void DrawCards()
     {
-        if (deck.Count >= 1)
+        if (deck.Count >= 1 && battleSystem.state == BattleState.PLAYERTURN)
         {
+            Debug.Log(battleSystem.state);
+            
             CardManager randCard = deck[Random.Range(0, deck.Count)];
 
             for (int i = 0; i < availableCardSlots.Length; i++)
@@ -58,7 +64,7 @@ public class DeckManager : MonoBehaviour
     
     public void Shuffle()
     {
-        if (discardPile.Count >=1)
+        if (discardPile.Count >=1 && battleSystem.state == BattleState.PLAYERTURN)
         {
             ResetCommandPower();
             foreach (CardManager cM in discardPile)
@@ -67,11 +73,6 @@ public class DeckManager : MonoBehaviour
             }
             discardPile.Clear();
         }
-    }
-
-    public void ReloadScene()
-    {
-        SceneManager.LoadScene("Scene_Content");
     }
 
     public void ResetCommandPower()
@@ -85,4 +86,10 @@ public class DeckManager : MonoBehaviour
         currentCommandPower -= commandPowerCost;
         commandPowerText.text = currentCommandPower.ToString();
     }
+    
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene("Scene_Content");
+    }
+    
 }
