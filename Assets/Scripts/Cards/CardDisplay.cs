@@ -41,6 +41,4 @@ public class CardDisplay : MonoBehaviour
         inGameDefenseText.text = card.defense.ToString();
         handDefenseText.text = card.defense.ToString();
     }
-
-    
 }

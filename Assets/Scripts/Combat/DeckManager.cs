@@ -11,37 +11,89 @@ public class DeckManager : MonoBehaviour
 {
     public List<CardManager> deck = new List<CardManager>();
     public List<CardManager> discardPile = new List<CardManager>();
+    public int maxCommandPower;
+    public int currentCommandPower;
     
     public Transform[] cardSlots;
     public bool[] availableCardSlots;
 
+    [Header("Health")]
+    public int maxHealth;
+    public int currentHealth;
+
+    [Header("UI Elements")]
     public TextMeshProUGUI deckSizeText;
     public TextMeshProUGUI discardPileText;
     public TextMeshProUGUI commandPowerText;
-
-    public int currentCommandPower;
+    public TextMeshProUGUI healthText;
+    
+    [HideInInspector]public CardManager[] allPresentCards;
 
     private BattleSystem battleSystem;
     
     
+    private void Start()
+    {
+        battleSystem = FindObjectOfType<BattleSystem>();
+        ResetCommandPower();
+        SetUpHealth();
+    }
+
+    public void SetUpHealth()
+    {
+        maxHealth = GameManager.instance.maxShipHealth;
+        currentHealth = GameManager.instance.startShipHealth;
+        healthText.text = currentHealth.ToString();
+    }
+
     private void Update()
     {
         deckSizeText.text = deck.Count.ToString();
         discardPileText.text = discardPile.Count.ToString();
     }
-
-    private void Start()
+    
+    public void UpdateCommandPower(int commandPowerCost)
     {
-        battleSystem = FindObjectOfType<BattleSystem>();
-        ResetCommandPower();
+        currentCommandPower -= commandPowerCost;
+        commandPowerText.text = currentCommandPower.ToString();
     }
 
+    public void UpdateHealth(int amount, bool positiveNumber)
+    {
+        if (positiveNumber)
+        {
+            currentHealth += amount;
+        }
+        else
+        {
+            currentHealth -= amount;
+        }
+        
+        if (currentHealth <= 0)
+        {
+            battleSystem.GameOver();
+        }
+        else if (currentHealth >= maxHealth)
+        {
+            healthText.text = maxHealth.ToString();
+        }
+        else
+        {
+            healthText.text = currentHealth.ToString();
+        }
+        
+    }
+
+    public void StartNewTurn()
+    {
+        ResetCommandPower();
+        DrawCards();
+    }
+    
     public void DrawCards()
     {
         if (deck.Count >= 1 && battleSystem.state == BattleState.PLAYERTURN)
         {
-            Debug.Log(battleSystem.state);
-            
             CardManager randCard = deck[Random.Range(0, deck.Count)];
 
             for (int i = 0; i < availableCardSlots.Length; i++)
@@ -75,19 +127,38 @@ public class DeckManager : MonoBehaviour
         }
     }
 
+    public void EndTurn()
+    {
+        battleSystem.EnemyTurn();
+    }
+
+
     public void ResetCommandPower()
     {
         currentCommandPower = GameManager.instance.startCommandPower;
         commandPowerText.text = currentCommandPower.ToString();
     }    
     
-    public void UpdateCommandPower(int commandPowerCost)
+
+    public void SetAllOtherButtonsPassive(CardManager targetCardManager)
     {
-        currentCommandPower -= commandPowerCost;
-        commandPowerText.text = currentCommandPower.ToString();
+            allPresentCards = FindObjectsOfType<CardManager>();
+
+            foreach (CardManager card in allPresentCards)
+            {
+                for (int i = 0; i < allPresentCards.Length; i++)
+                {
+                    if (card.foundSlot)
+                    {
+                        card.SetButtonsPassive();
+                        
+                    }
+                }
+            }
+            targetCardManager.SetButtonsActive();
     }
-    
-    public void ReloadScene()
+
+    public void ReloadScene() //Wenn Spiel Gewonnen wurde, wird das nächste Lv geladen
     {
         SceneManager.LoadScene("Scene_Content");
     }

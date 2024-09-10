@@ -2941,7 +2941,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1934777827}
         m_TargetAssemblyTypeName: DeckManager, Assembly-CSharp
-        m_MethodName: Shuffle
+        m_MethodName: EndTurn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3231,7 +3231,7 @@ GameObject:
   - component: {fileID: 1158649457}
   - component: {fileID: 1158649458}
   m_Layer: 5
-  m_Name: GameBoard
+  m_Name: //GameBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5078,12 +5078,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da3cd08f44dd274a86a829522c07480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyCommandPowerText: {fileID: 191368302}
+  enemyHealthText: {fileID: 600846236}
+  enemyDeckText: {fileID: 488414488}
+  enemyDiscardText: {fileID: 741907689}
+  enemyName: 
+  enemyMaxCommandPower: 0
+  enemyCurrentCommandPower: 0
+  enemyMaxHealth: 0
+  enemyCurrentHealth: 0
+  strategy: 0
+  deck: []
+  discardPile: []
   enemyData:
   - enemyTitle: Tutorial
-    level: 1
     health: 6
     commandPower: 3
     strategies: 1
+    deck: []
+  - enemyTitle: Pirat1
+    health: 9
+    commandPower: 4
+    strategies: 0
+    deck: []
+  - enemyTitle: Pirat2
+    health: 10
+    commandPower: 4
+    strategies: 0
+    deck: []
 --- !u!1 &1594115376
 GameObject:
   m_ObjectHideFlags: 0
@@ -6117,6 +6139,8 @@ MonoBehaviour:
   - {fileID: 234927706}
   - {fileID: 914514071}
   discardPile: []
+  maxCommandPower: 0
+  currentCommandPower: 0
   cardSlots:
   - {fileID: 109611563}
   - {fileID: 273207725}
@@ -6124,10 +6148,13 @@ MonoBehaviour:
   - {fileID: 1381673696}
   - {fileID: 1118478225}
   availableCardSlots: 0101010101
+  maxHealth: 0
+  currentHealth: 0
   deckSizeText: {fileID: 562268533}
   discardPileText: {fileID: 1429743254}
   commandPowerText: {fileID: 1016218803}
-  currentCommandPower: 0
+  healthText: {fileID: 132641872}
+  allPresentCards: []
 --- !u!1 &2015055906
 GameObject:
   m_ObjectHideFlags: 0
@@ -6232,6 +6259,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  deckManager: {fileID: 1934777827}
+  enemyManager: {fileID: 1587372866}
 --- !u!4 &2071210395
 Transform:
   m_ObjectHideFlags: 0

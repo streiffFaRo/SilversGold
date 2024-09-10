@@ -7,10 +7,10 @@ using UnityEngine;
 public class EnemyData
 {
     public string enemyTitle;
-    public int level;
     public int health;
     public int commandPower;
     public Strategies strategies;
+    public List<CardManager> deck = new List<CardManager>();
 }
 
 public enum Strategies

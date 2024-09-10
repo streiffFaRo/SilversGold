@@ -44,12 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db6ea5deb996ae469a5a741ca6724a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 1
+  currentLevel: 0
   gold: 0
   maxCommandPower: 5
   startCommandPower: 5
-  maxShipHealth: 0
-  startShipHealth: 0
+  maxShipHealth: 12
+  startShipHealth: 12
   deckCardLimit: 0
   shipCannonLevel: 0
   shipCaptainLevel: 0

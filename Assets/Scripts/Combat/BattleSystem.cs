@@ -8,7 +8,8 @@ public class BattleSystem : MonoBehaviour
 {
     
     public BattleState state;
-    
+    public DeckManager deckManager;
+    public EnemyManager enemyManager;
     
     
     private void Start()
@@ -17,7 +18,7 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(SetUpBattle());
     }
 
-    private IEnumerator SetUpBattle()
+    public IEnumerator SetUpBattle()
     {
         Debug.Log("Battle Starts");
         //TODO Level Number Banner
@@ -27,17 +28,18 @@ public class BattleSystem : MonoBehaviour
         PlayerTurn();
     }
 
-    private void PlayerTurn()
+    public void PlayerTurn()
     {
         state = BattleState.PLAYERTURN;
+        deckManager.StartNewTurn();
         Debug.Log("Player Turn Starts");
     }
 
-    private void EnemyTurn()
+    public void EnemyTurn()
     {
         state = BattleState.ENEMYTURN;
+        enemyManager.StartNewEnemyTurn();
         Debug.Log("EnemyTurn");
-        //TODO Enemy Logik auf EnemyManager ausführen
     }
 
     private IEnumerator Win()
@@ -53,6 +55,11 @@ public class BattleSystem : MonoBehaviour
         //TODO Nächstes Level Laden
     }
 
+    public void GameOver()
+    {
+        StartCoroutine(Lost());
+    }
+    
     private IEnumerator Lost()
     {
         state = BattleState.LOST;

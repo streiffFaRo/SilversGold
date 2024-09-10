@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        currentLevel++;
         //Startdeck setzten
         //Alle Stats resetten
     }

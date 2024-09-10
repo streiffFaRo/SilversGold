@@ -4,90 +4,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 
-public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class CardManager : MonoBehaviour, IPointerClickHandler
 {
+    [Header("CardInHandInformation")]
     public bool hasBeenPlayed;
     public int handIndex;
 
+    [Header("CardModes")]
     public GameObject handCard;
     public GameObject inGameCard;
 
-    private DeckManager deckManager;
-    private int cardCommandPowerCost;
-    private BattleSystem battleSystem;
+    [Header("Buttons")]
+    public Button attackButton;
+    public Button retreatButton;
 
-    private RectTransform rectTransform;
-    private CanvasGroup canvasGroup;
-    private Vector2 startDragPos;
+    //Private Variablen
+    private DeckManager deckManager;
+    private Card cardStats;
+    private BattleSystem battleSystem;
+    private int cardCommandPowerCost;
 
     [HideInInspector] public bool foundSlot = false;
-
-    private void Awake()
-    {
-        rectTransform = GetComponent<RectTransform>();
-        canvasGroup = GetComponent<CanvasGroup>();
-    }
 
     private void Start()
     {
         deckManager = FindObjectOfType<DeckManager>();
-        cardCommandPowerCost = GetComponent<CardDisplay>().card.cost;
+        cardStats = GetComponent<CardDisplay>().card;
+        cardCommandPowerCost = cardStats.cost;
         battleSystem = FindObjectOfType<BattleSystem>();
     }
-
-    #region Drag&Drop
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        
-    }
     
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        canvasGroup.blocksRaycasts = false;
-        canvasGroup.alpha = 0.6f;
-        startDragPos = GetComponent<RectTransform>().position;
-    }
-    
-    public void OnDrag(PointerEventData eventData)
-    {
-        rectTransform.anchoredPosition += eventData.delta;
-    }
-    
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        canvasGroup.blocksRaycasts = true;
-        canvasGroup.alpha = 1f;
-
-        if (!foundSlot && hasBeenPlayed == false)
-        {
-            GetComponent<RectTransform>().position = startDragPos;
-        }
-    }
-    #endregion
-    
-    
-    
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if (hasBeenPlayed == false && battleSystem.state == BattleState.PLAYERTURN && false)
-        {
-            if (deckManager.currentCommandPower >= cardCommandPowerCost)
-            {
-                transform.position += Vector3.up * 400;
-                hasBeenPlayed = true;
-                deckManager.availableCardSlots[handIndex] = true;
-                deckManager.UpdateCommandPower(cardCommandPowerCost);
-                Invoke("MoveToDiscardPile", 2f);
-            }
-            else
-            {
-                Debug.LogWarning("Zu wenig Command Power!");
-            }
-        }
-    }
-
     public void CardPlayed()
     {
         handCard.SetActive(false);
@@ -97,26 +45,75 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerDownHand
         deckManager.UpdateCommandPower(cardCommandPowerCost);
         
     }
+    
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (foundSlot && battleSystem.state == BattleState.PLAYERTURN)
+        {
+            if (!attackButton.gameObject.activeInHierarchy)
+            {
+                deckManager.SetAllOtherButtonsPassive(this);
+            }
+            else
+            {
+                SetButtonsPassive();
+            }
+        }
+    }
+
+    public void SetButtonsActive()
+    {
+        attackButton.gameObject.SetActive(true);
+        retreatButton.gameObject.SetActive(true);
+    }
+
+    public void SetButtonsPassive()
+    {
+        attackButton.gameObject.SetActive(false);
+        retreatButton.gameObject.SetActive(false);
+    }
 
     public void Attack()
     {
-        
+        if (battleSystem.state == BattleState.PLAYERTURN && deckManager.currentCommandPower > 0)
+        {
+            deckManager.UpdateCommandPower(1);
+            SetButtonsPassive();
+            FindObjectOfType<EnemyManager>().UpdateEnemyHealth(cardStats.attack);
+            //Button soll nicht nochmal aufgerufen werden können
+            //Karte soll symbolisieren dass sie genutzt wurde
+            Debug.Log("Attack!");
+        }
+        else if (battleSystem.state == BattleState.PLAYERTURN)
+        {
+            Debug.Log("Zu wenig CommandPower");
+        }
     }
 
     public void Retreat()
     {
-        
+        if (battleSystem.state == BattleState.PLAYERTURN && deckManager.currentCommandPower > 0)
+        {
+            deckManager.UpdateCommandPower(1);
+            SetButtonsPassive();
+            deckManager.discardPile.Add(this);
+            gameObject.SetActive(false);
+            handCard.SetActive(true);
+            inGameCard.SetActive(false);
+            hasBeenPlayed = false;
+            GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
+            foundSlot = false;
+            GetComponentInChildren<DragDrop>().foundSlot = false;
+        }
+        else if (battleSystem.state == BattleState.PLAYERTURN)
+        {
+            Debug.Log("Zu wenig CommandPower");
+        }
     }
 
     public void Death()
     {
         
-    }
-
-    void MoveToDiscardPile()
-    {
-        deckManager.discardPile.Add(this);
-        gameObject.SetActive(false);
     }
     
 }
