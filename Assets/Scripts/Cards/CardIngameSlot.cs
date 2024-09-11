@@ -7,32 +7,51 @@ using UnityEngine.Serialization;
 
 public class CardIngameSlot : MonoBehaviour, IDropHandler
 {
+    //Verantwortlich für das Kontrollieren und Platzieren der Karten
 
-    public string position;
+    public string slotPosition;
+    public CardIngameSlot enemyInfanteryLine;
+    public CardIngameSlot enemyArtilleryLine;
     
-    [HideInInspector]public CardManager cardManager;
+    [HideInInspector]public CardManager currentCard;
     [HideInInspector]public DragDrop dragDrop;
     [HideInInspector]public BattleSystem battleSystem;
+    [HideInInspector]public PlayerManager playerManager;
 
     private void Start()
     {
         battleSystem = FindObjectOfType<BattleSystem>();
+        playerManager = FindObjectOfType<PlayerManager>();
     }
 
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null && battleSystem.state == BattleState.PLAYERTURN)
         {
-            cardManager = eventData.pointerDrag.GetComponentInParent<CardManager>();
+            currentCard = eventData.pointerDrag.GetComponentInParent<CardManager>();
             dragDrop = eventData.pointerDrag.GetComponent<DragDrop>();
-            
-            if (cardManager.GetComponent<CardDisplay>().card.position == position)
+
+            if (currentCard.GetComponent<CardDisplay>().card.position == slotPosition)
             {
-                cardManager.foundSlot = true;
-                dragDrop.foundSlot = true;
-                cardManager.CardPlayed();
-                eventData.pointerDrag.GetComponent<DragDrop>().rectTransform.position =
-                    GetComponent<RectTransform>().position;
+                if (currentCard.cardCommandPowerCost <= playerManager.currentCommandPower)
+                {
+                    currentCard.foundSlot = true;
+                    dragDrop.foundSlot = true;
+                    currentCard.cardIngameSlot = this;
+                    currentCard.CardPlayed();
+                    eventData.pointerDrag.GetComponent<DragDrop>().rectTransform.position =
+                        GetComponent<RectTransform>().position;
+                }
+                else
+                {
+                    Debug.LogWarning("Zu wenig Command Power");
+                    //TODO Errorsound / Einblendung / Pochen der Commandpower Animation
+                }
+            }
+            else
+            {
+                Debug.LogWarning("Falsche Position");
+                //TODO Errorsound / Einblendung / Pochen der CardPosition Animation
             }
         }
     }

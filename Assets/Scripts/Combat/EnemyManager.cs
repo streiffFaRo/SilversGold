@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    //Verantwortlich für Kernvariablen des Gegners und deren UI Anpassung
 
     [Header("UI Elements")]
     public TextMeshProUGUI enemyCommandPowerText;

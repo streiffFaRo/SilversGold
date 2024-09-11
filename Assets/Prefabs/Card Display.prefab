@@ -1368,7 +1368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1240, y: 100}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8976938372475544222
@@ -1383,10 +1383,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83cbcd5d2266f0478bef7c7b209e156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasBeenPlayed: 0
-  handIndex: 0
+  owner: 0
   handCard: {fileID: 3752291793365832359}
   inGameCard: {fileID: 1246945683096778960}
+  hasBeenPlayed: 0
+  handIndex: 3
+  cardCommandPowerCost: 0
+  cardIngameSlot: {fileID: 0}
   attackButton: {fileID: 2829980149627318642}
   retreatButton: {fileID: 8585612792520405240}
   foundSlot: 0
@@ -1402,7 +1405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3921d5ecc15bf6f4fa5470e70d8483df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 11400000, guid: 77733be589a958f4e8ce7a9c0783fb3d, type: 2}
+  card: {fileID: 11400000, guid: 411574fca09c36544891032038ffe798, type: 2}
   handNameText: {fileID: 3752291793135505348}
   handDescriptionText: {fileID: 3752291791892424943}
   handPositionText: {fileID: 3752291791902691684}

@@ -27,6 +27,11 @@ public class CardDisplay : MonoBehaviour
     
     void Start()
     {
+        SetUpCardUI();
+    }
+
+    public void SetUpCardUI()
+    {
         handNameText.text = card.name;
         if (card.description != null)
         {

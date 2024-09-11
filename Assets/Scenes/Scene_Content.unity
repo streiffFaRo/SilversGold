@@ -158,7 +158,7 @@ RectTransform:
   - {fileID: 1381673696}
   - {fileID: 1118478225}
   m_Father: {fileID: 316716143}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -392,6 +392,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlotSpawnPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyArtilleryLine
+      value: 
+      objectReference: {fileID: 2022677903}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfanteryLine
+      value: 
+      objectReference: {fileID: 1421388021}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &60549849 stripped
@@ -498,6 +506,18 @@ PrefabInstance:
       propertyPath: position
       value: A
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: slotPosition
+      value: A
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyArtilleryLine
+      value: 
+      objectReference: {fileID: 2128387893}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfanteryLine
+      value: 
+      objectReference: {fileID: 981340338}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &81375439 stripped
@@ -836,6 +856,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlotSpawnPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyArtilleryLine
+      value: 
+      objectReference: {fileID: 2022677903}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfanteryLine
+      value: 
+      objectReference: {fileID: 1421388021}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &138678864 stripped
@@ -852,6 +880,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 170767407}
+  - component: {fileID: 170767408}
   m_Layer: 5
   m_Name: =Player
   m_TagString: Untagged
@@ -876,13 +905,35 @@ RectTransform:
   - {fileID: 1126867389}
   - {fileID: 1643912963}
   m_Father: {fileID: 316716143}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &170767408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170767406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 606c21e8cdb4038469674e30161e42a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxCommandPower: 0
+  currentCommandPower: 0
+  maxHealth: 0
+  currentHealth: 0
+  deckSizeText: {fileID: 562268533}
+  discardPileText: {fileID: 1429743254}
+  commandPowerText: {fileID: 1016218803}
+  healthText: {fileID: 132641872}
+  battleSystem: {fileID: 2071210394}
+  DeckManager: {fileID: 1502925737}
 --- !u!1 &191368300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,6 +1319,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1502925738}
   - {fileID: 1158649457}
   - {fileID: 2104728066}
   - {fileID: 1454846513}
@@ -1277,7 +1329,7 @@ RectTransform:
   - {fileID: 170767407}
   - {fileID: 1587372865}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1391,6 +1443,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlotSpawnPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyArtilleryLine
+      value: 
+      objectReference: {fileID: 1642948819}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfanteryLine
+      value: 
+      objectReference: {fileID: 819942799}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &318059899 stripped
@@ -1731,6 +1791,18 @@ PrefabInstance:
       propertyPath: position
       value: I
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: slotPosition
+      value: I
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyArtilleryLine
+      value: 
+      objectReference: {fileID: 1414919353}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfanteryLine
+      value: 
+      objectReference: {fileID: 654774393}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &489569641 stripped
@@ -2086,13 +2158,35 @@ RectTransform:
   - {fileID: 234927705}
   - {fileID: 914514070}
   m_Father: {fileID: 316716143}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &654774393 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 318059898}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &663739490 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 138678863}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &702958133
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,6 +2436,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &819942799 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 489569640}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &908725958
 GameObject:
   m_ObjectHideFlags: 0
@@ -2635,6 +2740,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlotSpawnPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyArtilleryLine
+      value: 
+      objectReference: {fileID: 1661067388}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfanteryLine
+      value: 
+      objectReference: {fileID: 1490917195}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &935863498 stripped
@@ -2642,6 +2755,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2536461518045110488, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 935863497}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &981340338 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 935863497}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &992197247
 GameObject:
   m_ObjectHideFlags: 0
@@ -2888,7 +3012,7 @@ RectTransform:
   m_Children:
   - {fileID: 1521507604}
   m_Father: {fileID: 316716143}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -2939,7 +3063,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1934777827}
+      - m_Target: {fileID: 1502925737}
         m_TargetAssemblyTypeName: DeckManager, Assembly-CSharp
         m_MethodName: EndTurn
         m_Mode: 1
@@ -3252,7 +3376,7 @@ RectTransform:
   - {fileID: 102743288}
   - {fileID: 1238721970}
   m_Father: {fileID: 316716143}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3669,6 +3793,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlotSpawnPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyArtilleryLine
+      value: 
+      objectReference: {fileID: 1642948819}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfanteryLine
+      value: 
+      objectReference: {fileID: 819942799}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &1414919350 stripped
@@ -3676,6 +3808,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2536461518045110488, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 1414919349}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1414919353 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 1414919349}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1421388017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3775,6 +3918,18 @@ PrefabInstance:
       propertyPath: position
       value: I
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: slotPosition
+      value: I
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyArtilleryLine
+      value: 
+      objectReference: {fileID: 663739490}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfanteryLine
+      value: 
+      objectReference: {fileID: 1428571176}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &1421388018 stripped
@@ -3782,6 +3937,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2536461518045110488, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 1421388017}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1421388021 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 1421388017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1428571176 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 60549848}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1429743252
 GameObject:
   m_ObjectHideFlags: 0
@@ -4076,7 +4253,7 @@ RectTransform:
   m_Children:
   - {fileID: 1471296460}
   m_Father: {fileID: 316716143}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -4127,7 +4304,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1934777827}
+      - m_Target: {fileID: 1502925737}
         m_TargetAssemblyTypeName: DeckManager, Assembly-CSharp
         m_MethodName: Shuffle
         m_Mode: 1
@@ -4656,6 +4833,18 @@ PrefabInstance:
       propertyPath: position
       value: I
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: slotPosition
+      value: I
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyArtilleryLine
+      value: 
+      objectReference: {fileID: 2128387893}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfanteryLine
+      value: 
+      objectReference: {fileID: 981340338}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &1490917192 stripped
@@ -4663,6 +4852,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2536461518045110488, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 1490917191}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1490917195 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 1490917191}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1493063234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4762,6 +4962,18 @@ PrefabInstance:
       propertyPath: position
       value: A
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: slotPosition
+      value: A
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyArtilleryLine
+      value: 
+      objectReference: {fileID: 1414919353}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfanteryLine
+      value: 
+      objectReference: {fileID: 654774393}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &1493063235 stripped
@@ -4769,6 +4981,81 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2536461518045110488, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 1493063234}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1502925736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1502925738}
+  - component: {fileID: 1502925737}
+  m_Layer: 5
+  m_Name: //DeckManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1502925737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502925736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1777fcaaca66e9459974fa8b7cf1fb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: 0
+  currentCommandPower: 0
+  displayCardPrefab: {fileID: 3752291792545165603, guid: bbe3b2293a0233d4c97650353a58e76c, type: 3}
+  deckToPrepare:
+  - {fileID: 11400000, guid: 33e4b510036f4ef44a87190c7e1846d7, type: 2}
+  - {fileID: 11400000, guid: 6aa1b03696406604f9a035b6fb34cf42, type: 2}
+  - {fileID: 11400000, guid: 411574fca09c36544891032038ffe798, type: 2}
+  deck:
+  - {fileID: 1489216335}
+  - {fileID: 1561381683}
+  - {fileID: 1453921740}
+  - {fileID: 1930053112}
+  - {fileID: 1849523581}
+  - {fileID: 234927706}
+  - {fileID: 914514071}
+  discardPile: []
+  allPresentCards: []
+  cardSlots:
+  - {fileID: 109611563}
+  - {fileID: 273207725}
+  - {fileID: 1897150267}
+  - {fileID: 1381673696}
+  - {fileID: 1118478225}
+  availableCardSlots: 0101010101
+  battleSystem: {fileID: 2071210394}
+  playerManager: {fileID: 170767408}
+--- !u!224 &1502925738
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502925736}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 316716143}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1521507603
 GameObject:
   m_ObjectHideFlags: 0
@@ -5059,7 +5346,7 @@ RectTransform:
   - {fileID: 908725959}
   - {fileID: 1356890262}
   m_Father: {fileID: 316716143}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5304,6 +5591,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1642948819 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 1493063234}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1643912962
 GameObject:
   m_ObjectHideFlags: 0
@@ -5458,6 +5756,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649246352}
   m_CullTransparentMesh: 1
+--- !u!114 &1661067388 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 81375438}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1680375063
 GameObject:
   m_ObjectHideFlags: 0
@@ -6086,75 +6395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83cbcd5d2266f0478bef7c7b209e156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1934777825
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1934777826}
-  - component: {fileID: 1934777827}
-  m_Layer: 0
-  m_Name: //DeckManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1934777826
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1934777825}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1934777827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1934777825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1777fcaaca66e9459974fa8b7cf1fb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deck:
-  - {fileID: 1489216335}
-  - {fileID: 1561381683}
-  - {fileID: 1453921740}
-  - {fileID: 1930053112}
-  - {fileID: 1849523581}
-  - {fileID: 234927706}
-  - {fileID: 914514071}
-  discardPile: []
-  maxCommandPower: 0
-  currentCommandPower: 0
-  cardSlots:
-  - {fileID: 109611563}
-  - {fileID: 273207725}
-  - {fileID: 1897150267}
-  - {fileID: 1381673696}
-  - {fileID: 1118478225}
-  availableCardSlots: 0101010101
-  maxHealth: 0
-  currentHealth: 0
-  deckSizeText: {fileID: 562268533}
-  discardPileText: {fileID: 1429743254}
-  commandPowerText: {fileID: 1016218803}
-  healthText: {fileID: 132641872}
-  allPresentCards: []
 --- !u!1 &2015055906
 GameObject:
   m_ObjectHideFlags: 0
@@ -6192,6 +6432,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2022677903 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 2536461518640795953}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2065053212
 GameObject:
   m_ObjectHideFlags: 0
@@ -6259,7 +6510,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  deckManager: {fileID: 1934777827}
+  deckManager: {fileID: 1502925737}
+  playerManager: {fileID: 170767408}
   enemyManager: {fileID: 1587372866}
 --- !u!4 &2071210395
 Transform:
@@ -6268,13 +6520,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071210393}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2104250998
 GameObject:
@@ -6386,7 +6638,7 @@ RectTransform:
   m_Children:
   - {fileID: 1807933829}
   m_Father: {fileID: 316716143}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -6437,7 +6689,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1934777827}
+      - m_Target: {fileID: 1502925737}
         m_TargetAssemblyTypeName: DeckManager, Assembly-CSharp
         m_MethodName: DrawCards
         m_Mode: 1
@@ -6631,6 +6883,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlotSpawnPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyArtilleryLine
+      value: 
+      objectReference: {fileID: 1661067388}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfanteryLine
+      value: 
+      objectReference: {fileID: 1490917195}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &2128387890 stripped
@@ -6638,6 +6898,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2536461518045110488, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 2128387889}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2128387893 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 2128387889}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2536461518640795953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6737,6 +7008,18 @@ PrefabInstance:
       propertyPath: position
       value: A
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: slotPosition
+      value: A
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyArtilleryLine
+      value: 
+      objectReference: {fileID: 663739490}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfanteryLine
+      value: 
+      objectReference: {fileID: 1428571176}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!1001 &7433911525622666969

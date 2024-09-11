@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
+using WaitForSeconds = UnityEngine.WaitForSeconds;
 
 public class BattleSystem : MonoBehaviour
 {
+    //Verantwortlich für Schlachtverlauf, Bestimmt momentaner Spielstatus
     
     public BattleState state;
     public DeckManager deckManager;
+    public PlayerManager playerManager;
     public EnemyManager enemyManager;
     
     
@@ -18,28 +22,39 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(SetUpBattle());
     }
 
-    public IEnumerator SetUpBattle()
+    private IEnumerator SetUpBattle()
     {
-        Debug.Log("Battle Starts");
         //TODO Level Number Banner
         //TODO Enemy Ship rolling in
         //TODO Enemy Dialogue
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(DrawStartCards());
+        yield return new WaitForSeconds(3f);
         PlayerTurn();
+    }
+
+    private IEnumerator DrawStartCards()
+    {
+        deckManager.DrawCards();
+        //TODO Enemy Card draw
+        yield return new WaitForSeconds(1f);
+        deckManager.DrawCards();
+        //TODO Enemy Card draw
+        yield return new WaitForSeconds(1f);
+        deckManager.DrawCards();
+        //TODO Enemy Card draw
     }
 
     public void PlayerTurn()
     {
         state = BattleState.PLAYERTURN;
-        deckManager.StartNewTurn();
-        Debug.Log("Player Turn Starts");
+        playerManager.StartNewTurn();
     }
 
     public void EnemyTurn()
     {
         state = BattleState.ENEMYTURN;
         enemyManager.StartNewEnemyTurn();
-        Debug.Log("EnemyTurn");
     }
 
     private IEnumerator Win()

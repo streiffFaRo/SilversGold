@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,90 +10,50 @@ using Random = UnityEngine.Random;
 
 public class DeckManager : MonoBehaviour
 {
+    //Verantwortlich für Deck, Ablagestapel, ziehen von Karten und managen der Handkarten des Spielers
+
+    [Header("General")]
+    public Owner owner;
+    public int currentCommandPower;
+    public GameObject displayCardPrefab;
+    public List<Card> deckToPrepare = new List<Card>();
     public List<CardManager> deck = new List<CardManager>();
     public List<CardManager> discardPile = new List<CardManager>();
-    public int maxCommandPower;
-    public int currentCommandPower;
-    
-    public Transform[] cardSlots;
-    public bool[] availableCardSlots;
-
-    [Header("Health")]
-    public int maxHealth;
-    public int currentHealth;
-
-    [Header("UI Elements")]
-    public TextMeshProUGUI deckSizeText;
-    public TextMeshProUGUI discardPileText;
-    public TextMeshProUGUI commandPowerText;
-    public TextMeshProUGUI healthText;
     
     [HideInInspector]public CardManager[] allPresentCards;
+    [HideInInspector]public Transform[] cardSlots;
+    [HideInInspector]public bool[] availableCardSlots;
+    
+    [Header("Scripts")]
+    public BattleSystem battleSystem;
+    public PlayerManager playerManager;
 
-    private BattleSystem battleSystem;
-    
-    
-    private void Start()
+    private void Awake()
     {
-        battleSystem = FindObjectOfType<BattleSystem>();
-        ResetCommandPower();
-        SetUpHealth();
+        InitilizeDeck();
     }
 
-    public void SetUpHealth()
+    private void InitilizeDeck()
     {
-        maxHealth = GameManager.instance.maxShipHealth;
-        currentHealth = GameManager.instance.startShipHealth;
-        healthText.text = currentHealth.ToString();
+        foreach (Card card in deckToPrepare)
+        {
+            GameObject currentCardPrefab = Instantiate(displayCardPrefab, new Vector3(0, 0, 0), Quaternion.identity, transform);
+            currentCardPrefab.GetComponent<CardDisplay>().card = card;
+            currentCardPrefab.SetActive(false);
+            deck.Add(currentCardPrefab.GetComponent<CardManager>());
+        }
     }
 
     private void Update()
     {
-        deckSizeText.text = deck.Count.ToString();
-        discardPileText.text = discardPile.Count.ToString();
-    }
-    
-    public void UpdateCommandPower(int commandPowerCost)
-    {
-        currentCommandPower -= commandPowerCost;
-        commandPowerText.text = currentCommandPower.ToString();
-    }
-
-    public void UpdateHealth(int amount, bool positiveNumber)
-    {
-        if (positiveNumber)
-        {
-            currentHealth += amount;
-        }
-        else
-        {
-            currentHealth -= amount;
-        }
-        
-        if (currentHealth <= 0)
-        {
-            battleSystem.GameOver();
-        }
-        else if (currentHealth >= maxHealth)
-        {
-            healthText.text = maxHealth.ToString();
-        }
-        else
-        {
-            healthText.text = currentHealth.ToString();
-        }
-        
-    }
-
-    public void StartNewTurn()
-    {
-        ResetCommandPower();
-        DrawCards();
+        //TODO beide nachfolgenden Zeilen neu eingliedern, ausserhalb von Update
+        playerManager.deckSizeText.text = deck.Count.ToString();
+        playerManager.discardPileText.text = discardPile.Count.ToString();
     }
     
     public void DrawCards()
     {
-        if (deck.Count >= 1 && battleSystem.state == BattleState.PLAYERTURN)
+        if (deck.Count >= 1)
         {
             CardManager randCard = deck[Random.Range(0, deck.Count)];
 
@@ -118,7 +79,7 @@ public class DeckManager : MonoBehaviour
     {
         if (discardPile.Count >=1 && battleSystem.state == BattleState.PLAYERTURN)
         {
-            ResetCommandPower();
+            playerManager.SetUpCommandPower();
             foreach (CardManager cM in discardPile)
             {
                 deck.Add(cM);
@@ -131,14 +92,6 @@ public class DeckManager : MonoBehaviour
     {
         battleSystem.EnemyTurn();
     }
-
-
-    public void ResetCommandPower()
-    {
-        currentCommandPower = GameManager.instance.startCommandPower;
-        commandPowerText.text = currentCommandPower.ToString();
-    }    
-    
 
     public void SetAllOtherButtonsPassive(CardManager targetCardManager)
     {

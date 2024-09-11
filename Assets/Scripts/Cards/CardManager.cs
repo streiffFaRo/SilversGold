@@ -3,37 +3,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
+using UnityEngine.Serialization;
 using Button = UnityEngine.UI.Button;
+
 
 public class CardManager : MonoBehaviour, IPointerClickHandler
 {
-    [Header("CardInHandInformation")]
-    public bool hasBeenPlayed;
-    public int handIndex;
+    //Verantwortlich für Karteninformation in Hand und im Kampf
 
+    [FormerlySerializedAs("cardCardOwner")] [Header("General")]
+    public Owner owner;
+    
     [Header("CardModes")]
     public GameObject handCard;
     public GameObject inGameCard;
+    
+    [Header("CardInHandInformation")]
+    public bool hasBeenPlayed;
+    public int handIndex;
+    [HideInInspector]public int cardCommandPowerCost;
+
+    //CardInPlayInformation
+    [HideInInspector]public CardIngameSlot cardIngameSlot;
 
     [Header("Buttons")]
     public Button attackButton;
     public Button retreatButton;
 
-    //Private Variablen
-    private DeckManager deckManager;
-    private Card cardStats;
+    //Private Scripts
+    private DeckManager playerDeckManager;
     private BattleSystem battleSystem;
-    private int cardCommandPowerCost;
+    private PlayerManager playerManager;
+    private Card cardStats;
+    private CardDisplay cardDisplay;
+    
+    //Private Variablen
+    private int currentHealth;
 
     [HideInInspector] public bool foundSlot = false;
 
     private void Start()
     {
-        deckManager = FindObjectOfType<DeckManager>();
-        cardStats = GetComponent<CardDisplay>().card;
-        cardCommandPowerCost = cardStats.cost;
+        playerDeckManager = FindObjectOfType<DeckManager>();
         battleSystem = FindObjectOfType<BattleSystem>();
+        playerManager = FindObjectOfType<PlayerManager>();
+        cardStats = GetComponent<CardDisplay>().card;
+        cardDisplay = GetComponent<CardDisplay>();
+        
+        cardCommandPowerCost = cardStats.cost;
+        currentHealth = cardStats.defense;
     }
     
     public void CardPlayed()
@@ -41,8 +59,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
         handCard.SetActive(false);
         inGameCard.SetActive(true);
         hasBeenPlayed = true;
-        deckManager.availableCardSlots[handIndex] = true;
-        deckManager.UpdateCommandPower(cardCommandPowerCost);
+        playerDeckManager.availableCardSlots[handIndex] = true;
+        playerManager.UpdateCommandPower(cardCommandPowerCost);
         
     }
     
@@ -52,7 +70,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
         {
             if (!attackButton.gameObject.activeInHierarchy)
             {
-                deckManager.SetAllOtherButtonsPassive(this);
+                playerDeckManager.SetAllOtherButtonsPassive(this);
             }
             else
             {
@@ -75,28 +93,30 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
 
     public void Attack()
     {
-        if (battleSystem.state == BattleState.PLAYERTURN && deckManager.currentCommandPower > 0)
+        if (battleSystem.state == BattleState.PLAYERTURN && playerDeckManager.currentCommandPower > 0)
         {
-            deckManager.UpdateCommandPower(1);
+            playerManager.UpdateCommandPower(1);
             SetButtonsPassive();
+            //TODO momentan greifen Karten Gegner direkt an
             FindObjectOfType<EnemyManager>().UpdateEnemyHealth(cardStats.attack);
-            //Button soll nicht nochmal aufgerufen werden können
-            //Karte soll symbolisieren dass sie genutzt wurde
+            //TODO Button soll nicht nochmal aufgerufen werden können
+            //TODO Karte soll symbolisieren dass sie genutzt wurde
             Debug.Log("Attack!");
         }
         else if (battleSystem.state == BattleState.PLAYERTURN)
         {
-            Debug.Log("Zu wenig CommandPower");
+            //Wenn obere if nicht erfüllt, hat Spieler zwingen zu wenig CP
+            Debug.LogWarning("Zu wenig CommandPower");
         }
     }
 
     public void Retreat()
     {
-        if (battleSystem.state == BattleState.PLAYERTURN && deckManager.currentCommandPower > 0)
+        if (battleSystem.state == BattleState.PLAYERTURN && playerDeckManager.currentCommandPower > 0)
         {
-            deckManager.UpdateCommandPower(1);
+            playerManager.UpdateCommandPower(1);
             SetButtonsPassive();
-            deckManager.discardPile.Add(this);
+            playerDeckManager.discardPile.Add(this);
             gameObject.SetActive(false);
             handCard.SetActive(true);
             inGameCard.SetActive(false);
@@ -107,13 +127,44 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
         }
         else if (battleSystem.state == BattleState.PLAYERTURN)
         {
-            Debug.Log("Zu wenig CommandPower");
+            //Wenn obere if nicht erfüllt, hat Spieler zwingen zu wenig CP
+            Debug.LogWarning("Zu wenig CommandPower");
         }
     }
 
-    public void Death()
+    public void UpdateCardHealth(int damage)
     {
-        
+        if (currentHealth <= 0)
+        {
+            Death();
+        }
+        else if (currentHealth >= cardStats.defense)
+        {
+            cardDisplay.inGameDefenseText.text = cardStats.defense.ToString();
+        }
+        else
+        {
+            cardDisplay.inGameDefenseText.text = currentHealth.ToString();
+        }
     }
     
+    public void Death()
+    {
+        cardIngameSlot.currentCard = null;
+        playerDeckManager.discardPile.Add(this);
+        gameObject.SetActive(false);
+        handCard.SetActive(true);
+        inGameCard.SetActive(false);
+        hasBeenPlayed = false;
+        GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
+        foundSlot = false;
+        GetComponentInChildren<DragDrop>().foundSlot = false;
+        cardDisplay.SetUpCardUI();
+    }
+    
+}
+
+public enum Owner
+{
+    PLAYER, ENEMY
 }
