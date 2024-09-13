@@ -48,6 +48,5 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             gameObject.SetActive(false);
         }
     }
-
     
 }

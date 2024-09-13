@@ -47,8 +47,22 @@ public class PlayerManager : MonoBehaviour
     {
         SetUpCommandPower();
         DeckManager.DrawCards();
+        ResetCardsWhoActed();
     }
-    
+
+    public void ResetCardsWhoActed()
+    {
+        CardManager[] allCardsInPlay = FindObjectsOfType<CardManager>();
+
+        foreach (CardManager cardToReset in allCardsInPlay)
+        {
+            if (cardToReset.cardActed)
+            {
+                cardToReset.cardActed = false;
+            }
+        }
+    }
+
     public void UpdateCommandPower(int commandPowerCost)
     {
         currentCommandPower -= commandPowerCost;

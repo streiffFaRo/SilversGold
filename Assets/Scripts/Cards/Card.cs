@@ -18,4 +18,5 @@ public class Card : ScriptableObject
     public int defense;
 
     public int tier;
+    public int dangerLevel;
 }

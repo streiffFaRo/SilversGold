@@ -36,12 +36,15 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator DrawStartCards()
     {
         deckManager.DrawCards();
+        enemyManager.DrawCards();
         //TODO Enemy Card draw
         yield return new WaitForSeconds(1f);
         deckManager.DrawCards();
+        enemyManager.DrawCards();
         //TODO Enemy Card draw
         yield return new WaitForSeconds(1f);
         deckManager.DrawCards();
+        enemyManager.DrawCards();
         //TODO Enemy Card draw
     }
 

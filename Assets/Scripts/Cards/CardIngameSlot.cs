@@ -10,7 +10,7 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
     //Verantwortlich für das Kontrollieren und Platzieren der Karten
 
     public string slotPosition;
-    public CardIngameSlot enemyInfanteryLine;
+    public CardIngameSlot enemyInfantryLine;
     public CardIngameSlot enemyArtilleryLine;
     
     [HideInInspector]public CardManager currentCard;

@@ -11,7 +11,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
 {
     //Verantwortlich für Karteninformation in Hand und im Kampf
 
-    [FormerlySerializedAs("cardCardOwner")] [Header("General")]
+    [Header("General")]
     public Owner owner;
     
     [Header("CardModes")]
@@ -24,6 +24,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
     [HideInInspector]public int cardCommandPowerCost;
 
     //CardInPlayInformation
+    public bool cardActed;
     [HideInInspector]public CardIngameSlot cardIngameSlot;
 
     [Header("Buttons")]
@@ -31,7 +32,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
     public Button retreatButton;
 
     //Private Scripts
-    private DeckManager playerDeckManager;
+    private DeckManager deckManager;
     private BattleSystem battleSystem;
     private PlayerManager playerManager;
     private Card cardStats;
@@ -44,7 +45,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
-        playerDeckManager = FindObjectOfType<DeckManager>();
+        deckManager = FindObjectOfType<DeckManager>();
         battleSystem = FindObjectOfType<BattleSystem>();
         playerManager = FindObjectOfType<PlayerManager>();
         cardStats = GetComponent<CardDisplay>().card;
@@ -59,18 +60,17 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
         handCard.SetActive(false);
         inGameCard.SetActive(true);
         hasBeenPlayed = true;
-        playerDeckManager.availableCardSlots[handIndex] = true;
+        deckManager.availableCardSlots[handIndex] = true;
         playerManager.UpdateCommandPower(cardCommandPowerCost);
-        
     }
     
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (foundSlot && battleSystem.state == BattleState.PLAYERTURN)
+        if (foundSlot && battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
             if (!attackButton.gameObject.activeInHierarchy)
             {
-                playerDeckManager.SetAllOtherButtonsPassive(this);
+                deckManager.SetAllOtherButtonsPassive(this);
             }
             else
             {
@@ -93,13 +93,13 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
 
     public void Attack()
     {
-        if (battleSystem.state == BattleState.PLAYERTURN && playerDeckManager.currentCommandPower > 0)
+        if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower > 0)
         {
             playerManager.UpdateCommandPower(1);
             SetButtonsPassive();
+            cardActed = true;
             //TODO momentan greifen Karten Gegner direkt an
             FindObjectOfType<EnemyManager>().UpdateEnemyHealth(cardStats.attack);
-            //TODO Button soll nicht nochmal aufgerufen werden können
             //TODO Karte soll symbolisieren dass sie genutzt wurde
             Debug.Log("Attack!");
         }
@@ -107,16 +107,17 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
         {
             //Wenn obere if nicht erfüllt, hat Spieler zwingen zu wenig CP
             Debug.LogWarning("Zu wenig CommandPower");
+            //TODO Info an Player
         }
     }
 
     public void Retreat()
     {
-        if (battleSystem.state == BattleState.PLAYERTURN && playerDeckManager.currentCommandPower > 0)
+        if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower > 0)
         {
             playerManager.UpdateCommandPower(1);
             SetButtonsPassive();
-            playerDeckManager.discardPile.Add(this);
+            deckManager.deck.Add(this);
             gameObject.SetActive(false);
             handCard.SetActive(true);
             inGameCard.SetActive(false);
@@ -151,7 +152,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
     public void Death()
     {
         cardIngameSlot.currentCard = null;
-        playerDeckManager.discardPile.Add(this);
+        deckManager.discardPile.Add(this);
         gameObject.SetActive(false);
         handCard.SetActive(true);
         inGameCard.SetActive(false);

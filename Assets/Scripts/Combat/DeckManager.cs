@@ -13,16 +13,14 @@ public class DeckManager : MonoBehaviour
     //Verantwortlich für Deck, Ablagestapel, ziehen von Karten und managen der Handkarten des Spielers
 
     [Header("General")]
-    public Owner owner;
-    public int currentCommandPower;
     public GameObject displayCardPrefab;
     public List<Card> deckToPrepare = new List<Card>();
     public List<CardManager> deck = new List<CardManager>();
     public List<CardManager> discardPile = new List<CardManager>();
     
     [HideInInspector]public CardManager[] allPresentCards;
-    [HideInInspector]public Transform[] cardSlots;
-    [HideInInspector]public bool[] availableCardSlots;
+    public Transform[] cardSlots;
+    public bool[] availableCardSlots;
     
     [Header("Scripts")]
     public BattleSystem battleSystem;
@@ -95,13 +93,15 @@ public class DeckManager : MonoBehaviour
 
     public void SetAllOtherButtonsPassive(CardManager targetCardManager)
     {
+        if (!targetCardManager.cardActed)
+        {
             allPresentCards = FindObjectsOfType<CardManager>();
 
             foreach (CardManager card in allPresentCards)
             {
                 for (int i = 0; i < allPresentCards.Length; i++)
                 {
-                    if (card.foundSlot)
+                    if (card.foundSlot && card.owner == Owner.PLAYER)
                     {
                         card.SetButtonsPassive();
                         
@@ -109,6 +109,13 @@ public class DeckManager : MonoBehaviour
                 }
             }
             targetCardManager.SetButtonsActive();
+        }
+        else
+        {
+            Debug.LogWarning("Karte hat schon gehandelt");
+            //TODO Info an Player
+        }
+        
     }
 
     public void ReloadScene() //Wenn Spiel Gewonnen wurde, wird das nächste Lv geladen
