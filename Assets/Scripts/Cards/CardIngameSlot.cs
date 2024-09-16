@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -54,5 +55,16 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
                 //TODO Errorsound / Einblendung / Pochen der CardPosition Animation
             }
         }
+    }
+
+    public void EnemyCardPlacedOnThisSlot(CardManager cardToPlaceOnSlot)
+    {
+        currentCard = cardToPlaceOnSlot;
+        currentCard.foundSlot = true;
+        currentCard.cardIngameSlot = this;
+        currentCard.CardPlayed();
+        currentCard.GetComponentInChildren<DragDrop>().rectTransform.position =
+            GetComponent<RectTransform>().position;
+        
     }
 }

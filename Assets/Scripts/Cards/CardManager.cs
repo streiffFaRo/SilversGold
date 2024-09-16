@@ -35,19 +35,22 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
     private DeckManager deckManager;
     private BattleSystem battleSystem;
     private PlayerManager playerManager;
-    private Card cardStats;
+    private EnemyManager enemyManager;
     private CardDisplay cardDisplay;
+    [HideInInspector]public Card cardStats;
     
     //Private Variablen
     private int currentHealth;
 
     [HideInInspector] public bool foundSlot = false;
+    
 
     private void Start()
     {
         deckManager = FindObjectOfType<DeckManager>();
         battleSystem = FindObjectOfType<BattleSystem>();
         playerManager = FindObjectOfType<PlayerManager>();
+        enemyManager = FindObjectOfType<EnemyManager>();
         cardStats = GetComponent<CardDisplay>().card;
         cardDisplay = GetComponent<CardDisplay>();
         
@@ -57,11 +60,21 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
     
     public void CardPlayed()
     {
+        if (owner == Owner.PLAYER)
+        {
+            deckManager.availableCardSlots[handIndex] = true;
+            playerManager.UpdateCommandPower(cardCommandPowerCost);
+        }
+        else if (owner == Owner.ENEMY)
+        {
+            enemyManager.availableCardSlots[handIndex] = true;
+            enemyManager.UpdateEnemyCommandPower(cardCommandPowerCost);
+            enemyManager.cardsInHand.Remove(this);
+        }
         handCard.SetActive(false);
         inGameCard.SetActive(true);
         hasBeenPlayed = true;
-        deckManager.availableCardSlots[handIndex] = true;
-        playerManager.UpdateCommandPower(cardCommandPowerCost);
+        
     }
     
     public void OnPointerClick(PointerEventData eventData)
@@ -93,27 +106,38 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
 
     public void Attack()
     {
-        if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower > 0)
+        if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower > 0 && owner == Owner.PLAYER)
         {
             playerManager.UpdateCommandPower(1);
             SetButtonsPassive();
             cardActed = true;
             //TODO momentan greifen Karten Gegner direkt an
-            FindObjectOfType<EnemyManager>().UpdateEnemyHealth(cardStats.attack);
+            enemyManager.UpdateEnemyHealth(cardStats.attack);
             //TODO Karte soll symbolisieren dass sie genutzt wurde
             Debug.Log("Attack!");
         }
-        else if (battleSystem.state == BattleState.PLAYERTURN)
+        else if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
             //Wenn obere if nicht erfüllt, hat Spieler zwingen zu wenig CP
             Debug.LogWarning("Zu wenig CommandPower");
             //TODO Info an Player
         }
+        else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
+        {
+            enemyManager.UpdateEnemyCommandPower(1);
+            cardActed = true;
+            playerManager.UpdateHealth(cardStats.attack, false);
+            Debug.Log("Attack!");
+        }
+        else
+        {
+            Debug.LogWarning("Attack failed!");
+        }
     }
 
     public void Retreat()
     {
-        if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower > 0)
+        if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower > 0 && owner == Owner.PLAYER)
         {
             playerManager.UpdateCommandPower(1);
             SetButtonsPassive();
@@ -126,10 +150,25 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
             foundSlot = false;
             GetComponentInChildren<DragDrop>().foundSlot = false;
         }
-        else if (battleSystem.state == BattleState.PLAYERTURN)
+        else if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
             //Wenn obere if nicht erfüllt, hat Spieler zwingen zu wenig CP
             Debug.LogWarning("Zu wenig CommandPower");
+            //TODO Info an Player
+        }
+        else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
+        {
+            enemyManager.UpdateEnemyCommandPower(1);
+            enemyManager.deck.Add(this);
+            gameObject.SetActive(false);
+            handCard.SetActive(true);
+            inGameCard.SetActive(false);
+            hasBeenPlayed = false;
+            foundSlot = false;
+        }
+        else
+        {
+            Debug.LogWarning("Retreat failed!");
         }
     }
 
@@ -151,16 +190,25 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
     
     public void Death()
     {
+        if (owner == Owner.PLAYER)
+        {
+            deckManager.discardPile.Add(this);
+            GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
+            GetComponentInChildren<DragDrop>().foundSlot = false;
+        }
+        else if (owner == Owner.ENEMY)
+        {
+            enemyManager.discardPile.Add(this);
+        }
+        
         cardIngameSlot.currentCard = null;
-        deckManager.discardPile.Add(this);
         gameObject.SetActive(false);
         handCard.SetActive(true);
         inGameCard.SetActive(false);
         hasBeenPlayed = false;
-        GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
         foundSlot = false;
-        GetComponentInChildren<DragDrop>().foundSlot = false;
         cardDisplay.SetUpCardUI();
+        
     }
     
 }

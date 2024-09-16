@@ -30,10 +30,13 @@ public class EnemyManager : MonoBehaviour
     public List<CardManager> discardPile = new List<CardManager>();
     public Transform[] cardSlots;
     public bool[] availableCardSlots;
+    public List<CardManager> cardsInHand = new List<CardManager>();
     
     [Header("EnemyData")] 
     public List<EnemyData> enemyData = new List<EnemyData>();
-    
+
+    public EnemyStrategy enemyStrategy;
+    public EnemyAnalysis enemyAnalysis;
     private GameManager gameManager;
 
     private void Start()
@@ -130,6 +133,7 @@ public class EnemyManager : MonoBehaviour
                     
                     availableCardSlots[i] = false;
                     deck.Remove(randCard);
+                    cardsInHand.Add(randCard);
                     enemyDeckText.text = deck.Count.ToString();
                     return;
                 }
@@ -140,6 +144,8 @@ public class EnemyManager : MonoBehaviour
     public IEnumerator DoEnemyStuff()
     {
         Debug.Log("Ich denke über böse Sachen nach");
+        yield return new WaitForSeconds(1f);
+        enemyStrategy.PlayRdmCard();
         yield return new WaitForSeconds(3f);
         Debug.Log("Ich habe böse Sachen gemacht");
         FindObjectOfType<BattleSystem>().PlayerTurn();

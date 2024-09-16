@@ -397,6 +397,10 @@ PrefabInstance:
       value: EI2
       objectReference: {fileID: 0}
     - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfantryLine
+      value: 
+      objectReference: {fileID: 1421388021}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
       propertyPath: enemyArtilleryLine
       value: 
       objectReference: {fileID: 2022677903}
@@ -514,6 +518,10 @@ PrefabInstance:
       propertyPath: slotPosition
       value: A
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfantryLine
+      value: 
+      objectReference: {fileID: 981340338}
     - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
       propertyPath: enemyArtilleryLine
       value: 
@@ -864,6 +872,10 @@ PrefabInstance:
       propertyPath: slotPosition
       value: EA2
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfantryLine
+      value: 
+      objectReference: {fileID: 1421388021}
     - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
       propertyPath: enemyArtilleryLine
       value: 
@@ -1445,6 +1457,10 @@ PrefabInstance:
       value: EI1
       objectReference: {fileID: 0}
     - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfantryLine
+      value: 
+      objectReference: {fileID: 819942799}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
       propertyPath: enemyArtilleryLine
       value: 
       objectReference: {fileID: 1642948819}
@@ -1796,6 +1812,10 @@ PrefabInstance:
       propertyPath: slotPosition
       value: I
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfantryLine
+      value: 
+      objectReference: {fileID: 654774393}
     - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
       propertyPath: enemyArtilleryLine
       value: 
@@ -2910,6 +2930,10 @@ PrefabInstance:
       propertyPath: slotPosition
       value: EI3
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfantryLine
+      value: 
+      objectReference: {fileID: 1490917195}
     - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
       propertyPath: enemyArtilleryLine
       value: 
@@ -4040,6 +4064,10 @@ PrefabInstance:
       value: EA1
       objectReference: {fileID: 0}
     - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfantryLine
+      value: 
+      objectReference: {fileID: 819942799}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
       propertyPath: enemyArtilleryLine
       value: 
       objectReference: {fileID: 1642948819}
@@ -4168,6 +4196,10 @@ PrefabInstance:
       propertyPath: slotPosition
       value: I
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfantryLine
+      value: 
+      objectReference: {fileID: 1428571176}
     - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
       propertyPath: enemyArtilleryLine
       value: 
@@ -5062,6 +5094,10 @@ PrefabInstance:
       value: I
       objectReference: {fileID: 0}
     - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfantryLine
+      value: 
+      objectReference: {fileID: 1428571176}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
       propertyPath: enemyArtilleryLine
       value: 
       objectReference: {fileID: 2128387893}
@@ -5190,6 +5226,10 @@ PrefabInstance:
       propertyPath: slotPosition
       value: A
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfantryLine
+      value: 
+      objectReference: {fileID: 654774393}
     - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
       propertyPath: enemyArtilleryLine
       value: 
@@ -5602,6 +5642,7 @@ MonoBehaviour:
   - {fileID: 925518671}
   - {fileID: 880197416}
   availableCardSlots: 0101010101
+  cardsInHand: []
   enemyData:
   - enemyTitle: Tutorial
     health: 6
@@ -5630,6 +5671,8 @@ MonoBehaviour:
     commandPower: 4
     strategies: 0
     deckToPrepare: []
+  enemyStrategy: {fileID: 1587372868}
+  enemyAnalysis: {fileID: 1587372867}
 --- !u!114 &1587372867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5654,6 +5697,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76e409fb4ee694b42a57a37790d914c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyManager: {fileID: 1587372866}
+  infSlots:
+  - {fileID: 654774393}
+  - {fileID: 1428571176}
+  - {fileID: 981340338}
+  artySlots:
+  - {fileID: 1414919353}
+  - {fileID: 663739490}
+  - {fileID: 2128387893}
 --- !u!1 &1594115376
 GameObject:
   m_ObjectHideFlags: 0
@@ -7127,6 +7179,10 @@ PrefabInstance:
       value: EA3
       objectReference: {fileID: 0}
     - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfantryLine
+      value: 
+      objectReference: {fileID: 1490917195}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
       propertyPath: enemyArtilleryLine
       value: 
       objectReference: {fileID: 1661067388}
@@ -7255,6 +7311,10 @@ PrefabInstance:
       propertyPath: slotPosition
       value: A
       objectReference: {fileID: 0}
+    - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: enemyInfantryLine
+      value: 
+      objectReference: {fileID: 1428571176}
     - target: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
       propertyPath: enemyArtilleryLine
       value: 
