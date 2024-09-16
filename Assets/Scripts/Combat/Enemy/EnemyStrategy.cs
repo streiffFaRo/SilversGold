@@ -27,12 +27,28 @@ public class EnemyStrategy : MonoBehaviour
         if (randCard.cardStats.position == "I")
         {
             CardIngameSlot randSlot = infSlots[Random.Range(0, infSlots.Count)];
-            randSlot.EnemyCardPlacedOnThisSlot(randCard);
+            if (randSlot.currentCard == null)
+            {
+                randSlot.EnemyCardPlacedOnThisSlot(randCard);
+            }
+            else
+            {
+                Debug.LogWarning("Kein offner Slot gefunden");
+                PlayRdmCard();
+            }
         }
         else if (randCard.cardStats.position == "A")
         {
             CardIngameSlot randSlot = artySlots[Random.Range(0, artySlots.Count)];
-            randSlot.EnemyCardPlacedOnThisSlot(randCard);
+            if (randSlot.currentCard == null)
+            {
+                randSlot.EnemyCardPlacedOnThisSlot(randCard);
+            }
+            else
+            {
+                Debug.LogWarning("Kein offner Slot gefunden");
+                PlayRdmCard();
+            }
         }
         else
         {
@@ -40,7 +56,28 @@ public class EnemyStrategy : MonoBehaviour
         }
         
     }
-    
+
+    public void LetAllEnemysAttack()
+    {
+        CardManager[] cardsInPlay = FindObjectsOfType<CardManager>();
+        
+        foreach (CardManager cardToAttackWith in cardsInPlay)
+        {
+            if (cardToAttackWith.owner == Owner.ENEMY && cardToAttackWith.foundSlot && cardToAttackWith.cardActed == false && cardToAttackWith.cardStats.attack > 0)
+            {
+                if (enemyManager.enemyCurrentCommandPower > 0)
+                {
+                    cardToAttackWith.Attack();
+                }
+                else
+                {
+                    Debug.LogWarning("Enemy hat keine Commandpower mehr");
+                }
+                
+            }
+        }
+    }
+
 
 
     #endregion

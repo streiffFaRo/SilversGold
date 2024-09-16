@@ -56,7 +56,7 @@ public class PlayerManager : MonoBehaviour
 
         foreach (CardManager cardToReset in allCardsInPlay)
         {
-            if (cardToReset.cardActed)
+            if (cardToReset.cardActed && cardToReset.owner == Owner.PLAYER)
             {
                 cardToReset.cardActed = false;
             }

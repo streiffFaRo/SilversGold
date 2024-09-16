@@ -13,8 +13,8 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
     public string slotPosition;
     public CardIngameSlot enemyInfantryLine;
     public CardIngameSlot enemyArtilleryLine;
+    public CardManager currentCard;
     
-    [HideInInspector]public CardManager currentCard;
     [HideInInspector]public DragDrop dragDrop;
     [HideInInspector]public BattleSystem battleSystem;
     [HideInInspector]public PlayerManager playerManager;

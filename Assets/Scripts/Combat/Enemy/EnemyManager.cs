@@ -46,7 +46,8 @@ public class EnemyManager : MonoBehaviour
         ConvertEnemyData();
         InitilizeDeck();
         MarkCardsAsEnemy();
-        SetUpEnemyStats();
+        SetUpEnemyHealth();
+        SetUpEnemyCommandPower();
         SetUpEnemyUI();
     }
 
@@ -81,16 +82,20 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void SetUpEnemyStats()
+    public void SetUpEnemyHealth()
     {
         enemyCurrentHealth = enemyMaxHealth;
+        enemyHealthText.text = enemyMaxHealth.ToString();
+    }
+
+    public void SetUpEnemyCommandPower()
+    {
         enemyCurrentCommandPower = enemyMaxCommandPower;
+        enemyCommandPowerText.text = enemyMaxCommandPower.ToString();
     }
 
     public void SetUpEnemyUI()
     {
-        enemyCommandPowerText.text = enemyMaxCommandPower.ToString();
-        enemyHealthText.text = enemyMaxHealth.ToString();
         enemyDeckText.text = deck.Count.ToString();
         enemyDiscardText.text = discardPile.Count.ToString();
     }
@@ -110,9 +115,24 @@ public class EnemyManager : MonoBehaviour
     public void StartNewEnemyTurn()
     {
         enemyCurrentCommandPower = enemyMaxCommandPower;
+        ResetCardsWhoActed();
+        SetUpEnemyCommandPower();
         StartCoroutine(DoEnemyStuff());
         DrawCards();
 
+    }
+    
+    public void ResetCardsWhoActed()
+    {
+        CardManager[] allCardsInPlay = FindObjectsOfType<CardManager>();
+
+        foreach (CardManager cardToReset in allCardsInPlay)
+        {
+            if (cardToReset.cardActed && cardToReset.owner == Owner.ENEMY)
+            {
+                cardToReset.cardActed = false;
+            }
+        }
     }
     
     public void DrawCards()
@@ -146,7 +166,9 @@ public class EnemyManager : MonoBehaviour
         Debug.Log("Ich denke über böse Sachen nach");
         yield return new WaitForSeconds(1f);
         enemyStrategy.PlayRdmCard();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
+        enemyStrategy.LetAllEnemysAttack();
+        yield return new WaitForSeconds(1f);
         Debug.Log("Ich habe böse Sachen gemacht");
         FindObjectOfType<BattleSystem>().PlayerTurn();
         
