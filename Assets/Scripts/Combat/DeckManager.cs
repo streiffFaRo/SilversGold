@@ -63,7 +63,7 @@ public class DeckManager : MonoBehaviour
                     randCard.handIndex = i;
                     
                     randCard.transform.position = cardSlots[i].position;
-                    randCard.hasBeenPlayed = false;
+                    randCard.currentCardMode = CardMode.INHAND;
                     
                     availableCardSlots[i] = false;
                     deck.Remove(randCard);
@@ -104,7 +104,7 @@ public class DeckManager : MonoBehaviour
             {
                 for (int i = 0; i < allPresentCards.Length; i++)
                 {
-                    if (card.foundSlot && card.owner == Owner.PLAYER)
+                    if (card.currentCardMode == CardMode.INPLAY && card.owner == Owner.PLAYER)
                     {
                         card.SetButtonsPassive();
                         

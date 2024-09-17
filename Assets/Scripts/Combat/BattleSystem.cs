@@ -17,6 +17,7 @@ public class BattleSystem : MonoBehaviour
     public DeckManager deckManager;
     public PlayerManager playerManager;
     public EnemyManager enemyManager;
+    public RecruitManager recruitManager;
 
     [Header("Other")]
     public GameObject blurImage;
@@ -77,10 +78,9 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1f);
         blurImage.SetActive(true);
         yield return new WaitForSeconds(2f);
-        //TODO Neue Karte Rekrutieren
+        recruitManager.ShowRecruitmentOptions();
         GameManager.instance.UpdateLevel();
-        yield return new WaitForSeconds(2f);
-        ReloadScene();
+        
     }
 
     public void GameOver()

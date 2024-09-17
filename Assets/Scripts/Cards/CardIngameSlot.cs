@@ -36,7 +36,7 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
             {
                 if (currentCard.cardCommandPowerCost <= playerManager.currentCommandPower)
                 {
-                    currentCard.foundSlot = true;
+                    currentCard.currentCardMode = CardMode.INPLAY;
                     dragDrop.foundSlot = true;
                     currentCard.cardIngameSlot = this;
                     currentCard.CardPlayed();
@@ -60,7 +60,7 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
     public void EnemyCardPlacedOnThisSlot(CardManager cardToPlaceOnSlot)
     {
         currentCard = cardToPlaceOnSlot;
-        currentCard.foundSlot = true;
+        currentCard.currentCardMode = CardMode.INPLAY;
         currentCard.cardIngameSlot = this;
         currentCard.CardPlayed();
         currentCard.GetComponentInChildren<DragDrop>().rectTransform.position =

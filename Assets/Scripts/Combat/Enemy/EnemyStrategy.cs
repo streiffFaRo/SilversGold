@@ -64,7 +64,7 @@ public class EnemyStrategy : MonoBehaviour
         
         foreach (CardManager cardToAttackWith in cardsInPlay)
         {
-            if (cardToAttackWith.owner == Owner.ENEMY && cardToAttackWith.foundSlot && cardToAttackWith.cardActed == false && cardToAttackWith.cardStats.attack > 0)
+            if (cardToAttackWith.owner == Owner.ENEMY && cardToAttackWith.currentCardMode == CardMode.INPLAY && cardToAttackWith.cardActed == false && cardToAttackWith.cardStats.attack > 0)
             {
                 if (enemyManager.enemyCurrentCommandPower > 0)
                 {

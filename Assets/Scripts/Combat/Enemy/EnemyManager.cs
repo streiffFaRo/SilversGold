@@ -172,7 +172,7 @@ public class EnemyManager : MonoBehaviour
                     randCard.handIndex = i;
                     
                     randCard.transform.position = cardSlots[i].position;
-                    randCard.hasBeenPlayed = false;
+                    randCard.currentCardMode = CardMode.INHAND;
                     
                     availableCardSlots[i] = false;
                     deck.Remove(randCard);

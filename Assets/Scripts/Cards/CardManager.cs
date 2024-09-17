@@ -12,20 +12,18 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     [Header("General")]
     public Owner owner;
-    
-    [Header("CardModes")]
+
+    [Header("CardModes")] 
+    public CardMode currentCardMode = CardMode.INDECK;
     public GameObject handCard;
     public GameObject inGameCard;
     
-    [Header("CardInHandInformation")]
-    public bool hasBeenPlayed;
     public int handIndex;
     [HideInInspector]public int cardCommandPowerCost;
 
     [Header("CardInPlayInformation")]
     public bool cardActed;
     [HideInInspector]public CardIngameSlot cardIngameSlot;
-    [HideInInspector] public bool foundSlot = false;
 
     [Header("Buttons")]
     public Button attackButton;
@@ -37,6 +35,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     private PlayerManager playerManager;
     private EnemyManager enemyManager;
     private CardDisplay cardDisplay;
+    private RecruitManager recruitManager;
     [HideInInspector]public Card cardStats;
     
     //Private Variablen
@@ -53,6 +52,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         enemyManager = FindObjectOfType<EnemyManager>();
         cardStats = GetComponent<CardDisplay>().card;
         cardDisplay = GetComponent<CardDisplay>();
+        recruitManager = FindObjectOfType<RecruitManager>();
         
         cardCommandPowerCost = cardStats.cost;
         currentHealth = cardStats.defense;
@@ -88,13 +88,13 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
         handCard.SetActive(false);
         inGameCard.SetActive(true);
-        hasBeenPlayed = true;
+        currentCardMode = CardMode.INPLAY;
         
     }
     
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (foundSlot && battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
+        if (currentCardMode == CardMode.INPLAY && battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
             if (!attackButton.gameObject.activeInHierarchy)
             {
@@ -105,11 +105,15 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 SetButtonsPassive();
             }
         }
+        else if (currentCardMode == CardMode.INRECRUIT)
+        {
+            recruitManager.CardChoosen(cardStats);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (foundSlot && battleSystem.state == BattleState.PLAYERTURN || battleSystem.state == BattleState.ENEMYTURN)
+        if (currentCardMode == CardMode.INPLAY && battleSystem.state == BattleState.PLAYERTURN || battleSystem.state == BattleState.ENEMYTURN)
         {
             //TODO Fix wenn Spieler Hover über Attack oder Retreat Button -> Keine Vergrösserung
             isHovering = true;
@@ -118,7 +122,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (foundSlot)
+        if (currentCardMode == CardMode.INPLAY)
         {
             hoverTimer = 0;
             handCard.transform.localScale = new Vector3(1f, 1f, 1f);
@@ -259,8 +263,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         handCard.SetActive(true);
         handCard.transform.localScale = new Vector3(1f, 1f, 1f);
         inGameCard.SetActive(false);
-        hasBeenPlayed = false;
-        foundSlot = false;
+        currentCardMode = CardMode.INDECK;
         GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
         GetComponentInChildren<DragDrop>().foundSlot = false;
     }
@@ -301,8 +304,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         gameObject.SetActive(false);
         handCard.SetActive(true);
         inGameCard.SetActive(false);
-        hasBeenPlayed = false;
-        foundSlot = false;
+        currentCardMode = CardMode.INDECK;
         cardDisplay.SetUpCardUI();
         
     }
@@ -312,4 +314,9 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 public enum Owner
 {
     PLAYER, ENEMY
+}
+
+public enum CardMode
+{
+    INHAND, INPLAY, INRECRUIT, INDECK
 }

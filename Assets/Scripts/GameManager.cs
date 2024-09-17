@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     [Header("General")] 
     public int currentLevel;
+    public int currentTier;
     public int gold;
     public int maxCommandPower;
     public int startCommandPower;

@@ -3038,7 +3038,7 @@ GameObject:
   - component: {fileID: 955622392}
   - component: {fileID: 955622393}
   m_Layer: 5
-  m_Name: RecruitManager
+  m_Name: //RecruitManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3077,6 +3077,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14afb5221e0686641bda3a4162a8fb34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayCardPrefab: {fileID: 3752291792545165603, guid: bbe3b2293a0233d4c97650353a58e76c, type: 3}
+  tier1Cards:
+  - {fileID: 11400000, guid: d39eb70c9c69d5e459ce90ce60700815, type: 2}
+  - {fileID: 11400000, guid: a855d895e859078468eb1b36128e1610, type: 2}
+  - {fileID: 11400000, guid: 96b2183b61db77a4a880d603a2c34228, type: 2}
+  - {fileID: 11400000, guid: 46b5ae1b2402172428c3f03dfd5dba42, type: 2}
+  - {fileID: 11400000, guid: 7a8622c10130dc446890b836e39c1363, type: 2}
+  - {fileID: 11400000, guid: 3b20f7d331897834b9977c1d034177b9, type: 2}
+  - {fileID: 11400000, guid: ed6595bb574c20d47aed5cb1d6f91d93, type: 2}
+  - {fileID: 11400000, guid: 6c00c84b76d571b488f959683ecdc938, type: 2}
+  - {fileID: 11400000, guid: 3060251364ca1f244b8c869548695bfe, type: 2}
+  - {fileID: 11400000, guid: ba0e692dd9713754c86768f0efa151e2, type: 2}
+  - {fileID: 11400000, guid: 05ee10a46cd17f2449ea7e3a82efe8d0, type: 2}
+  - {fileID: 11400000, guid: e6f2de67b0114dc4c830d88e08573d20, type: 2}
+  - {fileID: 11400000, guid: 0faa18e18e934d44c871a3287bec4d5f, type: 2}
+  - {fileID: 11400000, guid: 77733be589a958f4e8ce7a9c0783fb3d, type: 2}
+  - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}
+  - {fileID: 11400000, guid: 0f1589d9b96fa7a4aa189071c6a3b32e, type: 2}
+  tier2Cards:
+  - {fileID: 11400000, guid: 9b2bb3e6b6446d941a38925667ec5e19, type: 2}
+  - {fileID: 11400000, guid: 198844fc1b653f94bb492a14c83fefec, type: 2}
+  - {fileID: 11400000, guid: f05f62881ee5b9948b31e5ce3dbba576, type: 2}
+  - {fileID: 11400000, guid: 6441b808193d282458aff53fab6d35c8, type: 2}
+  - {fileID: 11400000, guid: ac6f10e003ad9a9418999fa23ee19889, type: 2}
+  - {fileID: 11400000, guid: e451f7ddc1148954ca503fa4a852b369, type: 2}
+  tier3Cards:
+  - {fileID: 11400000, guid: 36002e910253457438a653a11a5bd96b, type: 2}
+  - {fileID: 11400000, guid: f8213630564c75d4a83f4afe976117f0, type: 2}
+  - {fileID: 11400000, guid: 9a8d77071d7780b459cfe637afec588f, type: 2}
+  - {fileID: 11400000, guid: ae1f7020cdb4aaa4eb5c252980a11557, type: 2}
+  - {fileID: 11400000, guid: b90586c14e5fb8844bfe3da97deb4590, type: 2}
+  - {fileID: 11400000, guid: 999a401690f1e92499a761280580f28a, type: 2}
+  recruitCardDisplay: {fileID: 2013076709}
 --- !u!114 &981340338 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
@@ -3768,42 +3801,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1213912722
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1213912723}
-  m_Layer: 5
-  m_Name: Slot2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1213912723
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1213912722}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2013076710}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 260, y: 400}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1238721969
 GameObject:
   m_ObjectHideFlags: 0
@@ -3869,42 +3866,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!1 &1273783030
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1273783031}
-  m_Layer: 5
-  m_Name: Slot1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1273783031
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273783030}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2013076710}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 260, y: 400}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1285814183
 GameObject:
   m_ObjectHideFlags: 0
@@ -5476,13 +5437,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayCardPrefab: {fileID: 3752291792545165603, guid: bbe3b2293a0233d4c97650353a58e76c, type: 3}
   deckToPrepare:
-  - {fileID: 11400000, guid: a855d895e859078468eb1b36128e1610, type: 2}
   - {fileID: 11400000, guid: 7a8622c10130dc446890b836e39c1363, type: 2}
-  - {fileID: 11400000, guid: ed6595bb574c20d47aed5cb1d6f91d93, type: 2}
   - {fileID: 11400000, guid: 3060251364ca1f244b8c869548695bfe, type: 2}
   - {fileID: 11400000, guid: e6f2de67b0114dc4c830d88e08573d20, type: 2}
   - {fileID: 11400000, guid: 77733be589a958f4e8ce7a9c0783fb3d, type: 2}
   - {fileID: 11400000, guid: a855d895e859078468eb1b36128e1610, type: 2}
+  - {fileID: 11400000, guid: a855d895e859078468eb1b36128e1610, type: 2}
+  - {fileID: 11400000, guid: ed6595bb574c20d47aed5cb1d6f91d93, type: 2}
   - {fileID: 11400000, guid: ed6595bb574c20d47aed5cb1d6f91d93, type: 2}
   - {fileID: 11400000, guid: ed6595bb574c20d47aed5cb1d6f91d93, type: 2}
   - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}
@@ -5845,7 +5806,7 @@ MonoBehaviour:
   cardsInHand: []
   enemyData:
   - enemyTitle: (1)Tutorial
-    health: 1
+    health: 6
     commandPower: 3
     strategies: 1
     deckToPrepare:
@@ -6837,42 +6798,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1924644363
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1924644364}
-  m_Layer: 5
-  m_Name: Slot3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1924644364
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1924644363}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2013076710}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 260, y: 400}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1930053110
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7011,10 +6936,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1273783031}
-  - {fileID: 1213912723}
-  - {fileID: 1924644364}
+  m_Children: []
   m_Father: {fileID: 955622392}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7167,6 +7089,7 @@ MonoBehaviour:
   deckManager: {fileID: 1502925737}
   playerManager: {fileID: 170767408}
   enemyManager: {fileID: 1587372866}
+  recruitManager: {fileID: 955622393}
   blurImage: {fileID: 357075974}
 --- !u!4 &2071210395
 Transform:

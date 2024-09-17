@@ -45,12 +45,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 0
+  currentTier: 1
   gold: 0
   maxCommandPower: 5
   startCommandPower: 5
   maxShipHealth: 12
   startShipHealth: 12
-  deckCardLimit: 0
+  deckCardLimit: 15
+  playerDeck:
+  - {fileID: 11400000, guid: a855d895e859078468eb1b36128e1610, type: 2}
+  - {fileID: 11400000, guid: a855d895e859078468eb1b36128e1610, type: 2}
+  - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}
+  - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}
+  - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}
+  - {fileID: 11400000, guid: ed6595bb574c20d47aed5cb1d6f91d93, type: 2}
+  - {fileID: 11400000, guid: ed6595bb574c20d47aed5cb1d6f91d93, type: 2}
+  - {fileID: 11400000, guid: ed6595bb574c20d47aed5cb1d6f91d93, type: 2}
+  - {fileID: 11400000, guid: 7a8622c10130dc446890b836e39c1363, type: 2}
+  - {fileID: 11400000, guid: 3060251364ca1f244b8c869548695bfe, type: 2}
+  - {fileID: 11400000, guid: e6f2de67b0114dc4c830d88e08573d20, type: 2}
+  - {fileID: 11400000, guid: 77733be589a958f4e8ce7a9c0783fb3d, type: 2}
   shipCannonLevel: 0
   shipCaptainLevel: 0
   shipCrewLevel: 0
