@@ -30,6 +30,7 @@ public class EnemyStrategy : MonoBehaviour
             if (randSlot.currentCard == null)
             {
                 randSlot.EnemyCardPlacedOnThisSlot(randCard);
+                randCard.GetComponent<CanvasGroup>().blocksRaycasts = true;
             }
             else
             {

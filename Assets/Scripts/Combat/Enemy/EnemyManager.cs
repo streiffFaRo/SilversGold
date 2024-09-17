@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -77,7 +78,6 @@ public class EnemyManager : MonoBehaviour
         foreach (CardManager cardToMark in deck)
         {
             cardToMark.owner = Owner.ENEMY;
-            cardToMark.GetComponent<CanvasGroup>().interactable = false;
             cardToMark.GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
     }
@@ -100,10 +100,30 @@ public class EnemyManager : MonoBehaviour
         enemyDiscardText.text = discardPile.Count.ToString();
     }
 
-    public void UpdateEnemyHealth(int amount)
+    public void UpdateEnemyHealth(int amount, bool positiveNumber)
     {
-        enemyCurrentHealth -= amount;
-        enemyHealthText.text = enemyCurrentHealth.ToString();
+        
+        if (positiveNumber)
+        {
+            enemyCurrentHealth += amount;
+        }
+        else
+        {
+            enemyCurrentHealth -= amount;
+        }
+        
+        if (enemyCurrentHealth <= 0)
+        {
+            
+        }
+        else if (enemyCurrentHealth >= enemyMaxHealth)
+        {
+            enemyHealthText.text = enemyMaxHealth.ToString();
+        }
+        else
+        {
+            enemyHealthText.text = enemyCurrentHealth.ToString();
+        }
     }
 
     public void UpdateEnemyCommandPower(int amount)

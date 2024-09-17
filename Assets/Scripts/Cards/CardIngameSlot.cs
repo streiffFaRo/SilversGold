@@ -65,6 +65,7 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
         currentCard.CardPlayed();
         currentCard.GetComponentInChildren<DragDrop>().rectTransform.position =
             GetComponent<RectTransform>().position;
+        currentCard.GetComponentInChildren<DragDrop>().GameObject().SetActive(false);
         
     }
 }

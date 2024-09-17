@@ -3,11 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 using Button = UnityEngine.UI.Button;
 
 
-public class CardManager : MonoBehaviour, IPointerClickHandler
+public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     //Verantwortlich für Karteninformation in Hand und im Kampf
 
@@ -23,9 +22,10 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
     public int handIndex;
     [HideInInspector]public int cardCommandPowerCost;
 
-    //CardInPlayInformation
+    [Header("CardInPlayInformation")]
     public bool cardActed;
     [HideInInspector]public CardIngameSlot cardIngameSlot;
+    [HideInInspector] public bool foundSlot = false;
 
     [Header("Buttons")]
     public Button attackButton;
@@ -41,8 +41,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
     
     //Private Variablen
     private int currentHealth;
-
-    [HideInInspector] public bool foundSlot = false;
+    private float hoverTimer = 0;
+    private bool isHovering;
     
 
     private void Start()
@@ -56,8 +56,23 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
         
         cardCommandPowerCost = cardStats.cost;
         currentHealth = cardStats.defense;
+        hoverTimer = 0;
     }
-    
+
+    private void Update()
+    {
+        if (isHovering)
+        {
+            hoverTimer += Time.deltaTime;
+            
+            if (hoverTimer >= 0.5f)
+            {
+                handCard.SetActive(true);
+                handCard.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+            }
+        }
+    }
+
     public void CardPlayed()
     {
         if (owner == Owner.PLAYER)
@@ -92,6 +107,26 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
         }
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (foundSlot)
+        {
+            //TODO Fix wenn Spieler Hover über Attack oder Retreat Button -> Keine Vergrösserung
+            isHovering = true;
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (foundSlot)
+        {
+            hoverTimer = 0;
+            handCard.transform.localScale = new Vector3(1f, 1f, 1f);
+            handCard.SetActive(false);
+            isHovering = false;
+        }
+    }
+    
     public void SetButtonsActive()
     {
         attackButton.gameObject.SetActive(true);
@@ -106,39 +141,44 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
 
     public void Attack()
     {
+        //TODO: Verletze Karten anzeigen, dass sie nicht MaxLeben haben
+        //TODO: Sounds
+        //TODO: Effects
         if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower > 0 && owner == Owner.PLAYER)
         {
             if (cardStats.position == "I")
             {
                 if (cardIngameSlot.enemyInfantryLine.currentCard != null)
                 {
+                    UpdateCardHealth(cardIngameSlot.enemyInfantryLine.currentCard.cardStats.attack);
                     cardIngameSlot.enemyInfantryLine.currentCard.UpdateCardHealth(cardStats.attack);
                 }
                 else if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
                 {
+                    UpdateCardHealth(cardIngameSlot.enemyArtilleryLine.currentCard.cardStats.attack);
                     cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(cardStats.attack);
                 }
                 else
                 {
-                    enemyManager.UpdateEnemyHealth(cardStats.attack);
+                    enemyManager.UpdateEnemyHealth(cardStats.attack, false);
                 }
             }
             else if (cardStats.position == "A")
             {
                 if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
                 {
+                    UpdateCardHealth(cardIngameSlot.enemyArtilleryLine.currentCard.cardStats.attack);
                     cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(cardStats.attack);
                 }
                 else
                 {
-                    enemyManager.UpdateEnemyHealth(cardStats.attack);
+                    enemyManager.UpdateEnemyHealth(cardStats.attack, false);
                 }
             }
             playerManager.UpdateCommandPower(1);
             SetButtonsPassive();
             cardActed = true;
             //TODO Karte soll symbolisieren dass sie genutzt wurde
-            Debug.Log("Attack!");
         }
         else if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
@@ -152,13 +192,13 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
             {
                 if (cardIngameSlot.enemyInfantryLine.currentCard != null)
                 {
-                    cardIngameSlot.enemyInfantryLine.currentCard.UpdateCardHealth(cardStats.attack);
                     UpdateCardHealth(cardIngameSlot.enemyInfantryLine.currentCard.cardStats.attack);
+                    cardIngameSlot.enemyInfantryLine.currentCard.UpdateCardHealth(cardStats.attack);
                 }
                 else if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
                 {
-                    cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(cardStats.attack);
                     UpdateCardHealth(cardIngameSlot.enemyArtilleryLine.currentCard.cardStats.attack);
+                    cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(cardStats.attack);
                 }
                 else
                 {
@@ -169,8 +209,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
             {
                 if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
                 {
-                    cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(cardStats.attack);
                     UpdateCardHealth(cardIngameSlot.enemyArtilleryLine.currentCard.cardStats.attack);
+                    cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(cardStats.attack);
                 }
                 else
                 {
@@ -179,11 +219,10 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
             }
             enemyManager.UpdateEnemyCommandPower(1);
             cardActed = true;
-            Debug.Log("Enemy Attacked!");
         }
         else
         {
-            Debug.LogWarning("Attack failed!");
+            Debug.LogError("Attack failed!");
         }
     }
 
@@ -194,13 +233,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
             playerManager.UpdateCommandPower(1);
             SetButtonsPassive();
             deckManager.deck.Add(this);
-            gameObject.SetActive(false);
-            handCard.SetActive(true);
-            inGameCard.SetActive(false);
-            hasBeenPlayed = false;
-            GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
-            foundSlot = false;
-            GetComponentInChildren<DragDrop>().foundSlot = false;
+            HandleRetreatStats();
         }
         else if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
@@ -212,16 +245,24 @@ public class CardManager : MonoBehaviour, IPointerClickHandler
         {
             enemyManager.UpdateEnemyCommandPower(1);
             enemyManager.deck.Add(this);
-            gameObject.SetActive(false);
-            handCard.SetActive(true);
-            inGameCard.SetActive(false);
-            hasBeenPlayed = false;
-            foundSlot = false;
+            HandleRetreatStats();
         }
         else
         {
-            Debug.LogWarning("Retreat failed!");
+            Debug.LogError("Retreat failed!");
         }
+    }
+
+    private void HandleRetreatStats()
+    {
+        gameObject.SetActive(false);
+        handCard.SetActive(true);
+        handCard.transform.localScale = new Vector3(1f, 1f, 1f);
+        inGameCard.SetActive(false);
+        hasBeenPlayed = false;
+        foundSlot = false;
+        GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
+        GetComponentInChildren<DragDrop>().foundSlot = false;
     }
 
     public void UpdateCardHealth(int damage)
