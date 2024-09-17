@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public int maxShipHealth;
     public int startShipHealth;
     public int deckCardLimit;
-    //Deck
+    public List<Card> playerDeck = new List<Card>();
 
     [Header("Ship")] 
     public int shipCannonLevel;
@@ -39,9 +39,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        currentLevel++;
+        UpdateLevel();
         //Startdeck setzten
         //Alle Stats resetten
+    }
+
+    public void UpdateLevel()
+    {
+        currentLevel++;
     }
 
 

@@ -88,7 +88,10 @@ public class DeckManager : MonoBehaviour
 
     public void EndTurn()
     {
-        battleSystem.EnemyTurn();
+        if (battleSystem.state == BattleState.PLAYERTURN)
+        {
+            battleSystem.EnemyTurn();
+        }
     }
 
     public void SetAllOtherButtonsPassive(CardManager targetCardManager)
@@ -117,10 +120,4 @@ public class DeckManager : MonoBehaviour
         }
         
     }
-
-    public void ReloadScene() //Wenn Spiel Gewonnen wurde, wird das nächste Lv geladen
-    {
-        SceneManager.LoadScene("Scene_Content");
-    }
-    
 }

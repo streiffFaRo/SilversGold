@@ -36,8 +36,10 @@ public class EnemyManager : MonoBehaviour
     [Header("EnemyData")] 
     public List<EnemyData> enemyData = new List<EnemyData>();
 
+    [Header("Scripts")]
     public EnemyStrategy enemyStrategy;
     public EnemyAnalysis enemyAnalysis;
+    public BattleSystem battleSystem;
     private GameManager gameManager;
 
     private void Start()
@@ -114,7 +116,8 @@ public class EnemyManager : MonoBehaviour
         
         if (enemyCurrentHealth <= 0)
         {
-            
+            enemyHealthText.text = enemyCurrentHealth.ToString();
+            battleSystem.PlayerWon();
         }
         else if (enemyCurrentHealth >= enemyMaxHealth)
         {
@@ -183,14 +186,12 @@ public class EnemyManager : MonoBehaviour
 
     public IEnumerator DoEnemyStuff()
     {
-        Debug.Log("Ich denke über böse Sachen nach");
         yield return new WaitForSeconds(1f);
         enemyStrategy.PlayRdmCard();
         yield return new WaitForSeconds(1f);
         enemyStrategy.LetAllEnemysAttack();
         yield return new WaitForSeconds(1f);
-        Debug.Log("Ich habe böse Sachen gemacht");
-        FindObjectOfType<BattleSystem>().PlayerTurn();
+        battleSystem.PlayerTurn();
         
     }
 }

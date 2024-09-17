@@ -109,7 +109,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (foundSlot)
+        if (foundSlot && battleSystem.state == BattleState.PLAYERTURN || battleSystem.state == BattleState.ENEMYTURN)
         {
             //TODO Fix wenn Spieler Hover über Attack oder Retreat Button -> Keine Vergrösserung
             isHovering = true;
