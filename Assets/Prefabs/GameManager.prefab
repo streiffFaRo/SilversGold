@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 0
   currentTier: 1
-  gold: 0
+  booty: 250
   maxCommandPower: 5
   startCommandPower: 5
   maxShipHealth: 12
@@ -67,5 +67,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 77733be589a958f4e8ce7a9c0783fb3d, type: 2}
   shipCannonLevel: 0
   shipCaptainLevel: 0
-  shipCrewLevel: 0
+  shipQuatersLevel: 0
   shipHullLevel: 0
