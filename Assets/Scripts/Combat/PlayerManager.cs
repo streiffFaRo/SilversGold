@@ -29,6 +29,7 @@ public class PlayerManager : MonoBehaviour
         SetUpCommandPower();
         SetUpHealth();
     }
+    
 
     public void SetUpCommandPower()
     {

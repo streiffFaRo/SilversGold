@@ -9,6 +9,7 @@ public class EnemyStrategy : MonoBehaviour
     public EnemyManager enemyManager;
     public List<CardIngameSlot> infSlots = new List<CardIngameSlot>();
     public List<CardIngameSlot> artySlots = new List<CardIngameSlot>();
+    public int tries;
     
     #region Strategiefindung
 
@@ -23,37 +24,42 @@ public class EnemyStrategy : MonoBehaviour
     {
         //Funktion nur zum testen (benötigt noch Commandpower Abfrage bei mehr als 1 gespielten Karte pro Zug)
         CardManager randCard = enemyManager.cardsInHand[Random.Range(0, enemyManager.cardsInHand.Count)];
-        
-        if (randCard.cardStats.position == "I")
+
+        if (tries <= 100)
         {
-            CardIngameSlot randSlot = infSlots[Random.Range(0, infSlots.Count)];
-            if (randSlot.currentCard == null)
+            if (randCard.cardStats.position == "I")
             {
-                randSlot.EnemyCardPlacedOnThisSlot(randCard);
-                randCard.GetComponent<CanvasGroup>().blocksRaycasts = true;
+                CardIngameSlot randSlot = infSlots[Random.Range(0, infSlots.Count)];
+                if (randSlot.currentCard == null)
+                {
+                    randSlot.EnemyCardPlacedOnThisSlot(randCard);
+                    randCard.GetComponent<CanvasGroup>().blocksRaycasts = true;
+                }
+                else
+                {
+                    Debug.LogWarning("Kein offner Slot gefunden");
+                    tries++;
+                    PlayRdmCard();
+                }
+            }
+            else if (randCard.cardStats.position == "A")
+            {
+                CardIngameSlot randSlot = artySlots[Random.Range(0, artySlots.Count)];
+                if (randSlot.currentCard == null)
+                {
+                    randSlot.EnemyCardPlacedOnThisSlot(randCard);
+                }
+                else
+                {
+                    Debug.LogWarning("Kein offner Slot gefunden");
+                    tries++;
+                    PlayRdmCard();
+                }
             }
             else
             {
-                Debug.LogWarning("Kein offner Slot gefunden");
-                PlayRdmCard();
+                Debug.LogError("Card has no assigned position!");
             }
-        }
-        else if (randCard.cardStats.position == "A")
-        {
-            CardIngameSlot randSlot = artySlots[Random.Range(0, artySlots.Count)];
-            if (randSlot.currentCard == null)
-            {
-                randSlot.EnemyCardPlacedOnThisSlot(randCard);
-            }
-            else
-            {
-                Debug.LogWarning("Kein offner Slot gefunden");
-                PlayRdmCard();
-            }
-        }
-        else
-        {
-            Debug.LogError("Card has no assigned position!");
         }
         
     }

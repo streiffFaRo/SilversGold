@@ -27,6 +27,7 @@ public class EnemyManager : MonoBehaviour
 
     [Header("EnemyDeckManagement")] 
     public GameObject displayCardPrefab;
+    public GameObject enemyDeckHolder;
     public List<CardManager> deck = new List<CardManager>();
     public List<CardManager> discardPile = new List<CardManager>();
     public Transform[] cardSlots;
@@ -68,7 +69,7 @@ public class EnemyManager : MonoBehaviour
     {
         foreach (Card card in deckToPrepare)
         {
-            GameObject currentCardPrefab = Instantiate(displayCardPrefab, new Vector3(0, 0, 0), Quaternion.identity, transform);
+            GameObject currentCardPrefab = Instantiate(displayCardPrefab, new Vector3(0, 0, 0), Quaternion.identity, enemyDeckHolder.transform);
             currentCardPrefab.GetComponent<CardDisplay>().card = card;
             currentCardPrefab.SetActive(false);
             deck.Add(currentCardPrefab.GetComponent<CardManager>());
@@ -187,6 +188,7 @@ public class EnemyManager : MonoBehaviour
     public IEnumerator DoEnemyStuff()
     {
         yield return new WaitForSeconds(1f);
+        enemyStrategy.tries = 0;
         enemyStrategy.PlayRdmCard();
         yield return new WaitForSeconds(1f);
         enemyStrategy.LetAllEnemysAttack();
