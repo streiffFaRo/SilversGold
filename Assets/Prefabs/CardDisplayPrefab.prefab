@@ -1384,14 +1384,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: 0
+  currentCardMode: 3
   handCard: {fileID: 3752291793365832359}
   inGameCard: {fileID: 1246945683096778960}
-  hasBeenPlayed: 0
   handIndex: 3
   cardCommandPowerCost: 0
   cardActed: 0
   cardIngameSlot: {fileID: 0}
-  foundSlot: 0
   attackButton: {fileID: 2829980149627318642}
   retreatButton: {fileID: 8585612792520405240}
   cardStats: {fileID: 0}

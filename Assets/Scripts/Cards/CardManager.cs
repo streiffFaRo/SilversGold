@@ -36,6 +36,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     private EnemyManager enemyManager;
     private CardDisplay cardDisplay;
     private RecruitManager recruitManager;
+    private PresentDeck presentDeck;
     [HideInInspector]public Card cardStats;
     
     //Private Variablen
@@ -53,6 +54,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         cardStats = GetComponent<CardDisplay>().card;
         cardDisplay = GetComponent<CardDisplay>();
         recruitManager = FindObjectOfType<RecruitManager>();
+        presentDeck = FindObjectOfType<PresentDeck>();
         
         cardCommandPowerCost = cardStats.cost;
         currentHealth = cardStats.defense;
@@ -108,6 +110,10 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         else if (currentCardMode == CardMode.INRECRUIT)
         {
             recruitManager.CardChoosen(cardStats);
+        }
+        else if (currentCardMode == CardMode.TODISCARD)
+        {
+            presentDeck.DiscardCard(cardStats);
         }
     }
 
@@ -318,5 +324,5 @@ public enum Owner
 
 public enum CardMode
 {
-    INHAND, INPLAY, INRECRUIT, INDECK
+    INHAND, INPLAY, INRECRUIT, INDECK, TODISCARD
 }

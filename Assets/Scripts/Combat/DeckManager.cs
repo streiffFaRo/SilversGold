@@ -14,6 +14,7 @@ public class DeckManager : MonoBehaviour
 
     [Header("General")]
     public GameObject displayCardPrefab;
+    public GameObject deckHolder; //Alle Karten des Spielerdecks werden seine Kinder für die Ordnung
     public List<Card> deckToPrepare = new List<Card>();
     public List<CardManager> deck = new List<CardManager>();
     public List<CardManager> discardPile = new List<CardManager>();
@@ -35,7 +36,7 @@ public class DeckManager : MonoBehaviour
     {
         foreach (Card card in deckToPrepare)
         {
-            GameObject currentCardPrefab = Instantiate(displayCardPrefab, new Vector3(0, 0, 0), Quaternion.identity, transform);
+            GameObject currentCardPrefab = Instantiate(displayCardPrefab, new Vector3(0, 0, 0), Quaternion.identity, deckHolder.transform);
             currentCardPrefab.GetComponent<CardDisplay>().card = card;
             currentCardPrefab.SetActive(false);
             deck.Add(currentCardPrefab.GetComponent<CardManager>());

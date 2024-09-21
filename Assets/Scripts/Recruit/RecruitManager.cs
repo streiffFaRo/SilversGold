@@ -17,7 +17,9 @@ public class RecruitManager : MonoBehaviour
     
     [Header("Recruit Slots")]
     public GameObject recruitCardDisplay;
-    
+
+    [Header("Scripts")]
+    public PresentDeck presentDeck;
 
     public void ShowRecruitmentOptions()
     {
@@ -62,11 +64,13 @@ public class RecruitManager : MonoBehaviour
         if (GameManager.instance.playerDeck.Count <= GameManager.instance.deckCardLimit)
         {
             GameManager.instance.playerDeck.Add(choosenCard);
+            presentDeck.ShowDeckPresenter();
         }
         else
         {
             Debug.LogWarning("Eine Karte muss über die Planke!");
-            //TODO Volle Deckansicht + Karte bestimmen die zerstört wird + Animation :-)
+            presentDeck.DiscardToHoldDeckLimit(choosenCard);
+            //TODO Animation :-)
         }
         
 

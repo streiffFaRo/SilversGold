@@ -47,7 +47,7 @@ public class EnemyManager : MonoBehaviour
         gameManager = GameManager.instance;
         
         ConvertEnemyData();
-        InitilizeDeck();
+        InitiateDeck();
         MarkCardsAsEnemy();
         SetUpEnemyHealth();
         SetUpEnemyCommandPower();
@@ -64,7 +64,7 @@ public class EnemyManager : MonoBehaviour
         deckToPrepare = enemyData[gameManager.currentLevel - 1].deckToPrepare;
     }
 
-    public void InitilizeDeck()
+    public void InitiateDeck()
     {
         foreach (Card card in deckToPrepare)
         {
