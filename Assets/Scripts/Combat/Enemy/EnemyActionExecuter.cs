@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyStrategy : MonoBehaviour
+public class EnemyActionExecuter : MonoBehaviour
 {
     //verantwortlich für Strategiefinmdung und Ausführung
 
@@ -12,7 +12,7 @@ public class EnemyStrategy : MonoBehaviour
     public int tries; //Versuche Karten zu platzieren
     
 
-    #region Ausführung
+    #region Debug/Rdm Actions
     //Ausführuhng
 
     public void PlayRdmCard()
@@ -80,6 +80,40 @@ public class EnemyStrategy : MonoBehaviour
             }
         }
     }
+    
+
+    #endregion
+
+    #region ExecuteAction
+
+    public void ExecuteAction()
+    {
+        
+    }
+
+    #endregion
+    
+    #region PossibleActions
+
+    public void DrawCard()
+    {
+        
+    }
+    
+    public void PlayCard()
+    {
+        
+    }
+
+    public void AttackWithCard()
+    {
+        
+    }
+
+    public void RetreatCard()
+    {
+        
+    }
 
     public void Broadside()
     {
@@ -97,14 +131,4 @@ public class EnemyStrategy : MonoBehaviour
     }
 
     #endregion
-    
-    
 }
-
-
-//Offensive(Viele Karten im Spiel/Keine mehr auf der Hand): Alle möglichen Angriffe machen
-//Defensive(Gegner hat Karten mit grossem Angriff): Mit Karten gegnerische Anfriffe abblocken 
-//Focus(DangerLevel einer oder vieler Karten zu hoch): Karten mit dem höchsten DangerLevel töten
-//Massplay(Mehr als 3 Karten auf der Hand): Alle möglichen Karten spielen
-
-//Prio: DangerLevelFokus>Angriffe>Rückzüge>Karten spielen

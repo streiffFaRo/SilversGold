@@ -40,7 +40,7 @@ public class EnemyManager : MonoBehaviour
     public List<EnemyData> enemyData = new List<EnemyData>();
 
     [Header("Scripts")]
-    public EnemyStrategy enemyStrategy;
+    public EnemyActionExecuter enemyActionExecuter;
     public EnemyAnalysis enemyAnalysis;
     public BattleSystem battleSystem;
     private GameManager gameManager;
@@ -191,10 +191,10 @@ public class EnemyManager : MonoBehaviour
     public IEnumerator DoEnemyStuff()
     {
         yield return new WaitForSeconds(1f);
-        enemyStrategy.tries = 0;
-        enemyStrategy.PlayRdmCard();
+        enemyAnalysis.AnalysePossibleActions();
         yield return new WaitForSeconds(1f);
-        enemyStrategy.LetAllEnemysAttack();
+        //TODO Exectue Actions
+        
         yield return new WaitForSeconds(1f);
         battleSystem.PlayerTurn();
         

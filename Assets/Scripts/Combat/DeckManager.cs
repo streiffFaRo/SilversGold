@@ -18,6 +18,11 @@ public class DeckManager : MonoBehaviour
     public List<Card> deckToPrepare = new List<Card>();
     public List<CardManager> deck = new List<CardManager>();
     public List<CardManager> discardPile = new List<CardManager>();
+    public List<CardManager> cardsInHand = new List<CardManager>();
+    
+    [Header("Display")]
+    public GameObject displayStand;
+    public CardDisplay displayUI;
     
     [HideInInspector]public CardManager[] allPresentCards;
     public Transform[] cardSlots;
@@ -30,6 +35,13 @@ public class DeckManager : MonoBehaviour
     private void Awake()
     {
         InitilizeDeck();
+    }
+
+    private void Start()
+    {
+        GameObject displayObj = Instantiate(displayCardPrefab, new Vector3(0, 0, 0), Quaternion.identity, displayStand.transform);
+        displayObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        displayUI = displayStand.GetComponentInChildren<CardDisplay>();
     }
 
     private void InitilizeDeck()
@@ -68,6 +80,7 @@ public class DeckManager : MonoBehaviour
                     
                     availableCardSlots[i] = false;
                     deck.Remove(randCard);
+                    cardsInHand.Add(randCard);
                     return;
                 }
             }
@@ -76,7 +89,7 @@ public class DeckManager : MonoBehaviour
 
     public void ButtonDrawsCards()
     {
-        if (playerManager.currentCommandPower >= 2)
+        if (playerManager.currentCommandPower >= 2 && cardsInHand.Count < 5)
         {
             playerManager.UpdateCommandPower(2);
             DrawCards();
@@ -117,6 +130,18 @@ public class DeckManager : MonoBehaviour
         {
             battleSystem.EnemyTurn();
         }
+    }
+
+    public void ShowDisplayCard(CardManager cardManager)
+    {
+        displayStand.SetActive(true);
+        displayUI.card = cardManager.cardStats;
+        displayUI.SetUpCardUI();
+    }
+
+    public void HideDisplayCard()
+    {
+        displayStand.SetActive(false);
     }
 
     public void SetAllOtherButtonsPassive(CardManager targetCardManager)

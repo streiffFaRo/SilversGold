@@ -23,7 +23,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     [Header("CardInPlayInformation")]
     public bool cardActed;
-    [HideInInspector]public CardIngameSlot cardIngameSlot;
+    public CardIngameSlot cardIngameSlot;
 
     [Header("Buttons")]
     public Button attackButton;
@@ -69,8 +69,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             
             if (hoverTimer >= 0.5f)
             {
-                handCard.SetActive(true);
-                handCard.transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+                deckManager.ShowDisplayCard(this);
             }
         }
     }
@@ -81,6 +80,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             deckManager.availableCardSlots[handIndex] = true;
             playerManager.UpdateCommandPower(cardCommandPowerCost);
+            deckManager.cardsInHand.Remove(this);
         }
         else if (owner == Owner.ENEMY)
         {
@@ -125,17 +125,25 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             //TODO Fix wenn Spieler Hover über Attack oder Retreat Button -> Keine Vergrösserung
             isHovering = true;
         }
+        else if (currentCardMode == CardMode.INHAND && battleSystem.state == BattleState.PLAYERTURN || battleSystem.state == BattleState.ENEMYTURN)
+        {
+            transform.localScale = new Vector3(2f, 2f, 2f);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         if (currentCardMode == CardMode.INPLAY)
         {
+            deckManager.HideDisplayCard();
             hoverTimer = 0;
-            handCard.transform.localScale = new Vector3(1f, 1f, 1f);
-            handCard.SetActive(false);
             isHovering = false;
         }
+        else if (currentCardMode == CardMode.INHAND)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        
     }
     
     public void SetButtonsActive()

@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
+        maxCommandPower = GameManager.instance.startCommandPower;
         SetUpCommandPower();
         SetUpHealth();
     }
@@ -33,7 +34,7 @@ public class PlayerManager : MonoBehaviour
 
     public void SetUpCommandPower()
     {
-        currentCommandPower = GameManager.instance.startCommandPower;
+        currentCommandPower = maxCommandPower;
         commandPowerText.text = currentCommandPower.ToString();
     }  
     
@@ -93,6 +94,5 @@ public class PlayerManager : MonoBehaviour
         {
             healthText.text = currentHealth.ToString();
         }
-        
     }
 }
