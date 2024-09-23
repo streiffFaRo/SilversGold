@@ -25,13 +25,13 @@ public class EnemyManager : MonoBehaviour
     public Strategies strategy;
     public List<Card> deckToPrepare = new List<Card>();
 
-    [Header("EnemyDeckManagement")] 
+    [Header("EnemyDeckManagement")]
     public GameObject displayCardPrefab;
     public GameObject enemyDeckHolder;
     public List<CardManager> deck = new List<CardManager>();
     public List<CardManager> discardPile = new List<CardManager>();
-    public Transform[] cardSlots;
-    public bool[] availableCardSlots;
+    public Transform[] cardSlots; //Slots für Handkarten
+    public bool[] availableCardSlots; //Verfügbare Slots für Handkarten
     public List<CardManager> cardsInHand = new List<CardManager>();
     
     [Header("EnemyData")] 

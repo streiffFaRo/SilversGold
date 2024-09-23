@@ -78,6 +78,10 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1f);
         blurImage.SetActive(true);
         yield return new WaitForSeconds(2f);
+        recruitManager.ShowBootyReward();
+        yield return new WaitForSeconds(3f);
+        recruitManager.HideBootyReward();
+        yield return new WaitForSeconds(1f);
         recruitManager.ShowRecruitmentOptions();
         GameManager.instance.UpdateLevel();
         

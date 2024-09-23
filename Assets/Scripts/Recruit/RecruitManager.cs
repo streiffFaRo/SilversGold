@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -14,6 +15,15 @@ public class RecruitManager : MonoBehaviour
     public List<Card> tier2Cards = new List<Card>();
     public List<Card> tier3Cards = new List<Card>();
     private List<Card> selectedCardStack = new List<Card>();
+
+    [Header("Booty Ranges")]
+    public Vector2Int bootyRangeTier1;
+    public Vector2Int bootyRangeTier2;
+    public Vector2Int bootyRangeTier3;
+
+    [Header("BootyUI")]
+    public GameObject bootyRewardUI;
+    public TextMeshProUGUI bootyCountUI;
     
     [Header("Recruit Slots")]
     public GameObject recruitCardDisplay;
@@ -21,8 +31,45 @@ public class RecruitManager : MonoBehaviour
     [Header("Scripts")]
     public PresentDeck presentDeck;
 
+    public void ShowBootyReward()
+    {
+        //TODO Animation & Sound
+        int bootyGainedThisLevel = CalculateBootyReward();
+        GameManager.instance.booty += bootyGainedThisLevel;
+        bootyRewardUI.SetActive(true);
+        bootyCountUI.text = bootyGainedThisLevel.ToString();
+    }
+
+    public void HideBootyReward()
+    {
+        bootyRewardUI.SetActive(false);
+    }
+
+    private int CalculateBootyReward()
+    {
+        int bootyGained = 0;
+        
+        switch (GameManager.instance.currentTier)
+        {
+            case 1:
+                bootyGained = Random.Range(bootyRangeTier1.x, bootyRangeTier1.y);
+                return bootyGained;
+            case 2:
+                bootyGained = Random.Range(bootyRangeTier2.x, bootyRangeTier2.y);
+                return bootyGained;
+            case 3:
+                bootyGained = Random.Range(bootyRangeTier3.x, bootyRangeTier3.y);
+                return bootyGained;
+            default:
+                return 0;
+        }
+        
+    }
+
+
     public void ShowRecruitmentOptions()
     {
+        //TODO Animation & Sound
         SelectCurrentTier();
         
         if (GameManager.instance.playerDeck.Count <= GameManager.instance.deckCardLimit)
