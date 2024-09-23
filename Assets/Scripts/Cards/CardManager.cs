@@ -84,12 +84,13 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
         else if (owner == Owner.ENEMY)
         {
-            enemyManager.availableCardSlots[handIndex] = true;
+            enemyManager.availableHandCardSlots[handIndex] = true;
             enemyManager.UpdateEnemyCommandPower(cardCommandPowerCost);
             enemyManager.cardsInHand.Remove(this);
         }
         handCard.SetActive(false);
         inGameCard.SetActive(true);
+        cardActed = true;
         currentCardMode = CardMode.INPLAY;
         
     }
@@ -260,6 +261,41 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         else
         {
             Debug.LogError("Retreat failed!");
+        }
+    }
+
+    public void Broadside()
+    {
+        if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
+        {
+            if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
+            { 
+                cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(GameManager.instance.shipCannonLevel+1);
+            }
+            else
+            { 
+                enemyManager.UpdateEnemyHealth(GameManager.instance.shipCannonLevel+1, false);
+            }
+            SetButtonsPassive();
+            cardActed = true;
+            //TODO Karte soll symbolisieren dass sie genutzt wurde
+        }
+        
+        else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
+        {
+            if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
+            { 
+                cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(enemyManager.enemyCannonLevel);
+            }
+            else
+            { 
+                playerManager.UpdateHealth(enemyManager.enemyCannonLevel, false);
+            }
+            cardActed = true;
+        }
+        else
+        {
+            Debug.LogError("Attack failed!");
         }
     }
 

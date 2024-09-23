@@ -9,7 +9,8 @@ public class EnemyData
     public string enemyTitle;
     public int health;
     public int commandPower;
-    public Strategies strategies;
+    public int cannonLevel;
+    public Strategy strategy;
     public List<Card> deckToPrepare = new List<Card>();
 }
 

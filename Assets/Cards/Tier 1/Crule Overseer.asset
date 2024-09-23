@@ -21,3 +21,6 @@ MonoBehaviour:
   defense: 2
   tier: 1
   dangerLevel: 7
+  pointsFielded: 7
+  pointsAttack: 1
+  pointsRetreat: -10

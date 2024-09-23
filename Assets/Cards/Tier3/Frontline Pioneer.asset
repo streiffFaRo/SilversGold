@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Frontline Pioneer
   m_EditorClassIdentifier: 
   name: Frontline Pioneer
-  description: Heals 2 Shiphealth each turn
+  description: Heals 2 Shiphealth at the start of each turn
   position: I
   artwork: {fileID: 21300000, guid: 6a7ac9e8c26b12440bf2b1da2ca97794, type: 3}
   cost: 4
@@ -21,3 +21,6 @@ MonoBehaviour:
   defense: 2
   tier: 3
   dangerLevel: 8
+  pointsFielded: 8
+  pointsAttack: 4
+  pointsRetreat: -10

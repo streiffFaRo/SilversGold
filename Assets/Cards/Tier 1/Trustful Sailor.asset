@@ -16,8 +16,11 @@ MonoBehaviour:
   description: 'Death: -3 Command Power next turn'
   position: I
   artwork: {fileID: 21300000, guid: ea292d445b1c4cb48897511cd9453f1c, type: 3}
-  cost: 2
+  cost: 1
   attack: 3
-  defense: 2
+  defense: 3
   tier: 1
   dangerLevel: 6
+  pointsFielded: 3
+  pointsAttack: 6
+  pointsRetreat: 4

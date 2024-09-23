@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
@@ -22,17 +23,18 @@ public class EnemyManager : MonoBehaviour
     public int enemyCurrentCommandPower;
     public int enemyMaxHealth;
     public int enemyCurrentHealth;
-    public Strategies strategy;
+    public int enemyCannonLevel;
+    public Strategy strategy;
     public List<Card> deckToPrepare = new List<Card>();
 
     [Header("EnemyDeckManagement")]
-    public GameObject displayCardPrefab;
-    public GameObject enemyDeckHolder;
+    public GameObject displayCardPrefab; //Prefab aus dem Karten für das Deck gemacht werden
+    public GameObject enemyDeckHolder; //Obj unter dem Deck des Gegners generiert und sortiert ist
     public List<CardManager> deck = new List<CardManager>();
     public List<CardManager> discardPile = new List<CardManager>();
-    public Transform[] cardSlots; //Slots für Handkarten
-    public bool[] availableCardSlots; //Verfügbare Slots für Handkarten
-    public List<CardManager> cardsInHand = new List<CardManager>();
+    public Transform[] handCardSlots; //Slots für Handkarten
+    public bool[] availableHandCardSlots; //Verfügbare Slots für Handkarten
+    public List<CardManager> cardsInHand = new List<CardManager>(); //Karten in der Hande des Enemy
     
     [Header("EnemyData")] 
     public List<EnemyData> enemyData = new List<EnemyData>();
@@ -61,7 +63,8 @@ public class EnemyManager : MonoBehaviour
         enemyMaxHealth = enemyData[gameManager.currentLevel - 1].health;
         enemyMaxCommandPower = enemyData[gameManager.currentLevel - 1].commandPower;
         enemyMaxHealth = enemyData[gameManager.currentLevel - 1].health;
-        strategy = enemyData[gameManager.currentLevel - 1].strategies;
+        enemyCannonLevel = enemyData[gameManager.currentLevel - 1].cannonLevel;
+        strategy = enemyData[gameManager.currentLevel - 1].strategy;
         deckToPrepare = enemyData[gameManager.currentLevel - 1].deckToPrepare;
     }
 
@@ -165,17 +168,17 @@ public class EnemyManager : MonoBehaviour
         {
             CardManager randCard = deck[Random.Range(0, deck.Count)];
 
-            for (int i = 0; i < availableCardSlots.Length; i++)
+            for (int i = 0; i < availableHandCardSlots.Length; i++)
             {
-                if (availableCardSlots[i] == true)
+                if (availableHandCardSlots[i] == true)
                 {
                     randCard.gameObject.SetActive(true);
                     randCard.handIndex = i;
                     
-                    randCard.transform.position = cardSlots[i].position;
+                    randCard.transform.position = handCardSlots[i].position;
                     randCard.currentCardMode = CardMode.INHAND;
                     
-                    availableCardSlots[i] = false;
+                    availableHandCardSlots[i] = false;
                     deck.Remove(randCard);
                     cardsInHand.Add(randCard);
                     enemyDeckText.text = deck.Count.ToString();

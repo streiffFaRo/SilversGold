@@ -6,16 +6,11 @@ public class EnemyStrategy : MonoBehaviour
 {
     //verantwortlich für Strategiefinmdung und Ausführung
 
-    public EnemyManager enemyManager;
-    public List<CardIngameSlot> infSlots = new List<CardIngameSlot>();
-    public List<CardIngameSlot> artySlots = new List<CardIngameSlot>();
-    public int tries;
+    public EnemyManager enemyManager; //Referenz zum EnemyManager (Deck, Handkarten, Leben, CommandPower etc)
+    public List<CardIngameSlot> infSlots = new List<CardIngameSlot>(); //Kampfslots (Inf) auf Seiten des Enemy
+    public List<CardIngameSlot> artySlots = new List<CardIngameSlot>(); //Kampfslots (Arty) auf Seiten des Enemy
+    public int tries; //Versuche Karten zu platzieren
     
-    #region Strategiefindung
-
-    //Strategiefindung
-
-    #endregion
 
     #region Ausführung
     //Ausführuhng
@@ -48,6 +43,7 @@ public class EnemyStrategy : MonoBehaviour
                 if (randSlot.currentCard == null)
                 {
                     randSlot.EnemyCardPlacedOnThisSlot(randCard);
+                    randCard.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 }
                 else
                 {
@@ -85,17 +81,26 @@ public class EnemyStrategy : MonoBehaviour
         }
     }
 
-
+    public void Broadside()
+    {
+        if (enemyManager.battleSystem.state == BattleState.ENEMYTURN && enemyManager.enemyCurrentCommandPower > 0)
+        {
+            foreach (CardManager card in FindObjectsOfType<CardManager>())
+            { 
+                if (card.owner == Owner.ENEMY && card.currentCardMode == CardMode.INPLAY && !card.cardActed && card.cardStats.isCannoneer) 
+                {
+                    card.Broadside();
+                }
+            }
+            enemyManager.UpdateEnemyCommandPower(1);
+        }
+    }
 
     #endregion
     
     
 }
 
-public enum Strategies
-{
-    offensive, defensive, focus, massplay
-}
 
 //Offensive(Viele Karten im Spiel/Keine mehr auf der Hand): Alle möglichen Angriffe machen
 //Defensive(Gegner hat Karten mit grossem Angriff): Mit Karten gegnerische Anfriffe abblocken 

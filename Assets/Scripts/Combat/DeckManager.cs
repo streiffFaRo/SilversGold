@@ -58,7 +58,7 @@ public class DeckManager : MonoBehaviour
 
             for (int i = 0; i < availableCardSlots.Length; i++)
             {
-                if (availableCardSlots[i] == true)
+                if (availableCardSlots[i])
                 {
                     randCard.gameObject.SetActive(true);
                     randCard.handIndex = i;
@@ -73,7 +73,16 @@ public class DeckManager : MonoBehaviour
             }
         }
     }
-    
+
+    public void ButtonDrawsCards()
+    {
+        if (playerManager.currentCommandPower >= 2)
+        {
+            playerManager.UpdateCommandPower(2);
+            DrawCards();
+        }
+    }
+
     public void Shuffle()
     {
         if (discardPile.Count >=1 && battleSystem.state == BattleState.PLAYERTURN)
@@ -84,6 +93,21 @@ public class DeckManager : MonoBehaviour
                 deck.Add(cM);
             }
             discardPile.Clear();
+        }
+    }
+
+    public void Broadside()
+    {
+        if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower > 0)
+        {
+            foreach (CardManager card in FindObjectsOfType<CardManager>())
+            { 
+                if (card.owner == Owner.PLAYER && card.currentCardMode == CardMode.INPLAY && !card.cardActed && card.cardStats.isCannoneer) 
+                {
+                    card.Broadside();
+                }
+            }
+            playerManager.UpdateCommandPower(1);
         }
     }
 

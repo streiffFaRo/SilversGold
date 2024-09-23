@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Backstage Pumper
   m_EditorClassIdentifier: 
   name: Backstage Pumper
-  description: 'Retret: +3 ship healt'
+  description: 'Retreat: +3 ship health'
   position: I
   artwork: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
   cost: 1
@@ -21,3 +21,6 @@ MonoBehaviour:
   defense: 2
   tier: 1
   dangerLevel: 5
+  pointsFielded: 3
+  pointsAttack: -10
+  pointsRetreat: 8
