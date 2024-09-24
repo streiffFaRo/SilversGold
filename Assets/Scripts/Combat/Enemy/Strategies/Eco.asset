@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Eco
   m_EditorClassIdentifier: 
   name: Eco
-  drawMod: 1.7
+  drawMod: 1.3
   playMod: 1
   emptyLaneMod: 1
   attackMod: 1
-  retreatMod: 1.5
+  retreatMod: 3
   broadsideMod: 1

@@ -10,4 +10,15 @@ public class TreeNode
     public Node parent;
     public int actionIndex;
     public float score;
+
+    public void NewMoveAnalysed(int depth, int scoreAnalysed)
+    {
+        children.Add(parent);
+        if (scoreAnalysed >= score)
+        {
+            score = scoreAnalysed;
+        }
+        actionIndex++;
+    }
+    
 }
