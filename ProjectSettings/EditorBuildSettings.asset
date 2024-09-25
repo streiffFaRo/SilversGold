@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Scene_Content.unity
     guid: 1ac789de7f54f144dacef8342c902f99
   - enabled: 1
+    path: Assets/Scenes/Scene_Log.unity
+    guid: 627bbb0cb45464f4cb98a3ab28cfe668
+  - enabled: 1
     path: Assets/Scenes/Scene_Ship.unity
     guid: caa44602034bfac4697c1b2105287104
   - enabled: 1

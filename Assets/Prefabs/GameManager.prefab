@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1084914216834021377}
   - component: {fileID: 1505530162881684072}
+  - component: {fileID: 3116091751872732117}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -67,5 +68,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 77733be589a958f4e8ce7a9c0783fb3d, type: 2}
   shipCannonLevel: 0
   shipCaptainLevel: 0
-  shipQuatersLevel: 0
+  shipQuartersLevel: 0
   shipHullLevel: 0
+--- !u!114 &3116091751872732117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3709199457768638472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aadeb93dca95e244b7b3964fc75b8f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowInput: 1
+  pauseMenuCanvas: {fileID: 0}

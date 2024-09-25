@@ -133,8 +133,7 @@ public class PresentDeck : MonoBehaviour
 
     public void LoadLogBookScene()
     {
-        //TODO Load LogBookScene
-        Debug.Log("Load LogBook Scene");
+        SceneManager.LoadScene("Scene_Log");
     }
 
 }
