@@ -1,3 +1,6 @@
+INCLUDE Utility.ink
+EXTERNAL poker(betAmount)
+
 -> main
 
 ===main===

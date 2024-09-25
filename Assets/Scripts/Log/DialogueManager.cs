@@ -24,11 +24,13 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Other")]
     [SerializeField] private float typingSpeed = 0.03f;
+    public static event Action<string> InkEvent;
     
     private Story currentStory;
     private Coroutine displayLineCorutine;
     private bool canContinueToNextLine = false;
     private bool breakLineFormationChain = false;
+    private GameState gameState;
     
 
     private void Awake()
@@ -57,6 +59,8 @@ public class DialogueManager : MonoBehaviour
             choicesText[index] = choice.GetComponentInChildren<TextMeshProUGUI>();
             index++;
         }
+        BindExternalFunctions();
+        
     }
 
     private void OnEnable()
@@ -67,6 +71,10 @@ public class DialogueManager : MonoBehaviour
     private void OnDisable()
     {
         PlayerInputManager.onConfirmEvent -= PlayerContinues;
+        
+        currentStory.UnbindExternalFunction("Unity_Event");
+        currentStory.UnbindExternalFunction("Get_State");
+        currentStory.UnbindExternalFunction("Add_State");
     }
 
     public void SelectCurrentStory()
@@ -171,4 +179,34 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    private void BindExternalFunctions()
+    {
+        currentStory.BindExternalFunction<string>("Unity_Event", Unity_Event);
+        currentStory.BindExternalFunction<string>("Get_State", Get_State, true);
+        currentStory.BindExternalFunction<string, int>("Add_State", Add_State);
+
+        //CustomExternalFunction
+        
+        /*currentStory.BindExternalFunction("poker", (string betAmount) =>
+        {
+            poker.BetAmount(betAmount);
+        }); */
+        
+    }
+    
+    private void Unity_Event(string eventName)
+    {
+        InkEvent?.Invoke(eventName);
+    }
+    
+    private object Get_State(String id)
+    {
+        State state = gameState.Get(id);
+        return state != null ? state.amount : 0;
+    }
+
+    private void Add_State(string id, int amount)
+    {
+        gameState.Add(id, amount);
+    }
 }
