@@ -5,6 +5,7 @@ using Ink.Runtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -178,6 +179,8 @@ public class DialogueManager : MonoBehaviour
             ContinueStory();
         }
     }
+    
+    //Ink Event zusatz
 
     private void BindExternalFunctions()
     {
@@ -208,5 +211,11 @@ public class DialogueManager : MonoBehaviour
     private void Add_State(string id, int amount)
     {
         gameState.Add(id, amount);
+    }
+
+    public void EndCurrentDay()
+    {
+        GameManager.instance.UpdateLevel();
+        SceneManager.LoadScene("Scene_Content");
     }
 }

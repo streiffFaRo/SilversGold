@@ -83,8 +83,6 @@ public class BattleSystem : MonoBehaviour
         recruitManager.HideBootyReward();
         yield return new WaitForSeconds(1f);
         recruitManager.ShowRecruitmentOptions();
-        GameManager.instance.UpdateLevel();
-        
     }
 
     public void GameOver()
@@ -96,8 +94,7 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.LOST;
         Debug.Log("Lost");
-        //TODO Player Ship sinks
-        //TODO "Game Over" Einblendung
+        //TODO Retryoption for Player
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("Scene_MainMenu");
     }
