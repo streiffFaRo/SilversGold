@@ -86,9 +86,123 @@ public class EnemyActionExecuter : MonoBehaviour
 
     #region ExecuteAction
 
-    public void ExecuteAction()
+    public void ExecuteAction(int actionIndex)
     {
         
+        int executionActionIndex = 1;
+
+        if (enemyManager.enemyCurrentCommandPower >= 2)
+        {
+            if (executionActionIndex == actionIndex)
+            {
+                DrawCard();
+            }
+            else
+            {
+                executionActionIndex++;
+            }
+        }
+
+        if (enemyManager.enemyCurrentCommandPower >= 1)
+        {
+            if (executionActionIndex == actionIndex)
+            {
+                Broadside();
+            }
+            else
+            {
+                executionActionIndex++;
+            }
+        }
+        
+        foreach (CardManager cardToPlay in enemyManager.cardsInHand)
+        {
+            if (cardToPlay.cardStats.cost <= enemyManager.enemyCurrentCommandPower)
+            {
+                    
+                
+                if (cardToPlay.cardStats.position == "I")
+                {
+                    foreach (CardIngameSlot slot in infSlots)
+                    {
+                        if (slot.currentCard == null)
+                        {
+                            if (executionActionIndex == actionIndex)
+                            {
+                                PlayCard(cardToPlay, slot);
+                            }
+                            else
+                            {
+                                executionActionIndex++;
+                            }
+                        }
+                    }
+                }
+                else if (cardToPlay.cardStats.position == "A")
+                {
+                    foreach (CardIngameSlot slot in artySlots)
+                    {
+                        if (slot.currentCard == null)
+                        {
+                            if (executionActionIndex == actionIndex)
+                            {
+                                PlayCard(cardToPlay, slot);
+                            }
+                            else
+                            {
+                                executionActionIndex++;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Problem with Cardposition!");
+                }
+            }
+        }
+
+        if (enemyManager.enemyCurrentCommandPower >= 1)
+        {
+            foreach (CardManager cardToAttackWith in FindObjectsOfType<CardManager>())
+            {
+                if (cardToAttackWith.owner == Owner.ENEMY && !cardToAttackWith.cardActed && cardToAttackWith.currentCardMode == CardMode.INPLAY)
+                {
+                    if (executionActionIndex == actionIndex)
+                    {
+                        AttackWithCard(cardToAttackWith);
+                    }
+                    else
+                    {
+                        executionActionIndex++;
+                    }
+                }
+            }
+        }
+
+        if (enemyManager.enemyCurrentCommandPower >= 1)
+        {
+            foreach (CardManager cardToRetreat in FindObjectsOfType<CardManager>())
+            {
+                if (cardToRetreat.owner == Owner.ENEMY && !cardToRetreat.cardActed && cardToRetreat.currentCardMode == CardMode.INPLAY)
+                {
+                    if (executionActionIndex == actionIndex)
+                    {
+                        RetreatCard(cardToRetreat);
+                    }
+                    else
+                    {
+                        executionActionIndex++;
+                    }
+                    
+                }
+            }
+        }
+        
+        if (executionActionIndex >= actionIndex)
+        {
+            Debug.LogWarning("Fehler bei Ablgeich der ActionIndexes, kein Play gefunden!");
+        }
     }
 
     #endregion
@@ -97,24 +211,9 @@ public class EnemyActionExecuter : MonoBehaviour
 
     public void DrawCard()
     {
-        
+        enemyManager.BuyCard();
     }
     
-    public void PlayCard()
-    {
-        
-    }
-
-    public void AttackWithCard()
-    {
-        
-    }
-
-    public void RetreatCard()
-    {
-        
-    }
-
     public void Broadside()
     {
         if (enemyManager.battleSystem.state == BattleState.ENEMYTURN && enemyManager.enemyCurrentCommandPower > 0)
@@ -128,6 +227,22 @@ public class EnemyActionExecuter : MonoBehaviour
             }
             enemyManager.UpdateEnemyCommandPower(1);
         }
+    }
+    
+    public void PlayCard(CardManager cardToPlay, CardIngameSlot slot)
+    {
+        slot.EnemyCardPlacedOnThisSlot(cardToPlay);
+        cardToPlay.GetComponent<CanvasGroup>().blocksRaycasts = true;
+    }
+
+    public void AttackWithCard(CardManager cardToAttackWith)
+    {
+        cardToAttackWith.Attack();
+    }
+
+    public void RetreatCard(CardManager cardToRetreat)
+    {
+        cardToRetreat.Retreat();
     }
 
     #endregion

@@ -12,7 +12,6 @@ public class EnemyAnalysis : MonoBehaviour
     public EnemyManager enemyManager;
     public EnemyActionExecuter enemyActionExecuter;
     public int actionIndex;
-    public int cp;
     public Strategy strat;
     public TreeNode treeNode;
     
@@ -20,14 +19,13 @@ public class EnemyAnalysis : MonoBehaviour
     public void AnalysePossibleActions()
     {
         strat = enemyManager.strategy;
-        cp = enemyManager.enemyCurrentCommandPower;
+        actionIndex = 1;
         
         AnalysedDrawCardAction();
+        AnalyseBroadsideAction();
         AnalysePlayCardActions();
         AnalyseAttackActions();
         AnalyseRetreatActions();
-        AnalyseBroadsideAction();
-        
     }
 
     private void AnalysedDrawCardAction() //Werte von -10 - 32,5
@@ -60,6 +58,32 @@ public class EnemyAnalysis : MonoBehaviour
             actionIndex++;
         }
     }
+    
+    private void AnalyseBroadsideAction()
+    {
+        if (enemyManager.enemyCurrentCommandPower >= 1)
+        {
+            int cannoneerCount = 0;
+            float score = 0;
+            
+            foreach (CardManager cardToCheck in FindObjectsOfType<CardManager>())
+            {
+                if (cardToCheck.owner ==  Owner.ENEMY && cardToCheck.cardStats.isCannoneer && !cardToCheck.cardActed && cardToCheck.currentCardMode == CardMode.INPLAY)
+                {
+                    cannoneerCount++;
+                }
+            }
+            score = cannoneerCount * 3;
+            score = score * strat.broadsideMod * enemyManager.enemyCannonLevel * 0.5f;
+            if (score == 0)
+            {
+                score = -10;
+            }
+            
+            //TODO Score übermitteln
+            actionIndex++;
+        }
+    }
 
     private void AnalysePlayCardActions()
     {
@@ -67,7 +91,45 @@ public class EnemyAnalysis : MonoBehaviour
         {
             if (cardToPlay.cardStats.cost <= enemyManager.enemyCurrentCommandPower)
             {
+                float score = 3;
                 
+                if (cardToPlay.cardStats.position == "I")
+                {
+                    foreach (CardIngameSlot slot in enemyActionExecuter.infSlots)
+                    {
+                        if (slot.currentCard == null)
+                        {
+                            score = score + cardToPlay.cardStats.pointsFielded * strat.playMod;
+
+                            if (slot.enemyInfantryLine == null && slot.enemyArtilleryLine == null)
+                            {
+                                score *= strat.emptyLaneMod;
+                            }
+                            
+                            //TODO Score übermitteln
+                            actionIndex++;
+                        }
+                    }
+                }
+                else if (cardToPlay.cardStats.position == "A")
+                {
+                    foreach (CardIngameSlot slot in enemyActionExecuter.artySlots)
+                    {
+                        if (slot.currentCard == null)
+                        {
+                            if (slot.enemyArtilleryLine == null)
+                            {
+                                score *= strat.emptyLaneMod;
+                            }
+                            //TODO Score übermitteln
+                            actionIndex++;
+                        }
+                    }
+                }
+                else
+                {
+                    Debug.LogError("Problem with Cardposition!");
+                }
             }
         }
     }
@@ -82,11 +144,38 @@ public class EnemyAnalysis : MonoBehaviour
             {
                 if (cardToAttackWith.owner == Owner.ENEMY && !cardToAttackWith.cardActed && cardToAttackWith.currentCardMode == CardMode.INPLAY)
                 {
-                    score = score + cardToAttackWith.cardStats.pointsAttack * strat.attackMod + cardToAttackWith.cardIngameSlot.enemyInfantryLine.currentCard.cardStats.dangerLevel;
+                    if (cardToAttackWith.cardStats.position == "I")
+                    {
+                        if (cardToAttackWith.cardIngameSlot.enemyInfantryLine.currentCard != null)
+                        {
+                            score = score + cardToAttackWith.cardStats.pointsAttack * strat.attackMod + cardToAttackWith.cardIngameSlot.enemyInfantryLine.currentCard.cardStats.dangerLevel;
+                        }
+                        else if (cardToAttackWith.cardIngameSlot.enemyArtilleryLine.currentCard != null)
+                        {
+                            score = score + cardToAttackWith.cardStats.pointsAttack * strat.attackMod + cardToAttackWith.cardIngameSlot.enemyArtilleryLine.currentCard.cardStats.dangerLevel;
+                        }
+                        else
+                        {
+                            score = score + cardToAttackWith.cardStats.pointsAttack * strat.attackMod + 7; // 7 = Standart direkter Schiffsangriff Wert
+                        }
+                    }
+                    else if (cardToAttackWith.cardStats.position == "A")
+                    {
+                        if (cardToAttackWith.cardIngameSlot.enemyArtilleryLine.currentCard != null)
+                        {
+                            score = score + cardToAttackWith.cardStats.pointsAttack * strat.attackMod + cardToAttackWith.cardIngameSlot.enemyArtilleryLine.currentCard.cardStats.dangerLevel;
+                        }
+                        else
+                        {
+                            score = score + cardToAttackWith.cardStats.pointsAttack * strat.attackMod + 7; // 7 = Standart direkter Schiffsangriff Wert
+                        }
+                    }
+                    
                     if (score <= 0)
                     {
                         score = -10;
                     }
+                    
                     //TODO Score übermitteln
                     actionIndex++;
                 }
@@ -115,30 +204,5 @@ public class EnemyAnalysis : MonoBehaviour
             }
         }
     }
-
-    private void AnalyseBroadsideAction()
-    {
-        if (enemyManager.enemyCurrentCommandPower >= 1)
-        {
-            int cannoneerCount = 0;
-            float score = 0;
-            
-            foreach (CardManager cardToCheck in FindObjectsOfType<CardManager>())
-            {
-                if (cardToCheck.owner ==  Owner.ENEMY && cardToCheck.cardStats.isCannoneer && !cardToCheck.cardActed && cardToCheck.currentCardMode == CardMode.INPLAY)
-                {
-                    cannoneerCount++;
-                }
-            }
-            score = cannoneerCount * 3;
-            score = score * strat.broadsideMod * enemyManager.enemyCannonLevel * 0.5f;
-            if (score == 0)
-            {
-                score = -10;
-            }
-            
-            //TODO Score übermitteln
-            actionIndex++;
-        }
-    }
+    
 }

@@ -170,7 +170,7 @@ public class EnemyManager : MonoBehaviour
 
             for (int i = 0; i < availableHandCardSlots.Length; i++)
             {
-                if (availableHandCardSlots[i] == true)
+                if (availableHandCardSlots[i])
                 {
                     randCard.gameObject.SetActive(true);
                     randCard.handIndex = i;
@@ -186,6 +186,12 @@ public class EnemyManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void BuyCard()
+    {
+        DrawCards();
+        enemyCurrentCommandPower -= 2;
     }
 
     public IEnumerator DoEnemyStuff()
