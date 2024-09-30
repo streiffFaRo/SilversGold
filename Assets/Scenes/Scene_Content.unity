@@ -6755,6 +6755,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}
   deck: []
   discardPile: []
+  cardsInHand: []
   displayStand: {fileID: 1249408711}
   displayUI: {fileID: 0}
   allPresentCards: []
@@ -7311,7 +7312,7 @@ MonoBehaviour:
   enemyData:
   - enemyTitle: (1)Tutorial
     health: 6
-    commandPower: 3
+    commandPower: 5
     cannonLevel: 0
     strategy: {fileID: 11400000, guid: fdf58552267de254cb169f2d6fe14fe2, type: 2}
     deckToPrepare:
@@ -7429,7 +7430,6 @@ MonoBehaviour:
   enemyManager: {fileID: 1587372866}
   enemyActionExecuter: {fileID: 1587372868}
   actionIndex: 0
-  cp: 0
   strat: {fileID: 0}
 --- !u!114 &1587372868
 MonoBehaviour:
@@ -7444,6 +7444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 1587372866}
+  enemyAnalysis: {fileID: 1587372867}
   infSlots:
   - {fileID: 654774393}
   - {fileID: 1428571176}

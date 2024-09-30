@@ -6,19 +6,10 @@ using UnityEngine;
 
 public class TreeNode
 {
-    public List<Node> children = new();
-    public Node parent;
+    public List<TreeNode> children = new();
+    public TreeNode parent;
     public int actionIndex;
     public float score;
+    public string name;
 
-    public void NewMoveAnalysed(int depth, int scoreAnalysed)
-    {
-        children.Add(parent);
-        if (scoreAnalysed >= score)
-        {
-            score = scoreAnalysed;
-        }
-        actionIndex++;
-    }
-    
 }

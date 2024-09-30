@@ -7,6 +7,7 @@ public class EnemyActionExecuter : MonoBehaviour
     //verantwortlich für Strategiefinmdung und Ausführung
 
     public EnemyManager enemyManager; //Referenz zum EnemyManager (Deck, Handkarten, Leben, CommandPower etc)
+    public EnemyAnalysis enemyAnalysis;
     public List<CardIngameSlot> infSlots = new List<CardIngameSlot>(); //Kampfslots (Inf) auf Seiten des Enemy
     public List<CardIngameSlot> artySlots = new List<CardIngameSlot>(); //Kampfslots (Arty) auf Seiten des Enemy
     public int tries; //Versuche Karten zu platzieren
@@ -88,7 +89,6 @@ public class EnemyActionExecuter : MonoBehaviour
 
     public void ExecuteAction(int actionIndex)
     {
-        
         int executionActionIndex = 1;
 
         if (enemyManager.enemyCurrentCommandPower >= 2)
@@ -114,15 +114,22 @@ public class EnemyActionExecuter : MonoBehaviour
                 executionActionIndex++;
             }
         }
-        
-        foreach (CardManager cardToPlay in enemyManager.cardsInHand)
+
+        List<CardManager> cardsInHand = new();
+        foreach (CardManager card in enemyManager.cardsInHand)
         {
+            cardsInHand.Add(card);
+        }
+        
+        foreach (CardManager cardToPlay in cardsInHand)
+        {
+            
             if (cardToPlay.cardStats.cost <= enemyManager.enemyCurrentCommandPower)
             {
-                    
                 
                 if (cardToPlay.cardStats.position == "I")
                 {
+                    
                     foreach (CardIngameSlot slot in infSlots)
                     {
                         if (slot.currentCard == null)
@@ -130,6 +137,7 @@ public class EnemyActionExecuter : MonoBehaviour
                             if (executionActionIndex == actionIndex)
                             {
                                 PlayCard(cardToPlay, slot);
+                                break;
                             }
                             else
                             {
@@ -144,9 +152,11 @@ public class EnemyActionExecuter : MonoBehaviour
                     {
                         if (slot.currentCard == null)
                         {
+                            
                             if (executionActionIndex == actionIndex)
                             {
                                 PlayCard(cardToPlay, slot);
+                                break;
                             }
                             else
                             {
@@ -199,10 +209,21 @@ public class EnemyActionExecuter : MonoBehaviour
             }
         }
         
-        if (executionActionIndex >= actionIndex)
+        if (executionActionIndex > actionIndex)
         {
-            Debug.LogWarning("Fehler bei Ablgeich der ActionIndexes, kein Play gefunden!");
+            Debug.LogWarning("ExecutionActionIndex: "+ executionActionIndex+" ActionIndex " + actionIndex);
         }
+
+        if (enemyManager.enemyCurrentCommandPower <= 0)
+        {
+            StartCoroutine(enemyManager.EndTurn());
+        }
+        else
+        {
+            Debug.Log("NEW PLAY");
+            StartCoroutine(enemyManager.DoEnemyStuff());
+        }
+        
     }
 
     #endregion

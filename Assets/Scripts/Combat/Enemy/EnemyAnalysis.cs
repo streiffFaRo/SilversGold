@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -13,12 +14,15 @@ public class EnemyAnalysis : MonoBehaviour
     public EnemyActionExecuter enemyActionExecuter;
     public int actionIndex;
     public Strategy strat;
-    public TreeNode treeNode;
-    
+    private List<TreeNode> possiblePlays = new();
+
+    private void Start()
+    {
+        strat = enemyManager.strategy;
+    }
 
     public void AnalysePossibleActions()
     {
-        strat = enemyManager.strategy;
         actionIndex = 1;
         
         AnalysedDrawCardAction();
@@ -32,7 +36,7 @@ public class EnemyAnalysis : MonoBehaviour
     {
         if (enemyManager.enemyCurrentCommandPower >= 2)
         {
-            float score;
+            float score = 0;
             switch (enemyManager.cardsInHand.Count)
             {
                 case 0:
@@ -54,7 +58,12 @@ public class EnemyAnalysis : MonoBehaviour
                     score = -10;
                     break;
             }
-            //TODO Score übermitteln
+
+            TreeNode drawCard = new();
+            possiblePlays.Add(drawCard);
+            drawCard.score = score;
+            drawCard.actionIndex = actionIndex;
+            drawCard.name = "DrawCard";
             actionIndex++;
         }
     }
@@ -80,7 +89,11 @@ public class EnemyAnalysis : MonoBehaviour
                 score = -10;
             }
             
-            //TODO Score übermitteln
+            TreeNode fireBroadside = new();
+            possiblePlays.Add(fireBroadside);
+            fireBroadside.score = score;
+            fireBroadside.actionIndex = actionIndex;
+            fireBroadside.name = "fireBroadSide";
             actionIndex++;
         }
     }
@@ -106,7 +119,11 @@ public class EnemyAnalysis : MonoBehaviour
                                 score *= strat.emptyLaneMod;
                             }
                             
-                            //TODO Score übermitteln
+                            TreeNode playInfCard = new();
+                            possiblePlays.Add(playInfCard);
+                            playInfCard.score = score;
+                            playInfCard.actionIndex = actionIndex;
+                            playInfCard.name = "PlayInfCard";
                             actionIndex++;
                         }
                     }
@@ -121,7 +138,12 @@ public class EnemyAnalysis : MonoBehaviour
                             {
                                 score *= strat.emptyLaneMod;
                             }
-                            //TODO Score übermitteln
+                            
+                            TreeNode playArtyCard = new();
+                            possiblePlays.Add(playArtyCard);
+                            playArtyCard.score = score;
+                            playArtyCard.actionIndex = actionIndex;
+                            playArtyCard.name = "PlayArtyCard";
                             actionIndex++;
                         }
                     }
@@ -176,7 +198,11 @@ public class EnemyAnalysis : MonoBehaviour
                         score = -10;
                     }
                     
-                    //TODO Score übermitteln
+                    TreeNode attackWithCard = new();
+                    possiblePlays.Add(attackWithCard);
+                    attackWithCard.score = score;
+                    attackWithCard.actionIndex = actionIndex;
+                    attackWithCard.name = "AttackWithCard";
                     actionIndex++;
                 }
             }
@@ -198,11 +224,46 @@ public class EnemyAnalysis : MonoBehaviour
                     {
                         score = -10;
                     }
-                    //TODO Score übermitteln
+                    
+                    TreeNode retreatCard = new();
+                    possiblePlays.Add(retreatCard);
+                    retreatCard.score = score;
+                    retreatCard.actionIndex = actionIndex;
+                    retreatCard.name = "RetreatCard";
                     actionIndex++;
                 }
             }
         }
     }
-    
+
+    public void InitiateBestPlay()
+    {
+        foreach (TreeNode node in possiblePlays)
+        {
+            Debug.Log(node.name + " Score: " + node.score + " ActionIndex: " + node.actionIndex);
+        }
+        
+        if (possiblePlays.Count != 0)
+        {
+            TreeNode bestPlay = possiblePlays.OrderBy(x => x.score).Last();
+            if (bestPlay.score > 0)
+            {
+                Debug.Log("Gewählter Play: "+bestPlay.name + " Score: " + bestPlay.score + " ActionIndex: " + bestPlay.actionIndex);
+                enemyActionExecuter.ExecuteAction(bestPlay.actionIndex);
+            }
+            else
+            {
+                StartCoroutine(enemyManager.EndTurn());
+            }
+            
+            possiblePlays.Clear();
+        }
+        else
+        {
+            StartCoroutine(enemyManager.EndTurn());
+            Debug.LogWarning("No Plays Possible");
+        }
+        
+    }
+
 }

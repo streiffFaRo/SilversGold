@@ -198,11 +198,13 @@ public class EnemyManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         enemyAnalysis.AnalysePossibleActions();
-        yield return new WaitForSeconds(1f);
-        //TODO Exectue Actions
-        
+        yield return new WaitForSeconds(3f);
+        enemyAnalysis.InitiateBestPlay();
+    }
+
+    public IEnumerator EndTurn()
+    {
         yield return new WaitForSeconds(1f);
         battleSystem.PlayerTurn();
-        
     }
 }
