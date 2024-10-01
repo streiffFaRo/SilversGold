@@ -35,6 +35,7 @@ public class EnemyManager : MonoBehaviour
     public Transform[] handCardSlots; //Slots für Handkarten
     public bool[] availableHandCardSlots; //Verfügbare Slots für Handkarten
     public List<CardManager> cardsInHand = new List<CardManager>(); //Karten in der Hande des Enemy
+    public int currentFatigueDamage = 1;
     
     [Header("EnemyData")] 
     public List<EnemyData> enemyData = new List<EnemyData>();
@@ -54,7 +55,9 @@ public class EnemyManager : MonoBehaviour
         MarkCardsAsEnemy();
         SetUpEnemyHealth();
         SetUpEnemyCommandPower();
-        SetUpEnemyUI();
+        UpdateEnemyUI();
+
+        currentFatigueDamage = 1;
     }
 
     public void ConvertEnemyData()
@@ -100,7 +103,7 @@ public class EnemyManager : MonoBehaviour
         enemyCommandPowerText.text = enemyMaxCommandPower.ToString();
     }
 
-    public void SetUpEnemyUI()
+    public void UpdateEnemyUI()
     {
         enemyDeckText.text = deck.Count.ToString();
         enemyDiscardText.text = discardPile.Count.ToString();
@@ -168,23 +171,50 @@ public class EnemyManager : MonoBehaviour
         {
             CardManager randCard = deck[Random.Range(0, deck.Count)];
 
-            for (int i = 0; i < availableHandCardSlots.Length; i++)
+            if (cardsInHand.Count <= 5)
             {
-                if (availableHandCardSlots[i])
+                for (int i = 0; i < availableHandCardSlots.Length; i++)
                 {
-                    randCard.gameObject.SetActive(true);
-                    randCard.handIndex = i;
+                    if (availableHandCardSlots[i])
+                    {
+                        randCard.gameObject.SetActive(true);
+                        randCard.handIndex = i;
                     
-                    randCard.transform.position = handCardSlots[i].position;
-                    randCard.currentCardMode = CardMode.INHAND;
-                    availableHandCardSlots[i] = false;
-                    deck.Remove(randCard);
-                    cardsInHand.Add(randCard);
-                    enemyDeckText.text = deck.Count.ToString();
-                    return;
+                        randCard.transform.position = handCardSlots[i].position;
+                        randCard.currentCardMode = CardMode.INHAND;
+                        availableHandCardSlots[i] = false;
+                        deck.Remove(randCard);
+                        cardsInHand.Add(randCard);
+                        enemyDeckText.text = deck.Count.ToString();
+                        return;
+                    }
                 }
             }
+            else
+            {
+                BurnTopDeckCard(randCard);
+            }
         }
+        else
+        {
+            Fatigue();
+        }
+    }
+    
+    public void BurnTopDeckCard(CardManager cardToBurn)
+    {
+        deck.Remove(cardToBurn);
+        discardPile.Add(cardToBurn);
+        UpdateEnemyUI();
+        //TODO Animation & Sound
+    }
+    
+    public void Fatigue()
+    {
+        UpdateEnemyHealth(currentFatigueDamage, false);
+        Debug.LogWarning("You fatigued for " + currentFatigueDamage);
+        //TODO Animation & Sound
+        currentFatigueDamage++;
     }
 
     public void BuyCard()

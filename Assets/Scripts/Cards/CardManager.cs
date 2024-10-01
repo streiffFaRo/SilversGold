@@ -120,14 +120,14 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (currentCardMode == CardMode.INPLAY && battleSystem.state == BattleState.PLAYERTURN || battleSystem.state == BattleState.ENEMYTURN)
+        if (currentCardMode == CardMode.INPLAY && battleSystem.state != BattleState.WON && battleSystem.state != BattleState.LOST)
         {
-            //TODO Fix wenn Spieler Hover über Attack oder Retreat Button -> Keine Vergrösserung
             isHovering = true;
         }
-        else if (currentCardMode == CardMode.INHAND && battleSystem.state == BattleState.PLAYERTURN || battleSystem.state == BattleState.ENEMYTURN)
+        else if (currentCardMode == CardMode.INHAND && battleSystem.state != BattleState.WON && battleSystem.state != BattleState.LOST)
         {
             transform.localScale = new Vector3(2f, 2f, 2f);
+            transform.localPosition += new Vector3(0, 125);
         }
     }
 
@@ -136,13 +136,14 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         if (currentCardMode == CardMode.INPLAY)
         {
             deckManager.HideDisplayCard();
-            hoverTimer = 0;
-            isHovering = false;
         }
         else if (currentCardMode == CardMode.INHAND)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localPosition += new Vector3(0, -125);
         }
+        hoverTimer = 0;
+        isHovering = false;
         
     }
     
@@ -303,7 +304,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
         else
         {
-            Debug.LogError("Attack failed!");
+            Debug.LogWarning("Attack failed!");
         }
     }
 
@@ -347,7 +348,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         else if (owner == Owner.ENEMY)
         {
             enemyManager.discardPile.Add(this);
-            enemyManager.SetUpEnemyUI();
+            enemyManager.UpdateEnemyUI();
         }
         
         cardIngameSlot.currentCard = null;
