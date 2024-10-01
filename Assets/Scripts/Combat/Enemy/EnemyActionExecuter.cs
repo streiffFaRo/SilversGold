@@ -90,12 +90,19 @@ public class EnemyActionExecuter : MonoBehaviour
     public void ExecuteAction(int actionIndex)
     {
         int executionActionIndex = 1;
+        
+        List<CardManager> cardsInHand = new();
+        foreach (CardManager card in enemyManager.cardsInHand)
+        {
+            cardsInHand.Add(card);
+        }
 
         if (enemyManager.enemyCurrentCommandPower >= 2)
         {
             if (executionActionIndex == actionIndex)
             {
                 DrawCard();
+                executionActionIndex++;
             }
             else
             {
@@ -108,22 +115,18 @@ public class EnemyActionExecuter : MonoBehaviour
             if (executionActionIndex == actionIndex)
             {
                 Broadside();
+                executionActionIndex++;
             }
             else
             {
                 executionActionIndex++;
             }
         }
-
-        List<CardManager> cardsInHand = new();
-        foreach (CardManager card in enemyManager.cardsInHand)
-        {
-            cardsInHand.Add(card);
-        }
+        
+        
         
         foreach (CardManager cardToPlay in cardsInHand)
         {
-            
             if (cardToPlay.cardStats.cost <= enemyManager.enemyCurrentCommandPower)
             {
                 
@@ -137,7 +140,7 @@ public class EnemyActionExecuter : MonoBehaviour
                             if (executionActionIndex == actionIndex)
                             {
                                 PlayCard(cardToPlay, slot);
-                                break;
+                                executionActionIndex++;
                             }
                             else
                             {
@@ -156,7 +159,7 @@ public class EnemyActionExecuter : MonoBehaviour
                             if (executionActionIndex == actionIndex)
                             {
                                 PlayCard(cardToPlay, slot);
-                                break;
+                                executionActionIndex++;
                             }
                             else
                             {
@@ -181,6 +184,7 @@ public class EnemyActionExecuter : MonoBehaviour
                     if (executionActionIndex == actionIndex)
                     {
                         AttackWithCard(cardToAttackWith);
+                        executionActionIndex++;
                     }
                     else
                     {
@@ -199,6 +203,7 @@ public class EnemyActionExecuter : MonoBehaviour
                     if (executionActionIndex == actionIndex)
                     {
                         RetreatCard(cardToRetreat);
+                        executionActionIndex++;
                     }
                     else
                     {
@@ -216,6 +221,7 @@ public class EnemyActionExecuter : MonoBehaviour
 
         if (enemyManager.enemyCurrentCommandPower <= 0)
         {
+            Debug.Log("No more Command Power");
             StartCoroutine(enemyManager.EndTurn());
         }
         else

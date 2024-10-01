@@ -177,7 +177,6 @@ public class EnemyManager : MonoBehaviour
                     
                     randCard.transform.position = handCardSlots[i].position;
                     randCard.currentCardMode = CardMode.INHAND;
-                    
                     availableHandCardSlots[i] = false;
                     deck.Remove(randCard);
                     cardsInHand.Add(randCard);
@@ -191,14 +190,14 @@ public class EnemyManager : MonoBehaviour
     public void BuyCard()
     {
         DrawCards();
-        enemyCurrentCommandPower -= 2;
+        UpdateEnemyCommandPower(2);
     }
 
     public IEnumerator DoEnemyStuff()
     {
         yield return new WaitForSeconds(1f);
         enemyAnalysis.AnalysePossibleActions();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         enemyAnalysis.InitiateBestPlay();
     }
 

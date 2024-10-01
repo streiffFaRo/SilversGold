@@ -254,8 +254,8 @@ public class EnemyAnalysis : MonoBehaviour
             else
             {
                 StartCoroutine(enemyManager.EndTurn());
+                Debug.LogWarning("No good Plays Possible");
             }
-            
             possiblePlays.Clear();
         }
         else
