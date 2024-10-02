@@ -54,6 +54,59 @@ public class GameManager : MonoBehaviour
         currentLevel++;
     }
 
+    public void SetUpForNextLevel()
+    {
+        switch (shipCaptainLevel)
+        {
+            case 0:
+                maxCommandPower = 5;
+                break;
+            case 1:
+                maxCommandPower = 6;
+                break;
+            case 2:
+                maxCommandPower = 7;
+                break;
+            default:
+                maxCommandPower = 7;
+                break;
+        }
+        
+        switch (shipHullLevel)
+        {
+            case 0:
+                maxShipHealth = 15;
+                break;
+            case 1:
+                maxShipHealth = 17;
+                break;
+            case 2:
+                maxShipHealth = 20;
+                break;
+            default:
+                maxShipHealth = 20;
+                break;
+        }
+        
+        switch (shipQuartersLevel)
+        {
+            case 0:
+                deckCardLimit = 15;
+                break;
+            case 1:
+                deckCardLimit = 18;
+                break;
+            case 2:
+                deckCardLimit = 20;
+                break;
+            default:
+                deckCardLimit = 20;
+                break;
+        }
+        
+        startCommandPower = maxCommandPower;
+        startShipHealth = maxShipHealth;
+    }
 
     public void SetUpNewGame()
     {

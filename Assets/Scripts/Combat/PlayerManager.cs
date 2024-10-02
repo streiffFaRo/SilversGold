@@ -27,16 +27,9 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         maxCommandPower = GameManager.instance.startCommandPower;
-        SetUpCommandPower();
         SetUpHealth();
+        RefreshCommandPower();
     }
-    
-
-    public void SetUpCommandPower()
-    {
-        currentCommandPower = maxCommandPower;
-        commandPowerText.text = currentCommandPower.ToString();
-    }  
     
     public void SetUpHealth()
     {
@@ -45,9 +38,15 @@ public class PlayerManager : MonoBehaviour
         healthText.text = currentHealth.ToString();
     }
     
+    public void RefreshCommandPower()
+    {
+        currentCommandPower = maxCommandPower;
+        commandPowerText.text = currentCommandPower.ToString();
+    }  
+    
     public void StartNewTurn()
     {
-        SetUpCommandPower();
+        RefreshCommandPower();
         DeckManager.DrawCards();
         ResetCardsWhoActed();
     }

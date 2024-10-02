@@ -51,6 +51,8 @@ public class DialogueManager : MonoBehaviour
     
     void Start()
     {
+        GameManager.instance.SetUpForNextLevel();
+        
         SelectCurrentStory();
 
         choicesText = new TextMeshProUGUI[choices.Length];

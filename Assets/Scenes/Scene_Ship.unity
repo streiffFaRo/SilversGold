@@ -1257,16 +1257,76 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.data[0]
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.data[1]
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[0]
+      value: 'Decksize: 15'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[1]
+      value: 'Decksize: 18'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[2]
+      value: 'Decksize: 20'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[3]
+      value: 'Decksize: 23'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.data[0]
+      value: 'Decksize: 18'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.data[1]
+      value: 'Decksize: 20'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentObjectName.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradedObjectName.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[0]
       value: Basic Quaters
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[1]
-      value: Simple Quaters
+      value: Advanced Quaters
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[2]
-      value: Advanced Quaters
+      value: Superior Quaters
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[3]
@@ -1274,15 +1334,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradedObjectName.Array.data[0]
-      value: Simple Quaters
-      objectReference: {fileID: 0}
-    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
-      propertyPath: upgradedObjectName.Array.data[1]
       value: Advanced Quaters
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
-      propertyPath: upgradedObjectName.Array.data[2]
+      propertyPath: upgradedObjectName.Array.data[1]
       value: Superior Quaters
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradedObjectName.Array.data[2]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 401022def6367674c9c0468c8137d88f, type: 3}
@@ -1395,16 +1455,76 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.data[0]
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.data[1]
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[0]
+      value: 'Ship health: 15'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[1]
+      value: 'Ship health: 17'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[2]
+      value: 'Ship health: 20'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[3]
+      value: 'Ship health: 25'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.data[0]
+      value: 'Ship health: 17'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.data[1]
+      value: 'Ship health: 20'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentObjectName.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradedObjectName.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[0]
       value: Basic Hull
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[1]
-      value: Simple Hull
+      value: Advanced Hull
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[2]
-      value: Advanced Hull
+      value: Superior Hull
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[3]
@@ -1412,15 +1532,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradedObjectName.Array.data[0]
-      value: Simple Hull
-      objectReference: {fileID: 0}
-    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
-      propertyPath: upgradedObjectName.Array.data[1]
       value: Advanced Hull
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
-      propertyPath: upgradedObjectName.Array.data[2]
+      propertyPath: upgradedObjectName.Array.data[1]
       value: Superior Hull
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradedObjectName.Array.data[2]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 401022def6367674c9c0468c8137d88f, type: 3}
@@ -1673,16 +1793,76 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.data[0]
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.data[1]
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[0]
+      value: 'Command Power: 5'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[1]
+      value: 'Command Power: 6'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[2]
+      value: 'Command Power: 7'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[3]
+      value: 'Command Power: 8'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.data[0]
+      value: 'Command Power: 6'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.data[1]
+      value: 'Command Power: 7'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentObjectName.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradedObjectName.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[0]
-      value: Basic Captain
+      value: Basic Cabin
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[1]
-      value: Simple Captain
+      value: Advanced Cabin
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[2]
-      value: Advanced Captain
+      value: Superior Cabin
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[3]
@@ -1690,15 +1870,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradedObjectName.Array.data[0]
-      value: Simple Captain
+      value: Advanced Cabin
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradedObjectName.Array.data[1]
-      value: Advanced Captain
+      value: Superior Cabin
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradedObjectName.Array.data[2]
-      value: Superior Captain
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 401022def6367674c9c0468c8137d88f, type: 3}
@@ -2617,16 +2797,76 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 357185438}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.data[0]
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.data[1]
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeCosts.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[0]
+      value: 'Cannoneer damage: 1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[1]
+      value: 'Cannoneer damage: 2'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[2]
+      value: 'Cannoneer damage: 3'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentEffect.Array.data[3]
+      value: 'Cannoneer damage: 4'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.data[0]
+      value: 'Cannoneer damage: 2'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.data[1]
+      value: 'Cannoneer damage: 3'
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradeEffect.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: currentObjectName.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradedObjectName.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[0]
       value: Basic Cannons
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[1]
-      value: Simple Cannons
+      value: Advanced Cannons
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[2]
-      value: Advanced Cannons
+      value: Superior Canons
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentObjectName.Array.data[3]
@@ -2634,15 +2874,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradedObjectName.Array.data[0]
-      value: Simple Cannons
-      objectReference: {fileID: 0}
-    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
-      propertyPath: upgradedObjectName.Array.data[1]
       value: Advanced Cannons
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
-      propertyPath: upgradedObjectName.Array.data[2]
+      propertyPath: upgradedObjectName.Array.data[1]
       value: Superior Cannons
+      objectReference: {fileID: 0}
+    - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: upgradedObjectName.Array.data[2]
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 401022def6367674c9c0468c8137d88f, type: 3}

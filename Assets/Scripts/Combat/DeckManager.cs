@@ -133,7 +133,7 @@ public class DeckManager : MonoBehaviour
     {
         if (discardPile.Count >=1 && battleSystem.state == BattleState.PLAYERTURN)
         {
-            playerManager.SetUpCommandPower();
+            playerManager.RefreshCommandPower();
             foreach (CardManager cM in discardPile)
             {
                 deck.Add(cM);
