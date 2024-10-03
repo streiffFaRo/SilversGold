@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
-    
-    
-    
     public void PlayGame()
     {
         SceneManager.LoadScene("Scene_Content");
     }
 
-    public void Settings()
+    public void Continue()
     {
-        
+        GameManager.instance.GetComponent<PlayerInputManager>().PauseMenu();
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Scene_MainMenu");
+        GameManager.instance.SetUpNewGame();
     }
 
     public void QuitGame()

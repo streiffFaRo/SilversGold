@@ -42,6 +42,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         if (!foundSlot)
         {
             rectTransform.position = startDragPos;
+            rectTransform.position -= new Vector3(0, 125); //Negate Card Hover Position
+            
         }
         else
         {

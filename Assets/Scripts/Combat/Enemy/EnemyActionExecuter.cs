@@ -110,7 +110,7 @@ public class EnemyActionExecuter : MonoBehaviour
             }
         }
 
-        if (enemyManager.enemyCurrentCommandPower >= 1)
+        if (enemyManager.enemyCurrentCommandPower >= 2)
         {
             if (executionActionIndex == actionIndex)
             {
@@ -243,17 +243,15 @@ public class EnemyActionExecuter : MonoBehaviour
     
     public void Broadside()
     {
-        if (enemyManager.battleSystem.state == BattleState.ENEMYTURN && enemyManager.enemyCurrentCommandPower > 0)
-        {
-            foreach (CardManager card in FindObjectsOfType<CardManager>())
+        foreach (CardManager card in FindObjectsOfType<CardManager>())
+        { 
+            if (card.owner == Owner.ENEMY && card.currentCardMode == CardMode.INPLAY && !card.cardActed && card.cardStats.isCannoneer) 
             { 
-                if (card.owner == Owner.ENEMY && card.currentCardMode == CardMode.INPLAY && !card.cardActed && card.cardStats.isCannoneer) 
-                {
-                    card.Broadside();
-                }
+                card.Broadside();
             }
-            enemyManager.UpdateEnemyCommandPower(1);
         }
+        enemyManager.UpdateEnemyCommandPower(2);
+        
     }
     
     public void PlayCard(CardManager cardToPlay, CardIngameSlot slot)

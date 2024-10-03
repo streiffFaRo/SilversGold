@@ -24,6 +24,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     [Header("CardInPlayInformation")]
     public bool cardActed;
     public CardIngameSlot cardIngameSlot;
+    public int currentHealth;
 
     [Header("Buttons")]
     public Button attackButton;
@@ -40,7 +41,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     [HideInInspector]public Card cardStats;
     
     //Private Variablen
-    private int currentHealth;
     private float hoverTimer = 0;
     private bool isHovering;
     

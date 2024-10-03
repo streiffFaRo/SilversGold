@@ -51,12 +51,12 @@ public class PlayerInputManager : MonoBehaviour
     
     public void PauseMenu()
     {
-        if (!gameIsPaused && allowInput)
+        if (!gameIsPaused)
         {
             pauseMenuCanvas.gameObject.SetActive(true);
             gameIsPaused = true;
         }
-        else if (allowInput)
+        else
         {
             pauseMenuCanvas.gameObject.SetActive(false);
             gameIsPaused = false;

@@ -144,7 +144,7 @@ public class DeckManager : MonoBehaviour
 
     public void Broadside()
     {
-        if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower > 0)
+        if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower >= 2)
         {
             foreach (CardManager card in FindObjectsOfType<CardManager>())
             { 
@@ -153,7 +153,7 @@ public class DeckManager : MonoBehaviour
                     card.Broadside();
                 }
             }
-            playerManager.UpdateCommandPower(1);
+            playerManager.UpdateCommandPower(2);
         }
     }
 

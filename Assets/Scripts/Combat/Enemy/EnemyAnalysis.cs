@@ -37,26 +37,34 @@ public class EnemyAnalysis : MonoBehaviour
         if (enemyManager.enemyCurrentCommandPower >= 2)
         {
             float score = 0;
-            switch (enemyManager.cardsInHand.Count)
+
+            if (enemyManager.deck.Count >= 4) //Zieht keine Karten mehr wenn in Fatiguenähe
             {
-                case 0:
-                    score = 25 * strat.drawMod;
-                    break;
-                case 1:
-                    score = 15 * strat.drawMod;
-                    break;
-                case 2:
-                    score = 8 * strat.drawMod;
-                    break;
-                case 3:
-                    score = 4 * strat.drawMod;
-                    break;
-                case 4:
-                    score = 1 * strat.drawMod;
-                    break;
-                case 5:
-                    score = -10;
-                    break;
+                score = -10;
+            }
+            else
+            {
+                switch (enemyManager.cardsInHand.Count)
+                {
+                    case 0:
+                        score = 25 * strat.drawMod;
+                        break;
+                    case 1:
+                        score = 15 * strat.drawMod;
+                        break;
+                    case 2:
+                        score = 8 * strat.drawMod;
+                        break;
+                    case 3:
+                        score = 4 * strat.drawMod;
+                        break;
+                    case 4:
+                        score = 1 * strat.drawMod;
+                        break;
+                    case 5:
+                        score = -10;
+                        break;
+                }
             }
 
             TreeNode drawCard = new();
@@ -70,7 +78,7 @@ public class EnemyAnalysis : MonoBehaviour
     
     private void AnalyseBroadsideAction()
     {
-        if (enemyManager.enemyCurrentCommandPower >= 1)
+        if (enemyManager.enemyCurrentCommandPower >= 2)
         {
             int cannoneerCount = 0;
             float score = 0;
@@ -219,7 +227,14 @@ public class EnemyAnalysis : MonoBehaviour
             {
                 if (cardToRetreat.owner == Owner.ENEMY && !cardToRetreat.cardActed && cardToRetreat.currentCardMode == CardMode.INPLAY)
                 {
-                    score = score + cardToRetreat.cardStats.pointsRetreat * strat.retreatMod;
+                    //Berechnung des Scores
+                    score +=cardToRetreat.cardStats.pointsRetreat;
+                    if (cardToRetreat.currentHealth == 1 && cardToRetreat.cardStats.defense >= 3)
+                    {
+                        score += 6;
+                    }
+                    score *= strat.retreatMod;
+                    
                     if (score <= 0)
                     {
                         score = -10;
