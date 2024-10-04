@@ -70,7 +70,11 @@ public class DeckManager : MonoBehaviour
         {
             CardManager randCard = deck[Random.Range(0, deck.Count)];
 
-            if (cardsInHand.Count <= 5)
+            if (cardsInHand.Count >= 5) //Bei voller Hand (5Karten) wird die nächste Verbrannt
+            {
+                BurnTopDeckCard(randCard);
+            }
+            else
             {
                 for (int i = 0; i < availableCardSlots.Length; i++)
                 {
@@ -88,10 +92,6 @@ public class DeckManager : MonoBehaviour
                         return;
                     }
                 }
-            }
-            else
-            {
-                BurnTopDeckCard(randCard);
             }
             
         }

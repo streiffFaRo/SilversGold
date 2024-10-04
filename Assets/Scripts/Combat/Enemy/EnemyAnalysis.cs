@@ -38,7 +38,7 @@ public class EnemyAnalysis : MonoBehaviour
         {
             float score = 0;
 
-            if (enemyManager.deck.Count >= 4) //Zieht keine Karten mehr wenn in Fatiguenähe
+            if (enemyManager.deck.Count <= 4) //Zieht keine Karten mehr wenn in Fatiguenähe
             {
                 score = -10;
             }

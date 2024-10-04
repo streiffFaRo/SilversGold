@@ -171,7 +171,11 @@ public class EnemyManager : MonoBehaviour
         {
             CardManager randCard = deck[Random.Range(0, deck.Count)];
 
-            if (cardsInHand.Count <= 5)
+            if (cardsInHand.Count >= 5)
+            {
+                BurnTopDeckCard(randCard);
+            }
+            else
             {
                 for (int i = 0; i < availableHandCardSlots.Length; i++)
                 {
@@ -189,10 +193,6 @@ public class EnemyManager : MonoBehaviour
                         return;
                     }
                 }
-            }
-            else
-            {
-                BurnTopDeckCard(randCard);
             }
         }
         else

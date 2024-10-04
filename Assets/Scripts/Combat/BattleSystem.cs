@@ -21,6 +21,7 @@ public class BattleSystem : MonoBehaviour
 
     [Header("Other")]
     public GameObject blurImage;
+    public GameObject gameOverMenu;
     
     private void Start()
     {
@@ -94,14 +95,14 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.LOST;
         Debug.Log("Lost");
-        //TODO Retryoption for Player
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("Scene_MainMenu");
+        yield return new WaitForSeconds(2f);
+        blurImage.SetActive(true);
+        gameOverMenu.SetActive(true);
     }
 
     public void ReloadScene()
     {
-        SceneManager.LoadScene("Scene_MainMenu");
+        SceneManager.LoadScene("Scene_Content");
     }
 }
 

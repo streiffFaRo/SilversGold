@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SetUpNewGame();
         UpdateLevel();
         //Startdeck setzten
         
@@ -75,7 +74,7 @@ public class GameManager : MonoBehaviour
         switch (shipHullLevel)
         {
             case 0:
-                maxShipHealth = 15;
+                maxShipHealth = 12;
                 break;
             case 1:
                 maxShipHealth = 17;

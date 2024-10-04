@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 277407907}
   - component: {fileID: 277407906}
   m_Layer: 5
-  m_Name: LogCanvas
+  m_Name: '@LogCanvas'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -652,7 +652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4668370009909214814, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
       propertyPath: m_Name
-      value: MenuCanvas
+      value: '@MenuCanvas'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
@@ -1519,7 +1519,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allLogFiles:
-  - {fileID: 4900000, guid: f1fb5119afd0ba044ad0e667c68a6e61, type: 3}
+  - {fileID: 4900000, guid: 5ff89e5f81eba8a458ba3aa1b70e8c88, type: 3}
+  - {fileID: 4900000, guid: 46e5e0a783237434ea495406366e6ede, type: 3}
+  - {fileID: 4900000, guid: 27a852b7980a907479eb682054701bef, type: 3}
+  - {fileID: 4900000, guid: 335d837f3ae4eb247809e570fa6849bc, type: 3}
+  - {fileID: 4900000, guid: e3a7ddb7fd818d4498b323d3392d7663, type: 3}
+  - {fileID: 4900000, guid: b02ca6f14a16c3b4bb7ae205dec5476e, type: 3}
+  - {fileID: 4900000, guid: 3591a733471a0b642b08c753d537bc58, type: 3}
+  - {fileID: 4900000, guid: 6c7f638eb5dd9cf42a85f23ce5fdb998, type: 3}
+  - {fileID: 4900000, guid: 000a634dacac13d468b95786304d3024, type: 3}
+  - {fileID: 4900000, guid: 0c5232f60d886614bbe83fa9ed082e06, type: 3}
+  - {fileID: 4900000, guid: 0b5ece8b5915b0442a3cf0c9f7be0e29, type: 3}
+  - {fileID: 4900000, guid: fc8b9d8fb2e31994593b85653e6a3661, type: 3}
   titleUI: {fileID: 1135985067}
   textUI: {fileID: 1557633}
   continueButton: {fileID: 697317158}
@@ -1553,7 +1564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inkEvents:
-  - name: EndCurrentDay
+  - name: endScene
     onEvent:
       m_PersistentCalls:
         m_Calls:
