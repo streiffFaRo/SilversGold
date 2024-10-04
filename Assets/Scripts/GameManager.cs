@@ -41,13 +41,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        UpdateLevel();
-        //Startdeck setzten
-        
-    }
-
     public void UpdateLevel()
     {
         currentLevel++;
@@ -112,7 +105,7 @@ public class GameManager : MonoBehaviour
         //Alle Stats resetten
         currentLevel = 0;
         currentTier = 1;
-        booty = 250;
+        booty = 120;
         maxCommandPower = 5;
         startCommandPower = 5;
         maxShipHealth = 12;
@@ -123,8 +116,7 @@ public class GameManager : MonoBehaviour
         shipCaptainLevel = 0;
         shipQuartersLevel = 0;
         shipHullLevel = 0;
-        
-        //Deck neu aufsetzen
+        //TODO Deck neu aufsetzen
     }
     
 }

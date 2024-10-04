@@ -51,10 +51,10 @@ public class DialogueManager : MonoBehaviour
     
     void Start()
     {
+        SelectCurrentStory();
+        
         GameManager.instance.SetUpForNextLevel();
         
-        SelectCurrentStory();
-
         choicesText = new TextMeshProUGUI[choices.Length];
         int index = 0;
         foreach (GameObject choice in choices)
@@ -64,6 +64,7 @@ public class DialogueManager : MonoBehaviour
         }
         BindExternalFunctions();
         
+        ContinueStory();
     }
 
     private void OnEnable()
@@ -82,9 +83,8 @@ public class DialogueManager : MonoBehaviour
 
     public void SelectCurrentStory()
     {
+        Debug.Log("Current Level: "+GameManager.instance.currentLevel);
         currentStory = new Story(allLogFiles[GameManager.instance.currentLevel].text);
-
-        ContinueStory();
     }
 
     public void PlayerContinues()

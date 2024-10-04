@@ -1,5 +1,5 @@
 INCLUDE Utility.ink
-
+->main
 ===main===
 Stuff
 ->endScene
