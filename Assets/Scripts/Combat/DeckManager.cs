@@ -85,7 +85,8 @@ public class DeckManager : MonoBehaviour
                     
                         randCard.transform.position = cardSlots[i].position;
                         randCard.currentCardMode = CardMode.INHAND;
-                    
+                        
+                        VolumeManager.instance.GetComponent<AudioManager>().PlayCardDrawSound();
                         availableCardSlots[i] = false;
                         deck.Remove(randCard);
                         cardsInHand.Add(randCard);
@@ -153,6 +154,7 @@ public class DeckManager : MonoBehaviour
                     card.Broadside();
                 }
             }
+            VolumeManager.instance.GetComponent<AudioManager>().PlayCannonSound();
             playerManager.UpdateCommandPower(2);
         }
     }

@@ -76,10 +76,12 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.WON;
         Debug.Log("Won");
+        VolumeManager.instance.GetComponent<AudioManager>().PlayShipDeathSound();
         yield return new WaitForSeconds(1f);
         blurImage.SetActive(true);
         yield return new WaitForSeconds(2f);
         recruitManager.ShowBootyReward();
+        VolumeManager.instance.GetComponent<AudioManager>().PlayBootySound();
         yield return new WaitForSeconds(3f);
         recruitManager.HideBootyReward();
         yield return new WaitForSeconds(1f);
@@ -95,6 +97,7 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.LOST;
         Debug.Log("Lost");
+        VolumeManager.instance.GetComponent<AudioManager>().PlayShipDeathSound();
         yield return new WaitForSeconds(2f);
         blurImage.SetActive(true);
         gameOverMenu.SetActive(true);

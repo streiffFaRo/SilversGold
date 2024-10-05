@@ -92,7 +92,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         inGameCard.SetActive(true);
         cardActed = true;
         currentCardMode = CardMode.INPLAY;
-        
+        VolumeManager.instance.GetComponent<AudioManager>().PlayCardPlaySound();
     }
     
     public void OnPointerClick(PointerEventData eventData)
@@ -126,6 +126,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
         else if (currentCardMode == CardMode.INHAND && battleSystem.state != BattleState.WON && battleSystem.state != BattleState.LOST)
         {
+            VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
             transform.localScale = new Vector3(2f, 2f, 2f);
             transform.localPosition += new Vector3(0, 125);
         }
@@ -196,6 +197,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 }
             }
             playerManager.UpdateCommandPower(1);
+            VolumeManager.instance.GetComponent<AudioManager>().PlayCardAttackSound();
             SetButtonsPassive();
             cardActed = true;
             //TODO Karte soll symbolisieren dass sie genutzt wurde
@@ -317,6 +319,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         currentCardMode = CardMode.INDECK;
         GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
         GetComponentInChildren<DragDrop>().foundSlot = false;
+        VolumeManager.instance.GetComponent<AudioManager>().PlayCardRetreatSound();
     }
 
     public void UpdateCardHealth(int damage)
@@ -351,6 +354,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             enemyManager.UpdateEnemyUI();
         }
         
+        VolumeManager.instance.GetComponent<AudioManager>().PlayCardDeathSound();
         cardIngameSlot.currentCard = null;
         gameObject.SetActive(false);
         handCard.SetActive(true);

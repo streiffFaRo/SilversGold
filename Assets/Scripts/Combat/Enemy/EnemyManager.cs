@@ -119,6 +119,7 @@ public class EnemyManager : MonoBehaviour
         else
         {
             enemyCurrentHealth -= amount;
+            VolumeManager.instance.GetComponent<AudioManager>().PlayShipHitSound();
         }
         
         if (enemyCurrentHealth <= 0)
@@ -186,6 +187,8 @@ public class EnemyManager : MonoBehaviour
                     
                         randCard.transform.position = handCardSlots[i].position;
                         randCard.currentCardMode = CardMode.INHAND;
+                        
+                        VolumeManager.instance.GetComponent<AudioManager>().PlayCardDrawSound();
                         availableHandCardSlots[i] = false;
                         deck.Remove(randCard);
                         cardsInHand.Add(randCard);

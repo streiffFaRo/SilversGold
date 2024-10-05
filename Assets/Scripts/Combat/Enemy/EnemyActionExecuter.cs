@@ -250,6 +250,7 @@ public class EnemyActionExecuter : MonoBehaviour
                 card.Broadside();
             }
         }
+        VolumeManager.instance.GetComponent<AudioManager>().PlayCannonSound();
         enemyManager.UpdateEnemyCommandPower(2);
         
     }

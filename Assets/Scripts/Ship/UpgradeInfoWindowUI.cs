@@ -42,7 +42,7 @@ public class UpgradeInfoWindowUI : MonoBehaviour
         {
             GameManager.instance.booty -= upgradeCostWhenBought;
             areaToUpgradeWhenBought.Upgrade();
-            VolumeManager.instance.GetComponent<AudioManager>().PlayPlatzHalterFlasche();
+            VolumeManager.instance.GetComponent<AudioManager>().PlayUpgradeSound();
             //TODO Animation
             //TODO Upgrade Sound
             bootyUI.UpdateBootyUI();
