@@ -18,7 +18,8 @@ MonoBehaviour:
   artwork: {fileID: 21300000, guid: 269eee5bd0392044cb38fd13171b84f6, type: 3}
   cost: 1
   attack: 1
-  defense: 1
+  defense: 2
+  isCannoneer: 0
   tier: 3
   dangerLevel: 3
   pointsFielded: 3

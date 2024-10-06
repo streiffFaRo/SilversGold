@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c0697782d445a14e902e72c9b2d0bf9, type: 3}
-  m_Name: Frontline Pioneer
+  m_Name: Coast Guard
   m_EditorClassIdentifier: 
-  name: Frontline Pioneer
-  description: Heals 3 Shiphealth at the start of each turn
+  name: Coast Guard
+  description: 
   position: I
-  artwork: {fileID: 21300000, guid: 6a7ac9e8c26b12440bf2b1da2ca97794, type: 3}
-  cost: 5
-  attack: 2
+  artwork: {fileID: 21300000, guid: dcea51d6065d64246aeec467afeff684, type: 3}
+  cost: 3
+  attack: 3
   defense: 2
   isCannoneer: 0
-  tier: 3
-  dangerLevel: 8
-  pointsFielded: 8
-  pointsAttack: 4
+  tier: 0
+  dangerLevel: 0
+  pointsFielded: 4
+  pointsAttack: 5
   pointsRetreat: -10

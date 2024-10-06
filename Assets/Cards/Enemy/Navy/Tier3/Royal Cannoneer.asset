@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c0697782d445a14e902e72c9b2d0bf9, type: 3}
-  m_Name: Frontline Pioneer
+  m_Name: Royal Cannoneer
   m_EditorClassIdentifier: 
-  name: Frontline Pioneer
-  description: Heals 3 Shiphealth at the start of each turn
-  position: I
-  artwork: {fileID: 21300000, guid: 6a7ac9e8c26b12440bf2b1da2ca97794, type: 3}
-  cost: 5
-  attack: 2
-  defense: 2
-  isCannoneer: 0
-  tier: 3
-  dangerLevel: 8
-  pointsFielded: 8
-  pointsAttack: 4
+  name: Royal Cannoneer
+  description: Cannoneer
+  position: A
+  artwork: {fileID: 21300000, guid: 7835bec40f86c2c4fb3f91a6eb3b7034, type: 3}
+  cost: 2
+  attack: 0
+  defense: 4
+  isCannoneer: 1
+  tier: 0
+  dangerLevel: 0
+  pointsFielded: 7
+  pointsAttack: -10
   pointsRetreat: -10
