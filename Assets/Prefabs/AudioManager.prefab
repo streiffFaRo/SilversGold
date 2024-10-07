@@ -635,7 +635,7 @@ MonoBehaviour:
   platzhalterTeller: {fileID: 2270420272565133370}
   platzhalterFlasche: {fileID: 3042411717129718437}
   cardAttackSound: {fileID: 2465972540945816662}
-  cardHoverSound: {fileID: 6767046100652984895}
+  cardHandHoverSound: {fileID: 6767046100652984895}
   cardPlaySound: {fileID: 6874214775516369498}
   cardDrawSound: {fileID: 8779728072398230289}
   cardDeathSound: {fileID: 6115091535013022630}

@@ -24,3 +24,7 @@ MonoBehaviour:
   pointsFielded: 7
   pointsAttack: 1
   pointsRetreat: -10
+  keyWordCannoneer: 0
+  keyWordFielded: 1
+  keyWordDeath: 0
+  keyWordRetreat: 0

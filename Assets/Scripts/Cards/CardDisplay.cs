@@ -25,6 +25,15 @@ public class CardDisplay : MonoBehaviour
     public TextMeshProUGUI inGameAttackText;
     public TextMeshProUGUI inGameDefenseText;
     
+    [Header("KeyWordBoxes")]
+    public GameObject keyWordCannoneerBox;
+    public GameObject keyWordFieldedBox;
+    public GameObject keyWordDeathBox;
+    public GameObject keyWordRetreatBox;
+    
+    //Private
+    private List<GameObject> keyWords = new List<GameObject>();
+    
     void Start()
     {
         SetUpCardUI();
@@ -45,5 +54,43 @@ public class CardDisplay : MonoBehaviour
         handAttackText.text = card.attack.ToString();
         inGameDefenseText.text = card.defense.ToString();
         handDefenseText.text = card.defense.ToString();
+    }
+
+    public void ShowKeyWordBox()
+    {
+        if (GameManager.instance.showKeyWords)
+        {
+            if (card.keyWordCannoneer)
+                keyWords.Add(keyWordCannoneerBox);
+        
+            if (card.keyWordFielded)
+                keyWords.Add(keyWordFieldedBox);
+        
+            if (card.keyWordDeath)
+                keyWords.Add(keyWordDeathBox);
+        
+            if (card.keyWordRetreat)
+                keyWords.Add(keyWordRetreatBox);
+        
+            if (keyWords.Count > 0)
+            {
+                foreach (GameObject box in keyWords)
+                {
+                    box.SetActive(true);
+                }
+            }
+        }
+    }
+
+    public void HideKeyWordBox()
+    {
+        if (keyWords.Count > 0)
+        {
+            foreach (GameObject box in keyWords)
+            {
+                box.SetActive(false);
+            }
+        }
+        keyWords.Clear();
     }
 }

@@ -85,7 +85,7 @@ public class EnemyAnalysis : MonoBehaviour
             
             foreach (CardManager cardToCheck in FindObjectsOfType<CardManager>())
             {
-                if (cardToCheck.owner ==  Owner.ENEMY && cardToCheck.cardStats.isCannoneer && !cardToCheck.cardActed && cardToCheck.currentCardMode == CardMode.INPLAY)
+                if (cardToCheck.owner ==  Owner.ENEMY && cardToCheck.cardStats.keyWordCannoneer && !cardToCheck.cardActed && cardToCheck.currentCardMode == CardMode.INPLAY)
                 {
                     cannoneerCount++;
                 }

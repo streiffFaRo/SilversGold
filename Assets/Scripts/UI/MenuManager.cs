@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("Scene_Content");
+        SceneManager.LoadScene("Scene_Log");
     }
 
     public void Continue()

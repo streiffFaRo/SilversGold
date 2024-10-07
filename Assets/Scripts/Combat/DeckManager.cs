@@ -147,15 +147,28 @@ public class DeckManager : MonoBehaviour
     {
         if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower >= 2)
         {
+            List<CardManager> playerArtyCards = new List<CardManager>();
             foreach (CardManager card in FindObjectsOfType<CardManager>())
-            { 
-                if (card.owner == Owner.PLAYER && card.currentCardMode == CardMode.INPLAY && !card.cardActed && card.cardStats.isCannoneer) 
+            {
+                if (card.owner == Owner.PLAYER && card.currentCardMode == CardMode.INPLAY && !card.cardActed && card.cardStats.keyWordCannoneer)
                 {
-                    card.Broadside();
+                    playerArtyCards.Add(card);
                 }
             }
-            VolumeManager.instance.GetComponent<AudioManager>().PlayCannonSound();
-            playerManager.UpdateCommandPower(2);
+
+            if (playerArtyCards.Count > 0)
+            {
+                foreach (CardManager card in playerArtyCards)
+                { 
+                    card.Broadside();
+                }
+                VolumeManager.instance.GetComponent<AudioManager>().PlayCannonSound();
+                playerManager.UpdateCommandPower(2);
+            }
+            else
+            {
+                Debug.LogWarning("Keine Arty Einheiten für Breitseite!");
+            }
         }
     }
 
@@ -172,11 +185,13 @@ public class DeckManager : MonoBehaviour
         displayStand.SetActive(true);
         displayUI.card = cardManager.cardStats;
         displayUI.SetUpCardUI();
+        displayUI.ShowKeyWordBox();
     }
 
     public void HideDisplayCard()
     {
         displayStand.SetActive(false);
+        displayUI.HideKeyWordBox();
     }
 
     public void SetAllOtherButtonsPassive(CardManager targetCardManager)

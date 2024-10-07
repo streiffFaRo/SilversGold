@@ -19,9 +19,12 @@ MonoBehaviour:
   cost: 4
   attack: 2
   defense: 2
-  isCannoneer: 0
   tier: 3
   dangerLevel: 7
   pointsFielded: 8
   pointsAttack: 5
   pointsRetreat: -10
+  keyWordCannoneer: 0
+  keyWordFielded: 1
+  keyWordDeath: 1
+  keyWordRetreat: 0

@@ -245,7 +245,7 @@ public class EnemyActionExecuter : MonoBehaviour
     {
         foreach (CardManager card in FindObjectsOfType<CardManager>())
         { 
-            if (card.owner == Owner.ENEMY && card.currentCardMode == CardMode.INPLAY && !card.cardActed && card.cardStats.isCannoneer) 
+            if (card.owner == Owner.ENEMY && card.currentCardMode == CardMode.INPLAY && !card.cardActed && card.cardStats.keyWordCannoneer) 
             { 
                 card.Broadside();
             }

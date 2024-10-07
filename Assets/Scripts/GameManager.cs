@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     public int shipCaptainLevel;
     public int shipQuartersLevel;
     public int shipHullLevel;
+
+    [Header("Settings")]
+    public bool showKeyWords = true;
     
     private void Awake()
     {

@@ -274,6 +274,19 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             Debug.LogError("Retreat failed!");
         }
     }
+    
+    private void HandleRetreatStats()
+    {
+        deckManager.HideDisplayCard();
+        gameObject.SetActive(false);
+        handCard.SetActive(true);
+        handCard.transform.localScale = new Vector3(1f, 1f, 1f);
+        inGameCard.SetActive(false);
+        currentCardMode = CardMode.INDECK;
+        GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
+        GetComponentInChildren<DragDrop>().foundSlot = false;
+        VolumeManager.instance.GetComponent<AudioManager>().PlayCardRetreatSound();
+    }
 
     public void Broadside()
     {
@@ -286,12 +299,12 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             else
             { 
                 enemyManager.UpdateEnemyHealth(GameManager.instance.shipCannonLevel+1, false);
+                Debug.Log("Hit Enemy Ship!");
             }
             SetButtonsPassive();
             cardActed = true;
             //TODO Karte soll symbolisieren dass sie genutzt wurde
         }
-        
         else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
         {
             if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
@@ -308,18 +321,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             Debug.LogWarning("Attack failed!");
         }
-    }
-
-    private void HandleRetreatStats()
-    {
-        gameObject.SetActive(false);
-        handCard.SetActive(true);
-        handCard.transform.localScale = new Vector3(1f, 1f, 1f);
-        inGameCard.SetActive(false);
-        currentCardMode = CardMode.INDECK;
-        GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
-        GetComponentInChildren<DragDrop>().foundSlot = false;
-        VolumeManager.instance.GetComponent<AudioManager>().PlayCardRetreatSound();
     }
 
     public void UpdateCardHealth(int damage)
