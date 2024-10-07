@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cannon Deck Inspector
   m_EditorClassIdentifier: 
   name: Cannon Deck Inspector
-  description: 'Fielded: +1 Broadsidedamage Death: +1 Command Power next turn'
+  description: '+1 Broadsidedamage, Death: +1 Command Power next turn'
   position: A
   artwork: {fileID: 21300000, guid: 8008767850e870a4e8baaf5a6fc8b35c, type: 3}
   cost: 3
@@ -28,3 +28,9 @@ MonoBehaviour:
   keyWordFielded: 1
   keyWordDeath: 0
   keyWordRetreat: 0
+  script: {fileID: 0}
+  para1: 0
+  para2: 0
+  para3: 0
+  para4: 0
+  para5: {fileID: 0}

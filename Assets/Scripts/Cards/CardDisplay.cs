@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,9 +36,17 @@ public class CardDisplay : MonoBehaviour
     
     //Private
     private List<GameObject> keyWords = new List<GameObject>();
+
     
+
     void Start()
     {
+        if (card.script != null)
+        {
+            System.Type cardEffectScript = card.script.GetClass();
+            gameObject.AddComponent(cardEffectScript);
+        }
+        
         SetUpCardUI();
     }
 

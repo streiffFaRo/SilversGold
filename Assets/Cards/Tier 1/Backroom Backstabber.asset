@@ -28,3 +28,4 @@ MonoBehaviour:
   keyWordFielded: 0
   keyWordDeath: 1
   keyWordRetreat: 0
+  script: {fileID: 0}

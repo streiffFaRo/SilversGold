@@ -19,9 +19,13 @@ MonoBehaviour:
   cost: 2
   attack: 2
   defense: 1
-  isCannoneer: 0
   tier: 1
   dangerLevel: 3
   pointsFielded: 4
   pointsAttack: 4
   pointsRetreat: -10
+  keyWordCannoneer: 0
+  keyWordFielded: 0
+  keyWordDeath: 0
+  keyWordRetreat: 0
+  script: {fileID: 11500000, guid: af3aaa2ddd230db429367e5d74c4c779, type: 3}

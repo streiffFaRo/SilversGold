@@ -23,6 +23,10 @@ public class BattleSystem : MonoBehaviour
     public GameObject blurImage;
     public GameObject gameOverMenu;
     
+    //Events
+    public static event Action onPlayerTurnEvent;
+    public static event Action onEnemyTurnEvent;
+    
     private void Start()
     {
         state = BattleState.START;
@@ -59,12 +63,14 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.PLAYERTURN;
         playerManager.StartNewTurn();
+        onPlayerTurnEvent.Invoke();
     }
 
     public void EnemyTurn()
     {
         state = BattleState.ENEMYTURN;
         enemyManager.StartNewEnemyTurn();
+        onEnemyTurnEvent.Invoke();
     }
 
     public void PlayerWon()
