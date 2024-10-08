@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     [Header("PlayerStats")]
     public int maxCommandPower;
     public int currentCommandPower;
+    public int commandPowerBonus;
     public int maxHealth;
     public int currentHealth;
 
@@ -41,7 +42,9 @@ public class PlayerManager : MonoBehaviour
     public void RefreshCommandPower()
     {
         currentCommandPower = maxCommandPower;
+        currentCommandPower += commandPowerBonus;
         commandPowerText.text = currentCommandPower.ToString();
+        commandPowerBonus = 0;
     }  
     
     public void StartNewTurn()

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Raft Officer
   m_EditorClassIdentifier: 
   name: Raft Officer
-  description: 'Fielded: +1 Command Power Death: +1 Command Power next turn'
+  description: 'Fielded: +2 Command Power'
   position: A
   artwork: {fileID: 21300000, guid: 7b0bba6a9b6960a4fb500a75d4a4caa0, type: 3}
-  cost: 4
+  cost: 6
   attack: 3
-  defense: 2
+  defense: 4
   tier: 3
   dangerLevel: 7
   pointsFielded: 8
@@ -29,8 +29,8 @@ MonoBehaviour:
   keyWordDeath: 1
   keyWordRetreat: 0
   script: {fileID: 11500000, guid: 6b6e2b925e40a0f45828527be0c422b1, type: 3}
-  para1: 1
+  para1: 2
   para2: 0
   para3: 0
-  papra4: 0
+  para4: 0
   para5: {fileID: 0}

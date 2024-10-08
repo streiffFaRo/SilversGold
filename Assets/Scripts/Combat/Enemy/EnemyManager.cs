@@ -21,6 +21,7 @@ public class EnemyManager : MonoBehaviour
     public string enemyName;
     public int enemyMaxCommandPower;
     public int enemyCurrentCommandPower;
+    public int commandPowerBonus;
     public int enemyMaxHealth;
     public int enemyCurrentHealth;
     public int enemyCannonLevel;
@@ -100,7 +101,9 @@ public class EnemyManager : MonoBehaviour
     public void SetUpEnemyCommandPower()
     {
         enemyCurrentCommandPower = enemyMaxCommandPower;
+        enemyCurrentCommandPower += commandPowerBonus;
         enemyCommandPowerText.text = enemyMaxCommandPower.ToString();
+        commandPowerBonus = 0;
     }
 
     public void UpdateEnemyUI()

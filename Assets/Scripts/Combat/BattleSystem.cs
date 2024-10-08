@@ -48,29 +48,35 @@ public class BattleSystem : MonoBehaviour
     {
         deckManager.DrawCards();
         enemyManager.DrawCards();
-        //TODO Enemy Card draw
+        
         yield return new WaitForSeconds(1f);
         deckManager.DrawCards();
         enemyManager.DrawCards();
-        //TODO Enemy Card draw
+        
         yield return new WaitForSeconds(1f);
         deckManager.DrawCards();
         enemyManager.DrawCards();
-        //TODO Enemy Card draw
+        
     }
 
     public void PlayerTurn()
     {
         state = BattleState.PLAYERTURN;
         playerManager.StartNewTurn();
-        onPlayerTurnEvent.Invoke();
+        if (onPlayerTurnEvent != null)
+        {
+            onPlayerTurnEvent.Invoke();
+        }
     }
 
     public void EnemyTurn()
     {
         state = BattleState.ENEMYTURN;
         enemyManager.StartNewEnemyTurn();
-        onEnemyTurnEvent.Invoke();
+        if (onEnemyTurnEvent != null)
+        {
+            onEnemyTurnEvent.Invoke();
+        }
     }
 
     public void PlayerWon()

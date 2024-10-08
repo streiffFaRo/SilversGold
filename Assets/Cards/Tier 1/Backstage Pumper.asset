@@ -28,3 +28,9 @@ MonoBehaviour:
   keyWordFielded: 0
   keyWordDeath: 0
   keyWordRetreat: 1
+  script: {fileID: 11500000, guid: 10a54a9ad48260e49808e21a374f4415, type: 3}
+  para1: 3
+  para2: 3
+  para3: 0
+  para4: 0
+  para5: {fileID: 0}

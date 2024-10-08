@@ -277,6 +277,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     
     private void HandleRetreatStats()
     {
+        GetComponent<RetreatEffects>()?.TriggerRetreatEffect();
         deckManager.HideDisplayCard();
         gameObject.SetActive(false);
         handCard.SetActive(true);
@@ -355,6 +356,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             enemyManager.UpdateEnemyUI();
         }
         
+        GetComponent<DeathEffects>()?.TriggerDeathEffect();
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardDeathSound();
         cardIngameSlot.currentCard = null;
         gameObject.SetActive(false);
