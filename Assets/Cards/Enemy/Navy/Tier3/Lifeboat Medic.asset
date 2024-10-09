@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Lifeboat Medic
   m_EditorClassIdentifier: 
   name: Lifeboat Medic
-  description: 'Retreat: Shuffle 3 Cards from the depth into your deck'
+  description: 'Retreat: Shuffle 3 Cards from the discardpile into your deck'
   position: A
   artwork: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
   cost: 4

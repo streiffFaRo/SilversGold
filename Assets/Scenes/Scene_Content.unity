@@ -1148,6 +1148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxCommandPower: 0
   currentCommandPower: 0
+  commandPowerBonus: 0
   maxHealth: 0
   currentHealth: 0
   deckSizeText: {fileID: 562268533}
@@ -7650,6 +7651,7 @@ MonoBehaviour:
   enemyName: 
   enemyMaxCommandPower: 0
   enemyCurrentCommandPower: 0
+  commandPowerBonus: 0
   enemyMaxHealth: 0
   enemyCurrentHealth: 0
   enemyCannonLevel: 0
@@ -7671,7 +7673,7 @@ MonoBehaviour:
   enemyData:
   - enemyTitle: (0)Tutorial
     health: 6
-    commandPower: 5
+    commandPower: 3
     cannonLevel: 0
     strategy: {fileID: 11400000, guid: fdf58552267de254cb169f2d6fe14fe2, type: 2}
     deckToPrepare:
@@ -7688,23 +7690,62 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 6177ebeeef6ac2343bcd22bb9a5a5a68, type: 2}
     - {fileID: 11400000, guid: 06c0fb0f8b3de4744b674aa316f33cc4, type: 2}
   - enemyTitle: (1) Pirat
+    health: 8
+    commandPower: 4
+    cannonLevel: 1
+    strategy: {fileID: 11400000, guid: 501aada0aafdc1c4396f64f28d59f660, type: 2}
+    deckToPrepare:
+    - {fileID: 11400000, guid: ed6595bb574c20d47aed5cb1d6f91d93, type: 2}
+    - {fileID: 11400000, guid: ed6595bb574c20d47aed5cb1d6f91d93, type: 2}
+    - {fileID: 11400000, guid: 7a8622c10130dc446890b836e39c1363, type: 2}
+    - {fileID: 11400000, guid: a855d895e859078468eb1b36128e1610, type: 2}
+    - {fileID: 11400000, guid: a855d895e859078468eb1b36128e1610, type: 2}
+    - {fileID: 11400000, guid: 06c0fb0f8b3de4744b674aa316f33cc4, type: 2}
+    - {fileID: 11400000, guid: 06c0fb0f8b3de4744b674aa316f33cc4, type: 2}
+    - {fileID: 11400000, guid: 06c0fb0f8b3de4744b674aa316f33cc4, type: 2}
+    - {fileID: 11400000, guid: daa1ca518a93ee047af07759658f8307, type: 2}
+    - {fileID: 11400000, guid: daa1ca518a93ee047af07759658f8307, type: 2}
+    - {fileID: 11400000, guid: daa1ca518a93ee047af07759658f8307, type: 2}
+    - {fileID: 11400000, guid: 6441b808193d282458aff53fab6d35c8, type: 2}
+  - enemyTitle: (2) Pirat
     health: 9
     commandPower: 4
     cannonLevel: 1
-    strategy: {fileID: 11400000, guid: 501aada0aafdc1c4396f64f28d59f660, type: 2}
-    deckToPrepare: []
-  - enemyTitle: (2) Pirat
-    health: 10
-    commandPower: 4
-    cannonLevel: 1
-    strategy: {fileID: 11400000, guid: 501aada0aafdc1c4396f64f28d59f660, type: 2}
-    deckToPrepare: []
+    strategy: {fileID: 11400000, guid: 3ce98e2a70277f549b36b581fbb875b2, type: 2}
+    deckToPrepare:
+    - {fileID: 11400000, guid: daa1ca518a93ee047af07759658f8307, type: 2}
+    - {fileID: 11400000, guid: 06c0fb0f8b3de4744b674aa316f33cc4, type: 2}
+    - {fileID: 11400000, guid: bcd554733f927574882ff4243c0478f4, type: 2}
+    - {fileID: 11400000, guid: e6f2de67b0114dc4c830d88e08573d20, type: 2}
+    - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}
+    - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}
+    - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}
+    - {fileID: 11400000, guid: ed6595bb574c20d47aed5cb1d6f91d93, type: 2}
+    - {fileID: 11400000, guid: 6c00c84b76d571b488f959683ecdc938, type: 2}
+    - {fileID: 11400000, guid: 6c00c84b76d571b488f959683ecdc938, type: 2}
+    - {fileID: 11400000, guid: ba0e692dd9713754c86768f0efa151e2, type: 2}
+    - {fileID: 11400000, guid: e451f7ddc1148954ca503fa4a852b369, type: 2}
   - enemyTitle: (3) Pirat
     health: 10
     commandPower: 4
     cannonLevel: 1
     strategy: {fileID: 11400000, guid: 501aada0aafdc1c4396f64f28d59f660, type: 2}
-    deckToPrepare: []
+    deckToPrepare:
+    - {fileID: 11400000, guid: bcd554733f927574882ff4243c0478f4, type: 2}
+    - {fileID: 11400000, guid: bcd554733f927574882ff4243c0478f4, type: 2}
+    - {fileID: 11400000, guid: 06c0fb0f8b3de4744b674aa316f33cc4, type: 2}
+    - {fileID: 11400000, guid: daa1ca518a93ee047af07759658f8307, type: 2}
+    - {fileID: 11400000, guid: 6c00c84b76d571b488f959683ecdc938, type: 2}
+    - {fileID: 11400000, guid: 6c00c84b76d571b488f959683ecdc938, type: 2}
+    - {fileID: 11400000, guid: 6c00c84b76d571b488f959683ecdc938, type: 2}
+    - {fileID: 11400000, guid: 6c00c84b76d571b488f959683ecdc938, type: 2}
+    - {fileID: 11400000, guid: 0f1589d9b96fa7a4aa189071c6a3b32e, type: 2}
+    - {fileID: 11400000, guid: 0f1589d9b96fa7a4aa189071c6a3b32e, type: 2}
+    - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}
+    - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}
+    - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}
+    - {fileID: 11400000, guid: a855d895e859078468eb1b36128e1610, type: 2}
+    - {fileID: 11400000, guid: ae1f7020cdb4aaa4eb5c252980a11557, type: 2}
   - enemyTitle: (4) Marine Schiff
     health: 10
     commandPower: 4

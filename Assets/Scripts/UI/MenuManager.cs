@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadScene("Scene_Log");
+        GameManager.instance.SetUpNewGame();
     }
 
     public void Continue()

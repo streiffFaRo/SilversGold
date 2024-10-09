@@ -92,6 +92,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         inGameCard.SetActive(true);
         cardActed = true;
         currentCardMode = CardMode.INPLAY;
+        GetComponent<DiesWhenAlone>()?.CheckIfAlone();
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardPlaySound();
     }
     
@@ -196,11 +197,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                     enemyManager.UpdateEnemyHealth(cardStats.attack, false);
                 }
             }
-            playerManager.UpdateCommandPower(1);
-            VolumeManager.instance.GetComponent<AudioManager>().PlayCardAttackSound();
-            SetButtonsPassive();
-            cardActed = true;
-            //TODO Karte soll symbolisieren dass sie genutzt wurde
+            HandleAttackStats();
         }
         else if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
@@ -239,13 +236,32 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                     playerManager.UpdateHealth(cardStats.attack, false);
                 }
             }
-            enemyManager.UpdateEnemyCommandPower(1);
-            cardActed = true;
+            HandleAttackStats();
         }
         else
         {
             Debug.LogError("Attack failed!");
         }
+    }
+
+    public void HandleAttackStats()
+    {
+        if (owner == Owner.PLAYER)
+        {
+            playerManager.UpdateCommandPower(1);
+            SetButtonsPassive();
+        }
+        else if (owner == Owner.ENEMY)
+        {
+            enemyManager.UpdateEnemyCommandPower(1);
+        }
+        VolumeManager.instance.GetComponent<AudioManager>().PlayCardAttackSound();
+        cardActed = true;
+        if (GetComponent<DiesAfterAttack>() != null)
+        {
+            Death();
+        }
+        //TODO Karte soll symbolisieren dass sie genutzt wurde
     }
 
     public void Retreat()
@@ -357,6 +373,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
         
         GetComponent<DeathEffects>()?.TriggerDeathEffect();
+        GetComponent<DiesWhenAlone>()?.CheckIfAlone();
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardDeathSound();
         cardIngameSlot.currentCard = null;
         gameObject.SetActive(false);

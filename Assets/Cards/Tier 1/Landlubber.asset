@@ -17,10 +17,20 @@ MonoBehaviour:
   position: I
   artwork: {fileID: 21300000, guid: 17fa84703485d314b8d6b5216987d4b1, type: 3}
   cost: 2
-  attack: 1
+  attack: 2
   defense: 2
   tier: 1
   dangerLevel: 1
   pointsFielded: 2
   pointsAttack: 5
   pointsRetreat: -10
+  keyWordCannoneer: 0
+  keyWordFielded: 0
+  keyWordDeath: 0
+  keyWordRetreat: 0
+  script: {fileID: 11500000, guid: 408d4658492723f40bb223e1adc39584, type: 3}
+  para1: 0
+  para2: 0
+  para3: 0
+  para4: 0
+  para5: {fileID: 0}
