@@ -29,8 +29,8 @@ public class Card : ScriptableObject
     public bool keyWordDeath;
     public bool keyWordRetreat;
 
-    [Header("CardEffect")]
-    public MonoScript script;
+    [Header("CardEffect")] 
+    public string cardEffect;
     public int para1;
     public int para2;
     public float para3;

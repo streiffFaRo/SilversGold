@@ -29,6 +29,7 @@ MonoBehaviour:
   keyWordDeath: 0
   keyWordRetreat: 0
   script: {fileID: 11500000, guid: 408d4658492723f40bb223e1adc39584, type: 3}
+  cardEffect: DiesWhenAlone
   para1: 0
   para2: 0
   para3: 0

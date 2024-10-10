@@ -29,6 +29,7 @@ MonoBehaviour:
   keyWordDeath: 0
   keyWordRetreat: 0
   script: {fileID: 11500000, guid: 6b6e2b925e40a0f45828527be0c422b1, type: 3}
+  cardEffect: Fielded_CommandPowerChange
   para1: 2
   para2: 0
   para3: 0

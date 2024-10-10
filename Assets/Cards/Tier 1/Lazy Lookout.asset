@@ -29,6 +29,7 @@ MonoBehaviour:
   keyWordDeath: 0
   keyWordRetreat: 0
   script: {fileID: 11500000, guid: f66e852cf52c4214c932178ad3107d40, type: 3}
+  cardEffect: Fielded_DrawCard
   para1: 0
   para2: 0
   para3: 0
