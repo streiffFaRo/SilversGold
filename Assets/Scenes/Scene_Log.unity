@@ -1473,6 +1473,7 @@ GameObject:
   - component: {fileID: 1953621315}
   - component: {fileID: 1953621316}
   - component: {fileID: 1953621318}
+  - component: {fileID: 1953621319}
   - component: {fileID: 1953621317}
   m_Layer: 5
   m_Name: //LogBook
@@ -1580,6 +1581,67 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: booty
+    onEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1953621319}
+          m_TargetAssemblyTypeName: LogEvents, Assembly-CSharp
+          m_MethodName: Booty
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: whaler
+    onEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1953621319}
+          m_TargetAssemblyTypeName: LogEvents, Assembly-CSharp
+          m_MethodName: Whaler
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: raid
+    onEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1953621319}
+          m_TargetAssemblyTypeName: LogEvents, Assembly-CSharp
+          m_MethodName: Raid
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &1953621319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953621314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 785a530cde52d7d469b60ece09820e7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whaler: {fileID: 0}
 --- !u!1001 &2088623153
 PrefabInstance:
   m_ObjectHideFlags: 0
