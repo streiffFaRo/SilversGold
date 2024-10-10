@@ -119,8 +119,8 @@ public class RecruitManager : MonoBehaviour
             presentDeck.DiscardToHoldDeckLimit(choosenCard);
             //TODO Animation :-)
         }
+        VolumeManager.instance.GetComponent<AudioManager>().PlayCardDrawSound();
         
-
         foreach (Transform cardToClear in recruitCardDisplay.GetComponentInChildren<Transform>())
         {
             Destroy(cardToClear.GameObject());

@@ -128,8 +128,13 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         else if (currentCardMode == CardMode.INHAND && battleSystem.state != BattleState.WON && battleSystem.state != BattleState.LOST)
         {
             VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
+            transform.SetSiblingIndex(transform.parent.childCount-1);
             transform.localScale = new Vector3(2f, 2f, 2f);
             transform.localPosition += new Vector3(0, 125);
+        }
+        else if (currentCardMode == CardMode.INRECRUIT)
+        {
+            VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
         }
     }
 
