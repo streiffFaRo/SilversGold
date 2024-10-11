@@ -83,7 +83,6 @@ public class DialogueManager : MonoBehaviour
 
     public void SelectCurrentStory()
     {
-        Debug.Log("Current Level: "+GameManager.instance.currentLevel);
         currentStory = new Story(allLogFiles[GameManager.instance.currentLevel].text);
     }
 

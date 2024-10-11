@@ -27,6 +27,9 @@ public class RecruitManager : MonoBehaviour
     
     [Header("Recruit Slots")]
     public GameObject recruitCardDisplay;
+    public GameObject normalInfoText;
+    public GameObject deckFullInfoText;
+    public GameObject noRecruitmentButton;
 
     [Header("Scripts")]
     public PresentDeck presentDeck;
@@ -72,9 +75,14 @@ public class RecruitManager : MonoBehaviour
         //TODO Animation & Sound
         SelectCurrentTier();
         
-        if (GameManager.instance.playerDeck.Count <= GameManager.instance.deckCardLimit)
+        if (GameManager.instance.playerDeck.Count+1 >= GameManager.instance.deckCardLimit)
         {
-            //TODO Möglichkeit Keine Karte zu nehmen mittels Button
+            normalInfoText.SetActive(true);
+        }
+        else
+        {
+            deckFullInfoText.SetActive(true);
+            noRecruitmentButton.SetActive(true);
         }
 
         for (int i = 0; i < 3; i++)
@@ -108,7 +116,7 @@ public class RecruitManager : MonoBehaviour
 
     public void CardChoosen(Card choosenCard)
     {
-        if (GameManager.instance.playerDeck.Count <= GameManager.instance.deckCardLimit)
+        if (GameManager.instance.playerDeck.Count+1 >= GameManager.instance.deckCardLimit)
         {
             GameManager.instance.playerDeck.Add(choosenCard);
             presentDeck.ShowDeckPresenter();
@@ -121,14 +129,26 @@ public class RecruitManager : MonoBehaviour
         }
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardDrawSound();
         
+        deckFullInfoText.SetActive(false);
+        noRecruitmentButton.SetActive(false);
+        normalInfoText.SetActive(false);
+        
         foreach (Transform cardToClear in recruitCardDisplay.GetComponentInChildren<Transform>())
         {
             Destroy(cardToClear.GameObject());
         }
-        
     }
 
-
-
-
+    public void ChooseNoCard()
+    {
+        presentDeck.ShowDeckPresenter();
+        
+        deckFullInfoText.SetActive(false);
+        noRecruitmentButton.SetActive(false);
+        normalInfoText.SetActive(false);
+        foreach (Transform cardToClear in recruitCardDisplay.GetComponentInChildren<Transform>())
+        {
+            Destroy(cardToClear.GameObject());
+        }
+    }
 }

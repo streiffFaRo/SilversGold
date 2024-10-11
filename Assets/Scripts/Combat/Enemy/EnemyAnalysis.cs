@@ -10,6 +10,7 @@ public class EnemyAnalysis : MonoBehaviour
     public EnemyActionExecuter enemyActionExecuter;
     public int actionIndex;
     public Strategy strat;
+    public bool showDebug;
     private List<TreeNode> possiblePlays = new();
 
     private void Start()
@@ -249,9 +250,12 @@ public class EnemyAnalysis : MonoBehaviour
 
     public void InitiateBestPlay()
     {
-        foreach (TreeNode node in possiblePlays)
+        if (showDebug)
         {
-            Debug.Log(node.name + " Score: " + node.score + " ActionIndex: " + node.actionIndex);
+            foreach (TreeNode node in possiblePlays)
+            {
+                Debug.Log(node.name + " Score: " + node.score + " ActionIndex: " + node.actionIndex);
+            }
         }
         
         if (possiblePlays.Count != 0)
@@ -259,20 +263,29 @@ public class EnemyAnalysis : MonoBehaviour
             TreeNode bestPlay = possiblePlays.OrderBy(x => x.score).Last();
             if (bestPlay.score > 0)
             {
-                Debug.Log("Gewählter Play: "+bestPlay.name + " Score: " + bestPlay.score + " ActionIndex: " + bestPlay.actionIndex);
+                if (showDebug)
+                {
+                    Debug.Log("Gewählter Play: "+bestPlay.name + " Score: " + bestPlay.score + " ActionIndex: " + bestPlay.actionIndex);
+                }
                 enemyActionExecuter.ExecuteAction(bestPlay.actionIndex);
             }
             else
             {
                 StartCoroutine(enemyManager.EndTurn());
-                Debug.LogWarning("No good Plays Possible");
+                if (showDebug)
+                {
+                    Debug.LogWarning("No good Plays Possible");
+                }
             }
             possiblePlays.Clear();
         }
         else
         {
             StartCoroutine(enemyManager.EndTurn());
-            Debug.LogWarning("No Plays Possible");
+            if (showDebug)
+            {
+                Debug.LogWarning("No Plays Possible");
+            }
         }
         
     }

@@ -14,6 +14,7 @@ public class PresentDeck : MonoBehaviour
     public GameObject secondRow;
     public GameObject thirdRow;
     public GameObject cardToAddSlot;
+    public GameObject discardCardInfoText;
     public Button continueButton;
     public Button inspectShipButton;
 
@@ -50,6 +51,7 @@ public class PresentDeck : MonoBehaviour
         }
         else
         {
+            discardCardInfoText.SetActive(true);
             cardToAddSlot.SetActive(true);
             GameObject currentCardPrefab = Instantiate(displayCardPrefab, new Vector3(0, 0, 0), Quaternion.identity, cardToAddSlot.transform);
             currentCardPrefab.GetComponent<CardDisplay>().card = cardToAdd;
@@ -98,6 +100,7 @@ public class PresentDeck : MonoBehaviour
         GameManager.instance.playerDeck.Remove(cardToDiscard);
         GameManager.instance.playerDeck.Add(cardToAdd);
         cardToAdd = null;
+        discardCardInfoText.SetActive(false);
         cardToAddSlot.SetActive(false);
         ClearPresentation();
         Invoke("SetUpPresentation", 0.001f);
