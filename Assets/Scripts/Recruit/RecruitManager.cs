@@ -75,7 +75,7 @@ public class RecruitManager : MonoBehaviour
         //TODO Animation & Sound
         SelectCurrentTier();
         
-        if (GameManager.instance.playerDeck.Count+1 >= GameManager.instance.deckCardLimit)
+        if (GameManager.instance.playerDeck.Count+1 <= GameManager.instance.deckCardLimit)
         {
             normalInfoText.SetActive(true);
         }
@@ -116,7 +116,7 @@ public class RecruitManager : MonoBehaviour
 
     public void CardChoosen(Card choosenCard)
     {
-        if (GameManager.instance.playerDeck.Count+1 >= GameManager.instance.deckCardLimit)
+        if (GameManager.instance.playerDeck.Count+1 <= GameManager.instance.deckCardLimit)
         {
             GameManager.instance.playerDeck.Add(choosenCard);
             presentDeck.ShowDeckPresenter();

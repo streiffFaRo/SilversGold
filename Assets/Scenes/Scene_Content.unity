@@ -10862,10 +10862,6 @@ PrefabInstance:
       propertyPath: currentLevel
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1505530162881684072, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}
-      propertyPath: deckCardLimit
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 3116091751872732117, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}
       propertyPath: pauseMenuCanvas
       value: 
