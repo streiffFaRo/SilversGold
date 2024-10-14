@@ -276,7 +276,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             playerManager.UpdateCommandPower(1);
             SetButtonsPassive();
             deckManager.deck.Add(this);
-            HandleRetreatStats();
+            StartCoroutine(HandleRetreatStats());
         }
         else if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
@@ -288,7 +288,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             enemyManager.UpdateEnemyCommandPower(1);
             enemyManager.deck.Add(this);
-            HandleRetreatStats();
+            enemyManager.UpdateEnemyUI();
+            StartCoroutine(HandleRetreatStats());
         }
         else
         {
@@ -296,18 +297,20 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
     }
     
-    private void HandleRetreatStats()
+    private IEnumerator HandleRetreatStats()
     {
-        GetComponent<RetreatEffects>()?.TriggerRetreatEffect();
+        currentCardMode = CardMode.INDECK;
+        yield return new WaitForSeconds(0.05f);
         deckManager.HideDisplayCard();
-        gameObject.SetActive(false);
+        cardIngameSlot.currentCard = null;
+        GetComponent<RetreatEffects>()?.TriggerRetreatEffect();
         handCard.SetActive(true);
         handCard.transform.localScale = new Vector3(1f, 1f, 1f);
-        inGameCard.SetActive(false);
-        currentCardMode = CardMode.INDECK;
         GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
         GetComponentInChildren<DragDrop>().foundSlot = false;
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardRetreatSound();
+        inGameCard.SetActive(false);
+        gameObject.SetActive(false);
     }
 
     public void Broadside()

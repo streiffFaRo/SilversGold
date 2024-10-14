@@ -8248,7 +8248,7 @@ MonoBehaviour:
   currentFatigueDamage: 1
   enemyData:
   - enemyTitle: (0)Tutorial
-    health: 6
+    health: 4
     commandPower: 3
     cannonLevel: 0
     strategy: {fileID: 11400000, guid: fdf58552267de254cb169f2d6fe14fe2, type: 2}
@@ -8266,7 +8266,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 6177ebeeef6ac2343bcd22bb9a5a5a68, type: 2}
     - {fileID: 11400000, guid: 06c0fb0f8b3de4744b674aa316f33cc4, type: 2}
   - enemyTitle: (1) Pirat
-    health: 8
+    health: 6
     commandPower: 4
     cannonLevel: 1
     strategy: {fileID: 11400000, guid: 501aada0aafdc1c4396f64f28d59f660, type: 2}
@@ -8284,7 +8284,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: daa1ca518a93ee047af07759658f8307, type: 2}
     - {fileID: 11400000, guid: 6441b808193d282458aff53fab6d35c8, type: 2}
   - enemyTitle: (2) Pirat
-    health: 9
+    health: 7
     commandPower: 4
     cannonLevel: 1
     strategy: {fileID: 11400000, guid: 3ce98e2a70277f549b36b581fbb875b2, type: 2}
@@ -8302,7 +8302,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: ba0e692dd9713754c86768f0efa151e2, type: 2}
     - {fileID: 11400000, guid: e451f7ddc1148954ca503fa4a852b369, type: 2}
   - enemyTitle: (3) Pirat
-    health: 10
+    health: 8
     commandPower: 4
     cannonLevel: 1
     strategy: {fileID: 11400000, guid: 501aada0aafdc1c4396f64f28d59f660, type: 2}
@@ -8323,13 +8323,13 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a855d895e859078468eb1b36128e1610, type: 2}
     - {fileID: 11400000, guid: ae1f7020cdb4aaa4eb5c252980a11557, type: 2}
   - enemyTitle: (4) Marine Schiff
-    health: 10
+    health: 8
     commandPower: 4
     cannonLevel: 1
     strategy: {fileID: 11400000, guid: fdf58552267de254cb169f2d6fe14fe2, type: 2}
     deckToPrepare: []
   - enemyTitle: (5) Marine Schiff
-    health: 10
+    health: 9
     commandPower: 4
     cannonLevel: 1
     strategy: {fileID: 11400000, guid: 501aada0aafdc1c4396f64f28d59f660, type: 2}
@@ -8341,8 +8341,8 @@ MonoBehaviour:
     strategy: {fileID: 11400000, guid: 3ce98e2a70277f549b36b581fbb875b2, type: 2}
     deckToPrepare: []
   - enemyTitle: (7) Marine Fregatte
-    health: 1
-    commandPower: 15
+    health: 10
+    commandPower: 4
     cannonLevel: 2
     strategy: {fileID: 11400000, guid: 9c6b305db7650ec49804c9d76d077312, type: 2}
     deckToPrepare: []
@@ -8418,6 +8418,7 @@ GameObject:
   - component: {fileID: 1594115379}
   - component: {fileID: 1594115378}
   - component: {fileID: 1594115377}
+  - component: {fileID: 1594115380}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -8491,6 +8492,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1594115380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594115376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9aadeb93dca95e244b7b3964fc75b8f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allowInput: 1
+  pauseMenuCanvas: {fileID: 742372732}
 --- !u!1 &1606865216
 GameObject:
   m_ObjectHideFlags: 0
@@ -10874,5 +10889,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ///GameManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3116091751872732117, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}

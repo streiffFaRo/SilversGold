@@ -41,12 +41,11 @@ public class CardDisplay : MonoBehaviour
 
     void Start()
     {
-        if (card.cardEffect != null)
+        if (card.cardEffect != "")
         { 
             Type effectType = Type.GetType(card.cardEffect);
             gameObject.AddComponent(effectType);
         }
-        
         SetUpCardUI();
     }
 

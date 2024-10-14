@@ -66,9 +66,7 @@ public class RecruitManager : MonoBehaviour
             default:
                 return 0;
         }
-        
     }
-
 
     public void ShowRecruitmentOptions()
     {
