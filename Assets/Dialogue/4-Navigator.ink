@@ -1,7 +1,18 @@
 INCLUDE Utility.ink
 ->main
 ===main===
-Stuff
+
+
+
+*[Punish]->Planke
+*[Spare]->Weiterziehen
+
+===Planke===
+
+->endScene
+
+===Weiterziehen===
+
 ->endScene
 
 ===endScene===

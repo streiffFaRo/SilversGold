@@ -49,8 +49,8 @@ MonoBehaviour:
   booty: 120
   maxCommandPower: 5
   startCommandPower: 5
-  maxShipHealth: 12
-  startShipHealth: 12
+  maxShipHealth: 10
+  startShipHealth: 10
   deckCardLimit: 15
   playerDeck:
   - {fileID: 11400000, guid: a855d895e859078468eb1b36128e1610, type: 2}

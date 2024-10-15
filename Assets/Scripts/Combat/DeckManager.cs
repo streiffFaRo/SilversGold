@@ -176,7 +176,7 @@ public class DeckManager : MonoBehaviour
     {
         if (battleSystem.state == BattleState.PLAYERTURN)
         {
-            battleSystem.EnemyTurn();
+            StartCoroutine(battleSystem.EnemyTurn());
         }
     }
 

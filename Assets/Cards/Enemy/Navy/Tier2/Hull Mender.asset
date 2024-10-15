@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Hull Mender
   description: 'Retreat: +5 Shiphealth'
-  position: I
+  position: A
   artwork: {fileID: 21300000, guid: 7af5f1b9cb7fc7645a9f27f070fbe2fd, type: 3}
   cost: 3
   attack: 2
@@ -28,7 +28,6 @@ MonoBehaviour:
   keyWordFielded: 0
   keyWordDeath: 0
   keyWordRetreat: 1
-  script: {fileID: 11500000, guid: 10a54a9ad48260e49808e21a374f4415, type: 3}
   cardEffect: RetreatEffects
   para1: 3
   para2: 5

@@ -1553,7 +1553,7 @@ MonoBehaviour:
   choices:
   - {fileID: 686227719}
   - {fileID: 1041495130}
-  typingSpeed: 0.05
+  typingSpeed: 0.03
 --- !u!114 &1953621317
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Master Carpenter
   description: 'Retreat: +8 Shiphealth'
-  position: I
+  position: A
   artwork: {fileID: 21300000, guid: ddf2e76e8a1f88f46ae1e42277850b48, type: 3}
   cost: 4
   attack: 2
@@ -28,7 +28,6 @@ MonoBehaviour:
   keyWordFielded: 0
   keyWordDeath: 0
   keyWordRetreat: 1
-  script: {fileID: 11500000, guid: 10a54a9ad48260e49808e21a374f4415, type: 3}
   cardEffect: RetreatEffects
   para1: 3
   para2: 8

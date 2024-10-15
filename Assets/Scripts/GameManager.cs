@@ -70,16 +70,16 @@ public class GameManager : MonoBehaviour
         switch (shipHullLevel)
         {
             case 0:
-                maxShipHealth = 12;
+                maxShipHealth = 10;
                 break;
             case 1:
-                maxShipHealth = 17;
+                maxShipHealth = 12;
                 break;
             case 2:
-                maxShipHealth = 20;
+                maxShipHealth = 15;
                 break;
             default:
-                maxShipHealth = 20;
+                maxShipHealth = 15;
                 break;
         }
         
@@ -111,8 +111,8 @@ public class GameManager : MonoBehaviour
         booty = 120;
         maxCommandPower = 5;
         startCommandPower = 5;
-        maxShipHealth = 12;
-        startShipHealth = 12;
+        maxShipHealth = 10;
+        startShipHealth = 10;
         deckCardLimit = 15;
 
         shipCannonLevel = 0;

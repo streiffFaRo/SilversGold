@@ -1480,15 +1480,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentEffect.Array.data[0]
-      value: 'Ship health: 15'
+      value: 'Ship health: 10'
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentEffect.Array.data[1]
-      value: 'Ship health: 17'
+      value: 'Ship health: 12'
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentEffect.Array.data[2]
-      value: 'Ship health: 20'
+      value: 'Ship health: 15'
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentEffect.Array.data[3]
@@ -1496,11 +1496,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeEffect.Array.data[0]
-      value: 'Ship health: 17'
+      value: 'Ship health: 12'
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeEffect.Array.data[1]
-      value: 'Ship health: 20'
+      value: 'Ship health: 15'
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeEffect.Array.data[2]

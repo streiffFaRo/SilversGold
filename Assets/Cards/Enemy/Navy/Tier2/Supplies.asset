@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c0697782d445a14e902e72c9b2d0bf9, type: 3}
-  m_Name: Trade Goods
+  m_Name: Supplies
   m_EditorClassIdentifier: 
-  name: Trade Goods
+  name: Supplies
   description: 'Death: +1 Card for both Players'
-  position: I
+  position: A
   artwork: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   cost: 2
   attack: 1
@@ -28,7 +28,6 @@ MonoBehaviour:
   keyWordFielded: 0
   keyWordDeath: 1
   keyWordRetreat: 0
-  script: {fileID: 11500000, guid: c6da78e74d7057c4b8ec32bdee030dd0, type: 3}
   cardEffect: DeathEffects
   para1: 4
   para2: 1

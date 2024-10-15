@@ -240,6 +240,6 @@ public class EnemyManager : MonoBehaviour
     public IEnumerator EndTurn()
     {
         yield return new WaitForSeconds(1f);
-        battleSystem.PlayerTurn();
+        StartCoroutine(battleSystem.PlayerTurn());
     }
 }

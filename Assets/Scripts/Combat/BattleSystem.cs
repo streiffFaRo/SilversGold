@@ -22,6 +22,8 @@ public class BattleSystem : MonoBehaviour
     [Header("Other")]
     public GameObject blurImage;
     public GameObject gameOverMenu;
+    public GameObject playerTurnInfo;
+    public GameObject enemyTurnInfo;
     
     //Events
     public static event Action onPlayerTurnEvent;
@@ -41,7 +43,7 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1f);
         StartCoroutine(DrawStartCards());
         yield return new WaitForSeconds(3f);
-        PlayerTurn();
+        StartCoroutine(PlayerTurn());
     }
 
     private IEnumerator DrawStartCards()
@@ -59,8 +61,12 @@ public class BattleSystem : MonoBehaviour
         
     }
 
-    public void PlayerTurn()
+    public IEnumerator PlayerTurn()
     {
+        VolumeManager.instance.GetComponent<AudioManager>().PlayPlatzHalterFlasche();
+        playerTurnInfo.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        playerTurnInfo.SetActive(false);
         state = BattleState.PLAYERTURN;
         playerManager.StartNewTurn();
         if (onPlayerTurnEvent != null)
@@ -69,8 +75,12 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    public void EnemyTurn()
+    public IEnumerator EnemyTurn()
     {
+        VolumeManager.instance.GetComponent<AudioManager>().PlayPlatzHalterFlasche();
+        enemyTurnInfo.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        enemyTurnInfo.SetActive(false);
         state = BattleState.ENEMYTURN;
         enemyManager.StartNewEnemyTurn();
         if (onEnemyTurnEvent != null)
