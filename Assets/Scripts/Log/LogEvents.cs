@@ -6,16 +6,18 @@ public class LogEvents : MonoBehaviour
 {
 
     public Card whaler;
+
+    private Card cardAtRisk;
     
-    public void Booty()
+    public void Booty(int amount)
     {
-        GameManager.instance.booty += 50;
+        GameManager.instance.booty += amount;
     }
 
     public void Whaler()
     {
         //TODO Check if player has 50 Booty! -> Sonst Neuer Text in ink Story
-        GameManager.instance.booty -= 50;
+        Booty(-50);
         GameManager.instance.playerDeck.Add(whaler);
     }
 
@@ -29,5 +31,24 @@ public class LogEvents : MonoBehaviour
         }
         //TODO Show Cards that got destroyed
     }
+
+    public void ChooseRdmCard()
+    {
+        Card card = GameManager.instance.playerDeck[Random.Range(0, GameManager.instance.playerDeck.Count)];
+        cardAtRisk = card;
+        //TODO Show Card at Risk
+    }
+
+    public void Plank()
+    {
+        GameManager.instance.playerDeck.Remove(cardAtRisk);
+        cardAtRisk = null;
+    }
+
+    public void CommandPowerChange(int amount)
+    {
+        GameManager.instance.startCommandPower += amount;
+    }
+    
 
 }

@@ -8598,10 +8598,31 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a3f351d1610652f4f854005304006db9, type: 2}
   - enemyTitle: (10) Silvers Ghost Crew
     health: 50
-    commandPower: 4
-    cannonLevel: 4
+    commandPower: 6
+    cannonLevel: 3
     strategy: {fileID: 11400000, guid: fdf58552267de254cb169f2d6fe14fe2, type: 2}
-    deckToPrepare: []
+    deckToPrepare:
+    - {fileID: 11400000, guid: db3d7d98d13bc274a9fa9a6334af3042, type: 2}
+    - {fileID: 11400000, guid: c4442156fed9f3c408d44c177bf54abf, type: 2}
+    - {fileID: 11400000, guid: c4442156fed9f3c408d44c177bf54abf, type: 2}
+    - {fileID: 11400000, guid: c4442156fed9f3c408d44c177bf54abf, type: 2}
+    - {fileID: 11400000, guid: c4442156fed9f3c408d44c177bf54abf, type: 2}
+    - {fileID: 11400000, guid: 7b541c77816e0114fa765518a54ef1f8, type: 2}
+    - {fileID: 11400000, guid: 7b541c77816e0114fa765518a54ef1f8, type: 2}
+    - {fileID: 11400000, guid: 7b541c77816e0114fa765518a54ef1f8, type: 2}
+    - {fileID: 11400000, guid: 7b541c77816e0114fa765518a54ef1f8, type: 2}
+    - {fileID: 11400000, guid: 13b4f9ea047520947ab10c38e4a14032, type: 2}
+    - {fileID: 11400000, guid: 13b4f9ea047520947ab10c38e4a14032, type: 2}
+    - {fileID: 11400000, guid: 13b4f9ea047520947ab10c38e4a14032, type: 2}
+    - {fileID: 11400000, guid: 13b4f9ea047520947ab10c38e4a14032, type: 2}
+    - {fileID: 11400000, guid: b2a726812d0bb4a4cb198a7ccccc2e4c, type: 2}
+    - {fileID: 11400000, guid: b2a726812d0bb4a4cb198a7ccccc2e4c, type: 2}
+    - {fileID: 11400000, guid: b2a726812d0bb4a4cb198a7ccccc2e4c, type: 2}
+    - {fileID: 11400000, guid: b2a726812d0bb4a4cb198a7ccccc2e4c, type: 2}
+    - {fileID: 11400000, guid: 7b541c77816e0114fa765518a54ef1f8, type: 2}
+    - {fileID: 11400000, guid: 7b541c77816e0114fa765518a54ef1f8, type: 2}
+    - {fileID: 11400000, guid: 7b541c77816e0114fa765518a54ef1f8, type: 2}
+    - {fileID: 11400000, guid: 7b541c77816e0114fa765518a54ef1f8, type: 2}
   enemyActionExecuter: {fileID: 1587372868}
   enemyAnalysis: {fileID: 1587372867}
   battleSystem: {fileID: 2071210394}
