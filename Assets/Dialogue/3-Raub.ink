@@ -6,7 +6,7 @@ A pirate is a very simple being; he loves his freedom and takes what he wants. H
 *[Continue travelling]->Weiterziehen
 
 ===Raub===
-I agreed to the plan and pointed out that it would be advantageous for them to strike under the cover of night and try to avoid the guards. While the raiding party set off, I took care of the purchases in town. There were also some repairs to be done after the recent battles. When I was about to retire for the evening, one of my gunners woke me. Shocked, he told me that the raiding group had returned, but not all of them survived, and they hadn’t made off with any loot. Apparently, the whole group had been caught by a patrol, and during the fight, two of our men didn’t make it. What a disaster! (-2 Cards)
+I agreed to the plan and pointed out that it would be advantageous for them to strike under the cover of night and try to avoid the guards. While the raiding party set off, I took care of the purchases in town. There were also some repairs to be done after the recent battles. When I was about to retire for the evening, one of my gunners woke me. Shocked, he told me that the raiding group had returned, but not all of them survived, and they hadn’t made off with any loot. Apparently, the whole group had been caught by a patrol, and during the fight, one of our men didn’t make it. What a disaster! (-1 Card)
 ~Unity_Event("raid")
 ->endScene
 

@@ -133,10 +133,12 @@ public class EnemyManager : MonoBehaviour
         else if (enemyCurrentHealth >= enemyMaxHealth)
         {
             enemyHealthText.text = enemyMaxHealth.ToString();
+            enemyHealthText.color = Color.white;
         }
         else
         {
             enemyHealthText.text = enemyCurrentHealth.ToString();
+            enemyHealthText.color = Color.red;
         }
     }
 

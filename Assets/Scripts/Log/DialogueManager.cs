@@ -213,10 +213,5 @@ public class DialogueManager : MonoBehaviour
     {
         gameState.Add(id, amount);
     }
-
-    public void EndCurrentDay()
-    {
-        GameManager.instance.UpdateLevel();
-        SceneManager.LoadScene("Scene_Content");
-    }
+    
 }

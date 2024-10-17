@@ -91,10 +91,12 @@ public class PlayerManager : MonoBehaviour
         else if (currentHealth >= maxHealth)
         {
             healthText.text = maxHealth.ToString();
+            healthText.color = Color.white;
         }
         else
         {
             healthText.text = currentHealth.ToString();
+            healthText.color = Color.red;
         }
     }
 }

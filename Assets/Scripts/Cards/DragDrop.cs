@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,9 +7,10 @@ using UnityEngine.EventSystems;
 public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     
+    public Canvas canvas;
     public RectTransform rectTransform;
     private CanvasGroup canvasGroup;
-    private Vector2 startDragPos;
+    public Vector2 startDragPos;
 
     [HideInInspector] public bool foundSlot = false;
     
@@ -16,7 +18,18 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     {
         canvasGroup = GetComponentInParent<CanvasGroup>();
     }
-    
+
+    private void Start()
+    {
+        foreach (Canvas can in FindObjectsOfType<Canvas>())
+        {
+            if (can.CompareTag("Content"))
+            {
+                canvas = can;
+            }
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         
@@ -31,7 +44,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta;
+        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
     
     public void OnEndDrag(PointerEventData eventData)
@@ -42,7 +55,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         if (!foundSlot)
         {
             rectTransform.position = startDragPos;
-            rectTransform.position -= new Vector3(0, 125); //Negate Card Hover Position
+            rectTransform.position -= new Vector3(0, 125*canvas.scaleFactor); //Negate Card Hover Position
             
         }
         else

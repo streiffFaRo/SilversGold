@@ -43,6 +43,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     //Private Variablen
     private float hoverTimer = 0;
     private bool isHovering;
+    private RectTransform rectTransform;
     
 
     private void Start()
@@ -55,6 +56,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         cardDisplay = GetComponent<CardDisplay>();
         recruitManager = FindObjectOfType<RecruitManager>();
         presentDeck = FindObjectOfType<PresentDeck>();
+        rectTransform = GetComponent<RectTransform>();
         
         cardCommandPowerCost = cardStats.cost;
         currentHealth = cardStats.defense;
@@ -130,7 +132,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
             transform.SetSiblingIndex(transform.parent.childCount-1);
             transform.localScale = new Vector3(2f, 2f, 2f);
-            transform.localPosition += new Vector3(0, 125);
+            rectTransform.localPosition += new Vector3(0, 125);
         }
         else if (currentCardMode == CardMode.INRECRUIT)
         {
@@ -147,7 +149,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         else if (currentCardMode == CardMode.INHAND)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
-            transform.localPosition += new Vector3(0, -125);
+            rectTransform.localPosition += new Vector3(0, -125);
         }
         hoverTimer = 0;
         isHovering = false;
@@ -359,10 +361,12 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         else if (currentHealth >= cardStats.defense)
         {
             cardDisplay.inGameDefenseText.text = cardStats.defense.ToString();
+            cardDisplay.inGameDefenseText.color = Color.white;
         }
         else
         {
             cardDisplay.inGameDefenseText.text = currentHealth.ToString();
+            cardDisplay.inGameDefenseText.color = Color.red;
         }
     }
     
