@@ -25,6 +25,8 @@ public class LogEvents : MonoBehaviour
     public void Booty(int amount)
     {
         GameManager.instance.booty += amount;
+        FindObjectOfType<BootyUI>().UpdateBootyUI();
+        VolumeManager.instance.GetComponent<AudioManager>().PlayBootySound();
     }
 
     public void Whaler()
@@ -58,6 +60,11 @@ public class LogEvents : MonoBehaviour
     public void CommandPowerChange(int amount)
     {
         GameManager.instance.startCommandPower += amount;
+    }
+
+    public void ShipHealthChange(int amount)
+    {
+        GameManager.instance.startShipHealth += amount;
     }
     
     public void EndCurrentDay()

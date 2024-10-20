@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -22,6 +23,7 @@ public class BattleSystem : MonoBehaviour
     [Header("Other")]
     public GameObject blurImage;
     public GameObject gameOverMenu;
+    public GameObject levelInfo;
     public GameObject playerTurnInfo;
     public GameObject enemyTurnInfo;
     
@@ -37,12 +39,15 @@ public class BattleSystem : MonoBehaviour
 
     private IEnumerator SetUpBattle()
     {
-        //TODO Level Number Banner
-        //TODO Enemy Ship rolling in
-        //TODO Enemy Dialogue
+        yield return new WaitForSeconds(0.5f);
+        VolumeManager.instance.GetComponent<AudioManager>().PlayPlatzHalterTeller();
+        levelInfo.SetActive(true);
+        levelInfo.GetComponentInChildren<TextMeshProUGUI>().text = "Level " + GameManager.instance.currentLevel;
         yield return new WaitForSeconds(1f);
         StartCoroutine(DrawStartCards());
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
+        levelInfo.SetActive(false);
+        yield return new WaitForSeconds(2f);
         StartCoroutine(PlayerTurn());
     }
 
