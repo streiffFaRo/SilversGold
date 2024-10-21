@@ -132,6 +132,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
             transform.SetSiblingIndex(transform.parent.childCount-1);
             transform.localScale = new Vector3(2f, 2f, 2f);
+            cardDisplay.ShowKeyWordBox();
             rectTransform.localPosition += new Vector3(0, 125);
         }
         else if (currentCardMode == CardMode.INRECRUIT)
@@ -149,6 +150,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         else if (currentCardMode == CardMode.INHAND)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
+            cardDisplay.HideKeyWordBox();
             rectTransform.localPosition += new Vector3(0, -125);
         }
         hoverTimer = 0;
