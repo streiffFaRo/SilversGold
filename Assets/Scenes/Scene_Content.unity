@@ -9778,7 +9778,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 2aec43762b35a344182ae9e2fdd9d56f, type: 2}
     - {fileID: 11400000, guid: 2aec43762b35a344182ae9e2fdd9d56f, type: 2}
   - enemyTitle: (5) Marine Schiff
-    health: 9
+    health: 10
     commandPower: 4
     cannonLevel: 1
     strategy: {fileID: 11400000, guid: 501aada0aafdc1c4396f64f28d59f660, type: 2}
@@ -9799,7 +9799,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7ca5d2ef7e8776940b53a50420e3ca26, type: 2}
     - {fileID: 11400000, guid: 7ca5d2ef7e8776940b53a50420e3ca26, type: 2}
   - enemyTitle: (6) Marine Schiff
-    health: 10
+    health: 12
     commandPower: 4
     cannonLevel: 2
     strategy: {fileID: 11400000, guid: 3ce98e2a70277f549b36b581fbb875b2, type: 2}
@@ -9820,7 +9820,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 2aec43762b35a344182ae9e2fdd9d56f, type: 2}
     - {fileID: 11400000, guid: 2aec43762b35a344182ae9e2fdd9d56f, type: 2}
   - enemyTitle: (7) Marine Fregatte
-    health: 10
+    health: 15
     commandPower: 5
     cannonLevel: 2
     strategy: {fileID: 11400000, guid: 9c6b305db7650ec49804c9d76d077312, type: 2}
@@ -9841,7 +9841,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7ca5d2ef7e8776940b53a50420e3ca26, type: 2}
     - {fileID: 11400000, guid: 83e399d7328db5944a723214a12fa82f, type: 2}
   - enemyTitle: (8) Marine Fregatte
-    health: 12
+    health: 15
     commandPower: 5
     cannonLevel: 2
     strategy: {fileID: 11400000, guid: 501aada0aafdc1c4396f64f28d59f660, type: 2}
@@ -9865,7 +9865,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e61450b589223654691ed0692ab75c48, type: 2}
     - {fileID: 11400000, guid: 70d665203eb3f6441aa04799620607a2, type: 2}
   - enemyTitle: (9) Marine Kriegsschiff
-    health: 15
+    health: 20
     commandPower: 5
     cannonLevel: 3
     strategy: {fileID: 11400000, guid: 3ce98e2a70277f549b36b581fbb875b2, type: 2}

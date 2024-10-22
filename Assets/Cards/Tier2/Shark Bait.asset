@@ -23,12 +23,11 @@ MonoBehaviour:
   dangerLevel: 8
   pointsFielded: 7
   pointsAttack: -10
-  pointsRetreat: 10
+  pointsRetreat: -10
   keyWordCannoneer: 0
   keyWordFielded: 0
   keyWordDeath: 1
   keyWordRetreat: 0
-  script: {fileID: 11500000, guid: c6da78e74d7057c4b8ec32bdee030dd0, type: 3}
   cardEffect: DeathEffects
   para1: 3
   para2: 1

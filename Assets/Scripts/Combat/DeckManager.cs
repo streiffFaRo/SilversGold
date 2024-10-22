@@ -1,11 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class DeckManager : MonoBehaviour
@@ -32,14 +26,11 @@ public class DeckManager : MonoBehaviour
     [Header("Scripts")]
     public BattleSystem battleSystem;
     public PlayerManager playerManager;
-
-    private void Awake()
-    {
-        InitilizeDeck();
-    }
-
+    
     private void Start()
     {
+        InitilizeDeck();
+        
         GameObject displayObj = Instantiate(displayCardPrefab, new Vector3(0, 0, 0), Quaternion.identity, displayStand.transform);
         displayObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         displayUI = displayStand.GetComponentInChildren<CardDisplay>();
@@ -48,6 +39,8 @@ public class DeckManager : MonoBehaviour
 
     private void InitilizeDeck()
     {
+        deckToPrepare = GameManager.instance.playerDeck;
+        
         foreach (Card card in deckToPrepare)
         {
             GameObject currentCardPrefab = Instantiate(displayCardPrefab, new Vector3(0, 0, 0), Quaternion.identity, deckHolder.transform);
@@ -113,7 +106,8 @@ public class DeckManager : MonoBehaviour
     {
         playerManager.UpdateHealth(currentFatigueDamage, false);
         Debug.LogWarning("You fatigued for " + currentFatigueDamage);
-        //TODO Animation & Sound
+        VolumeManager.instance.GetComponent<AudioManager>().PlayShipHitSound();
+        //TODO Animation
         currentFatigueDamage++;
     }
 

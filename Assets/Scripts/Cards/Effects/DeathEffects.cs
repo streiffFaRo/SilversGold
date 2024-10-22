@@ -16,6 +16,7 @@ public class DeathEffects : MonoBehaviour
     {
         card = GetComponent<CardManager>();
         playerManager = FindObjectOfType<PlayerManager>();
+        deckManager = FindObjectOfType<DeckManager>();
         enemyManager = FindObjectOfType<EnemyManager>();
         battleSystem = FindObjectOfType<BattleSystem>();
     }
@@ -32,10 +33,10 @@ public class DeathEffects : MonoBehaviour
                 ShuffleCardIntoDeck();
                 break;
             case 3:
-                StartCoroutine(DrawCard());
+                DrawCard();
                 break;
             case 4:
-                StartCoroutine(AllPlayersDrawCard());
+                AllPlayersDrawCard();
                 break;
             case 5:
                 ChangeShipHealth();
@@ -96,14 +97,13 @@ public class DeathEffects : MonoBehaviour
         }
     }
 
-    public IEnumerator DrawCard()
+    public void DrawCard()
     {
         if (card.owner == Owner.PLAYER)
         {
             for (int i = 0; i < card.cardStats.para2; i++)
             {
                 deckManager.DrawCards();
-                yield return new WaitForSeconds(0.5f);
             }
         }
         else if (card.owner == Owner.ENEMY)
@@ -111,18 +111,16 @@ public class DeathEffects : MonoBehaviour
             for (int i = 0; i < card.cardStats.para2; i++)
             {
                 enemyManager.DrawCards();
-                yield return new WaitForSeconds(0.5f);
             }
         }
     }
 
-    public IEnumerator AllPlayersDrawCard()
+    public void AllPlayersDrawCard()
     {
         for (int i = 0; i < card.cardStats.para2; i++)
         {
             deckManager.DrawCards();
             enemyManager.DrawCards();
-            yield return new WaitForSeconds(0.5f);
         }
     }
 

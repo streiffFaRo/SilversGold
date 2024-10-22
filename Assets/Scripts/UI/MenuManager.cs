@@ -13,7 +13,7 @@ public class MenuManager : MonoBehaviour
 
     public void Continue()
     {
-        GameManager.instance.GetComponent<PlayerInputManager>().PauseMenu();
+        FindObjectOfType<PlayerInputManager>().PauseMenu();
     }
 
     public void MainMenu()

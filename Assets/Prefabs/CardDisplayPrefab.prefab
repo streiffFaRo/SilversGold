@@ -438,7 +438,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3de0d97acb16f34f85ef9dcb8eeef4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   rectTransform: {fileID: 3752291792545165604}
+  startDragPos: {x: 0, y: 0}
   foundSlot: 0
 --- !u!1 &1671555254142944260
 GameObject:
@@ -2432,7 +2434,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d1cfea374e1e9454f8699a2ca2ff9337, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

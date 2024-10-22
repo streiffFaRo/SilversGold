@@ -86,6 +86,8 @@ public class PlayerManager : MonoBehaviour
         
         if (currentHealth <= 0)
         {
+            healthText.text = currentHealth.ToString();
+            healthText.color = Color.red;
             battleSystem.GameOver();
         }
         else if (currentHealth >= maxHealth)

@@ -128,6 +128,7 @@ public class EnemyManager : MonoBehaviour
         if (enemyCurrentHealth <= 0)
         {
             enemyHealthText.text = enemyCurrentHealth.ToString();
+            enemyHealthText.color = Color.red;
             battleSystem.PlayerWon();
         }
         else if (enemyCurrentHealth >= enemyMaxHealth)

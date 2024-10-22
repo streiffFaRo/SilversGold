@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Conservative Loader
   m_EditorClassIdentifier: 
   name: Conservative Loader
-  description: 'Cannoneer Death: Draw a card'
+  description: 'Cannoneer, Death: Draw a card'
   position: A
   artwork: {fileID: 21300000, guid: c6601234a3b63ef4a9386f8182db5849, type: 3}
   cost: 2
@@ -28,7 +28,6 @@ MonoBehaviour:
   keyWordFielded: 0
   keyWordDeath: 1
   keyWordRetreat: 0
-  script: {fileID: 11500000, guid: c6da78e74d7057c4b8ec32bdee030dd0, type: 3}
   cardEffect: DeathEffects
   para1: 3
   para2: 1

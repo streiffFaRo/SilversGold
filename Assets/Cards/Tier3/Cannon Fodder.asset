@@ -13,15 +13,24 @@ MonoBehaviour:
   m_Name: Cannon Fodder
   m_EditorClassIdentifier: 
   name: Cannon Fodder
-  description: 
+  description: 'Death: Shuffle 3 Cards from the depth into your deck'
   position: I
   artwork: {fileID: 21300000, guid: 269eee5bd0392044cb38fd13171b84f6, type: 3}
   cost: 1
   attack: 1
   defense: 2
-  isCannoneer: 0
   tier: 3
   dangerLevel: 3
   pointsFielded: 3
   pointsAttack: 4
   pointsRetreat: -10
+  keyWordCannoneer: 0
+  keyWordFielded: 0
+  keyWordDeath: 0
+  keyWordRetreat: 0
+  cardEffect: DeathEffects
+  para1: 2
+  para2: 3
+  para3: 0
+  para4: 0
+  para5: {fileID: 0}

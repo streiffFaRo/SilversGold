@@ -13,7 +13,7 @@ I have decided to judge strictly. It will show my crew that I'm prepared to be t
 
 ===Weiterziehen===
 I have decided to spare him. I want to give him a second chance. He is very loyal to our cause and he begged me for mercy, which I granted him. However, some of the crew didn't seem happy with this decision. I must expect that they will try to push the limits of what is allowed in the following days. I have to be careful. (-1 Command Power next Battle)
-~Unity_Event("spared")
+~Unity_Event("spare")
 ->endScene
 
 ===endScene===

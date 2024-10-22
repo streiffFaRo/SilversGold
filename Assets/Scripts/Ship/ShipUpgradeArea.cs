@@ -31,6 +31,27 @@ public class ShipUpgradeArea : MonoBehaviour, IPointerClickHandler, IPointerEnte
         var color = image.color;
         color.a = 0;
         image.color = color;
+        
+        LoadCurrentUpgradeLevel();
+    }
+
+    private void LoadCurrentUpgradeLevel()
+    {
+        switch (upgradeType)
+        {
+            case UpgradeType.CANNON:
+                currentUpgradeLevel = GameManager.instance.shipCannonLevel;
+                break;
+            case UpgradeType.CAPTAIN:
+                currentUpgradeLevel = GameManager.instance.shipCaptainLevel;
+                break;
+            case UpgradeType.QUARTERS:
+                currentUpgradeLevel = GameManager.instance.shipQuartersLevel;
+                break;
+            case UpgradeType.HULL:
+                currentUpgradeLevel = GameManager.instance.shipHullLevel;
+                break;
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
