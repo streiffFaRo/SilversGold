@@ -25,6 +25,7 @@ public class RecruitManager : MonoBehaviour
     public GameObject bootyRewardUI;
     public TextMeshProUGUI bootyCountUI;
     
+    
     [Header("Recruit Slots")]
     public GameObject recruitCardDisplay;
     public GameObject normalInfoText;

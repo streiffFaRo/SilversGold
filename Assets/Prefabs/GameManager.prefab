@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 0
   currentTier: 1
-  booty: 120
+  booty: 50
   maxCommandPower: 5
   startCommandPower: 5
   maxShipHealth: 10

@@ -1403,7 +1403,7 @@ PrefabInstance:
       value: You draw 3 <color=#DDA0DD>cards</color> at the start of the battle,
         then you receive a <color=#DDA0DD>card</color> at the start of each turn.
         You can draw another <color=#DDA0DD>card</color> for 2 <color="orange">Command
-        Power</color>. There are also some card effects that give you more cards.
+        Power</color>. You can hold a maximum of 5 cards in your hand.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c0cccc7865bc9e459a0d488f0b575d1, type: 3}
@@ -2581,6 +2581,7 @@ RectTransform:
   - {fileID: 955622392}
   - {fileID: 1339117914}
   - {fileID: 91186067}
+  - {fileID: 645238013}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4375,6 +4376,112 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &645238012
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 316716143}
+    m_Modifications:
+    - target: {fileID: 7054830263151455690, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_Name
+      value: BootyUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455690, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+--- !u!224 &645238013 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+  m_PrefabInstance: {fileID: 645238012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &654774393 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
@@ -5770,6 +5877,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6441b808193d282458aff53fab6d35c8, type: 2}
   - {fileID: 11400000, guid: ac6f10e003ad9a9418999fa23ee19889, type: 2}
   - {fileID: 11400000, guid: e451f7ddc1148954ca503fa4a852b369, type: 2}
+  - {fileID: 11400000, guid: 3b20f7d331897834b9977c1d034177b9, type: 2}
   tier3Cards:
   - {fileID: 11400000, guid: 36002e910253457438a653a11a5bd96b, type: 2}
   - {fileID: 11400000, guid: f8213630564c75d4a83f4afe976117f0, type: 2}
@@ -5777,9 +5885,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ae1f7020cdb4aaa4eb5c252980a11557, type: 2}
   - {fileID: 11400000, guid: b90586c14e5fb8844bfe3da97deb4590, type: 2}
   - {fileID: 11400000, guid: 999a401690f1e92499a761280580f28a, type: 2}
-  bootyRangeTier1: {x: 30, y: 45}
-  bootyRangeTier2: {x: 55, y: 65}
-  bootyRangeTier3: {x: 75, y: 115}
+  - {fileID: 11400000, guid: 3b20f7d331897834b9977c1d034177b9, type: 2}
+  bootyRangeTier1: {x: 50, y: 75}
+  bootyRangeTier2: {x: 60, y: 85}
+  bootyRangeTier3: {x: 100, y: 140}
   bootyRewardUI: {fileID: 1570446316}
   bootyCountUI: {fileID: 237902221}
   recruitCardDisplay: {fileID: 2013076709}
@@ -7797,6 +7906,7 @@ MonoBehaviour:
   discardCardInfoText: {fileID: 1964598289}
   continueButton: {fileID: 2040656170}
   inspectShipButton: {fileID: 946218820}
+  bootyUI: {fileID: 0}
   deckToPrepare: []
   displayCardPrefab: {fileID: 3752291792545165603, guid: bbe3b2293a0233d4c97650353a58e76c, type: 3}
 --- !u!1 &1341911199
@@ -9866,7 +9976,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 70d665203eb3f6441aa04799620607a2, type: 2}
   - enemyTitle: (9) Marine Kriegsschiff
     health: 20
-    commandPower: 5
+    commandPower: 6
     cannonLevel: 3
     strategy: {fileID: 11400000, guid: 3ce98e2a70277f549b36b581fbb875b2, type: 2}
     deckToPrepare:
@@ -12807,7 +12917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505634158202512027, guid: 7c0cccc7865bc9e459a0d488f0b575d1, type: 3}
       propertyPath: m_text
-      value: ' Each <color=#DDA0DD>card</color> has its command cost at the top right.
+      value: ' Each <color=#DDA0DD>card</color> has its command cost at the top left.
         You have to pay these to play them. Your <color="orange">Command Power</color>
         is replenished every turn.'
       objectReference: {fileID: 0}

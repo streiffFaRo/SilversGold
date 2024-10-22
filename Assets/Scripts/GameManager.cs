@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
         //Alle Stats resetten
         currentLevel = 0;
         currentTier = 1;
-        booty = 120;
+        booty = 50;
         maxCommandPower = 5;
         startCommandPower = 5;
         maxShipHealth = 10;

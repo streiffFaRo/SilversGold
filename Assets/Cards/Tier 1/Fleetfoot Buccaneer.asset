@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fleetfoot Buccaneer
   m_EditorClassIdentifier: 
   name: Fleetfoot Buccaneer
-  description: 'Retreat: Zieh zwei Karten'
+  description: 'Retreat: Draw two cards'
   position: I
   artwork: {fileID: 21300000, guid: 8649c1c76eb014a4d9e24547717f1619, type: 3}
   cost: 4
@@ -28,7 +28,6 @@ MonoBehaviour:
   keyWordFielded: 0
   keyWordDeath: 0
   keyWordRetreat: 1
-  script: {fileID: 11500000, guid: 10a54a9ad48260e49808e21a374f4415, type: 3}
   cardEffect: RetreatEffects
   para1: 2
   para2: 2

@@ -22,7 +22,7 @@ MonoBehaviour:
   tier: 0
   dangerLevel: 0
   pointsFielded: 4
-  pointsAttack: 4
+  pointsAttack: -10
   pointsRetreat: -10
   keyWordCannoneer: 0
   keyWordFielded: 0

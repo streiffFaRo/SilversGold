@@ -17,6 +17,7 @@ public class PresentDeck : MonoBehaviour
     public GameObject discardCardInfoText;
     public Button continueButton;
     public Button inspectShipButton;
+    public GameObject bootyUI;
 
     [Header("Variablen")]
     public List<Card> deckToPrepare = new List<Card>();
@@ -38,6 +39,7 @@ public class PresentDeck : MonoBehaviour
     public void ShowDeckPresenter()
     {
         deckPresenter.SetActive(true);
+        bootyUI.SetActive(true);
         SetUpPresentation();
     }
 

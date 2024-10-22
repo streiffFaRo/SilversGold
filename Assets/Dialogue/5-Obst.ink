@@ -7,12 +7,12 @@ After we defeated the navy soldiers, I had one of the ship's officers questioned
 ->endScene
 
 ===kaufen===
-As the well-being of my men is important to me and I can't have the treasure without them, I decided to stop at the next harbour and buy enough fruit for the whole crew so that we don't have any more cases of scurvy. Those affected should recover after a few days.
 ~Unity_Event("fruits")
+As the well-being of my men is important to me and I can't have the treasure without them, I decided to stop at the next harbour and buy enough fruit for the whole crew so that we don't have any more cases of scurvy. Those affected should recover after a few days.
 ->endScene
 
 ===Weiterziehen===
-I decided not to take a diversion to a harbour because of a few sick people. Nobody died and we'll come across a harbour that sells fruit before things get really bad. Even if the sick don't approve of my decision, I'm the captain who has to see that we all get to our destination as quickly as possible, given that the navy knows about us.
+I decided not to take a diversion to a harbour because of a few sick people. Nobody died and we'll come across a harbour that sells fruit before things get really bad. Even if the sick don't approve of my decision, I'm the captain who has to see that we all get to our destination as quickly as possible, given that the navy knows about us. (-1 Command Power next Battle)
 ~Unity_Event("sick")
 ->endScene
 

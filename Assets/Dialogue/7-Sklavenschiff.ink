@@ -6,13 +6,13 @@ After the soldiers were defeated, we only really realised what kind of ship it w
 *[free them]->befreien
 
 ===verkaufen===
-I decided to exchange the slaves for good money at a sugar plantation. It was nothing personal, but we can make good use of the money. If we are defeated, the freed slaves won't be able to help us. So at least we were able to gain an advantage for ourselves and we weren't the ones who drove these people into slavery, rather we passed them on to an interested party.
 ~Unity_Event("sell")
+I decided to exchange the slaves for good money at a sugar plantation. It was nothing personal, but we can make good use of the money. If we are defeated, the freed slaves won't be able to help us. So at least we were able to gain an advantage for ourselves and we weren't the ones who drove these people into slavery, rather we passed them on to an interested party.
 ->endScene
 
 ===befreien===
-Most of the crew wanted to see the slaves free and I saw that as the right thing to do. I, who strive for freedom myself, felt connected to them. Now they can do whatever they want. My decision was very popular with the crew. As a pirate, you don't just rob, sometimes you're also the good guy in the story. (+1 Command Power next Battle)
 ~Unity_Event("free")
+Most of the crew wanted to see the slaves free and I saw that as the right thing to do. I, who strive for freedom myself, felt connected to them. Now they can do whatever they want. My decision was very popular with the crew. As a pirate, you don't just rob, sometimes you're also the good guy in the story. (+1 Command Power next Battle)
 ->endScene
 
 ===endScene===
