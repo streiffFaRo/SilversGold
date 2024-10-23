@@ -71,7 +71,14 @@ public class LogEvents : MonoBehaviour
     {
         cardToPresentSlot.SetActive(false);
         GameManager.instance.UpdateLevel();
-        SceneManager.LoadScene("Scene_Content");
+        if (GameManager.instance.currentLevel >= 12)
+        {
+            SceneManager.LoadScene("Scene_MainMenu");
+        }
+        else
+        {
+            SceneManager.LoadScene("Scene_Content");
+        }
     }
 
 }

@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public int startShipHealth;
     public int deckCardLimit;
     public List<Card> playerDeck = new List<Card>();
+    public List<Card> startDeck = new List<Card>();
 
     [Header("Ship")] 
     public int shipCannonLevel;
@@ -47,6 +48,16 @@ public class GameManager : MonoBehaviour
     public void UpdateLevel()
     {
         currentLevel++;
+
+        if (currentLevel >= 7)
+        {
+            currentTier = 3;
+        }
+        else if (currentLevel >= 4)
+        {
+            currentTier = 2;
+        }
+        
     }
 
     public void SetUpForNextLevel()
@@ -105,7 +116,7 @@ public class GameManager : MonoBehaviour
 
     public void SetUpNewGame()
     {
-        //Alle Stats resetten
+        playerDeck = startDeck;
         currentLevel = 0;
         currentTier = 1;
         booty = 50;
@@ -119,7 +130,6 @@ public class GameManager : MonoBehaviour
         shipCaptainLevel = 0;
         shipQuartersLevel = 0;
         shipHullLevel = 0;
-        //TODO Deck neu aufsetzen
     }
     
 }

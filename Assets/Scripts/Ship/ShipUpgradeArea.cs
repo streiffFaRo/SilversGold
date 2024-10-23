@@ -56,6 +56,11 @@ public class ShipUpgradeArea : MonoBehaviour, IPointerClickHandler, IPointerEnte
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (!infoWindow.isActiveAndEnabled)
+        {
+            infoWindow.gameObject.SetActive(true);
+        }
+        
         infoWindow.UpdateUpgradeInfoWindowUI(currentObjectName[currentUpgradeLevel], currentEffect[currentUpgradeLevel], 
             upgradeCosts[currentUpgradeLevel], upgradedObjectName[currentUpgradeLevel], upgradeEffect[currentUpgradeLevel], this);
     }

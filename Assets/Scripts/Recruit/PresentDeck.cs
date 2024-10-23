@@ -45,7 +45,7 @@ public class PresentDeck : MonoBehaviour
 
     private void SetUpPresentation()
     {
-        InitiateDeck();
+        StartCoroutine(InitiateDeck());
 
         if (cardToAdd == null)
         {
@@ -61,7 +61,7 @@ public class PresentDeck : MonoBehaviour
         }
     }
 
-    private void InitiateDeck()
+    private IEnumerator InitiateDeck()
     {
         foreach (Card card in deckToPrepare)
         {
@@ -71,11 +71,17 @@ public class PresentDeck : MonoBehaviour
             GameObject currentCardPrefab = Instantiate(displayCardPrefab, new Vector3(0, 0, 0), Quaternion.identity, slot);
             currentCardPrefab.GetComponent<CardDisplay>().card = card;
             currentCardPrefab.GetComponentInChildren<DragDrop>().GameObject().SetActive(false);
+            currentCardPrefab.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
             if (cardToAdd != null)
             {
                 currentCardPrefab.GetComponent<CardManager>().currentCardMode = CardMode.TODISCARD;
             }
         }
+
+        yield return new WaitForSeconds(0.01f);
+        Destroy(firstRow.GetComponent<HorizontalLayoutGroup>());
+        Destroy(secondRow.GetComponent<HorizontalLayoutGroup>());
+        Destroy(thirdRow.GetComponent<HorizontalLayoutGroup>());
     }
 
     private Transform FindSlot()

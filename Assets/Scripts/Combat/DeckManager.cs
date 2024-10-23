@@ -214,4 +214,21 @@ public class DeckManager : MonoBehaviour
         }
         
     }
+
+    public void SetAllOtherButtonsPassive()
+    {
+        allPresentCards = FindObjectsOfType<CardManager>();
+
+        foreach (CardManager card in allPresentCards)
+        {
+            for (int i = 0; i < allPresentCards.Length; i++)
+            {
+                if (card.currentCardMode == CardMode.INPLAY && card.owner == Owner.PLAYER)
+                {
+                    card.SetButtonsPassive();
+                        
+                }
+            }
+        }
+    }
 }

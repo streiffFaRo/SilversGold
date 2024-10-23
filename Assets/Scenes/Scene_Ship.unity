@@ -529,7 +529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &357185437
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1270,11 +1270,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeCosts.Array.data[0]
-      value: 125
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeCosts.Array.data[1]
-      value: 300
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeCosts.Array.data[2]
@@ -1468,11 +1468,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeCosts.Array.data[0]
-      value: 125
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeCosts.Array.data[1]
-      value: 300
+      value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeCosts.Array.data[2]
@@ -1806,7 +1806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeCosts.Array.data[0]
-      value: 125
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeCosts.Array.data[1]
@@ -2684,11 +2684,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeCosts.Array.data[0]
-      value: 125
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeCosts.Array.data[1]
-      value: 300
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeCosts.Array.data[2]

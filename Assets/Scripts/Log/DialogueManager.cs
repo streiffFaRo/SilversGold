@@ -137,7 +137,6 @@ public class DialogueManager : MonoBehaviour
         DisplayChoices();
         canContinueToNextLine = true;
         breakLineFormationChain = false;
-        continueButton.SetActive(true);
     }
 
     private void DisplayChoices()
@@ -162,6 +161,14 @@ public class DialogueManager : MonoBehaviour
             choices[j].gameObject.SetActive(false);
         }
         
+        if (index >= 2)
+        {
+            continueButton.SetActive(false);
+        }
+        else
+        {
+            continueButton.SetActive(true);
+        }
     }
     
     private void HideChoices()

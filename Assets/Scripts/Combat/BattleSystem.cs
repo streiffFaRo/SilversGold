@@ -84,6 +84,7 @@ public class BattleSystem : MonoBehaviour
     {
         VolumeManager.instance.GetComponent<AudioManager>().PlayPlatzHalterFlasche();
         enemyTurnInfo.SetActive(true);
+        deckManager.SetAllOtherButtonsPassive();
         yield return new WaitForSeconds(1f);
         enemyTurnInfo.SetActive(false);
         state = BattleState.ENEMYTURN;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Deckhand Instructor
   m_EditorClassIdentifier: 
   name: Deckhand Instructor
-  description: 'Death: Add 3 Coast Guards to your Deck'
+  description: 'Death: Add 3 Coast Guards (3/2) to your Deck'
   position: I
   artwork: {fileID: 21300000, guid: 626b9cddb29049e4cac50cd87b419945, type: 3}
   cost: 4
@@ -28,7 +28,6 @@ MonoBehaviour:
   keyWordFielded: 0
   keyWordDeath: 1
   keyWordRetreat: 0
-  script: {fileID: 11500000, guid: c6da78e74d7057c4b8ec32bdee030dd0, type: 3}
   cardEffect: DeathEffects
   para1: 1
   para2: 3

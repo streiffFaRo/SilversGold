@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 2800000, guid: 65f0e363b74cf5845ab8c3fbc14f39ac, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db6ea5deb996ae469a5a741ca6724a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 0
+  currentLevel: 1
   currentTier: 1
   booty: 50
   maxCommandPower: 5
@@ -53,6 +53,19 @@ MonoBehaviour:
   startShipHealth: 10
   deckCardLimit: 15
   playerDeck:
+  - {fileID: 11400000, guid: a855d895e859078468eb1b36128e1610, type: 2}
+  - {fileID: 11400000, guid: a855d895e859078468eb1b36128e1610, type: 2}
+  - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}
+  - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}
+  - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}
+  - {fileID: 11400000, guid: ed6595bb574c20d47aed5cb1d6f91d93, type: 2}
+  - {fileID: 11400000, guid: ed6595bb574c20d47aed5cb1d6f91d93, type: 2}
+  - {fileID: 11400000, guid: ed6595bb574c20d47aed5cb1d6f91d93, type: 2}
+  - {fileID: 11400000, guid: 7a8622c10130dc446890b836e39c1363, type: 2}
+  - {fileID: 11400000, guid: 3060251364ca1f244b8c869548695bfe, type: 2}
+  - {fileID: 11400000, guid: e6f2de67b0114dc4c830d88e08573d20, type: 2}
+  - {fileID: 11400000, guid: 77733be589a958f4e8ce7a9c0783fb3d, type: 2}
+  startDeck:
   - {fileID: 11400000, guid: a855d895e859078468eb1b36128e1610, type: 2}
   - {fileID: 11400000, guid: a855d895e859078468eb1b36128e1610, type: 2}
   - {fileID: 11400000, guid: 9a93252ae2556af4fb756e6c10c4f2ca, type: 2}

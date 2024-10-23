@@ -118,6 +118,7 @@ public class EnemyManager : MonoBehaviour
         if (positiveNumber)
         {
             enemyCurrentHealth += amount;
+            VolumeManager.instance.GetComponent<AudioManager>().PlayUpgradeSound();
         }
         else
         {
@@ -133,6 +134,7 @@ public class EnemyManager : MonoBehaviour
         }
         else if (enemyCurrentHealth >= enemyMaxHealth)
         {
+            enemyCurrentHealth = enemyMaxHealth;
             enemyHealthText.text = enemyMaxHealth.ToString();
             enemyHealthText.color = Color.white;
         }

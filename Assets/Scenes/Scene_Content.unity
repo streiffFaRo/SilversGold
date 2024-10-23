@@ -4636,18 +4636,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 316716144}
-        m_TargetAssemblyTypeName: UISound, Assembly-CSharp
-        m_MethodName: PlayPlatzhalterTeller
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &678991159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7906,7 +7894,7 @@ MonoBehaviour:
   discardCardInfoText: {fileID: 1964598289}
   continueButton: {fileID: 2040656170}
   inspectShipButton: {fileID: 946218820}
-  bootyUI: {fileID: 0}
+  bootyUI: {fileID: 1689857011}
   deckToPrepare: []
   displayCardPrefab: {fileID: 3752291792545165603, guid: bbe3b2293a0233d4c97650353a58e76c, type: 3}
 --- !u!1 &1341911199
@@ -10494,6 +10482,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1689857011 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7054830263151455690, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
+  m_PrefabInstance: {fileID: 645238012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1734363529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13096,22 +13089,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1505530162881684072, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}
-      propertyPath: currentLevel
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3116091751872732117, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}
-      propertyPath: pauseMenuCanvas
-      value: 
-      objectReference: {fileID: 742372732}
-    - target: {fileID: 3709199457768638472, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}
-      propertyPath: m_Icon
-      value: 
-      objectReference: {fileID: 2800000, guid: 65f0e363b74cf5845ab8c3fbc14f39ac, type: 3}
     - target: {fileID: 3709199457768638472, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}
       propertyPath: m_Name
       value: ///GameManager
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3116091751872732117, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}

@@ -14,6 +14,7 @@ public class RetreatEffects : MonoBehaviour
     {
         card = GetComponent<CardManager>();
         playerManager = FindObjectOfType<PlayerManager>();
+        deckManager = FindObjectOfType<DeckManager>();
         enemyManager = FindObjectOfType<EnemyManager>();
         battleSystem = FindObjectOfType<BattleSystem>();
     }
@@ -26,7 +27,7 @@ public class RetreatEffects : MonoBehaviour
                 ShuffleCardIntoDeck();
                 break;
             case 2:
-                StartCoroutine(DrawCard());
+                DrawCard();
                 break;
             case 3:
                 ChangeShipHealth();
@@ -62,14 +63,15 @@ public class RetreatEffects : MonoBehaviour
         }
     }
 
-    public IEnumerator DrawCard()
+    public void DrawCard()
     {
         if (card.owner == Owner.PLAYER)
         {
             for (int i = 0; i < card.cardStats.para2; i++)
             {
+                Debug.Log(i);
                 deckManager.DrawCards();
-                yield return new WaitForSeconds(0.5f);
+                Debug.Log("Draw done");
             }
         }
         else if (card.owner == Owner.ENEMY)
@@ -77,7 +79,6 @@ public class RetreatEffects : MonoBehaviour
             for (int i = 0; i < card.cardStats.para2; i++)
             {
                 enemyManager.DrawCards();
-                yield return new WaitForSeconds(0.5f);
             }
         }
     }

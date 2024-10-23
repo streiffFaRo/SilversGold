@@ -139,6 +139,13 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
         }
+        else if (currentCardMode == CardMode.INDECK && battleSystem.state != BattleState.PLAYERTURN && battleSystem.state != BattleState.ENEMYTURN)
+        {
+            transform.SetSiblingIndex(transform.parent.childCount-1);
+            transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+            cardDisplay.ShowKeyWordBox();
+            VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -152,6 +159,11 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             transform.localScale = new Vector3(1f, 1f, 1f);
             cardDisplay.HideKeyWordBox();
             rectTransform.localPosition += new Vector3(0, -125);
+        }
+        else if (currentCardMode == CardMode.INDECK && battleSystem.state != BattleState.PLAYERTURN && battleSystem.state != BattleState.ENEMYTURN)
+        {
+            transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+            cardDisplay.HideKeyWordBox();
         }
         hoverTimer = 0;
         isHovering = false;
@@ -304,10 +316,11 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     private IEnumerator HandleRetreatStats()
     {
         currentCardMode = CardMode.INDECK;
+        GetComponent<RetreatEffects>()?.TriggerRetreatEffect();
         yield return new WaitForSeconds(0.05f);
+        currentHealth = cardStats.defense;
         deckManager.HideDisplayCard();
         cardIngameSlot.currentCard = null;
-        GetComponent<RetreatEffects>()?.TriggerRetreatEffect();
         handCard.SetActive(true);
         handCard.transform.localScale = new Vector3(1f, 1f, 1f);
         GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);

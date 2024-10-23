@@ -38,18 +38,21 @@ public class UpgradeInfoWindowUI : MonoBehaviour
 
     public void BuyUpgrade()
     {
-        if (GameManager.instance.booty >= upgradeCostWhenBought)
+        if (upgradeCostWhenBought != null)
         {
-            GameManager.instance.booty -= upgradeCostWhenBought;
-            areaToUpgradeWhenBought.Upgrade();
-            VolumeManager.instance.GetComponent<AudioManager>().PlayUpgradeSound();
-            //TODO Animation
-            //TODO Upgrade Sound
-            bootyUI.UpdateBootyUI();
-        }
-        else
-        {
-            Debug.LogWarning("Nicht genug Beute!");
+            if (GameManager.instance.booty >= upgradeCostWhenBought)
+            {
+                GameManager.instance.booty -= upgradeCostWhenBought;
+                areaToUpgradeWhenBought.Upgrade();
+                VolumeManager.instance.GetComponent<AudioManager>().PlayUpgradeSound();
+                //TODO Animation
+                //TODO Upgrade Sound
+                bootyUI.UpdateBootyUI();
+            }
+            else
+            {
+                Debug.LogWarning("Nicht genug Beute!");
+            }
         }
     }
 

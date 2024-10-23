@@ -146,6 +146,7 @@ public class EnemyAnalysis : MonoBehaviour
                             
                             TreeNode playArtyCard = new();
                             possiblePlays.Add(playArtyCard);
+                            score *= strat.broadsideMod;
                             playArtyCard.score = score;
                             playArtyCard.actionIndex = actionIndex;
                             playArtyCard.name = "PlayArtyCard";
