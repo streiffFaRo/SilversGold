@@ -163,6 +163,7 @@ public class DeckManager : MonoBehaviour
             {
                 Debug.LogWarning("Keine Arty Einheiten für Breitseite!");
             }
+            VolumeManager.instance.GetComponent<AudioManager>().PlayButtonPressSound();
         }
     }
 

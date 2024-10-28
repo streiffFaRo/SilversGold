@@ -40,7 +40,7 @@ public class BattleSystem : MonoBehaviour
     private IEnumerator SetUpBattle()
     {
         yield return new WaitForSeconds(0.5f);
-        VolumeManager.instance.GetComponent<AudioManager>().PlayPlatzHalterTeller();
+        VolumeManager.instance.GetComponent<AudioManager>().PLayEndTurnBellSound();
         levelInfo.SetActive(true);
         levelInfo.GetComponentInChildren<TextMeshProUGUI>().text = "Level " + GameManager.instance.currentLevel;
         yield return new WaitForSeconds(1f);
@@ -68,7 +68,7 @@ public class BattleSystem : MonoBehaviour
 
     public IEnumerator PlayerTurn()
     {
-        VolumeManager.instance.GetComponent<AudioManager>().PlayPlatzHalterFlasche();
+        VolumeManager.instance.GetComponent<AudioManager>().PLayEndTurnBellSound();
         playerTurnInfo.SetActive(true);
         yield return new WaitForSeconds(1f);
         playerTurnInfo.SetActive(false);
@@ -82,7 +82,7 @@ public class BattleSystem : MonoBehaviour
 
     public IEnumerator EnemyTurn()
     {
-        VolumeManager.instance.GetComponent<AudioManager>().PlayPlatzHalterFlasche();
+        VolumeManager.instance.GetComponent<AudioManager>().PLayEndTurnBellSound();
         enemyTurnInfo.SetActive(true);
         deckManager.SetAllOtherButtonsPassive();
         yield return new WaitForSeconds(1f);

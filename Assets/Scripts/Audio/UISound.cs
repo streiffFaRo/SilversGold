@@ -27,5 +27,29 @@ public class UISound : MonoBehaviour
             audioManager.platzhalterFlasche.Play();
         }
     }
+    
+    public void PlayPressSound()
+    {
+        if (audioManager != null)
+        {
+            audioManager.PlayButtonPressSound();
+        }
+    }
+    
+    public void PlayHoverSound()
+    {
+        if (audioManager != null)
+        {
+            audioManager.PlayButtonHoverSound();
+        }
+    }
+
+    public void PlayBellSound()
+    {
+        if (audioManager != null)
+        {
+            audioManager.PLayEndTurnBellSound();
+        }
+    }
 
 }

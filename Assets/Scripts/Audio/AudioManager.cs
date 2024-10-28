@@ -21,10 +21,12 @@ public class AudioManager : MonoBehaviour
     public AudioSource shipDeathSound;
     [Header("UISounds")]
     public PlayRandomSound buttonPressSound;
+    public PlayRandomSound buttonHoverSound;
     [Header("Other")] 
     public PlayRandomSound cannonSound;
     public AudioSource upgradeSound;
     public AudioSource bootySound;
+    public AudioSource endTurnBellSound;
 
     //Platzhalter
     public void PlayPlatzHalterTeller()
@@ -85,6 +87,11 @@ public class AudioManager : MonoBehaviour
         buttonPressSound.PlaySound();
     }
     
+    public void PlayButtonHoverSound()
+    {
+        buttonHoverSound.PlaySound();
+    }
+    
     //Other
     public void PlayCannonSound()
     {
@@ -99,6 +106,11 @@ public class AudioManager : MonoBehaviour
     public void PlayBootySound()
     {
         bootySound.Play();
+    }
+    
+    public void PLayEndTurnBellSound()
+    {
+        endTurnBellSound.Play();
     }
 
 }
