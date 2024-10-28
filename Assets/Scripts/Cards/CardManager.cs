@@ -398,17 +398,16 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             enemyManager.discardPile.Add(this);
             enemyManager.UpdateEnemyUI();
         }
-        
         GetComponent<DeathEffects>()?.TriggerDeathEffect();
         GetComponent<DiesWhenAlone>()?.CheckIfAlone();
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardDeathSound();
         cardIngameSlot.currentCard = null;
-        gameObject.SetActive(false);
+        currentCardMode = CardMode.INDECK;
+        currentHealth = cardStats.defense;
+        cardDisplay.SetUpCardUI();
         handCard.SetActive(true);
         inGameCard.SetActive(false);
-        currentCardMode = CardMode.INDECK;
-        cardDisplay.SetUpCardUI();
-        
+        gameObject.SetActive(false);
     }
     
 }
