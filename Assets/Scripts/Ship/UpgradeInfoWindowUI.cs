@@ -10,10 +10,8 @@ public class UpgradeInfoWindowUI : MonoBehaviour
 {
     //Verantwortlich für die Anzeige der Upgradeinfos an den Spieler, Initiator des Upgrades
     
-    public TextMeshProUGUI currentNameUI;
     public TextMeshProUGUI currentEffectUI;
     public TextMeshProUGUI upgradeCostUI;
-    public TextMeshProUGUI upgradedNameUI;
     public TextMeshProUGUI upgradedEffectUI;
 
     [Header("Scripts")]
@@ -24,12 +22,10 @@ public class UpgradeInfoWindowUI : MonoBehaviour
     private ShipUpgradeArea areaToUpgradeWhenBought;
     
     
-    public void UpdateUpgradeInfoWindowUI(string currentObjName, string currentEffect, int upgradeCost, string upgradedObjName, string upgradedEffect, ShipUpgradeArea areaToUpgrade)
+    public void UpdateUpgradeInfoWindowUI(string currentEffect, int upgradeCost, string upgradedEffect, ShipUpgradeArea areaToUpgrade)
     {
-        currentNameUI.text = currentObjName;
         currentEffectUI.text = currentEffect;
         upgradeCostUI.text = upgradeCost.ToString();
-        upgradedNameUI.text = upgradedObjName;
         upgradedEffectUI.text = upgradedEffect;
 
         upgradeCostWhenBought = upgradeCost;

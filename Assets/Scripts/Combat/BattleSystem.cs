@@ -34,6 +34,7 @@ public class BattleSystem : MonoBehaviour
     private void Start()
     {
         state = BattleState.START;
+        blurImage.SetActive(true);
         StartCoroutine(SetUpBattle());
     }
 
@@ -47,6 +48,7 @@ public class BattleSystem : MonoBehaviour
         StartCoroutine(DrawStartCards());
         yield return new WaitForSeconds(1f);
         levelInfo.SetActive(false);
+        blurImage.SetActive(false);
         yield return new WaitForSeconds(2f);
         StartCoroutine(PlayerTurn());
     }

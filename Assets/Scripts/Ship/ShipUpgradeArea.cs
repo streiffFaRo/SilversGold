@@ -16,10 +16,8 @@ public class ShipUpgradeArea : MonoBehaviour, IPointerClickHandler, IPointerEnte
     [Header("UpgradeInformation")]
     public int currentUpgradeLevel;
     
-    public string[] currentObjectName;
     public string[] currentEffect;
     public int[] upgradeCosts;
-    public string[] upgradedObjectName;
     public string[] upgradeEffect;
     
     public Image image;
@@ -61,8 +59,8 @@ public class ShipUpgradeArea : MonoBehaviour, IPointerClickHandler, IPointerEnte
             infoWindow.gameObject.SetActive(true);
         }
         
-        infoWindow.UpdateUpgradeInfoWindowUI(currentObjectName[currentUpgradeLevel], currentEffect[currentUpgradeLevel], 
-            upgradeCosts[currentUpgradeLevel], upgradedObjectName[currentUpgradeLevel], upgradeEffect[currentUpgradeLevel], this);
+        infoWindow.UpdateUpgradeInfoWindowUI(currentEffect[currentUpgradeLevel], 
+            upgradeCosts[currentUpgradeLevel], upgradeEffect[currentUpgradeLevel], this);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -106,8 +104,8 @@ public class ShipUpgradeArea : MonoBehaviour, IPointerClickHandler, IPointerEnte
                 break;
         }
         //TODO Imageaustausch (Visuell) bei Upgrade -> Bsp. Kanonen von Schwarz zu Silber zu Gold ...
-        infoWindow.UpdateUpgradeInfoWindowUI(currentObjectName[currentUpgradeLevel], currentEffect[currentUpgradeLevel], 
-            upgradeCosts[currentUpgradeLevel], upgradedObjectName[currentUpgradeLevel], upgradeEffect[currentUpgradeLevel], this);
+        infoWindow.UpdateUpgradeInfoWindowUI(currentEffect[currentUpgradeLevel], 
+            upgradeCosts[currentUpgradeLevel], upgradeEffect[currentUpgradeLevel], this);
     }
 }
 public enum UpgradeType
