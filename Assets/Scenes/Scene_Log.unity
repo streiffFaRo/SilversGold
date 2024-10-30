@@ -183,8 +183,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: this is story text blah blah blah
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 320002a8d35c1314f8051a881edf98a5, type: 2}
+  m_sharedMaterial: {fileID: -3473037699113836159, guid: 320002a8d35c1314f8051a881edf98a5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -568,6 +568,66 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 69755541208195320, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 69755541208195320, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 69755542222343213, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 69755542222343213, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 69755542593779971, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 69755542593779971, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207683424715857909, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207683424715857909, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207683424715857909, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207683425847456544, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207683425847456544, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207683425847456544, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207683426549106190, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207683426549106190, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4207683426549106190, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4668370009909214811, guid: 0f81ccc7fc55d514d9a58330c100e103, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1434,8 +1494,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Logbook
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8e79c4927fe748548ad784c2dfa6595b, type: 2}
+  m_sharedMaterial: {fileID: 7049020175757930699, guid: 8e79c4927fe748548ad784c2dfa6595b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
