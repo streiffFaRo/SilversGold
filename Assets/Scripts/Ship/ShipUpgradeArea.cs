@@ -15,6 +15,9 @@ public class ShipUpgradeArea : MonoBehaviour, IPointerClickHandler, IPointerEnte
     
     [Header("UpgradeInformation")]
     public int currentUpgradeLevel;
+
+    public GameObject silverUpgrade;
+    public GameObject goldUpgrade;
     
     public string[] currentEffect;
     public int[] upgradeCosts;
@@ -49,6 +52,20 @@ public class ShipUpgradeArea : MonoBehaviour, IPointerClickHandler, IPointerEnte
             case UpgradeType.HULL:
                 currentUpgradeLevel = GameManager.instance.shipHullLevel;
                 break;
+        }
+        
+        SetVisuellUpgrade();
+    }
+
+    public void SetVisuellUpgrade()
+    {
+        if (currentUpgradeLevel == 1)
+        {
+            silverUpgrade.SetActive(true);
+        }
+        else if (currentUpgradeLevel == 2)
+        {
+            goldUpgrade.SetActive(true);
         }
     }
 
@@ -88,6 +105,7 @@ public class ShipUpgradeArea : MonoBehaviour, IPointerClickHandler, IPointerEnte
     public void Upgrade()
     {
         currentUpgradeLevel++;
+        SetVisuellUpgrade();
         switch (upgradeType)
         {
             case UpgradeType.CANNON:
