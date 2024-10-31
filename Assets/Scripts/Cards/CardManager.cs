@@ -100,73 +100,82 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (currentCardMode == CardMode.INPLAY && battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
+        if (battleSystem != null)
         {
-            if (!attackButton.gameObject.activeInHierarchy)
+            if (currentCardMode == CardMode.INPLAY && battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
             {
-                deckManager.SetAllOtherButtonsPassive(this);
+                if (!attackButton.gameObject.activeInHierarchy)
+                {
+                    deckManager.SetAllOtherButtonsPassive(this);
+                }
+                else
+                {
+                    SetButtonsPassive();
+                }
             }
-            else
+            else if (currentCardMode == CardMode.INRECRUIT)
             {
-                SetButtonsPassive();
+                recruitManager.CardChoosen(cardStats);
             }
-        }
-        else if (currentCardMode == CardMode.INRECRUIT)
-        {
-            recruitManager.CardChoosen(cardStats);
-        }
-        else if (currentCardMode == CardMode.TODISCARD)
-        {
-            presentDeck.DiscardCard(cardStats);
+            else if (currentCardMode == CardMode.TODISCARD)
+            {
+                presentDeck.DiscardCard(cardStats);
+            }
         }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (currentCardMode == CardMode.INPLAY && battleSystem.state != BattleState.WON && battleSystem.state != BattleState.LOST)
+        if (battleSystem != null)
         {
-            isHovering = true;
-        }
-        else if (currentCardMode == CardMode.INHAND && battleSystem.state != BattleState.WON && battleSystem.state != BattleState.LOST)
-        {
-            VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
-            transform.SetSiblingIndex(transform.parent.childCount-1);
-            transform.localScale = new Vector3(2f, 2f, 2f);
-            cardDisplay.ShowKeyWordBox();
-            rectTransform.localPosition += new Vector3(0, 125);
-        }
-        else if (currentCardMode == CardMode.INRECRUIT)
-        {
-            VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
-        }
-        else if (currentCardMode == CardMode.INDECK && battleSystem.state != BattleState.PLAYERTURN && battleSystem.state != BattleState.ENEMYTURN)
-        {
-            transform.SetSiblingIndex(transform.parent.childCount-1);
-            transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
-            cardDisplay.ShowKeyWordBox();
-            VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
+            if (currentCardMode == CardMode.INPLAY && battleSystem.state != BattleState.WON && battleSystem.state != BattleState.LOST)
+            {
+                isHovering = true;
+            }
+            else if (currentCardMode == CardMode.INHAND && battleSystem.state != BattleState.WON && battleSystem.state != BattleState.LOST)
+            {
+                VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
+                transform.SetSiblingIndex(transform.parent.childCount-1);
+                transform.localScale = new Vector3(2f, 2f, 2f);
+                cardDisplay.ShowKeyWordBox();
+                rectTransform.localPosition += new Vector3(0, 125);
+            }
+            else if (currentCardMode == CardMode.INRECRUIT)
+            {
+                VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
+            }
+            else if (currentCardMode == CardMode.INDECK && battleSystem.state != BattleState.PLAYERTURN && battleSystem.state != BattleState.ENEMYTURN)
+            {
+                transform.SetSiblingIndex(transform.parent.childCount-1);
+                transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+                cardDisplay.ShowKeyWordBox();
+                VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
+            }
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (currentCardMode == CardMode.INPLAY)
+        if (battleSystem != null)
         {
-            deckManager.HideDisplayCard();
+            if (currentCardMode == CardMode.INPLAY)
+            {
+                deckManager.HideDisplayCard();
+            }
+            else if (currentCardMode == CardMode.INHAND)
+            {
+                transform.localScale = new Vector3(1f, 1f, 1f);
+                cardDisplay.HideKeyWordBox();
+                rectTransform.localPosition += new Vector3(0, -125);
+            }
+            else if (currentCardMode == CardMode.INDECK && battleSystem.state != BattleState.PLAYERTURN && battleSystem.state != BattleState.ENEMYTURN)
+            {
+                transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+                cardDisplay.HideKeyWordBox();
+            }
+            hoverTimer = 0;
+            isHovering = false;
         }
-        else if (currentCardMode == CardMode.INHAND)
-        {
-            transform.localScale = new Vector3(1f, 1f, 1f);
-            cardDisplay.HideKeyWordBox();
-            rectTransform.localPosition += new Vector3(0, -125);
-        }
-        else if (currentCardMode == CardMode.INDECK && battleSystem.state != BattleState.PLAYERTURN && battleSystem.state != BattleState.ENEMYTURN)
-        {
-            transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
-            cardDisplay.HideKeyWordBox();
-        }
-        hoverTimer = 0;
-        isHovering = false;
         
     }
     

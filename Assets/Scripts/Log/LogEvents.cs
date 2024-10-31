@@ -31,8 +31,8 @@ public class LogEvents : MonoBehaviour
 
     public void Whaler()
     {
-        //TODO Check if player has 50 Booty! -> Sonst Neuer Text in ink Story
-        Booty(-50);
+        //TODO Check if player has 30 Booty! -> Sonst Neuer Text in ink Story
+        Booty(-30);
         GameManager.instance.playerDeck.Add(whaler);
     }
 

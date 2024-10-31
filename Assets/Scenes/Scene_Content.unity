@@ -1403,7 +1403,8 @@ PrefabInstance:
       value: You draw 3 <color=#DDA0DD>cards</color> at the start of the battle,
         then you receive a <color=#DDA0DD>card</color> at the start of each turn.
         You can draw another <color=#DDA0DD>card</color> for 2 <color="orange">Command
-        Power</color>. You can hold a maximum of 5 cards in your hand.
+        Power</color>. You can hold a maximum of 5 <color=#DDA0DD>cards</color> in
+        your hand.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c0cccc7865bc9e459a0d488f0b575d1, type: 3}
