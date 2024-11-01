@@ -1,17 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class LogEvents : MonoBehaviour
 {
 
+    public GameState gamestate;
     public GameObject cardToPresentSlot;
     public GameObject displayCardPrefab;
     public Card whaler;
 
     private Card cardAtRisk;
+
+
+    private void Awake()
+    {
+        gamestate.Clear("gotBooty");
+    }
 
     public void PresentCard(Card cardToPresent)
     {
@@ -66,7 +75,19 @@ public class LogEvents : MonoBehaviour
     {
         GameManager.instance.startShipHealth += amount;
     }
-    
+
+
+    public void CheckPlayerBooty(int amountToCheck)
+    {
+        if (amountToCheck <= GameManager.instance.booty)
+        {
+            if (gamestate != null)
+            {
+                gamestate.Add("gotBooty", 1);
+            }
+        }
+    }
+
     public void EndCurrentDay()
     {
         cardToPresentSlot.SetActive(false);

@@ -31,7 +31,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine displayLineCorutine;
     private bool canContinueToNextLine = false;
     private bool breakLineFormationChain = false;
-    private GameState gameState;
+    public GameState gameState;
     
 
     private void Awake()
@@ -220,5 +220,4 @@ public class DialogueManager : MonoBehaviour
     {
         gameState.Add(id, amount);
     }
-    
 }

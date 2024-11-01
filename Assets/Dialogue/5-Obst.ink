@@ -1,14 +1,24 @@
 INCLUDE Utility.ink
 ->main
 ===main===
+~Unity_Event("checkBooty")
 After we defeated the navy soldiers, I had one of the ship's officers questioned. Apparently they were given specific orders to attack our ship and capture the treasure map. I think one of the merchants we took it from must have reported it. Perhaps the map was even intended for the navy. One thing is for sure: these waters are no longer as safe as I thought. There will certainly be others who try to get their hands on the map. Another problem is spreading, some of my people are suffering from scurvy, a disease. We have to buy fruit to cure them, but that will cost us. Only a few men are affected, is it worth it?
-*[Buy Fruits (50 Booty)]->kaufen
+*[Buy Fruits (50 Booty)]->Markt
 *[Continue travelling]->Weiterziehen
 ->endScene
 
+===Markt===
+As the well-being of my men is important to me and I can't have the treasure without them, I decided to stop at the next harbour and made my way to the marketplace. Fruit is very popular here. The prices are relatively high.
+{Get_State("gotBooty") ==1: ->kaufen}->NoBooty
+
+===NoBooty===
+When I saw the prices, I realised that we no longer had enough booty to buy the fruit. But I was determined to do everything I could for my crew. So I spoke to the trader and tried to bargain him down. But he didn't give in and because there were a lot of guards at this market, it wouldn't have been worth attacking. So I had to return to my men empty-handed. The men were disappointed and some questioned my abilities as a leader(-1 Command Power next Battle)
+~Unity_Event("sick")
+->endScene
+
 ===kaufen===
+Despite the high prices, it was worth spending the money on my men.  So I bought enough fruits for the whole crew so that we don't have any more cases of scurvy. Those affected should recover after a few days.
 ~Unity_Event("fruits")
-As the well-being of my men is important to me and I can't have the treasure without them, I decided to stop at the next harbour and buy enough fruit for the whole crew so that we don't have any more cases of scurvy. Those affected should recover after a few days.
 ->endScene
 
 ===Weiterziehen===

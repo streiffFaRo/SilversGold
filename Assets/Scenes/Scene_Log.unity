@@ -309,6 +309,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1505530162881684072, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}
+      propertyPath: currentLevel
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3116091751872732117, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}
       propertyPath: pauseMenuCanvas
       value: 
@@ -1821,6 +1825,7 @@ MonoBehaviour:
   - {fileID: 686227719}
   - {fileID: 1041495130}
   typingSpeed: 0.03
+  gameState: {fileID: 1953621317}
 --- !u!114 &1953621317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1833,7 +1838,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714cef855098a3146a3bd3ae80ee7aea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: []
+  states:
+  - id: gotBooty
+    amount: 0
 --- !u!114 &1953621318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1891,6 +1898,18 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 11400000, guid: 94d4e3d8d87de9340accc8ef10366a0c, type: 2}
             m_ObjectArgumentAssemblyTypeName: Card, Assembly-CSharp
             m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1953621319}
+          m_TargetAssemblyTypeName: LogEvents, Assembly-CSharp
+          m_MethodName: CheckPlayerBooty
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 30
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -2071,6 +2090,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - name: checkBooty
+    onEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1953621319}
+          m_TargetAssemblyTypeName: LogEvents, Assembly-CSharp
+          m_MethodName: CheckPlayerBooty
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 50
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1953621319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2083,6 +2118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785a530cde52d7d469b60ece09820e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamestate: {fileID: 1953621317}
   cardToPresentSlot: {fileID: 761213726}
   displayCardPrefab: {fileID: 3752291792545165603, guid: bbe3b2293a0233d4c97650353a58e76c, type: 3}
   whaler: {fileID: 11400000, guid: 94d4e3d8d87de9340accc8ef10366a0c, type: 2}

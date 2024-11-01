@@ -6,9 +6,8 @@ Today, I took a look at the map with my navigator, and we have almost covered th
 *[Take the detour]->Umfahren
 
 ===Schaden
-As expected, the water is just barely deep enough to follow the route. We are making progress, but the hull has suffered damage. The nearest port is still a few days away. We've managed to stabilize the situation, but it's not ideal. With all the battles we've already fought, it's only a matter of time before the next Navy ship comes to attack us. (-3 Shiphealth next Battle)
 ~Unity_Event("damage")
-
+As expected, the water is just barely deep enough to follow the route. We are making progress, but the hull has suffered damage. The nearest port is still a few days away. We've managed to stabilize the situation, but it's not ideal. With all the battles we've already fought, it's only a matter of time before the next Navy ship comes to attack us. (-3 Shiphealth next Battle)
 ->endScene
 
 ===Umfahren

@@ -8,8 +8,8 @@ We are stopping at a small island. We discovered a cave system that might be wor
 *[Continue travelling]->Weiterziehen
 
 ===Erforschen===
-I have sent a squad of my crew to explore the cave system. To take some of the fear out of them, I promised the volunteers an extra ration of rum. Some time later they returned with some crates of gold, as it turns out the cave was an active smuggler's hideout. My men managed to steal a few crates undetected. What a discovery! (+50 Booty)
 ~Unity_Event("booty")
+I have sent a squad of my crew to explore the cave system. To take some of the fear out of them, I promised the volunteers an extra ration of rum. Some time later they returned with some crates of gold, as it turns out the cave was an active smuggler's hideout. My men managed to steal a few crates undetected. What a discovery! (+50 Booty)
 ->endScene
 
 ===Weiterziehen===

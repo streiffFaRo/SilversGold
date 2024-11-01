@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-    public static event Action<GameState> StateChanged;
-
     [SerializeField] private List<State> states;
     
     
@@ -23,7 +21,7 @@ public class GameState : MonoBehaviour
         return null;
     }
 
-    public void Add(string id, int amount, bool invokeEvent = true)
+    public void Add(string id, int amount)
     {
         if (string.IsNullOrWhiteSpace(id))
         {
@@ -40,10 +38,6 @@ public class GameState : MonoBehaviour
         else
         {
             state.amount += amount;
-        }
-        if (invokeEvent)
-        {
-            StateChanged?.Invoke(this); 
         }
     }
 
@@ -68,9 +62,9 @@ public class GameState : MonoBehaviour
 
     }
 
-    public void Add(State state, bool invokeEvents = true)
+    public void Add(State state)
     {
-        Add(state.id, state.amount, false);
+        Add(state.id, state.amount);
     }
     
 }

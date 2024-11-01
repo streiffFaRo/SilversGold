@@ -7,13 +7,13 @@ Our journey is going better than expected so far. I was planning on more encount
 *[Spare]->Weiterziehen
 
 ===Planke===
-I have decided to judge strictly. It will show my crew that I'm prepared to be tough so that we can get our hands on this treasure. But I also feel a little sorry for my navigator, he was a good man and loyal to our cause, but he knew the rules. (-1 Card)
 ~Unity_Event("plank")
+I have decided to judge strictly. It will show my crew that I'm prepared to be tough so that we can get our hands on this treasure. But I also feel a little sorry for my navigator, he was a good man and loyal to our cause, but he knew the rules. (-1 Card)
 ->endScene
 
 ===Weiterziehen===
-I have decided to spare him. I want to give him a second chance. He is very loyal to our cause and he begged me for mercy, which I granted him. However, some of the crew didn't seem happy with this decision. I must expect that they will try to push the limits of what is allowed in the following days. I have to be careful. (-1 Command Power next Battle)
 ~Unity_Event("spare")
+I have decided to spare him. I want to give him a second chance. He is very loyal to our cause and he begged me for mercy, which I granted him. However, some of the crew didn't seem happy with this decision. I must expect that they will try to push the limits of what is allowed in the following days. I have to be careful. (-1 Command Power next Battle)
 ->endScene
 
 ===endScene===
