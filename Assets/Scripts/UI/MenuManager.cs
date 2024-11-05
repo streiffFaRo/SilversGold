@@ -19,7 +19,6 @@ public class MenuManager : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("Scene_MainMenu");
-        GameManager.instance.SetUpNewGame();
     }
 
     public void QuitGame()

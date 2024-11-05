@@ -140,7 +140,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 transform.SetSiblingIndex(transform.parent.childCount-1);
                 transform.localScale = new Vector3(2f, 2f, 2f);
                 cardDisplay.ShowKeyWordBox();
-                rectTransform.localPosition += new Vector3(0, 125);
+                rectTransform.localPosition += new Vector3(0, 175);
             }
             else if (currentCardMode == CardMode.INRECRUIT)
             {
@@ -168,7 +168,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             {
                 transform.localScale = new Vector3(1f, 1f, 1f);
                 cardDisplay.HideKeyWordBox();
-                rectTransform.localPosition += new Vector3(0, -125);
+                rectTransform.localPosition += new Vector3(0, -175);
             }
             else if (currentCardMode == CardMode.INDECK && battleSystem.state != BattleState.PLAYERTURN && battleSystem.state != BattleState.ENEMYTURN)
             {

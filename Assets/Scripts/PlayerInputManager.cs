@@ -12,10 +12,12 @@ public class PlayerInputManager : MonoBehaviour
     
     [Header("GameObjects")]
     public Canvas pauseMenuCanvas;
+    public GameObject cheatMenu;
     
     //Variablen - Privat
     private PlayerInput input;
     private bool gameIsPaused;
+    private bool cheatMenuOpen;
 
     //Events
     public static event Action onConfirmEvent;
@@ -30,15 +32,15 @@ public class PlayerInputManager : MonoBehaviour
         input.Enable();
         input.Player.Esc.performed += OnESCInput;
         input.Player.Confirm.performed += OnConfirmInput;
+        input.Player.CheatMenu.performed += OnCheatInput;
     }
-
-    
 
     private void OnDisable()
     {
         input.Disable();
         input.Player.Esc.performed -= OnESCInput;
         input.Player.Confirm.performed -= OnConfirmInput;
+        input.Player.CheatMenu.performed -= OnCheatInput;
     }
     
     private void OnESCInput(InputAction.CallbackContext obj)
@@ -70,5 +72,28 @@ public class PlayerInputManager : MonoBehaviour
         {
             onConfirmEvent?.Invoke();
         }
+    }
+    
+    private void OnCheatInput(InputAction.CallbackContext obj)
+    {
+        if (cheatMenu != null)
+        {
+            if (!cheatMenuOpen)
+            {
+                cheatMenu.SetActive(true);
+                cheatMenuOpen = true;
+            }
+            else
+            {
+                cheatMenu.SetActive(false);
+                cheatMenuOpen = false;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("CheatMenu nicht in der Szene!");
+            VolumeManager.instance.GetComponent<AudioManager>().PlayPlatzHalterTeller();
+        }
+        
     }
 }
