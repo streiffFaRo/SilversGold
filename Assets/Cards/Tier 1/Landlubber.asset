@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Landlubber
   m_EditorClassIdentifier: 
   name: Landlubber
-  description: Dies when it's the only one of you infantery cards in play
+  description: Dies when it's the only one of your infantery cards in play
   position: I
   artwork: {fileID: 21300000, guid: 17fa84703485d314b8d6b5216987d4b1, type: 3}
   cost: 2
@@ -28,7 +28,6 @@ MonoBehaviour:
   keyWordFielded: 0
   keyWordDeath: 0
   keyWordRetreat: 0
-  script: {fileID: 11500000, guid: 408d4658492723f40bb223e1adc39584, type: 3}
   cardEffect: DiesWhenAlone
   para1: 0
   para2: 0

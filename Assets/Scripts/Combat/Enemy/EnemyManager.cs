@@ -89,6 +89,7 @@ public class EnemyManager : MonoBehaviour
         {
             cardToMark.owner = Owner.ENEMY;
             cardToMark.GetComponent<CanvasGroup>().blocksRaycasts = false;
+            cardToMark.cardBG.SetActive(true);
         }
     }
 

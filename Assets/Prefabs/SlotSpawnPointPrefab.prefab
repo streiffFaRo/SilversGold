@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2536461518045110493
 MonoBehaviour:
@@ -51,7 +51,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardManager: {fileID: 8976938372475544222, guid: bbe3b2293a0233d4c97650353a58e76c, type: 3}
+  slotPosition: 
+  enemyInfantryLine: {fileID: 0}
+  enemyArtilleryLine: {fileID: 0}
+  currentCard: {fileID: 0}
+  dragDrop: {fileID: 0}
+  battleSystem: {fileID: 0}
+  playerManager: {fileID: 0}
 --- !u!222 &2536461518045110490
 CanvasRenderer:
   m_ObjectHideFlags: 0

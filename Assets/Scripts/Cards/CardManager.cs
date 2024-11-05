@@ -17,6 +17,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public CardMode currentCardMode = CardMode.INDECK;
     public GameObject handCard;
     public GameObject inGameCard;
+    public GameObject cardBG;
     
     public int handIndex;
     [HideInInspector]public int cardCommandPowerCost;
@@ -86,6 +87,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
         else if (owner == Owner.ENEMY)
         {
+            cardBG.SetActive(false);
             enemyManager.availableHandCardSlots[handIndex] = true;
             enemyManager.UpdateEnemyCommandPower(cardCommandPowerCost);
             enemyManager.cardsInHand.Remove(this);
@@ -314,6 +316,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             enemyManager.UpdateEnemyCommandPower(1);
             enemyManager.deck.Add(this);
             enemyManager.UpdateEnemyUI();
+            cardBG.SetActive(true);
             StartCoroutine(HandleRetreatStats());
         }
         else
@@ -406,6 +409,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             enemyManager.discardPile.Add(this);
             enemyManager.UpdateEnemyUI();
+            cardBG.SetActive(true);
         }
         GetComponent<DeathEffects>()?.TriggerDeathEffect();
         GetComponent<DiesWhenAlone>()?.CheckIfAlone();
