@@ -27,7 +27,11 @@ public class AudioManager : MonoBehaviour
     public AudioSource upgradeSound;
     public AudioSource bootySound;
     public AudioSource endTurnBellSound;
-
+    public PlayRandomSound denySound;
+    [Header("Music")] 
+    public AudioSource menuMusic;
+    public AudioSource gameMusic;
+    
     //Platzhalter
     public void PlayPlatzHalterTeller()
     {
@@ -111,6 +115,33 @@ public class AudioManager : MonoBehaviour
     public void PLayEndTurnBellSound()
     {
         endTurnBellSound.Play();
+    }
+
+    public void PlayDenySound()
+    {
+        denySound.PlaySound();
+    }
+    
+    //Music
+
+    public void PlayMenuMusic()
+    {
+        menuMusic.Play();
+    }
+
+    public void StopMenuMusic()
+    {
+        menuMusic.Stop();
+    }
+
+    public void PlayGameMusic()
+    {
+        gameMusic.Play();
+    }
+
+    public void StopGameMusic()
+    {
+        gameMusic.Stop();
     }
 
 }

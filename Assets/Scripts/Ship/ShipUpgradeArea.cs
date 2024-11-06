@@ -75,7 +75,7 @@ public class ShipUpgradeArea : MonoBehaviour, IPointerClickHandler, IPointerEnte
         {
             infoWindow.gameObject.SetActive(true);
         }
-        
+        VolumeManager.instance.GetComponent<AudioManager>().PlayButtonHoverSound();
         infoWindow.UpdateUpgradeInfoWindowUI(currentEffect[currentUpgradeLevel], 
             upgradeCosts[currentUpgradeLevel], upgradeEffect[currentUpgradeLevel], this);
     }

@@ -235,6 +235,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             //Wenn obere if nicht erfüllt, hat Spieler zwingen zu wenig CP
             Debug.LogWarning("Zu wenig CommandPower");
+            VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
             //TODO Info an Player
         }
         else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
@@ -273,6 +274,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         else
         {
             Debug.LogError("Attack failed!");
+            VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
         }
     }
 
@@ -309,6 +311,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             //Wenn obere if nicht erfüllt, hat Spieler zwingen zu wenig CP
             Debug.LogWarning("Zu wenig CommandPower");
+            VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
             //TODO Info an Player
         }
         else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)

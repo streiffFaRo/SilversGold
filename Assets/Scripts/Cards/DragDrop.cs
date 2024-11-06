@@ -56,7 +56,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         {
             rectTransform.position = startDragPos;
             rectTransform.position -= new Vector3(0, 175*canvas.scaleFactor); //Negate Card Hover Position
-            
+            VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
         }
         else
         {

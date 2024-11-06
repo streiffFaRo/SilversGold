@@ -116,6 +116,8 @@ public class GameManager : MonoBehaviour
 
     public void SetUpNewGame()
     {
+        VolumeManager.instance.GetComponent<AudioManager>().PlayGameMusic();
+        VolumeManager.instance.GetComponent<AudioManager>().StopMenuMusic();
         playerDeck = startDeck;
         currentLevel = 0;
         currentTier = 1;

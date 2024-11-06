@@ -117,10 +117,13 @@ public class DeckManager : MonoBehaviour
         {
             playerManager.UpdateCommandPower(2);
             DrawCards();
+            VolumeManager.instance.GetComponent<AudioManager>().PlayButtonPressSound();
         }
         else
         {
             Debug.LogWarning("Zu wenig CommandPower / Volle Hand, Karte kann nicht gezogen werden!");
+            VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
+            //TODO Animation
         }
     }
 
@@ -165,6 +168,8 @@ public class DeckManager : MonoBehaviour
             }
             VolumeManager.instance.GetComponent<AudioManager>().PlayButtonPressSound();
         }
+        VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
+        //TODO Animation
     }
 
     public void EndTurn()
@@ -211,6 +216,7 @@ public class DeckManager : MonoBehaviour
         else
         {
             Debug.LogWarning("Karte hat schon gehandelt");
+            VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
             //TODO Info an Player
         }
         
