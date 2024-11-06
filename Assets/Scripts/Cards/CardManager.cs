@@ -195,49 +195,57 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void Attack()
     {
-        //TODO: Verletze Karten anzeigen, dass sie nicht MaxLeben haben
-        //TODO: Sounds
         //TODO: Effects
         if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower > 0 && owner == Owner.PLAYER)
         {
-            if (cardStats.position == "I")
+            if (cardStats.attack >= 1)
             {
-                if (cardIngameSlot.enemyInfantryLine.currentCard != null)
+                if (cardStats.position == "I")
                 {
-                    UpdateCardHealth(cardIngameSlot.enemyInfantryLine.currentCard.cardStats.attack);
-                    cardIngameSlot.enemyInfantryLine.currentCard.UpdateCardHealth(cardStats.attack);
+                    if (cardIngameSlot.enemyInfantryLine.currentCard != null)
+                    {
+                        UpdateCardHealth(cardIngameSlot.enemyInfantryLine.currentCard.cardStats.attack);
+                        cardIngameSlot.enemyInfantryLine.currentCard.UpdateCardHealth(cardStats.attack);
+                    }
+                    else if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
+                    {
+                        UpdateCardHealth(cardIngameSlot.enemyArtilleryLine.currentCard.cardStats.attack);
+                        cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(cardStats.attack);
+                    }
+                    else
+                    {
+                        enemyManager.UpdateEnemyHealth(cardStats.attack, false);
+                    }
                 }
-                else if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
+                else if (cardStats.position == "A")
                 {
-                    UpdateCardHealth(cardIngameSlot.enemyArtilleryLine.currentCard.cardStats.attack);
-                    cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(cardStats.attack);
+                    if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
+                    {
+                        UpdateCardHealth(cardIngameSlot.enemyArtilleryLine.currentCard.cardStats.attack);
+                        cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(cardStats.attack);
+                    }
+                    else
+                    {
+                        enemyManager.UpdateEnemyHealth(cardStats.attack, false);
+                    }
                 }
-                else
-                {
-                    enemyManager.UpdateEnemyHealth(cardStats.attack, false);
-                }
+                HandleAttackStats();
             }
-            else if (cardStats.position == "A")
+            else
             {
-                if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
-                {
-                    UpdateCardHealth(cardIngameSlot.enemyArtilleryLine.currentCard.cardStats.attack);
-                    cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(cardStats.attack);
-                }
-                else
-                {
-                    enemyManager.UpdateEnemyHealth(cardStats.attack, false);
-                }
+                Debug.LogWarning("Karte hat 0 Attack");
+                VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
+                //TODO Info an Player -> Attack Animation
             }
-            HandleAttackStats();
         }
         else if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
             //Wenn obere if nicht erfüllt, hat Spieler zwingen zu wenig CP
             Debug.LogWarning("Zu wenig CommandPower");
             VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
-            //TODO Info an Player
+            //TODO Info an Player -> CommandPower Animation
         }
+        //ENEMY ATTACK
         else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
         {
             if (cardStats.position == "I")
