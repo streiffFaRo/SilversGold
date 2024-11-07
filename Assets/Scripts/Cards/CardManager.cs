@@ -18,6 +18,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public GameObject handCard;
     public GameObject inGameCard;
     public GameObject cardBG;
+    public GameObject hasActedRim;
     
     public int handIndex;
     [HideInInspector]public int cardCommandPowerCost;
@@ -66,6 +67,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     private void Update()
     {
+        //Zählt wie lange der Spieler auf der Karte hovered
         if (isHovering)
         {
             hoverTimer += Time.deltaTime;
@@ -74,6 +76,16 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             {
                 deckManager.ShowDisplayCard(this);
             }
+        }
+
+        //Zeigt ob die Karte schon gehandelt hat
+        if (!cardActed && currentCardMode == CardMode.INPLAY && battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
+        {
+            hasActedRim.SetActive(true);
+        }
+        else
+        {
+            hasActedRim.SetActive(false);
         }
     }
 
