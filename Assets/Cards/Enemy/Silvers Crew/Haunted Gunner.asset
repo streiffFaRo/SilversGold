@@ -30,7 +30,7 @@ MonoBehaviour:
   keyWordRetreat: 0
   cardEffect: DeathEffects
   para1: 5
-  para2: -5
+  para2: 5
   para3: 0
   para4: 0
   para5: {fileID: 0}

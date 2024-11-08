@@ -78,10 +78,12 @@ public class PlayerManager : MonoBehaviour
         if (positiveNumber)
         {
             currentHealth += amount;
+            VolumeManager.instance.GetComponent<AudioManager>().PlayUpgradeSound();
         }
         else
         {
             currentHealth -= amount;
+            VolumeManager.instance.GetComponent<AudioManager>().PlayShipHitSound();
         }
         
         if (currentHealth <= 0)

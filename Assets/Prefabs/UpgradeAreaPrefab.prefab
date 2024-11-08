@@ -54,22 +54,14 @@ MonoBehaviour:
   upgradeType: 0
   infoWindow: {fileID: 0}
   currentUpgradeLevel: 0
-  upgradeCosts: 320000007d0000002c01000000000000
-  currentObjectName:
-  - Basic
-  - Simple
-  - Advanced
-  - Superior
+  silverUpgrade: {fileID: 0}
+  goldUpgrade: {fileID: 0}
   currentEffect:
   - Does things bad
   - Does things ok
   - Does things good
   - Does things perfect
-  upgradedObjectName:
-  - Simple
-  - Advanced
-  - Superior
-  - 
+  upgradeCosts: 320000007d0000002c01000000000000
   upgradeEffect:
   - Does things better
   - Does things even more better
@@ -97,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.22116414, g: 0.6603774, b: 0.25624105, a: 0.5882353}
+  m_Color: {r: 0.22116414, g: 0.6603774, b: 0.25624105, a: 0.2}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

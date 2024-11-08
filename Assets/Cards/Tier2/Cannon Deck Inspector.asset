@@ -25,10 +25,9 @@ MonoBehaviour:
   pointsAttack: 4
   pointsRetreat: -10
   keyWordCannoneer: 0
-  keyWordFielded: 1
-  keyWordDeath: 0
+  keyWordFielded: 0
+  keyWordDeath: 1
   keyWordRetreat: 0
-  script: {fileID: 11500000, guid: c6da78e74d7057c4b8ec32bdee030dd0, type: 3}
   cardEffect: DeathEffects
   para1: 6
   para2: 1

@@ -531,6 +531,18 @@ PrefabInstance:
       propertyPath: m_text
       value: Continue Story
       objectReference: {fileID: 0}
+    - target: {fileID: 5362287381502034285, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
+      propertyPath: m_fontSize
+      value: 30.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362287381502034285, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 320002a8d35c1314f8051a881edf98a5, type: 2}
+    - target: {fileID: 5362287381502034285, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3473037699113836159, guid: 320002a8d35c1314f8051a881edf98a5, type: 2}
     - target: {fileID: 6548510089888896510, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -904,6 +916,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Choice0
       objectReference: {fileID: 0}
+    - target: {fileID: 5362287381502034285, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 320002a8d35c1314f8051a881edf98a5, type: 2}
+    - target: {fileID: 5362287381502034285, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3473037699113836159, guid: 320002a8d35c1314f8051a881edf98a5, type: 2}
     - target: {fileID: 6548510089888896510, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1333,6 +1353,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Choice1
       objectReference: {fileID: 0}
+    - target: {fileID: 5362287381502034285, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 320002a8d35c1314f8051a881edf98a5, type: 2}
+    - target: {fileID: 5362287381502034285, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3473037699113836159, guid: 320002a8d35c1314f8051a881edf98a5, type: 2}
     - target: {fileID: 6548510089888896510, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1

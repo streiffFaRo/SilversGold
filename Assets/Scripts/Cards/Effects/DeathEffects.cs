@@ -128,11 +128,11 @@ public class DeathEffects : MonoBehaviour
     {
         if (card.owner == Owner.PLAYER)
         {
-            playerManager.UpdateHealth(card.cardStats.para2, true);
+            playerManager.UpdateHealth(card.cardStats.para2, card.cardStats.para4);
         }
         else if (card.owner == Owner.ENEMY)
         {
-            enemyManager.UpdateEnemyHealth(card.cardStats.para2, true);
+            enemyManager.UpdateEnemyHealth(card.cardStats.para2, card.cardStats.para4);
         }
     }
 

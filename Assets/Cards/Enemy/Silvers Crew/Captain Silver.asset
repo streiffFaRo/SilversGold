@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Captain Silver
   m_EditorClassIdentifier: 
   name: Captain Silver
-  description: 'Death: -25 Shiphealth'
+  description: 'Death: -20 Shiphealth'
   position: I
   artwork: {fileID: 21300000, guid: 3168140d6f409d0448447f18568d9482, type: 3}
   cost: 5
@@ -30,7 +30,7 @@ MonoBehaviour:
   keyWordRetreat: 0
   cardEffect: DeathEffects
   para1: 5
-  para2: -25
+  para2: 20
   para3: 0
   para4: 0
   para5: {fileID: 0}
