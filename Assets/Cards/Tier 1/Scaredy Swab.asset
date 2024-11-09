@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Scaredy Swab
   description: Dies when it's the only one of your infantery cards in play
   position: I
-  artwork: {fileID: 21300000, guid: 0ccc508108fa6ed4fa11b4a467d7f609, type: 3}
+  artwork: {fileID: 21300000, guid: 396ac325e1f3a7b49a9e03e8902ce861, type: 3}
   cost: 1
   attack: 1
   defense: 2

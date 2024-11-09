@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Disruptive Troublemaker
   description: 'Fielded: -1 command power'
   position: I
-  artwork: {fileID: 21300000, guid: 65f0e363b74cf5845ab8c3fbc14f39ac, type: 3}
+  artwork: {fileID: 21300000, guid: 4eee67e49c0a8df4c8c1fe7393bbf40d, type: 3}
   cost: 1
   attack: 2
   defense: 3
@@ -28,7 +28,6 @@ MonoBehaviour:
   keyWordFielded: 1
   keyWordDeath: 0
   keyWordRetreat: 0
-  script: {fileID: 11500000, guid: 6b6e2b925e40a0f45828527be0c422b1, type: 3}
   cardEffect: Fielded_CommandPowerChange
   para1: -1
   para2: 0

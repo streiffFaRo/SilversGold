@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Black Hand Volunteer
   description: Cannoneer
   position: A
-  artwork: {fileID: 21300000, guid: f618c5fe13b18994aa5aee8b97d8dca1, type: 3}
+  artwork: {fileID: 21300000, guid: 24f4f668c62cef74393cf5aedb27a857, type: 3}
   cost: 2
   attack: 1
   defense: 2

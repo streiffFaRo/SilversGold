@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Boomstick Benny
   description: Dies after attacking
   position: I
-  artwork: {fileID: 21300000, guid: 23743f0c0ed1e6546808a5d645c2a6a5, type: 3}
+  artwork: {fileID: 21300000, guid: 9fc58248a474a0c41863fde0bef05acf, type: 3}
   cost: 3
   attack: 4
   defense: 3
@@ -28,7 +28,6 @@ MonoBehaviour:
   keyWordFielded: 0
   keyWordDeath: 0
   keyWordRetreat: 0
-  script: {fileID: 11500000, guid: d62cf2b2a3b8b0544a2bfec3392c89fb, type: 3}
   cardEffect: DiesAfterAttack
   para1: 0
   para2: 0

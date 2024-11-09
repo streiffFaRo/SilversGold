@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Grog Guzzler
   description: 
   position: I
-  artwork: {fileID: 21300000, guid: 62053ed690017d143bd2cfa8e5dc3ff5, type: 3}
+  artwork: {fileID: 21300000, guid: a3fd2dbac39ae5446bec9de27abffb21, type: 3}
   cost: 2
   attack: 1
   defense: 2
@@ -28,7 +28,7 @@ MonoBehaviour:
   keyWordFielded: 0
   keyWordDeath: 0
   keyWordRetreat: 0
-  script: {fileID: 0}
+  cardEffect: 
   para1: 0
   para2: 0
   para3: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Raft Officer
   description: 'Fielded: +2 Command Power'
   position: A
-  artwork: {fileID: 21300000, guid: 7b0bba6a9b6960a4fb500a75d4a4caa0, type: 3}
+  artwork: {fileID: 21300000, guid: 740c86a076c744243949ed56ae9382eb, type: 3}
   cost: 6
   attack: 3
   defense: 4

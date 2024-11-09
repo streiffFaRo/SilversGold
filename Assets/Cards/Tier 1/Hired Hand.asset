@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Hired Hand
   description: 'Death: Shuffle 2 Cards from the depth into your deck'
   position: I
-  artwork: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
+  artwork: {fileID: 21300000, guid: 9311f27b5128c7845b1e5404dc35a12e, type: 3}
   cost: 3
   attack: 3
   defense: 1

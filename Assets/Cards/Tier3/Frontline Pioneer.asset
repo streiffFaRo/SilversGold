@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Frontline Pioneer
   description: 'Fielded: +1 Shiphealth'
   position: I
-  artwork: {fileID: 21300000, guid: 6a7ac9e8c26b12440bf2b1da2ca97794, type: 3}
+  artwork: {fileID: 21300000, guid: 16ba42ce9d94ff343b3f7c31061cc064, type: 3}
   cost: 4
   attack: 2
   defense: 2
@@ -28,7 +28,6 @@ MonoBehaviour:
   keyWordFielded: 1
   keyWordDeath: 0
   keyWordRetreat: 0
-  script: {fileID: 11500000, guid: 62e6a8e2c9c2c8648a39fe2544508efa, type: 3}
   cardEffect: Fielded_ShipHealth
   para1: 1
   para2: 0

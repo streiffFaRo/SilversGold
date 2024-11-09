@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Boom Leader
   description: Cannoneer
   position: A
-  artwork: {fileID: 21300000, guid: 7b0bba6a9b6960a4fb500a75d4a4caa0, type: 3}
+  artwork: {fileID: 21300000, guid: 7520c3a6a2b6c6145b86d5c4447837f7, type: 3}
   cost: 4
   attack: 2
   defense: 5

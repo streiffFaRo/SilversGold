@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Cruel Overseer
   description: 'Fielded: +1 Command Power'
   position: A
-  artwork: {fileID: 21300000, guid: 6a7ac9e8c26b12440bf2b1da2ca97794, type: 3}
+  artwork: {fileID: 21300000, guid: 6fab5b83f7a1fa448a11b6b18e3e58f4, type: 3}
   cost: 5
   attack: 1
   defense: 2

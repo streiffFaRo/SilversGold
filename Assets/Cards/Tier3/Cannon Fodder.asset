@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Cannon Fodder
   description: 'Death: Shuffle 3 Cards from the depth into your deck'
   position: I
-  artwork: {fileID: 21300000, guid: 269eee5bd0392044cb38fd13171b84f6, type: 3}
+  artwork: {fileID: 21300000, guid: e293ee49ab9ac9c488d3fa4dce685959, type: 3}
   cost: 1
   attack: 1
   defense: 2

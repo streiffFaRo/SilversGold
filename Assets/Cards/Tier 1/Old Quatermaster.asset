@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Old Quatermaster
   description: 'Retreat: +3 Command Power this turn'
   position: I
-  artwork: {fileID: 21300000, guid: ac47ed8ccc79cf04dae198b9cc5b3a6f, type: 3}
+  artwork: {fileID: 21300000, guid: 951dd1885f28f734d88d2d698e5676ca, type: 3}
   cost: 3
   attack: 2
   defense: 2
@@ -28,7 +28,6 @@ MonoBehaviour:
   keyWordFielded: 0
   keyWordDeath: 0
   keyWordRetreat: 1
-  script: {fileID: 11500000, guid: 10a54a9ad48260e49808e21a374f4415, type: 3}
   cardEffect: RetreatEffects
   para1: 4
   para2: 3

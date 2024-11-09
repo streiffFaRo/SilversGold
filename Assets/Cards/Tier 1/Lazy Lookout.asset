@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Lazy Lookout
   description: 'Fielded: Draw a card'
   position: A
-  artwork: {fileID: 21300000, guid: 1748e795fc2216743b74f9f19e87888e, type: 3}
+  artwork: {fileID: 21300000, guid: 38fba299e85021f4ab7d34b4780d7a91, type: 3}
   cost: 2
   attack: 0
   defense: 2
@@ -28,7 +28,6 @@ MonoBehaviour:
   keyWordFielded: 1
   keyWordDeath: 0
   keyWordRetreat: 0
-  script: {fileID: 11500000, guid: f66e852cf52c4214c932178ad3107d40, type: 3}
   cardEffect: Fielded_DrawCard
   para1: 0
   para2: 0
