@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Lifeboat Medic
   description: 'Retreat: Shuffle 3 Cards from the depth into your deck'
   position: A
-  artwork: {fileID: 21300000, guid: 02800fb9cff14da47a04572790384d8b, type: 3}
+  artwork: {fileID: 21300000, guid: ee0c51cfa34605e48a3d22f148d0324c, type: 3}
   cost: 4
   attack: 1
   defense: 4

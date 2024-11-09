@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Naval Cannoneer
   description: Cannoneer
   position: A
-  artwork: {fileID: 21300000, guid: 7835bec40f86c2c4fb3f91a6eb3b7034, type: 3}
+  artwork: {fileID: 21300000, guid: d57eb1946740af544969a606587cf272, type: 3}
   cost: 2
   attack: 0
   defense: 2
@@ -28,3 +28,9 @@ MonoBehaviour:
   keyWordFielded: 0
   keyWordDeath: 0
   keyWordRetreat: 0
+  cardEffect: 
+  para1: 0
+  para2: 0
+  para3: 0
+  para4: 0
+  para5: {fileID: 0}

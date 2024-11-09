@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Ship Warden
   description: 'Death: +2 Cards'
   position: I
-  artwork: {fileID: 0}
+  artwork: {fileID: 21300000, guid: feaa9af9271ddeb46971f40fc762d812, type: 3}
   cost: 4
   attack: 2
   defense: 2
@@ -28,7 +28,6 @@ MonoBehaviour:
   keyWordFielded: 0
   keyWordDeath: 1
   keyWordRetreat: 0
-  script: {fileID: 11500000, guid: c6da78e74d7057c4b8ec32bdee030dd0, type: 3}
   cardEffect: DeathEffects
   para1: 3
   para2: 2

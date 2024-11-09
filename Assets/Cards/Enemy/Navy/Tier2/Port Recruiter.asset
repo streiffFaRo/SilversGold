@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Port Recruiter
   description: 'Death: Add 2 Ocean Recruits (1/1) to your Deck'
   position: I
-  artwork: {fileID: 21300000, guid: 6cc5103edc9f0dd4f80e8274c73dfeac, type: 3}
+  artwork: {fileID: 21300000, guid: e4a78171cb8ef80419ba55829cdc9423, type: 3}
   cost: 4
   attack: 2
   defense: 2

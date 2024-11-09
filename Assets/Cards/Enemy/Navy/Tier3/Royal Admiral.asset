@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Royal Admiral
   description: 'Fielded: +2 Command Power'
   position: I
-  artwork: {fileID: 21300000, guid: 40685941c1361aa4a957b61174bce3f6, type: 3}
+  artwork: {fileID: 21300000, guid: 5b788824590bbcd468829218a2c35003, type: 3}
   cost: 5
   attack: 5
   defense: 4
@@ -28,7 +28,6 @@ MonoBehaviour:
   keyWordFielded: 1
   keyWordDeath: 0
   keyWordRetreat: 0
-  script: {fileID: 11500000, guid: 6b6e2b925e40a0f45828527be0c422b1, type: 3}
   cardEffect: Fielded_CommandPowerChange
   para1: 2
   para2: 0
