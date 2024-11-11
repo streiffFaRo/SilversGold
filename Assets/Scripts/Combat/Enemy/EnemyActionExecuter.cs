@@ -11,6 +11,7 @@ public class EnemyActionExecuter : MonoBehaviour
     public List<CardIngameSlot> infSlots = new List<CardIngameSlot>(); //Kampfslots (Inf) auf Seiten des Enemy
     public List<CardIngameSlot> artySlots = new List<CardIngameSlot>(); //Kampfslots (Arty) auf Seiten des Enemy
     public int tries; //Versuche Karten zu platzieren
+    public bool showDebug;
     
 
     #region Debug/Rdm Actions
@@ -75,7 +76,11 @@ public class EnemyActionExecuter : MonoBehaviour
                 }
                 else
                 {
-                    Debug.LogWarning("Enemy hat keine Commandpower mehr");
+                    if (showDebug)
+                    {
+                        Debug.LogWarning("Enemy hat keine Commandpower mehr");
+                    }
+                    
                 }
                 
             }
@@ -213,20 +218,21 @@ public class EnemyActionExecuter : MonoBehaviour
                 }
             }
         }
-        
-        if (executionActionIndex > actionIndex)
-        {
-            Debug.LogWarning("ExecutionActionIndex: "+ executionActionIndex+" ActionIndex " + actionIndex);
-        }
 
         if (enemyManager.enemyCurrentCommandPower <= 0)
         {
-            Debug.Log("No more Command Power");
+            if (showDebug)
+            {
+                Debug.Log("No more Command Power");
+            }
             StartCoroutine(enemyManager.EndTurn());
         }
         else
         {
-            Debug.Log("NEW PLAY");
+            if (showDebug)
+            {
+                Debug.Log("NEW PLAY");
+            }
             StartCoroutine(enemyManager.DoEnemyStuff());
         }
         

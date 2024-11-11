@@ -35,7 +35,6 @@ public class DiesWhenAlone : MonoBehaviour
                 }
             }
         }
-        emptySlots = 0;
     }
 
     public IEnumerator killCard()

@@ -255,7 +255,7 @@ public class EnemyAnalysis : MonoBehaviour
         {
             foreach (TreeNode node in possiblePlays)
             {
-                Debug.Log(node.name + " Score: " + node.score + " ActionIndex: " + node.actionIndex);
+                 Debug.Log(node.name + " Score: " + node.score + " ActionIndex: " + node.actionIndex);
             }
         }
         

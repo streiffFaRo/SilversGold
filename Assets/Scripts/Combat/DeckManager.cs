@@ -17,7 +17,7 @@ public class DeckManager : MonoBehaviour
     
     [Header("Display")]
     public GameObject displayStand;
-    public CardDisplay displayUI;
+    private CardDisplay displayUI;
     
     [HideInInspector]public CardManager[] allPresentCards;
     public Transform[] cardSlots;
@@ -31,9 +31,11 @@ public class DeckManager : MonoBehaviour
     {
         InitilizeDeck();
         
+        //Prepare Card Display when Player Hovers over Card
         GameObject displayObj = Instantiate(displayCardPrefab, new Vector3(0, 0, 0), Quaternion.identity, displayStand.transform);
         displayObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         displayUI = displayStand.GetComponentInChildren<CardDisplay>();
+        
         currentFatigueDamage = 1;
     }
 
@@ -217,7 +219,6 @@ public class DeckManager : MonoBehaviour
         {
             Debug.LogWarning("Karte hat schon gehandelt");
             VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
-            //TODO Info an Player
         }
         
     }

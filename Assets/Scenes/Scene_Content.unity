@@ -7516,7 +7516,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1251013159}
-  - component: {fileID: 1251013162}
   - component: {fileID: 1251013161}
   - component: {fileID: 1251013160}
   m_Layer: 5
@@ -7584,32 +7583,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1251013158}
   m_CullTransparentMesh: 1
---- !u!114 &1251013162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1251013158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1 &1254182229
 GameObject:
   m_ObjectHideFlags: 0
@@ -7619,7 +7592,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1254182230}
-  - component: {fileID: 1254182233}
   - component: {fileID: 1254182232}
   - component: {fileID: 1254182231}
   m_Layer: 5
@@ -7687,32 +7659,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1254182229}
   m_CullTransparentMesh: 1
---- !u!114 &1254182233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1254182229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1001 &1268588340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7982,7 +7928,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1321952026}
-  - component: {fileID: 1321952029}
   - component: {fileID: 1321952028}
   - component: {fileID: 1321952027}
   m_Layer: 5
@@ -8050,32 +7995,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321952025}
   m_CullTransparentMesh: 1
---- !u!114 &1321952029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321952025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1 &1339117913
 GameObject:
   m_ObjectHideFlags: 0
@@ -10296,6 +10215,7 @@ MonoBehaviour:
   - {fileID: 663739490}
   - {fileID: 2128387893}
   tries: 0
+  showDebug: 0
 --- !u!1 &1594115376
 GameObject:
   m_ObjectHideFlags: 0

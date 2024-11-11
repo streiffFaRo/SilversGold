@@ -179,14 +179,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.75974035, b: 0.514151, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: bef385467904f8c4598859c557316966, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -220,7 +220,7 @@ MonoBehaviour:
     m_Left: 0
     m_Right: 0
     m_Top: 0
-    m_Bottom: 0
+    m_Bottom: 213
   m_ChildAlignment: 4
   m_Spacing: 50
   m_ChildForceExpandWidth: 0
@@ -503,8 +503,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4278243071
+  m_fontColor: {r: 1, g: 0.80811393, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -740,6 +740,18 @@ PrefabInstance:
       propertyPath: m_text
       value: SFX
       objectReference: {fileID: 0}
+    - target: {fileID: 7529806101814450359, guid: 09b62c2b51d7a554ab2a4226fe81a457, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529806101814450359, guid: 09b62c2b51d7a554ab2a4226fe81a457, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529806101814450359, guid: 09b62c2b51d7a554ab2a4226fe81a457, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8812464178031361898, guid: 09b62c2b51d7a554ab2a4226fe81a457, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.4994995
@@ -886,6 +898,18 @@ PrefabInstance:
       propertyPath: m_text
       value: Music
       objectReference: {fileID: 0}
+    - target: {fileID: 7529806101814450359, guid: 09b62c2b51d7a554ab2a4226fe81a457, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529806101814450359, guid: 09b62c2b51d7a554ab2a4226fe81a457, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529806101814450359, guid: 09b62c2b51d7a554ab2a4226fe81a457, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8812464178031361898, guid: 09b62c2b51d7a554ab2a4226fe81a457, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.4994995
@@ -968,14 +992,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.75974035, b: 0.514151, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: bef385467904f8c4598859c557316966, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1109,7 +1133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5591671306471521093, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4.364998
+      value: 4.36499
       objectReference: {fileID: 0}
     - target: {fileID: 6548510089888896510, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
@@ -1543,7 +1567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5591671306471521093, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4.364998
+      value: 4.36499
       objectReference: {fileID: 0}
     - target: {fileID: 6548510089888896510, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
@@ -1949,7 +1973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5591671306471521093, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4.364998
+      value: 4.36499
       objectReference: {fileID: 0}
     - target: {fileID: 6548510089888896510, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
       propertyPath: m_SpriteState.m_PressedSprite
@@ -2140,6 +2164,18 @@ PrefabInstance:
     - target: {fileID: 5415971039531105478, guid: 09b62c2b51d7a554ab2a4226fe81a457, type: 3}
       propertyPath: m_MinValue
       value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529806101814450359, guid: 09b62c2b51d7a554ab2a4226fe81a457, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529806101814450359, guid: 09b62c2b51d7a554ab2a4226fe81a457, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7529806101814450359, guid: 09b62c2b51d7a554ab2a4226fe81a457, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8812464178031361898, guid: 09b62c2b51d7a554ab2a4226fe81a457, type: 3}
       propertyPath: m_AnchorMax.x

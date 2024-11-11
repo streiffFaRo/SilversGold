@@ -63,6 +63,10 @@ public class PresentDeck : MonoBehaviour
 
     private IEnumerator InitiateDeck()
     {
+        firstRow.AddComponent<HorizontalLayoutGroup>().childAlignment = TextAnchor.MiddleCenter;
+        secondRow.AddComponent<HorizontalLayoutGroup>().childAlignment = TextAnchor.MiddleCenter;
+        thirdRow.AddComponent<HorizontalLayoutGroup>().childAlignment = TextAnchor.MiddleCenter;
+        
         foreach (Card card in deckToPrepare)
         {
 

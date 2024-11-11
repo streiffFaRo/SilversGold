@@ -356,6 +356,10 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         currentHealth = cardStats.defense;
         deckManager.HideDisplayCard();
         cardIngameSlot.currentCard = null;
+        foreach (DiesWhenAlone var in FindObjectsOfType<DiesWhenAlone>())
+        {
+            var.CheckIfAlone();
+        }
         handCard.SetActive(true);
         handCard.transform.localScale = new Vector3(1f, 1f, 1f);
         GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
@@ -376,11 +380,10 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             else
             { 
                 enemyManager.UpdateEnemyHealth(GameManager.instance.shipCannonLevel+1, false);
-                Debug.Log("Hit Enemy Ship!");
             }
             SetButtonsPassive();
             cardActed = true;
-            //TODO Karte soll symbolisieren dass sie genutzt wurde
+            //TODO Animation
         }
         else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
         {
@@ -435,9 +438,12 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             cardBG.SetActive(true);
         }
         GetComponent<DeathEffects>()?.TriggerDeathEffect();
-        GetComponent<DiesWhenAlone>()?.CheckIfAlone();
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardDeathSound();
         cardIngameSlot.currentCard = null;
+        foreach (DiesWhenAlone var in FindObjectsOfType<DiesWhenAlone>())
+        {
+            var.CheckIfAlone();
+        }
         currentCardMode = CardMode.INDECK;
         currentHealth = cardStats.defense;
         cardDisplay.SetUpCardUI();
