@@ -18,8 +18,6 @@ public class MenuManager : MonoBehaviour
 
     public void MainMenu()
     {
-        VolumeManager.instance.GetComponent<AudioManager>().PlayMenuMusic();
-        VolumeManager.instance.GetComponent<AudioManager>().StopGameMusic();
         SceneManager.LoadScene("Scene_MainMenu");
     }
 

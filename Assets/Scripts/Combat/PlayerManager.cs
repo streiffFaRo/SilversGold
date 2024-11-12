@@ -20,6 +20,7 @@ public class PlayerManager : MonoBehaviour
     public TextMeshProUGUI discardPileText;
     public TextMeshProUGUI commandPowerText;
     public TextMeshProUGUI healthText;
+    public TextMeshProUGUI canonLevelText;
 
     [Header("Scripts")]
     public BattleSystem battleSystem;
@@ -37,6 +38,9 @@ public class PlayerManager : MonoBehaviour
         maxHealth = GameManager.instance.maxShipHealth;
         currentHealth = GameManager.instance.startShipHealth;
         healthText.text = currentHealth.ToString();
+        
+        int currentCannonLevel = GameManager.instance.shipCannonLevel + 1;
+        canonLevelText.text = currentCannonLevel.ToString();
     }
     
     public void RefreshCommandPower()

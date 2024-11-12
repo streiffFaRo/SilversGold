@@ -16,6 +16,7 @@ public class EnemyManager : MonoBehaviour
     public TextMeshProUGUI enemyHealthText;
     public TextMeshProUGUI enemyDeckText;
     public TextMeshProUGUI enemyDiscardText;
+    public TextMeshProUGUI enemyCannonLevelText;
 
     [Header("EnemyStats")] 
     public string enemyName;
@@ -57,6 +58,8 @@ public class EnemyManager : MonoBehaviour
         SetUpEnemyHealth();
         SetUpEnemyCommandPower();
         UpdateEnemyUI();
+        
+        enemyCannonLevelText.text = enemyCannonLevel.ToString();
 
         currentFatigueDamage = 1;
     }
