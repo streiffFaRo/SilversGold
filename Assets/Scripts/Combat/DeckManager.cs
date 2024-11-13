@@ -71,22 +71,29 @@ public class DeckManager : MonoBehaviour
             }
             else
             {
-                for (int i = 0; i < availableCardSlots.Length; i++)
+                if (randCard.currentCardMode == CardMode.INDECK) //Schliesst mögliche Fehler aus
                 {
-                    if (availableCardSlots[i])
+                    for (int i = 0; i < availableCardSlots.Length; i++)
                     {
-                        randCard.gameObject.SetActive(true);
-                        randCard.handIndex = i;
+                        if (availableCardSlots[i])
+                        {
+                            randCard.gameObject.SetActive(true);
+                            randCard.handIndex = i;
                     
-                        randCard.transform.position = cardSlots[i].position;
-                        randCard.currentCardMode = CardMode.INHAND;
+                            randCard.transform.position = cardSlots[i].position;
+                            randCard.currentCardMode = CardMode.INHAND;
                         
-                        VolumeManager.instance.GetComponent<AudioManager>().PlayCardDrawSound();
-                        availableCardSlots[i] = false;
-                        deck.Remove(randCard);
-                        cardsInHand.Add(randCard);
-                        return;
+                            VolumeManager.instance.GetComponent<AudioManager>().PlayCardDrawSound();
+                            availableCardSlots[i] = false;
+                            deck.Remove(randCard);
+                            cardsInHand.Add(randCard);
+                            return;
+                        }
                     }
+                }
+                else //Bei Fehler wird versucht eine andere Karte zu ziehen
+                {
+                    DrawCards();
                 }
             }
             

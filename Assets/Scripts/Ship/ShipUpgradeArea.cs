@@ -104,26 +104,31 @@ public class ShipUpgradeArea : MonoBehaviour, IPointerClickHandler, IPointerEnte
 
     public void Upgrade()
     {
-        currentUpgradeLevel++;
-        SetVisuellUpgrade();
-        switch (upgradeType)
+        if (currentUpgradeLevel <= 1) //Sicherstellen, dass nach max Level der Count nicht höher geht
         {
-            case UpgradeType.CANNON:
-                GameManager.instance.shipCannonLevel++;
-                break;
-            case UpgradeType.CAPTAIN:
-                GameManager.instance.shipCaptainLevel++;
-                break;
-            case UpgradeType.QUARTERS:
-                GameManager.instance.shipQuartersLevel++;
-                break;
-            case UpgradeType.HULL:
-                GameManager.instance.shipHullLevel++;
-                break;
+            currentUpgradeLevel++;
+            
+            SetVisuellUpgrade();
+            
+            switch (upgradeType)
+            {
+                case UpgradeType.CANNON:
+                    GameManager.instance.shipCannonLevel++;
+                    break;
+                case UpgradeType.CAPTAIN:
+                    GameManager.instance.shipCaptainLevel++;
+                    break;
+                case UpgradeType.QUARTERS:
+                    GameManager.instance.shipQuartersLevel++;
+                    break;
+                case UpgradeType.HULL:
+                    GameManager.instance.shipHullLevel++;
+                    break;
+            }
+            infoWindow.UpdateUpgradeInfoWindowUI(currentEffect[currentUpgradeLevel], 
+                upgradeCosts[currentUpgradeLevel], upgradeEffect[currentUpgradeLevel], this);
         }
-        //TODO Imageaustausch (Visuell) bei Upgrade -> Bsp. Kanonen von Schwarz zu Silber zu Gold ...
-        infoWindow.UpdateUpgradeInfoWindowUI(currentEffect[currentUpgradeLevel], 
-            upgradeCosts[currentUpgradeLevel], upgradeEffect[currentUpgradeLevel], this);
+        
     }
 }
 public enum UpgradeType

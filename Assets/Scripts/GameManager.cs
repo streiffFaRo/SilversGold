@@ -47,9 +47,14 @@ public class GameManager : MonoBehaviour
 
     public void UpdateLevel()
     {
+        
         currentLevel++;
 
-        if (currentLevel >= 7)
+        if (currentLevel >= 11)
+        {
+            currentTier = 4;
+        }
+        else if (currentLevel >= 7)
         {
             currentTier = 3;
         }
@@ -116,7 +121,14 @@ public class GameManager : MonoBehaviour
 
     public void SetUpNewGame()
     {
-        playerDeck = startDeck;
+        
+        playerDeck.Clear();
+        playerDeck = new List<Card>();
+        foreach (Card card in startDeck)
+        {
+            playerDeck.Add(card); 
+        }
+        
         currentLevel = 0;
         currentTier = 1;
         booty = 50;

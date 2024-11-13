@@ -17,7 +17,7 @@ MonoBehaviour:
   position: I
   artwork: {fileID: 21300000, guid: 589ee588a3506c54db50103649180418, type: 3}
   cost: 4
-  attack: 3
+  attack: 2
   defense: 3
   tier: 0
   dangerLevel: 0

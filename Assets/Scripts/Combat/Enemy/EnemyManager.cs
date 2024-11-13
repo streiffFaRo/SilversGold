@@ -190,23 +190,31 @@ public class EnemyManager : MonoBehaviour
             }
             else
             {
-                for (int i = 0; i < availableHandCardSlots.Length; i++)
+                if (randCard.currentCardMode == CardMode.INDECK)
                 {
-                    if (availableHandCardSlots[i])
+                    for (int i = 0; i < availableHandCardSlots.Length; i++)
                     {
-                        randCard.gameObject.SetActive(true);
-                        randCard.handIndex = i;
+                        if (availableHandCardSlots[i])
+                        {
+                            randCard.gameObject.SetActive(true);
+                            randCard.handIndex = i;
                     
-                        randCard.transform.position = handCardSlots[i].position;
-                        randCard.currentCardMode = CardMode.INHAND;
+                            randCard.transform.position = handCardSlots[i].position;
+                            randCard.currentCardMode = CardMode.INHAND;
+                            randCard.cardBG.SetActive(true);
                         
-                        VolumeManager.instance.GetComponent<AudioManager>().PlayCardDrawSound();
-                        availableHandCardSlots[i] = false;
-                        deck.Remove(randCard);
-                        cardsInHand.Add(randCard);
-                        enemyDeckText.text = deck.Count.ToString();
-                        return;
+                            VolumeManager.instance.GetComponent<AudioManager>().PlayCardDrawSound();
+                            availableHandCardSlots[i] = false;
+                            deck.Remove(randCard);
+                            cardsInHand.Add(randCard);
+                            enemyDeckText.text = deck.Count.ToString();
+                            return;
+                        }
                     }
+                }
+                else
+                {
+                    DrawCards();
                 }
             }
         }

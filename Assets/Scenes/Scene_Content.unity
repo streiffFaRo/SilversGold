@@ -4603,6 +4603,7 @@ GameObject:
   - component: {fileID: 678991159}
   - component: {fileID: 678991158}
   - component: {fileID: 678991161}
+  - component: {fileID: 678991162}
   m_Layer: 5
   m_Name: BroadsideButon
   m_TagString: Untagged
@@ -4782,6 +4783,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &678991162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678991156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c8f8a9f24dbde43acbc798e60550b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToDisplay: Broadside
+  box: {fileID: 922953592}
+  canvas: {fileID: 316716142}
 --- !u!1 &691447110
 GameObject:
   m_ObjectHideFlags: 0
@@ -6465,6 +6481,7 @@ GameObject:
   - component: {fileID: 1100743573}
   - component: {fileID: 1100743572}
   - component: {fileID: 1100743575}
+  - component: {fileID: 1100743576}
   m_Layer: 5
   m_Name: End Turn
   m_TagString: Untagged
@@ -6643,6 +6660,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1100743576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100743570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c8f8a9f24dbde43acbc798e60550b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToDisplay: End Turn
+  box: {fileID: 922953592}
+  canvas: {fileID: 316716142}
 --- !u!1001 &1101249274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12808,6 +12840,7 @@ GameObject:
   - component: {fileID: 2104728068}
   - component: {fileID: 2104728067}
   - component: {fileID: 2104728070}
+  - component: {fileID: 2104728071}
   m_Layer: 5
   m_Name: DrawButton
   m_TagString: Untagged
@@ -12987,6 +13020,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &2104728071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104728065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c8f8a9f24dbde43acbc798e60550b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToDisplay: Draw a card
+  box: {fileID: 922953592}
+  canvas: {fileID: 316716142}
 --- !u!1 &2105829948
 GameObject:
   m_ObjectHideFlags: 0

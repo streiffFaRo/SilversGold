@@ -64,6 +64,9 @@ public class RecruitManager : MonoBehaviour
             case 3:
                 bootyGained = Random.Range(bootyRangeTier3.x, bootyRangeTier3.y);
                 return bootyGained;
+            case 4: 
+                bootyGained = 1250;
+                return bootyGained;
             default:
                 return 0;
         }
