@@ -12340,7 +12340,7 @@ PrefabInstance:
         opponent each have an <color="grey">infantry line</color> and an <color=#D2B48C>artillery
         line</color>. The lines define which type of cards can be placed on them.
         You can see which line a <color=#DDA0DD>card</color> can be placed on its
-        top right corner.
+        left side.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c0cccc7865bc9e459a0d488f0b575d1, type: 3}
@@ -13832,10 +13832,6 @@ PrefabInstance:
     - target: {fileID: 1084914216834021377, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1505530162881684072, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}
-      propertyPath: currentLevel
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3709199457768638472, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}
       propertyPath: m_Name
