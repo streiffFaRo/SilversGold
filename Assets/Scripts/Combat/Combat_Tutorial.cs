@@ -7,6 +7,7 @@ public class Combat_Tutorial : MonoBehaviour
 {
     public GameObject[] tutorialBoxes;
     public GameObject blur;
+    public bool combatScene;
 
     private int currentBox;
 
@@ -21,7 +22,14 @@ public class Combat_Tutorial : MonoBehaviour
 
     private IEnumerator FireBaseTutorial()
     {
-        yield return new WaitForSeconds(4.5f);
+        if (combatScene)
+        {
+            yield return new WaitForSeconds(4.5f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(1f);
+        }
         tutorialBoxes[0].SetActive(true);
         blur.SetActive(true);
     }

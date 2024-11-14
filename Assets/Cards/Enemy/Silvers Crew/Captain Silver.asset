@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Captain Silver
   description: 'Death: -20 Shiphealth'
   position: I
-  artwork: {fileID: 21300000, guid: 3168140d6f409d0448447f18568d9482, type: 3}
+  artwork: {fileID: 21300000, guid: bb8421b210173a94c88697a289c5c246, type: 3}
   cost: 5
   attack: 6
   defense: 6

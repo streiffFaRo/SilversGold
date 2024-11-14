@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Fog Reaper
   description: 'Death: -3 Shiphealth'
   position: I
-  artwork: {fileID: 21300000, guid: 6d6088174bb906b49ad8428526ee337b, type: 3}
+  artwork: {fileID: 21300000, guid: 6736585fc86d7924d8da263539cb626b, type: 3}
   cost: 1
   attack: 2
   defense: 1
