@@ -137,7 +137,10 @@ public class PresentDeck : MonoBehaviour
     public IEnumerator ShowButtons()
     {
         yield return new WaitForSeconds(2f);
-        continueButton.gameObject.SetActive(true);
+        if (GameManager.instance.currentLevel != 1)
+        {
+            continueButton.gameObject.SetActive(true);
+        }
         inspectShipButton.gameObject.SetActive(true);
     }
 
