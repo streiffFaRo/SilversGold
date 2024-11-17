@@ -122,17 +122,28 @@ public class DeckManager : MonoBehaviour
 
     public void ButtonDrawsCards()
     {
-        if (playerManager.currentCommandPower >= 2 && cardsInHand.Count < 5)
+        if (playerManager.currentCommandPower >= 2)
         {
-            playerManager.UpdateCommandPower(2);
-            DrawCards();
-            VolumeManager.instance.GetComponent<AudioManager>().PlayButtonPressSound();
+            if (cardsInHand.Count < 5)
+            {
+                playerManager.UpdateCommandPower(2);
+                DrawCards();
+                VolumeManager.instance.GetComponent<AudioManager>().PlayButtonPressSound();
+            }
+            else
+            {
+                Debug.LogWarning("Hand voll!");
+                VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
+                //TODO Hand voll Animation
+                
+            }
         }
         else
         {
-            Debug.LogWarning("Zu wenig CommandPower / Volle Hand, Karte kann nicht gezogen werden!");
+            Debug.LogWarning("Zu wenig CommandPower");
             VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
-            //TODO Animation
+            playerManager.drawCardButtonAnimator.SetTrigger("trigger_warn");
+            playerManager.commandPowerAnimator.SetTrigger("trigger_commandpower_warn");
         }
     }
 
@@ -169,16 +180,19 @@ public class DeckManager : MonoBehaviour
                     card.Broadside();
                 }
                 VolumeManager.instance.GetComponent<AudioManager>().PlayCannonSound();
+                VolumeManager.instance.GetComponent<AudioManager>().PlayButtonPressSound();
                 playerManager.UpdateCommandPower(2);
             }
             else
             {
                 Debug.LogWarning("Keine Arty Einheiten für Breitseite!");
+                VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
+                //TODO Animation
             }
-            VolumeManager.instance.GetComponent<AudioManager>().PlayButtonPressSound();
         }
         VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
-        //TODO Animation
+        playerManager.broadsideButtonAnimator.SetTrigger("trigger_warn");
+        playerManager.commandPowerAnimator.SetTrigger("trigger_commandpower_warn");
     }
 
     public void EndTurn()

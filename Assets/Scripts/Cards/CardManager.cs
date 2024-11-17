@@ -32,6 +32,9 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public Button attackButton;
     public Button retreatButton;
 
+    [Header("Animation")]
+    public Animator animator;
+
     //Private Scripts
     private DeckManager deckManager;
     private BattleSystem battleSystem;
@@ -254,8 +257,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             //Wenn obere if nicht erfüllt, hat Spieler zwingen zu wenig CP
             Debug.LogWarning("Zu wenig CommandPower");
+            playerManager.commandPowerAnimator.SetTrigger("trigger_commandpower_warn");
             VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
-            //TODO Info an Player -> CommandPower Animation
         }
         //ENEMY ATTACK
         else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
@@ -331,8 +334,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             //Wenn obere if nicht erfüllt, hat Spieler zwingen zu wenig CP
             Debug.LogWarning("Zu wenig CommandPower");
+            playerManager.commandPowerAnimator.SetTrigger("trigger_commandpower_warn");
             VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
-            //TODO Info an Player
         }
         else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
         {

@@ -45,14 +45,15 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
                 }
                 else
                 {
-                    Debug.LogWarning("Zu wenig Command Power");
-                    //TODO Errorsound / Einblendung / Pochen der Commandpower Animation
+                    currentCard.animator.SetTrigger("trigger_cost_warn");
+                    playerManager.commandPowerAnimator.SetTrigger("trigger_commandpower_warn");
+                    VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
                 }
             }
             else
             {
-                Debug.LogWarning("Falsche Position");
-                //TODO Errorsound / Einblendung / Pochen der CardPosition Animation
+                currentCard.animator.SetTrigger("trigger_position_warn");
+                VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
             }
         }
     }

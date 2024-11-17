@@ -1316,7 +1316,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 6.5, y: -131}
+  m_AnchoredPosition: {x: 6.5, y: -132.3}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3752291791902691685
@@ -1451,7 +1451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 6.5, y: -90}
+  m_AnchoredPosition: {x: 6.5, y: -91.29999}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3752291792048242335
@@ -1586,7 +1586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 6.5, y: -6}
+  m_AnchoredPosition: {x: 6.5, y: -7.299988}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3752291792324933615
@@ -1721,7 +1721,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 6.5, y: -48}
+  m_AnchoredPosition: {x: 6.5, y: -49.299988}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &3752291792489316424
@@ -1834,6 +1834,7 @@ GameObject:
   - component: {fileID: 3752291792545165605}
   - component: {fileID: 4665561623411959874}
   - component: {fileID: 114835288224072258}
+  - component: {fileID: 2798129822402181407}
   m_Layer: 5
   m_Name: CardDisplayPrefab
   m_TagString: Untagged
@@ -1893,6 +1894,7 @@ MonoBehaviour:
   currentHealth: 0
   attackButton: {fileID: 2829980149627318642}
   retreatButton: {fileID: 8585612792520405240}
+  animator: {fileID: 2798129822402181407}
   cardStats: {fileID: 0}
 --- !u!114 &3752291792545165605
 MonoBehaviour:
@@ -1959,6 +1961,26 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!95 &2798129822402181407
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3752291792545165603}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 96bb45323be57294f8e4c73b29b88e9e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3752291793135505346
 GameObject:
   m_ObjectHideFlags: 0

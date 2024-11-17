@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -22,6 +23,11 @@ public class PlayerManager : MonoBehaviour
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI canonLevelText;
 
+    [Header("Animation")]
+    public Animator commandPowerAnimator;
+    public Animator drawCardButtonAnimator;
+    public Animator broadsideButtonAnimator;
+    
     [Header("Scripts")]
     public BattleSystem battleSystem;
     public DeckManager DeckManager;

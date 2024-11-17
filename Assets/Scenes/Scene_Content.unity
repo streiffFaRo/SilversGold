@@ -1817,6 +1817,9 @@ MonoBehaviour:
   commandPowerText: {fileID: 1016218803}
   healthText: {fileID: 132641872}
   canonLevelText: {fileID: 1994091024}
+  commandPowerAnimator: {fileID: 2104251003}
+  drawCardButtonAnimator: {fileID: 2104728072}
+  broadsideButtonAnimator: {fileID: 678991163}
   battleSystem: {fileID: 2071210394}
   DeckManager: {fileID: 1502925737}
 --- !u!1 &191368300
@@ -4604,6 +4607,7 @@ GameObject:
   - component: {fileID: 678991158}
   - component: {fileID: 678991161}
   - component: {fileID: 678991162}
+  - component: {fileID: 678991163}
   m_Layer: 5
   m_Name: BroadsideButon
   m_TagString: Untagged
@@ -4798,6 +4802,26 @@ MonoBehaviour:
   textToDisplay: Broadside
   box: {fileID: 922953592}
   canvas: {fileID: 316716142}
+--- !u!95 &678991163
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 678991156}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5f9917bfe5c1fc044bf24276c6719049, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &691447110
 GameObject:
   m_ObjectHideFlags: 0
@@ -12800,6 +12824,7 @@ GameObject:
   - component: {fileID: 2104251001}
   - component: {fileID: 2104251000}
   - component: {fileID: 2104251002}
+  - component: {fileID: 2104251003}
   m_Layer: 5
   m_Name: PlayerCommandPower
   m_TagString: Untagged
@@ -12881,6 +12906,26 @@ MonoBehaviour:
   textToDisplay: Command Power
   box: {fileID: 922953592}
   canvas: {fileID: 316716142}
+--- !u!95 &2104251003
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104250998}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f9db3350f004cc545acc4dab65d3c9db, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2104728065
 GameObject:
   m_ObjectHideFlags: 0
@@ -12895,6 +12940,7 @@ GameObject:
   - component: {fileID: 2104728067}
   - component: {fileID: 2104728070}
   - component: {fileID: 2104728071}
+  - component: {fileID: 2104728072}
   m_Layer: 5
   m_Name: DrawButton
   m_TagString: Untagged
@@ -13089,6 +13135,26 @@ MonoBehaviour:
   textToDisplay: Draw a card
   box: {fileID: 922953592}
   canvas: {fileID: 316716142}
+--- !u!95 &2104728072
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104728065}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 26e7c5eccc212da49ad1aab990a02b13, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2105829948
 GameObject:
   m_ObjectHideFlags: 0
