@@ -61,11 +61,10 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
     public void EnemyCardPlacedOnThisSlot(CardManager cardToPlaceOnSlot)
     {
         currentCard = cardToPlaceOnSlot;
-        currentCard.currentCardMode = CardMode.INPLAY;
-        currentCard.cardIngameSlot = this;
-        currentCard.CardPlayed();
-        
         currentCard.GetComponentInChildren<DragDrop>().rectTransform.position = GetComponent<RectTransform>().position;
+        currentCard.cardIngameSlot = this;
+        currentCard.currentCardMode = CardMode.INPLAY;
+        currentCard.CardPlayed();
         currentCard.GetComponentInChildren<DragDrop>().GameObject().SetActive(false);
         
         

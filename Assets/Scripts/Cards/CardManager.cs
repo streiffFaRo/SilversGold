@@ -437,6 +437,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     
     public void Death()
     {
+        cardIngameSlot.currentCard = null;
+        
         if (owner == Owner.PLAYER)
         {
             deckManager.discardPile.Add(this);
@@ -452,7 +454,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
         GetComponent<DeathEffects>()?.TriggerDeathEffect();
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardDeathSound();
-        cardIngameSlot.currentCard = null;
         foreach (DiesWhenAlone var in FindObjectsOfType<DiesWhenAlone>())
         {
             var.CheckIfAlone();

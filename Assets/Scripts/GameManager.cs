@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public int deckCardLimit;
     public List<Card> playerDeck = new List<Card>();
     public List<Card> startDeck = new List<Card>();
+    public bool tutorialDone;
 
     [Header("Ship")] 
     public int shipCannonLevel;
@@ -137,6 +138,8 @@ public class GameManager : MonoBehaviour
         maxShipHealth = 10;
         startShipHealth = 10;
         deckCardLimit = 15;
+
+        tutorialDone = false;
 
         shipCannonLevel = 0;
         shipCaptainLevel = 0;

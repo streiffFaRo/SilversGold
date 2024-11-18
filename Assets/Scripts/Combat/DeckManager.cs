@@ -208,6 +208,7 @@ public class DeckManager : MonoBehaviour
         if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower >= 2)
         {
             List<CardManager> playerArtyCards = new List<CardManager>();
+            
             foreach (CardManager card in FindObjectsOfType<CardManager>())
             {
                 if (card.owner == Owner.PLAYER && card.currentCardMode == CardMode.INPLAY && !card.cardActed && card.cardStats.keyWordCannoneer)
@@ -223,7 +224,6 @@ public class DeckManager : MonoBehaviour
                     card.Broadside();
                 }
                 VolumeManager.instance.GetComponent<AudioManager>().PlayCannonSound();
-                VolumeManager.instance.GetComponent<AudioManager>().PlayButtonPressSound();
                 playerManager.UpdateCommandPower(2);
             }
             else
@@ -233,9 +233,14 @@ public class DeckManager : MonoBehaviour
                 //TODO Animation
             }
         }
-        VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
-        playerManager.broadsideButtonAnimator.SetTrigger("trigger_warn");
-        playerManager.commandPowerAnimator.SetTrigger("trigger_commandpower_warn");
+        else
+        {
+            VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
+            playerManager.broadsideButtonAnimator.SetTrigger("trigger_warn");
+            playerManager.commandPowerAnimator.SetTrigger("trigger_commandpower_warn");
+        }
+        VolumeManager.instance.GetComponent<AudioManager>().PlayButtonPressSound();
+        
     }
 
     public void EndTurn()

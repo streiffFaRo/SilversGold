@@ -117,13 +117,13 @@ public class EnemyAnalysis : MonoBehaviour
                     {
                         if (slot.currentCard == null)
                         {
-                            score = score + cardToPlay.cardStats.pointsFielded * strat.playMod;
+                            score = (score + cardToPlay.cardStats.pointsFielded) * strat.playMod;
 
-                            if (slot.enemyInfantryLine == null && slot.enemyArtilleryLine == null)
+                            if (slot.enemyInfantryLine.currentCard == null && slot.enemyArtilleryLine.currentCard == null)
                             {
                                 score *= strat.emptyLaneMod;
                             }
-                            
+
                             TreeNode playInfCard = new();
                             possiblePlays.Add(playInfCard);
                             playInfCard.score = score;
@@ -139,7 +139,7 @@ public class EnemyAnalysis : MonoBehaviour
                     {
                         if (slot.currentCard == null)
                         {
-                            if (slot.enemyArtilleryLine == null)
+                            if (slot.enemyArtilleryLine.currentCard == null)
                             {
                                 score *= strat.emptyLaneMod;
                             }

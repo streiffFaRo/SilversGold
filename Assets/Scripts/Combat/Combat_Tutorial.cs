@@ -7,7 +7,7 @@ public class Combat_Tutorial : MonoBehaviour
 {
     public GameObject[] tutorialBoxes;
     public GameObject blur;
-    public bool combatScene;
+    public bool combatScene; //Im Inspektor gesetzt
 
     private int currentBox;
 
@@ -22,16 +22,20 @@ public class Combat_Tutorial : MonoBehaviour
 
     private IEnumerator FireBaseTutorial()
     {
-        if (combatScene)
-        {
-            yield return new WaitForSeconds(4.5f);
-        }
-        else
+        if (!combatScene)
         {
             yield return new WaitForSeconds(1f);
+            tutorialBoxes[0].SetActive(true);
+            blur.SetActive(true);
         }
-        tutorialBoxes[0].SetActive(true);
-        blur.SetActive(true);
+        else if (combatScene && !GameManager.instance.tutorialDone)
+        {
+            yield return new WaitForSeconds(4.5f);
+            tutorialBoxes[0].SetActive(true);
+            blur.SetActive(true);
+        }
+        
+        
     }
 
     public void HandleBoxClosure()
@@ -42,6 +46,10 @@ public class Combat_Tutorial : MonoBehaviour
         if (currentBox >= tutorialBoxes.Length)
         {
             blur.SetActive(false);
+            if (combatScene)
+            {
+                GameManager.instance.tutorialDone = true;
+            }
         }
         else
         {

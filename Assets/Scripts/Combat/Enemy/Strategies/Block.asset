@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Block
   drawMod: 1
   playMod: 1.2
-  emptyLaneMod: 0.2
+  emptyLaneMod: 0.01
   attackMod: 1
   retreatMod: 0.5
   broadsideMod: 1
