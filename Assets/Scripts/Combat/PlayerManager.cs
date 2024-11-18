@@ -73,6 +73,7 @@ public class PlayerManager : MonoBehaviour
             if (cardToReset.cardActed && cardToReset.owner == Owner.PLAYER)
             {
                 cardToReset.cardActed = false;
+                cardToReset.DidCardAct();
             }
         }
     }

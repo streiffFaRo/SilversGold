@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,6 +16,11 @@ public class DeckManager : MonoBehaviour
     public List<CardManager> discardPile = new List<CardManager>();
     public List<CardManager> cardsInHand = new List<CardManager>();
     public int currentFatigueDamage = 1;
+    
+    [Header("Animation")]
+    public GameObject infoBanner;
+    public Animator deckAnimator;
+    public Animator handCardSlotAnimator;
     
     [Header("Display")]
     public GameObject displayStand;
@@ -56,6 +63,14 @@ public class DeckManager : MonoBehaviour
     {
         //TODO beide nachfolgenden Zeilen neu eingliedern, ausserhalb von Update
         playerManager.deckSizeText.text = deck.Count.ToString();
+        if (deck.Count <= 0)
+        {
+            playerManager.deckSizeText.color = Color.red;
+        }
+        else
+        {
+            playerManager.deckSizeText.color = Color.white;
+        }
         playerManager.discardPileText.text = discardPile.Count.ToString();
     }
     
@@ -108,16 +123,33 @@ public class DeckManager : MonoBehaviour
     {
         deck.Remove(cardToBurn);
         discardPile.Add(cardToBurn);
-        //TODO Animation & Sound
+        VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
+        StartCoroutine(BurnTopDeckCardBanner());
     }
-    
+
+    public IEnumerator BurnTopDeckCardBanner()
+    {
+        infoBanner.SetActive(true);
+        infoBanner.GetComponentInChildren<TextMeshProUGUI>().text = "Hand full; Card lost!";
+        yield return new WaitForSeconds(2f);
+        infoBanner.SetActive(false);
+    }
+
     public void Fatigue()
     {
         playerManager.UpdateHealth(currentFatigueDamage, false);
         Debug.LogWarning("You fatigued for " + currentFatigueDamage);
         VolumeManager.instance.GetComponent<AudioManager>().PlayShipHitSound();
-        //TODO Animation
+        StartCoroutine(FatigueBanner());
         currentFatigueDamage++;
+    }
+
+    public IEnumerator FatigueBanner()
+    {
+        infoBanner.SetActive(true);
+        infoBanner.GetComponentInChildren<TextMeshProUGUI>().text = "Deck empty! Ship explodes!";
+        yield return new WaitForSeconds(2f);
+        infoBanner.SetActive(false);
     }
 
     public void ButtonDrawsCards()
@@ -126,16 +158,25 @@ public class DeckManager : MonoBehaviour
         {
             if (cardsInHand.Count < 5)
             {
-                playerManager.UpdateCommandPower(2);
-                DrawCards();
-                VolumeManager.instance.GetComponent<AudioManager>().PlayButtonPressSound();
+                if (deck.Count > 0)
+                {
+                    playerManager.UpdateCommandPower(2);
+                    DrawCards();
+                    VolumeManager.instance.GetComponent<AudioManager>().PlayButtonPressSound();
+                }
+                else
+                {
+                    Debug.LogWarning("Deck leer!");
+                    VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
+                    deckAnimator.SetTrigger("trigger_warn");
+                }
+                
             }
             else
             {
                 Debug.LogWarning("Hand voll!");
                 VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
-                //TODO Hand voll Animation
-                
+                handCardSlotAnimator.SetTrigger("trigger_warn");
             }
         }
         else
@@ -146,6 +187,8 @@ public class DeckManager : MonoBehaviour
             playerManager.commandPowerAnimator.SetTrigger("trigger_commandpower_warn");
         }
     }
+    
+    
 
     public void Shuffle()
     {
@@ -239,6 +282,7 @@ public class DeckManager : MonoBehaviour
         else
         {
             Debug.LogWarning("Karte hat schon gehandelt");
+            targetCardManager.animator.SetTrigger("trigger_acted_warn");
             VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
         }
         

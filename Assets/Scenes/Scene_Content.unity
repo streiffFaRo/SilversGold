@@ -133,6 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 17028215}
   - component: {fileID: 17028216}
+  - component: {fileID: 17028218}
+  - component: {fileID: 17028217}
+  - component: {fileID: 17028219}
   m_Layer: 5
   m_Name: Player Card Slots
   m_TagString: Untagged
@@ -191,6 +194,64 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &17028217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17028214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &17028218
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17028214}
+  m_CullTransparentMesh: 1
+--- !u!95 &17028219
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 17028214}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 638ee8b69af031c43ad4af18006066a5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &21880530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -732,6 +793,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2536461518045110488, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 81375438}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &81375440 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110489, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 81375438}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &82353248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,7 +1117,7 @@ RectTransform:
   - {fileID: 473903018}
   - {fileID: 1769400016}
   m_Father: {fileID: 316716143}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1752,6 +1818,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2536461518045110488, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 138678863}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &161910537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110489, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 1414919349}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &170767406
 GameObject:
   m_ObjectHideFlags: 0
@@ -2388,6 +2459,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 130, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &307241333 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110489, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 318059898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &313884947
 GameObject:
   m_ObjectHideFlags: 0
@@ -2628,6 +2704,7 @@ RectTransform:
   - {fileID: 1502925738}
   - {fileID: 1228209062}
   - {fileID: 1187467305}
+  - {fileID: 1662834695}
   - {fileID: 357075975}
   - {fileID: 645238013}
   - {fileID: 1927374206}
@@ -2806,7 +2883,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 316716143}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3682,6 +3759,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2536461518045110488, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 489569640}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &489569642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110489, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 489569640}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &505236460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4080,7 +4162,7 @@ RectTransform:
   - {fileID: 103996356}
   - {fileID: 1734363530}
   m_Father: {fileID: 316716143}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -4319,7 +4401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7054830263151455691, guid: ef2cc8315a662f84984858a2e953cbc3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -4405,12 +4487,27 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 318059898}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 307241333}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &654774396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307241333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c8f8a9f24dbde43acbc798e60550b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToDisplay: Enemy Infantery Slot
+  box: {fileID: 922953592}
+  canvas: {fileID: 316716142}
 --- !u!1 &657999238
 GameObject:
   m_ObjectHideFlags: 0
@@ -4551,7 +4648,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 138678863}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 953735762}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
@@ -5165,12 +5262,27 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 489569640}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 489569642}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &819942800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489569642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c8f8a9f24dbde43acbc798e60550b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToDisplay: Infantery Slot
+  box: {fileID: 922953592}
+  canvas: {fileID: 316716142}
 --- !u!1 &877316204
 GameObject:
   m_ObjectHideFlags: 0
@@ -5562,7 +5674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1759575934438132619, guid: a446dde0729635d4ab7c3664ae0e112a, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 1759575934438132619, guid: a446dde0729635d4ab7c3664ae0e112a, type: 3}
       propertyPath: m_AnchorMax.x
@@ -5924,6 +6036,26 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &953735762 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110489, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 138678863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &953735765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953735762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c8f8a9f24dbde43acbc798e60550b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToDisplay: Enemy Artillery Slot
+  box: {fileID: 922953592}
+  canvas: {fileID: 316716142}
 --- !u!1 &955622391
 GameObject:
   m_ObjectHideFlags: 0
@@ -5959,7 +6091,7 @@ RectTransform:
   - {fileID: 1101249275}
   - {fileID: 1570446317}
   m_Father: {fileID: 316716143}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -6027,7 +6159,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 935863497}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1054991821}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
@@ -6339,6 +6471,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -33}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1054991821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110489, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 935863497}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1054991824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054991821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c8f8a9f24dbde43acbc798e60550b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToDisplay: Enemy Infantery Slot
+  box: {fileID: 922953592}
+  canvas: {fileID: 316716142}
 --- !u!1 &1100743570
 GameObject:
   m_ObjectHideFlags: 0
@@ -6833,6 +6985,7 @@ GameObject:
   - component: {fileID: 1126867391}
   - component: {fileID: 1126867390}
   - component: {fileID: 1126867392}
+  - component: {fileID: 1126867393}
   m_Layer: 5
   m_Name: PlayerDeckPile
   m_TagString: Untagged
@@ -6914,6 +7067,26 @@ MonoBehaviour:
   textToDisplay: Cards in Deck
   box: {fileID: 922953592}
   canvas: {fileID: 316716142}
+--- !u!95 &1126867393
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126867388}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: deb2d78e9a8825f47b1ebea0331bf989, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1145644318
 GameObject:
   m_ObjectHideFlags: 0
@@ -8103,7 +8276,7 @@ RectTransform:
   m_Children:
   - {fileID: 399332529}
   m_Father: {fileID: 316716143}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -8422,12 +8595,162 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 1414919349}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 161910537}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1414919356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161910537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c8f8a9f24dbde43acbc798e60550b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToDisplay: Enemy Artillery Slot
+  box: {fileID: 922953592}
+  canvas: {fileID: 316716142}
+--- !u!1 &1417535423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1417535424}
+  - component: {fileID: 1417535426}
+  - component: {fileID: 1417535425}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1417535424
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417535423}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1662834695}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 12}
+  m_SizeDelta: {x: 253.1516, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1417535425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417535423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Info Banner
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 320002a8d35c1314f8051a881edf98a5, type: 2}
+  m_sharedMaterial: {fileID: -3473037699113836159, guid: 320002a8d35c1314f8051a881edf98a5, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 32
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 16
+  m_fontSizeMax: 36
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1417535426
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417535423}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1421388017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8550,23 +8873,43 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2536461518045110488, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 1421388017}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1421388019 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110489, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 1421388017}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1421388021 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 1421388017}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1421388019}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1421388022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421388019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c8f8a9f24dbde43acbc798e60550b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToDisplay: Infantery Slot
+  box: {fileID: 922953592}
+  canvas: {fileID: 316716142}
 --- !u!114 &1428571176 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 60549848}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1953505934}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
@@ -9128,17 +9471,37 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2536461518045110488, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 1490917191}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1490917193 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110489, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 1490917191}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1490917195 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 1490917191}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1490917193}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1490917196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490917193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c8f8a9f24dbde43acbc798e60550b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToDisplay: Infantery Slot
+  box: {fileID: 922953592}
+  canvas: {fileID: 316716142}
 --- !u!1001 &1493063234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9261,6 +9624,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2536461518045110488, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 1493063234}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1493063236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110489, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 1493063234}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1502925736
 GameObject:
   m_ObjectHideFlags: 0
@@ -9309,6 +9677,9 @@ MonoBehaviour:
   discardPile: []
   cardsInHand: []
   currentFatigueDamage: 1
+  infoBanner: {fileID: 1662834692}
+  deckAnimator: {fileID: 1126867393}
+  handCardSlotAnimator: {fileID: 17028219}
   displayStand: {fileID: 1249408711}
   allPresentCards: []
   cardSlots:
@@ -10514,12 +10885,27 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 1493063234}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1493063236}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1642948820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493063236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c8f8a9f24dbde43acbc798e60550b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToDisplay: Artillery Slot
+  box: {fileID: 922953592}
+  canvas: {fileID: 316716142}
 --- !u!1 &1643912962
 GameObject:
   m_ObjectHideFlags: 0
@@ -10711,12 +11097,104 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 81375438}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 81375440}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1661067389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81375440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c8f8a9f24dbde43acbc798e60550b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToDisplay: Artillery Slot
+  box: {fileID: 922953592}
+  canvas: {fileID: 316716142}
+--- !u!1 &1662834692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1662834695}
+  - component: {fileID: 1662834694}
+  - component: {fileID: 1662834693}
+  m_Layer: 5
+  m_Name: Info Banner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1662834693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662834692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 32b5c286dea856840a2b15b1e8561c9d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1662834694
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662834692}
+  m_CullTransparentMesh: 1
+--- !u!224 &1662834695
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1662834692}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1417535424}
+  m_Father: {fileID: 316716143}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 150}
+  m_SizeDelta: {x: 433.33334, y: 79.16667}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1677887491
 GameObject:
   m_ObjectHideFlags: 0
@@ -11672,6 +12150,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 130, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1903917862 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110489, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 2128387889}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1921458493
 GameObject:
   m_ObjectHideFlags: 0
@@ -11741,7 +12224,7 @@ RectTransform:
   m_Children:
   - {fileID: 379184197}
   m_Father: {fileID: 316716143}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -12002,6 +12485,26 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1953505934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110489, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 60549848}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1953505937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953505934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c8f8a9f24dbde43acbc798e60550b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToDisplay: Enemy Infantery Slot
+  box: {fileID: 922953592}
+  canvas: {fileID: 316716142}
 --- !u!1 &1964598289
 GameObject:
   m_ObjectHideFlags: 0
@@ -12497,7 +13000,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 2536461518640795953}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2536461518640795954}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
@@ -13315,12 +13818,27 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2536461518045110493, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
   m_PrefabInstance: {fileID: 2128387889}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1903917862}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bd4c3b447a64047b90f62ec0b5195f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2128387896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903917862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c8f8a9f24dbde43acbc798e60550b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToDisplay: Enemy Artillery Slot
+  box: {fileID: 922953592}
+  canvas: {fileID: 316716142}
 --- !u!1001 &1517582141719237618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13426,7 +13944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7859228498705702152, guid: 92c775c0ba359144a94363ada8224199, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7859228498705702152, guid: 92c775c0ba359144a94363ada8224199, type: 3}
       propertyPath: m_AnchorMax.x
@@ -13629,6 +14147,26 @@ PrefabInstance:
       objectReference: {fileID: 1428571176}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+--- !u!1 &2536461518640795954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2536461518045110489, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+  m_PrefabInstance: {fileID: 2536461518640795953}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2536461518640795955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2536461518640795954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c8f8a9f24dbde43acbc798e60550b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToDisplay: Artillery Slot
+  box: {fileID: 922953592}
+  canvas: {fileID: 316716142}
 --- !u!1001 &3904972782087920279
 PrefabInstance:
   m_ObjectHideFlags: 0

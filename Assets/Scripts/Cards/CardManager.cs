@@ -80,25 +80,18 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 deckManager.ShowDisplayCard(this);
             }
         }
-
-        //Zeigt ob die Karte schon gehandelt hat
-        if (!cardActed && currentCardMode == CardMode.INPLAY && battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
-        {
-            hasActedRim.SetActive(true);
-        }
-        else
-        {
-            hasActedRim.SetActive(false);
-        }
     }
 
     public void CardPlayed()
     {
+        cardActed = true;
+        
         if (owner == Owner.PLAYER)
         {
             deckManager.availableCardSlots[handIndex] = true;
             playerManager.UpdateCommandPower(cardCommandPowerCost);
             deckManager.cardsInHand.Remove(this);
+            DidCardAct();
         }
         else if (owner == Owner.ENEMY)
         {
@@ -107,9 +100,9 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             enemyManager.UpdateEnemyCommandPower(cardCommandPowerCost);
             enemyManager.cardsInHand.Remove(this);
         }
+        
         handCard.SetActive(false);
         inGameCard.SetActive(true);
-        cardActed = true;
         currentCardMode = CardMode.INPLAY;
         GetComponent<DiesWhenAlone>()?.CheckIfAlone();
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardPlaySound();
@@ -249,8 +242,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             else
             {
                 Debug.LogWarning("Karte hat 0 Attack");
+                animator.SetTrigger("trigger_attack_warn");
                 VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
-                //TODO Info an Player -> Attack Animation
             }
         }
         else if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
@@ -303,9 +296,12 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void HandleAttackStats()
     {
+        cardActed = true;
+        
         if (owner == Owner.PLAYER)
         {
             playerManager.UpdateCommandPower(1);
+            DidCardAct();
             SetButtonsPassive();
         }
         else if (owner == Owner.ENEMY)
@@ -313,7 +309,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             enemyManager.UpdateEnemyCommandPower(1);
         }
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardAttackSound();
-        cardActed = true;
         if (GetComponent<DiesAfterAttack>() != null)
         {
             Death();
@@ -328,6 +323,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             playerManager.UpdateCommandPower(1);
             SetButtonsPassive();
             deckManager.deck.Add(this);
+            hasActedRim.SetActive(false);
             StartCoroutine(HandleRetreatStats());
         }
         else if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
@@ -406,6 +402,21 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
     }
 
+    public void DidCardAct()
+    {
+        //Zeigt ob die Karte schon gehandelt hat
+        if (!cardActed && currentCardMode == CardMode.INPLAY && battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
+        {
+            hasActedRim.SetActive(true);
+            Debug.Log("should be active");
+        }
+        else
+        {
+            hasActedRim.SetActive(false);
+            Debug.Log("should be passive");
+        }
+    }
+
     public void UpdateCardHealth(int damage)
     {
         currentHealth -= damage;
@@ -433,6 +444,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             deckManager.discardPile.Add(this);
             GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
             GetComponentInChildren<DragDrop>().foundSlot = false;
+            hasActedRim.SetActive(false);
         }
         else if (owner == Owner.ENEMY)
         {
@@ -454,6 +466,21 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         inGameCard.SetActive(false);
         gameObject.SetActive(false);
     }
+
+    #region Animation
+
+    public void SetActedRimActive()
+    {
+        hasActedRim.SetActive(true);
+    }
+
+    public void SetActedRimPassive()
+    {
+        hasActedRim.SetActive(false);
+    }
+
+
+    #endregion
     
 }
 
