@@ -243,6 +243,14 @@ public class DeckManager : MonoBehaviour
         if (battleSystem.state == BattleState.PLAYERTURN)
         {
             StartCoroutine(battleSystem.EnemyTurn());
+
+            foreach (CardManager card in FindObjectsOfType<CardManager>())
+            {
+                if (card.currentCardMode == CardMode.INPLAY && card.owner == Owner.PLAYER)
+                {
+                    card.hasActedRim.SetActive(false);
+                }
+            }
         }
     }
 
@@ -273,7 +281,6 @@ public class DeckManager : MonoBehaviour
                     if (card.currentCardMode == CardMode.INPLAY && card.owner == Owner.PLAYER)
                     {
                         card.SetButtonsPassive();
-                        
                     }
                 }
             }
@@ -299,7 +306,6 @@ public class DeckManager : MonoBehaviour
                 if (card.currentCardMode == CardMode.INPLAY && card.owner == Owner.PLAYER)
                 {
                     card.SetButtonsPassive();
-                        
                 }
             }
         }

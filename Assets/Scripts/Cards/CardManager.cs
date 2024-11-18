@@ -408,12 +408,10 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         if (!cardActed && currentCardMode == CardMode.INPLAY && battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
             hasActedRim.SetActive(true);
-            Debug.Log("should be active");
         }
         else
         {
             hasActedRim.SetActive(false);
-            Debug.Log("should be passive");
         }
     }
 

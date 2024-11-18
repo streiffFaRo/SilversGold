@@ -70,7 +70,7 @@ public class PlayerManager : MonoBehaviour
 
         foreach (CardManager cardToReset in allCardsInPlay)
         {
-            if (cardToReset.cardActed && cardToReset.owner == Owner.PLAYER)
+            if (cardToReset.owner == Owner.PLAYER)
             {
                 cardToReset.cardActed = false;
                 cardToReset.DidCardAct();
