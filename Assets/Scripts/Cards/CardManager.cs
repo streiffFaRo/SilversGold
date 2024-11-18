@@ -382,7 +382,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             }
             SetButtonsPassive();
             cardActed = true;
-            //TODO Animation
+            DidCardAct();
         }
         else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
         {
