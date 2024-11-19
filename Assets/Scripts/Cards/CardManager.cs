@@ -49,6 +49,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     private float hoverTimer = 0;
     private bool isHovering;
     private RectTransform rectTransform;
+    private CardManager cardAttacked = null;  //Um zu bestimmen welche Karte angegriffen wird
     
 
     private void Start()
@@ -203,41 +204,39 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void Attack()
     {
-        //TODO: Effects
+        
         if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower > 0 && owner == Owner.PLAYER)
         {
             if (cardStats.attack >= 1)
             {
+                HandleAttack();
+                
                 if (cardStats.position == "I")
                 {
                     if (cardIngameSlot.enemyInfantryLine.currentCard != null)
                     {
-                        UpdateCardHealth(cardIngameSlot.enemyInfantryLine.currentCard.cardStats.attack);
-                        cardIngameSlot.enemyInfantryLine.currentCard.UpdateCardHealth(cardStats.attack);
+                        cardAttacked = cardIngameSlot.enemyInfantryLine.currentCard;
                     }
                     else if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
                     {
-                        UpdateCardHealth(cardIngameSlot.enemyArtilleryLine.currentCard.cardStats.attack);
-                        cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(cardStats.attack);
-                    }
-                    else
-                    {
-                        enemyManager.UpdateEnemyHealth(cardStats.attack, false);
+                        cardAttacked = cardIngameSlot.enemyArtilleryLine.currentCard;
                     }
                 }
                 else if (cardStats.position == "A")
                 {
                     if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
                     {
-                        UpdateCardHealth(cardIngameSlot.enemyArtilleryLine.currentCard.cardStats.attack);
-                        cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(cardStats.attack);
-                    }
-                    else
-                    {
-                        enemyManager.UpdateEnemyHealth(cardStats.attack, false);
+                        cardAttacked = cardIngameSlot.enemyArtilleryLine.currentCard;
                     }
                 }
-                HandleAttackStats();
+                
+                animator.SetTrigger("trigger_player_attack");
+
+                if (cardAttacked != null) //If a Card is attacked -> Play Defense Animation
+                {
+                    cardAttacked.animator.SetTrigger("trigger_defense");
+                }
+                
             }
             else
             {
@@ -246,6 +245,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
             }
         }
+        
         else if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
             //Wenn obere if nicht erfüllt, hat Spieler zwingen zu wenig CP
@@ -253,39 +253,39 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             playerManager.commandPowerAnimator.SetTrigger("trigger_commandpower_warn");
             VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
         }
+        
         //ENEMY ATTACK
         else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
         {
+            HandleAttack();
+            
             if (cardStats.position == "I")
             {
                 if (cardIngameSlot.enemyInfantryLine.currentCard != null)
                 {
-                    UpdateCardHealth(cardIngameSlot.enemyInfantryLine.currentCard.cardStats.attack);
-                    cardIngameSlot.enemyInfantryLine.currentCard.UpdateCardHealth(cardStats.attack);
+                    cardAttacked = cardIngameSlot.enemyInfantryLine.currentCard;
                 }
                 else if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
                 {
-                    UpdateCardHealth(cardIngameSlot.enemyArtilleryLine.currentCard.cardStats.attack);
-                    cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(cardStats.attack);
-                }
-                else
-                {
-                    playerManager.UpdateHealth(cardStats.attack, false);
+                    cardAttacked = cardIngameSlot.enemyArtilleryLine.currentCard;
                 }
             }
             else if (cardStats.position == "A")
             {
                 if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
                 {
-                    UpdateCardHealth(cardIngameSlot.enemyArtilleryLine.currentCard.cardStats.attack);
-                    cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(cardStats.attack);
-                }
-                else
-                {
-                    playerManager.UpdateHealth(cardStats.attack, false);
+                    cardAttacked = cardIngameSlot.enemyArtilleryLine.currentCard;
                 }
             }
-            HandleAttackStats();
+
+            Debug.Log("preanimation");
+            animator.SetTrigger("trigger_enemy_attack");
+            
+            if (cardAttacked != null) //If a Card is attacked -> Play Defense Animation
+            {
+                cardAttacked.animator.SetTrigger("trigger_defense");
+            }
+            
         }
         else
         {
@@ -294,26 +294,46 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
     }
 
-    public void HandleAttackStats()
+    public void HandleAttack()
     {
         cardActed = true;
-        
         if (owner == Owner.PLAYER)
         {
             playerManager.UpdateCommandPower(1);
-            DidCardAct();
             SetButtonsPassive();
         }
         else if (owner == Owner.ENEMY)
         {
             enemyManager.UpdateEnemyCommandPower(1);
         }
+    }
+
+    public void DealAttackDamage()
+    {
+        //Damage dealt
+        if (cardAttacked != null)
+        {
+            UpdateCardHealth(cardAttacked.cardStats.attack);
+            cardAttacked.UpdateCardHealth(cardStats.attack);
+        }
+        else
+        {
+            if (owner == Owner.PLAYER)
+            {
+                enemyManager.UpdateEnemyHealth(cardStats.attack, false);
+            }
+            else if (owner == Owner.ENEMY)
+            {
+                playerManager.UpdateHealth(cardStats.attack, false);
+            }
+        }
+        cardAttacked = null; //reset
+        
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardAttackSound();
         if (GetComponent<DiesAfterAttack>() != null)
         {
             Death();
         }
-        //TODO Karte soll symbolisieren dass sie genutzt wurde
     }
 
     public void Retreat()
@@ -437,7 +457,13 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     
     public void Death()
     {
-        cardIngameSlot.currentCard = null;
+        if (cardIngameSlot != null)
+        {
+            if (cardIngameSlot.currentCard != null)
+            {
+                cardIngameSlot.currentCard = null;
+            }
+        }
         
         if (owner == Owner.PLAYER)
         {
@@ -454,10 +480,15 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
         GetComponent<DeathEffects>()?.TriggerDeathEffect();
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardDeathSound();
+        
         foreach (DiesWhenAlone var in FindObjectsOfType<DiesWhenAlone>())
         {
-            var.CheckIfAlone();
+            if (var.GetComponent<CardManager>().currentCardMode == CardMode.INPLAY)
+            {
+                var.CheckIfAlone();
+            }
         }
+        
         currentCardMode = CardMode.INDECK;
         currentHealth = cardStats.defense;
         cardDisplay.SetUpCardUI();
