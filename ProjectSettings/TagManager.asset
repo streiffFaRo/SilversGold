@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Content
+  - DamageCounterFolder
   layers:
   - Default
   - TransparentFX
@@ -39,6 +40,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Test Oben
+    uniqueID: 3025602817
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Test Unten
+    uniqueID: 2049078569
     locked: 0

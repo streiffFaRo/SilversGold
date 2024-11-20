@@ -1888,6 +1888,8 @@ MonoBehaviour:
   cardBG: {fileID: 7714219796257114731}
   hasActedRim: {fileID: 4000706148027386306}
   handIndex: 3
+  damageCounterFolder: {fileID: 0}
+  damageCounterPrefab: {fileID: 635359216239170621, guid: 417dcf969eb5ea8448c1e179c2a86d65, type: 3}
   cardCommandPowerCost: 0
   cardActed: 0
   cardIngameSlot: {fileID: 0}

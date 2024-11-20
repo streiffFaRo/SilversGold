@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Button = UnityEngine.UI.Button;
@@ -19,8 +20,11 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public GameObject inGameCard;
     public GameObject cardBG;
     public GameObject hasActedRim;
-    
     public int handIndex;
+    
+    [Header("Other")]
+    public GameObject damageCounterFolder;
+    public GameObject damageCounterPrefab;
     [HideInInspector]public int cardCommandPowerCost;
 
     [Header("CardInPlayInformation")]
@@ -67,6 +71,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         cardCommandPowerCost = cardStats.cost;
         currentHealth = cardStats.defense;
         hoverTimer = 0;
+
+        damageCounterFolder = FindObjectOfType<DamageCounterFolder>().gameObject;
     }
 
     private void Update()
@@ -108,6 +114,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         GetComponent<DiesWhenAlone>()?.CheckIfAlone();
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardPlaySound();
     }
+
+    #region CardInteraction
     
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -190,6 +198,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         
     }
     
+    #endregion
+    
     public void SetButtonsActive()
     {
         attackButton.gameObject.SetActive(true);
@@ -202,6 +212,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         retreatButton.gameObject.SetActive(false);
     }
 
+    #region Attack
+    
     public void Attack()
     {
         
@@ -315,16 +327,23 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             UpdateCardHealth(cardAttacked.cardStats.attack);
             cardAttacked.UpdateCardHealth(cardStats.attack);
+            
+            SpawnDamageCounter(rectTransform.position + new Vector3(75, 75,0), cardAttacked.cardStats.attack);
+            SpawnDamageCounter(cardAttacked.rectTransform.position + new Vector3(75, 75, 0), cardStats.attack);
         }
         else
         {
             if (owner == Owner.PLAYER)
             {
                 enemyManager.UpdateEnemyHealth(cardStats.attack, false);
+                
+                SpawnDamageCounter(enemyManager.enemyHealthText.rectTransform.position + new Vector3(75,-75,0), cardStats.attack);
             }
             else if (owner == Owner.ENEMY)
             {
                 playerManager.UpdateHealth(cardStats.attack, false);
+                
+                SpawnDamageCounter(playerManager.healthText.rectTransform.position+ new Vector3(75,75,0), cardStats.attack);
             }
         }
         cardAttacked = null; //reset
@@ -335,16 +354,29 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             Death();
         }
     }
+    
+    #endregion
 
+    public void SpawnDamageCounter(Vector3 position, int amount)
+    {
+        GameObject createdDamageCounter = Instantiate(damageCounterPrefab, position, Quaternion.identity,
+            damageCounterFolder.transform);
+        createdDamageCounter.GetComponent<DamageCounter>().numberText.text = "-"+amount.ToString();
+    }
+
+    #region Retreat
+    
     public void Retreat()
     {
         if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower > 0 && owner == Owner.PLAYER)
         {
             playerManager.UpdateCommandPower(1);
             SetButtonsPassive();
-            deckManager.deck.Add(this);
+            cardActed = true;
             hasActedRim.SetActive(false);
-            StartCoroutine(HandleRetreatStats());
+            VolumeManager.instance.GetComponent<AudioManager>().PlayCardRetreatSound();
+            animator.SetTrigger("trigger_retreat");
+            
         }
         else if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
@@ -356,38 +388,59 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
         {
             enemyManager.UpdateEnemyCommandPower(1);
-            enemyManager.deck.Add(this);
-            enemyManager.UpdateEnemyUI();
-            cardBG.SetActive(true);
-            StartCoroutine(HandleRetreatStats());
+            cardActed = true;
+            VolumeManager.instance.GetComponent<AudioManager>().PlayCardRetreatSound();
+            animator.SetTrigger("trigger_retreat");
         }
         else
         {
             Debug.LogError("Retreat failed!");
         }
     }
-    
-    private IEnumerator HandleRetreatStats()
+
+    public void StartHandleRetreatStats()
     {
+        StartCoroutine(HandleRetreatStats());
+    }
+
+    public IEnumerator HandleRetreatStats()
+    {
+        if (owner == Owner.PLAYER)
+        {
+            deckManager.deck.Add(this);
+        }
+        else if (owner == Owner.ENEMY)
+        {
+            enemyManager.deck.Add(this);
+            enemyManager.UpdateEnemyUI();
+            cardBG.SetActive(true);
+        }
         currentCardMode = CardMode.INDECK;
         GetComponent<RetreatEffects>()?.TriggerRetreatEffect();
-        yield return new WaitForSeconds(0.05f);
+        //Hier war mal Verzögerung drin, bei problemen wieder einfügen
         currentHealth = cardStats.defense;
         deckManager.HideDisplayCard();
         cardIngameSlot.currentCard = null;
         foreach (DiesWhenAlone var in FindObjectsOfType<DiesWhenAlone>())
         {
-            var.CheckIfAlone();
+            if (var.GetComponent<CardManager>().currentCardMode == CardMode.INPLAY)
+            {
+                var.CheckIfAlone();
+            }
         }
         handCard.SetActive(true);
         handCard.transform.localScale = new Vector3(1f, 1f, 1f);
         GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
         GetComponentInChildren<DragDrop>().foundSlot = false;
-        VolumeManager.instance.GetComponent<AudioManager>().PlayCardRetreatSound();
         inGameCard.SetActive(false);
         gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.05f);
     }
 
+    #endregion
+
+    #region Broadside
+    
     public void Broadside()
     {
         if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
@@ -395,10 +448,12 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
             { 
                 cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(GameManager.instance.shipCannonLevel+1);
+                SpawnDamageCounter(cardIngameSlot.enemyArtilleryLine.currentCard.rectTransform.position + new Vector3(75,-75,0), GameManager.instance.shipCannonLevel+1);
             }
             else
             { 
                 enemyManager.UpdateEnemyHealth(GameManager.instance.shipCannonLevel+1, false);
+                SpawnDamageCounter(enemyManager.enemyHealthText.rectTransform.position + new Vector3(75,-75,0), GameManager.instance.shipCannonLevel+1);
             }
             SetButtonsPassive();
             cardActed = true;
@@ -409,10 +464,12 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
             { 
                 cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(enemyManager.enemyCannonLevel);
+                SpawnDamageCounter(cardIngameSlot.enemyArtilleryLine.currentCard.rectTransform.position + new Vector3(75,-75,0), enemyManager.enemyCannonLevel);
             }
             else
             { 
                 playerManager.UpdateHealth(enemyManager.enemyCannonLevel, false);
+                SpawnDamageCounter(playerManager.healthText.rectTransform.position+ new Vector3(75,75,0), cardStats.attack);
             }
             cardActed = true;
         }
@@ -421,6 +478,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             Debug.LogWarning("Attack failed!");
         }
     }
+    
+    #endregion
 
     public void DidCardAct()
     {
