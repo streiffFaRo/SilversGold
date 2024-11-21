@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -38,6 +39,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     [Header("Animation")]
     public Animator animator;
+    public GameObject cannonBallVisualRoot;
 
     //Private Scripts
     private DeckManager deckManager;
@@ -54,6 +56,9 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     private bool isHovering;
     private RectTransform rectTransform;
     private CardManager cardAttacked = null;  //Um zu bestimmen welche Karte angegriffen wird
+    private CardManager cannoneerAttacked = null;
+    private int broadsideDamage;
+    private Tween moveTween;
     
 
     private void Start()
@@ -289,8 +294,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                     cardAttacked = cardIngameSlot.enemyArtilleryLine.currentCard;
                 }
             }
-
-            Debug.Log("preanimation");
             animator.SetTrigger("trigger_enemy_attack");
             
             if (cardAttacked != null) //If a Card is attacked -> Play Defense Animation
@@ -443,42 +446,72 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     
     public void Broadside()
     {
+        cannonBallVisualRoot.SetActive(true);
+        
         if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
-            if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
-            { 
-                cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(GameManager.instance.shipCannonLevel+1);
-                SpawnDamageCounter(cardIngameSlot.enemyArtilleryLine.currentCard.rectTransform.position + new Vector3(75,-75,0), GameManager.instance.shipCannonLevel+1);
-            }
-            else
-            { 
-                enemyManager.UpdateEnemyHealth(GameManager.instance.shipCannonLevel+1, false);
-                SpawnDamageCounter(enemyManager.enemyHealthText.rectTransform.position + new Vector3(75,-75,0), GameManager.instance.shipCannonLevel+1);
-            }
             SetButtonsPassive();
             cardActed = true;
             DidCardAct();
+            
+            if (cardIngameSlot.enemyArtilleryLine.currentCard != null) //Spieler Kanonier greift gegnerische Arty Karte an
+            { 
+                CannonBallAnimation(900f,0.8f, BroadsideEffects);
+                cannoneerAttacked = cardIngameSlot.enemyArtilleryLine.currentCard;
+                broadsideDamage = GameManager.instance.shipCannonLevel + 1;
+
+            }
+            else //Spieler Kanonier greift gegnerisches Schiff an
+            { 
+                CannonBallAnimation(1100f,0.8f, BroadsideEffects);
+            }
+            
         }
         else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
         {
-            if (cardIngameSlot.enemyArtilleryLine.currentCard != null)
-            { 
-                cardIngameSlot.enemyArtilleryLine.currentCard.UpdateCardHealth(enemyManager.enemyCannonLevel);
-                SpawnDamageCounter(cardIngameSlot.enemyArtilleryLine.currentCard.rectTransform.position + new Vector3(75,-75,0), enemyManager.enemyCannonLevel);
-            }
-            else
-            { 
-                playerManager.UpdateHealth(enemyManager.enemyCannonLevel, false);
-                SpawnDamageCounter(playerManager.healthText.rectTransform.position+ new Vector3(75,75,0), cardStats.attack);
-            }
             cardActed = true;
+            
+            if (cardIngameSlot.enemyArtilleryLine.currentCard != null) //Gegner Kanonier greift spieler Artya Karte an
+            { 
+                CannonBallAnimation(-900f,0.8f, BroadsideEffects);
+                cannoneerAttacked = cardIngameSlot.enemyArtilleryLine.currentCard;
+                broadsideDamage = enemyManager.enemyCannonLevel;
+            }
+            else //Gegner greift spieler Schiff an
+            { 
+                CannonBallAnimation(-1100f,0.8f, BroadsideEffects);
+            }
         }
         else
         {
             Debug.LogWarning("Attack failed!");
         }
     }
-    
+
+    private void BroadsideEffects()
+    {
+        cannonBallVisualRoot.SetActive(false);
+
+        if (cannoneerAttacked != null)
+        {
+            SpawnDamageCounter(cannoneerAttacked.rectTransform.position + new Vector3(75,-75,0), broadsideDamage);
+            cannoneerAttacked.UpdateCardHealth(broadsideDamage);
+        }
+        else
+        {
+            if (owner == Owner.PLAYER)
+            {
+                SpawnDamageCounter(enemyManager.enemyHealthText.rectTransform.position + new Vector3(75,-75,0), GameManager.instance.shipCannonLevel+1);
+                enemyManager.UpdateEnemyHealth(GameManager.instance.shipCannonLevel+1, false);
+            }
+            else if (owner == Owner.ENEMY)
+            {
+                playerManager.UpdateHealth(enemyManager.enemyCannonLevel, false);
+                SpawnDamageCounter(playerManager.healthText.rectTransform.position+ new Vector3(75,75,0), cardStats.attack);
+            }
+        }
+    }
+
     #endregion
 
     public void DidCardAct()
@@ -567,7 +600,20 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     {
         hasActedRim.SetActive(false);
     }
+    
+    private void CannonBallAnimation(float distance, float duration, TweenCallback onEnd)
+    {
 
+        if (moveTween!= null)
+        {
+            moveTween.Kill(false);
+        }
+
+        cannonBallVisualRoot.SetActive(true);
+        cannonBallVisualRoot.transform.position = transform.position;
+        moveTween = cannonBallVisualRoot.transform.DOMoveY(distance, duration);
+        moveTween.onComplete += onEnd;
+    }
 
     #endregion
     
