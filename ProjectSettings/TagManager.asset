@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Content
-  - DamageCounterFolder
   layers:
   - Default
   - TransparentFX
@@ -46,6 +45,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Test Unten
+  - name: ParticlesForeground
     uniqueID: 2049078569
     locked: 0

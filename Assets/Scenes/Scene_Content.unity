@@ -10685,7 +10685,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.11320752, g: 0.083736174, b: 0.04432181, a: 0}
+  m_BackGroundColor: {r: 0.16862746, g: 0.07450981, b: 0.06666667, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -11340,7 +11340,7 @@ GameObject:
   - component: {fileID: 1697295640}
   m_Layer: 5
   m_Name: Damage Counters
-  m_TagString: DamageCounterFolder
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
