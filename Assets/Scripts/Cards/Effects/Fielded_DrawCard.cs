@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fielded_DrawCard : MonoBehaviour
+public class Fielded_DrawCard : MonoBehaviour 
 {
+    //Verantwortlich für Karten die während Existenz jeden Zug Karten ziehen
+    
+    //Priavte Scripts
     private CardManager card;
     private DeckManager deckManager;
     private EnemyManager enemyManager;
@@ -30,7 +33,7 @@ public class Fielded_DrawCard : MonoBehaviour
         BattleSystem.onEnemyTurnEvent -= ChangeCommandPowerEffect;
     }
 
-    public void ChangeCommandPowerEffect()
+    public void ChangeCommandPowerEffect() //Zieht jeden Zug eine extra Karte
     {
         if (card.currentCardMode == CardMode.INPLAY)
         {

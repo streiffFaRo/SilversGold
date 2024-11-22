@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
@@ -19,7 +16,7 @@ public class EnemyManager : MonoBehaviour
     public TextMeshProUGUI enemyCannonLevelText;
 
     [Header("EnemyStats")] 
-    public string enemyName;
+    public string enemyName; //Name wird im Inspektior gestzt
     public int enemyMaxCommandPower;
     public int enemyCurrentCommandPower;
     public int commandPowerBonus;
@@ -50,7 +47,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.instance;
+        gameManager = GameManager.instance; //für einfacheren Zugriff
         
         ConvertEnemyData();
         InitiateDeck();
@@ -64,7 +61,9 @@ public class EnemyManager : MonoBehaviour
         currentFatigueDamage = 1;
     }
 
-    public void ConvertEnemyData()
+    #region SetUp
+
+    public void ConvertEnemyData() //Lädt Gegnerdaten für momentanes Level
     {
         enemyName = enemyData[gameManager.currentLevel - 1].enemyTitle;
         enemyMaxHealth = enemyData[gameManager.currentLevel - 1].health;
@@ -75,7 +74,7 @@ public class EnemyManager : MonoBehaviour
         deckToPrepare = enemyData[gameManager.currentLevel - 1].deckToPrepare;
     }
 
-    public void InitiateDeck()
+    public void InitiateDeck() //Lädt Gegnerdeck
     {
         foreach (Card card in deckToPrepare)
         {
@@ -86,7 +85,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void MarkCardsAsEnemy()
+    public void MarkCardsAsEnemy() //Verändet die Karten so, dass der Gegner sie nutzen kann
     {
         foreach (CardManager cardToMark in deck)
         {
@@ -106,10 +105,20 @@ public class EnemyManager : MonoBehaviour
     {
         enemyCurrentCommandPower = enemyMaxCommandPower;
         enemyCurrentCommandPower += commandPowerBonus;
-        enemyCommandPowerText.text = enemyMaxCommandPower.ToString();
+        enemyCommandPowerText.text = enemyCurrentCommandPower.ToString();
         commandPowerBonus = 0;
     }
 
+    #endregion
+
+    #region Update Variablen
+
+    public void UpdateEnemyCommandPower(int amount)
+    {
+        enemyCurrentCommandPower -= amount;
+        enemyCommandPowerText.text = enemyCurrentCommandPower.ToString();
+    }
+    
     public void UpdateEnemyUI()
     {
         enemyDeckText.text = deck.Count.ToString();
@@ -118,7 +127,6 @@ public class EnemyManager : MonoBehaviour
 
     public void UpdateEnemyHealth(int amount, bool positiveNumber)
     {
-        
         if (positiveNumber)
         {
             enemyCurrentHealth += amount;
@@ -149,11 +157,7 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void UpdateEnemyCommandPower(int amount)
-    {
-        enemyCurrentCommandPower -= amount;
-        enemyCommandPowerText.text = enemyCurrentCommandPower.ToString();
-    }
+    #endregion
 
     public void StartNewEnemyTurn()
     {
@@ -162,7 +166,6 @@ public class EnemyManager : MonoBehaviour
         SetUpEnemyCommandPower();
         StartCoroutine(DoEnemyStuff());
         DrawCards();
-
     }
     
     public void ResetCardsWhoActed()
@@ -236,7 +239,7 @@ public class EnemyManager : MonoBehaviour
     {
         UpdateEnemyHealth(currentFatigueDamage, false);
         Debug.LogWarning("You fatigued for " + currentFatigueDamage);
-        //TODO Animation & Sound
+        //TODO Animation
         currentFatigueDamage++;
     }
 
@@ -246,7 +249,7 @@ public class EnemyManager : MonoBehaviour
         UpdateEnemyCommandPower(2);
     }
 
-    public IEnumerator DoEnemyStuff()
+    public IEnumerator DoEnemyStuff() //Gegner überlegt und Führt Aktionen in überschaubarem Tempo aus
     {
         yield return new WaitForSeconds(1f);
         enemyAnalysis.AnalysePossibleActions();
@@ -254,7 +257,7 @@ public class EnemyManager : MonoBehaviour
         enemyAnalysis.InitiateBestPlay();
     }
 
-    public IEnumerator EndTurn()
+    public IEnumerator EndTurn() //Beendet Gegner Zug
     {
         yield return new WaitForSeconds(1f);
         StartCoroutine(battleSystem.PlayerTurn());

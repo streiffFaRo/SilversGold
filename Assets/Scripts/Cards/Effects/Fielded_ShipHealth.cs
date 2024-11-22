@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Fielded_ShipHealth : MonoBehaviour
+public class Fielded_ShipHealth : MonoBehaviour 
 {
+    //Verantwortlich für Karten die während Existenz jeden Zug Schiffsleben geben oder nehmen
     
+    //Private Scripts
     private CardManager card;
     private PlayerManager playerManager;
     private EnemyManager enemyManager;
@@ -31,7 +31,7 @@ public class Fielded_ShipHealth : MonoBehaviour
         BattleSystem.onEnemyTurnEvent -= ChangeShipHealthEffect;
     }
 
-    public void ChangeShipHealthEffect()
+    public void ChangeShipHealthEffect() //Heilt/schadet jeden Zug X Schiffsleben
     {
         if (card.currentCardMode == CardMode.INPLAY)
         {

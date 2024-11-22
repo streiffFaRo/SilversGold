@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using Ink.Runtime;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
+    //Verantwortlich für das Logbuch und die Benutzung
+    
     private static DialogueManager instance;
     
     [Header("Ink Files")] 
@@ -27,6 +27,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private float typingSpeed = 0.03f;
     public static event Action<string> InkEvent;
     
+    //Private Variablen
     private Story currentStory;
     private Coroutine displayLineCorutine;
     private bool canContinueToNextLine = false;
@@ -81,7 +82,7 @@ public class DialogueManager : MonoBehaviour
         currentStory.UnbindExternalFunction("Add_State");
     }
 
-    public void SelectCurrentStory()
+    public void SelectCurrentStory() //Wählt Inkfile für das entsprechende Level
     {
         currentStory = new Story(allLogFiles[GameManager.instance.currentLevel].text);
     }
@@ -114,7 +115,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private IEnumerator DisplayLine(string line)
+    private IEnumerator DisplayLine(string line) //Gibt Text in bestimmter Geschwindigkeit wieder
     {
         textUI.text = "";
         continueButton.SetActive(false);
@@ -139,7 +140,7 @@ public class DialogueManager : MonoBehaviour
         breakLineFormationChain = false;
     }
 
-    private void DisplayChoices()
+    private void DisplayChoices() //Zeigt Auswahlmöglichkeiten an
     {
         List<Choice> currentChoices = currentStory.currentChoices;
         

@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -46,7 +44,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateLevel()
+    public void UpdateLevel() //Lädt neue Levels und Tiers
     {
         
         currentLevel++;
@@ -66,7 +64,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void SetUpForNextLevel()
+    public void SetUpForNextLevel() //Lädt Schiffsupgrades
     {
         switch (shipCaptainLevel)
         {
@@ -120,7 +118,7 @@ public class GameManager : MonoBehaviour
         startShipHealth = maxShipHealth;
     }
 
-    public void SetUpNewGame()
+    public void SetUpNewGame() //Setzt neues Spiel auf, resetet alle Spieldaten
     {
         
         playerDeck.Clear();

@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DiesAfterAttack : MonoBehaviour
 {
     
     
-    //Logic Handled in CardManager
+    //Logik ist im Cardmanager, Script ist nur zur Kennzeichnung der Karten welche nach dem Angreiffen sterben sollen
     
     
 }

@@ -1,21 +1,20 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardDisplay : MonoBehaviour
+public class CardDisplay : MonoBehaviour 
 {
+    //Verantwortlich für das visuelle Darstellen der Karte
+    
     public Card card;
 
     [Header("HandCard")]
     public TextMeshProUGUI handNameText;
     public TextMeshProUGUI handDescriptionText;
     public TextMeshProUGUI handPositionText;
-
+    
     public Image handArtworkImage;
     
     public TextMeshProUGUI handCostText;
@@ -36,7 +35,6 @@ public class CardDisplay : MonoBehaviour
     
     //Private
     private List<GameObject> keyWords = new List<GameObject>();
-
     
 
     void Start()
@@ -50,7 +48,7 @@ public class CardDisplay : MonoBehaviour
         SetUpCardUI();
     }
 
-    public void SetUpCardUI()
+    public void SetUpCardUI() //Setzt Werte der Karte
     {
         handNameText.text = card.name;
         if (card.description != null)
@@ -68,9 +66,9 @@ public class CardDisplay : MonoBehaviour
         handDefenseText.text = card.defense.ToString();
     }
 
-    public void ShowKeyWordBox()
+    public void ShowKeyWordBox() //Zeigt Box mit Hilfstext zum Effekt der Karte
     {
-        if (GameManager.instance.showKeyWords)
+        if (GameManager.instance.showKeyWords) //TODO Mögliche Option -> Keywordboxes ausschalten
         {
             if (card.keyWordCannoneer)
                 keyWords.Add(keyWordCannoneerBox);
@@ -94,7 +92,7 @@ public class CardDisplay : MonoBehaviour
         }
     }
 
-    public void HideKeyWordBox()
+    public void HideKeyWordBox() //Versteckt Box mit Hilfstext
     {
         if (keyWords.Count > 0)
         {

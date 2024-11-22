@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
+    //Verantwortlich für die Funktionalität des Menüs
+    
     public void PlayGame()
     {
         SceneManager.LoadScene("Scene_Log");

@@ -1,14 +1,11 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class AudioManager : MonoBehaviour
 {
     [Header("Platzhalter")]
     public AudioSource platzhalterTeller;
     public AudioSource platzhalterFlasche;
+    
     [Header("CardSounds")]
     public PlayRandomSound cardAttackSound;
     public PlayRandomSound cardHandHoverSound;
@@ -16,23 +13,29 @@ public class AudioManager : MonoBehaviour
     public PlayRandomSound cardDrawSound;
     public AudioSource cardDeathSound;
     public AudioSource cardRetreatSound;
+    
     [Header("ShipSounds")]
     public PlayRandomSound shipHitSound;
     public AudioSource shipDeathSound;
+    
     [Header("UISounds")]
     public PlayRandomSound buttonPressSound;
     public PlayRandomSound buttonHoverSound;
+    
+    [Header("Music")] 
+    public AudioSource menuMusic;
+    public AudioSource gameMusic;
+    
     [Header("Other")] 
     public PlayRandomSound cannonSound;
     public AudioSource upgradeSound;
     public AudioSource bootySound;
     public AudioSource endTurnBellSound;
     public PlayRandomSound denySound;
-    [Header("Music")] 
-    public AudioSource menuMusic;
-    public AudioSource gameMusic;
+
+
+    #region Platzhalter
     
-    //Platzhalter
     public void PlayPlatzHalterTeller()
     {
         platzhalterTeller.Play();
@@ -42,8 +45,11 @@ public class AudioManager : MonoBehaviour
     {
         platzhalterFlasche.Play();
     }
+
+    #endregion
+
+    #region CardSounds
     
-    //CardSounds
     public void PlayCardAttackSound()
     {
         cardAttackSound.PlaySound();
@@ -73,8 +79,11 @@ public class AudioManager : MonoBehaviour
     {
         cardRetreatSound.Play();
     }
+
+    #endregion
+
+    #region ShipSounds
     
-    //ShipSounds
     public void PlayShipHitSound()
     {
         shipHitSound.PlaySound();
@@ -84,8 +93,11 @@ public class AudioManager : MonoBehaviour
     {
         shipDeathSound.Play();
     }
+
+    #endregion
+
+    #region UISounds
     
-    //UISounds
     public void PlayButtonPressSound()
     {
         buttonPressSound.PlaySound();
@@ -95,8 +107,35 @@ public class AudioManager : MonoBehaviour
     {
         buttonHoverSound.PlaySound();
     }
+
+    #endregion
+
+    #region Music
+
+    public void PlayMenuMusic()
+    {
+        menuMusic.Play();
+    }
+
+    public void StopMenuMusic()
+    {
+        menuMusic.Stop();
+    }
+
+    public void PlayGameMusic()
+    {
+        gameMusic.Play();
+    }
+
+    public void StopGameMusic()
+    {
+        gameMusic.Stop();
+    }
+
+    #endregion
+
+    #region Other
     
-    //Other
     public void PlayCannonSound()
     {
         cannonSound.PlaySound();
@@ -122,26 +161,7 @@ public class AudioManager : MonoBehaviour
         denySound.PlaySound();
     }
     
-    //Music
 
-    public void PlayMenuMusic()
-    {
-        menuMusic.Play();
-    }
-
-    public void StopMenuMusic()
-    {
-        menuMusic.Stop();
-    }
-
-    public void PlayGameMusic()
-    {
-        gameMusic.Play();
-    }
-
-    public void StopGameMusic()
-    {
-        gameMusic.Stop();
-    }
+    #endregion
 
 }

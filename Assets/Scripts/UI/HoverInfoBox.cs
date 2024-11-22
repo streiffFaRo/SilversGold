@@ -8,11 +8,14 @@ using UnityEngine.EventSystems;
 
 public class HoverInfoBox : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    //Verantwortlich gewünschten Tooltip anzuzeigen
 
+    [Header("General")]
     public string textToDisplay;
     public GameObject box;
     public Canvas canvas;
     
+    //Private Variablen
     private TextMeshProUGUI text;
     private bool hovering;
     private Vector3 mousePosition;

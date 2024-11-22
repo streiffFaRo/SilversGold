@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class EnemyAnalysis : MonoBehaviour
 {
-    // Verantwortlich für Spielanalyse
+    // Verantwortlich für Spielanalyse und das Ermitteln des besten Spielzuges
     
+    [Header("General")]
     public EnemyManager enemyManager;
     public EnemyActionExecuter enemyActionExecuter;
     public int actionIndex;
     public Strategy strat;
     public bool showDebug;
+    
+    //Private Variablen
     private List<TreeNode> possiblePlays = new();
 
     private void Start()
@@ -22,6 +25,7 @@ public class EnemyAnalysis : MonoBehaviour
     {
         actionIndex = 1;
         
+        //Gegner geht alle möglichen Spielzüge durch und bewertet diese
         AnalysedDrawCardAction();
         AnalyseBroadsideAction();
         AnalysePlayCardActions();
@@ -63,7 +67,6 @@ public class EnemyAnalysis : MonoBehaviour
                         break;
                 }
             }
-
             TreeNode drawCard = new();
             possiblePlays.Add(drawCard);
             drawCard.score = score;
@@ -184,7 +187,7 @@ public class EnemyAnalysis : MonoBehaviour
                         }
                         else
                         {
-                            score = score + cardToAttackWith.cardStats.pointsAttack * strat.attackMod + 7; // 7 = Standart direkter Schiffsangriff Wert
+                            score = score + cardToAttackWith.cardStats.pointsAttack * strat.attackMod + 7; // 7 = Standard direkter Schiffsangriff Wert
                         }
                     }
                     else if (cardToAttackWith.cardStats.position == "A")
@@ -195,7 +198,7 @@ public class EnemyAnalysis : MonoBehaviour
                         }
                         else
                         {
-                            score = score + cardToAttackWith.cardStats.pointsAttack * strat.attackMod + 7; // 7 = Standart direkter Schiffsangriff Wert
+                            score = score + cardToAttackWith.cardStats.pointsAttack * strat.attackMod + 7; // 7 = Standard direkter Schiffsangriff Wert
                         }
                     }
                     
@@ -251,7 +254,7 @@ public class EnemyAnalysis : MonoBehaviour
 
     public void InitiateBestPlay()
     {
-        if (showDebug)
+        if (showDebug) //Listet alle Spielzüge und ihre Wertung auf
         {
             foreach (TreeNode node in possiblePlays)
             {
@@ -259,7 +262,7 @@ public class EnemyAnalysis : MonoBehaviour
             }
         }
         
-        if (possiblePlays.Count != 0)
+        if (possiblePlays.Count != 0) //Nimmt besten Spielzug und führt ihn im EnemyActionExecutor.cs aus
         {
             TreeNode bestPlay = possiblePlays.OrderBy(x => x.score).Last();
             if (bestPlay.score > 0)
@@ -272,6 +275,7 @@ public class EnemyAnalysis : MonoBehaviour
             }
             else
             {
+                //Beendet Zug wenn er keine Spielzüge mit guter Wertung gefunden hat
                 StartCoroutine(enemyManager.EndTurn());
                 if (showDebug)
                 {
@@ -282,6 +286,7 @@ public class EnemyAnalysis : MonoBehaviour
         }
         else
         {
+            //Beendet Zug wenn er keine Spielzüge gefunden hat
             StartCoroutine(enemyManager.EndTurn());
             if (showDebug)
             {

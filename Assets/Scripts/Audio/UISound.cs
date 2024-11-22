@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UISound : MonoBehaviour
+public class UISound : MonoBehaviour //Einfacher Weg um UI Sounds auf dem Audiomanager abzuspielen
 {
     
     private AudioManager audioManager;
@@ -11,6 +11,8 @@ public class UISound : MonoBehaviour
     {
         audioManager = VolumeManager.instance.GetComponent<AudioManager>();
     }
+
+    #region PlaySounds
 
     public void PlayPlatzhalterTeller()
     {
@@ -51,5 +53,7 @@ public class UISound : MonoBehaviour
             audioManager.PLayEndTurnBellSound();
         }
     }
+
+    #endregion
 
 }

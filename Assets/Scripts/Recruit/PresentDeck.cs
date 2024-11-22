@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,6 +7,8 @@ using UnityEngine.UI;
 
 public class PresentDeck : MonoBehaviour
 {
+    //Verantwortlich dem Spieler das Deck zu zeigen
+    
     [Header("Struktur")]
     public GameObject deckPresenter;
     public GameObject firstRow;

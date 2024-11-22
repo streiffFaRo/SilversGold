@@ -1,10 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CheatMenu : MonoBehaviour
 {
+    //Verantwortlich für einfaches Testen jeglicher Funktionen des Spiels
+    
+    //TODO Cheatmode ausmachen für finalen Build!
+    
+    //Private Scripts
     private PlayerManager playerManager;
     private BattleSystem battleSystem;
     private GameManager gameManager;

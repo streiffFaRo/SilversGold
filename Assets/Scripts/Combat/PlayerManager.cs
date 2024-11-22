@@ -1,9 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -49,6 +45,13 @@ public class PlayerManager : MonoBehaviour
         canonLevelText.text = currentCannonLevel.ToString();
     }
     
+    public void StartNewTurn()
+    {
+        RefreshCommandPower();
+        DeckManager.DrawCards();
+        ResetCardsWhoActed();
+    }
+    
     public void RefreshCommandPower()
     {
         currentCommandPower = maxCommandPower;
@@ -56,13 +59,6 @@ public class PlayerManager : MonoBehaviour
         commandPowerText.text = currentCommandPower.ToString();
         commandPowerBonus = 0;
     }  
-    
-    public void StartNewTurn()
-    {
-        RefreshCommandPower();
-        DeckManager.DrawCards();
-        ResetCardsWhoActed();
-    }
 
     public void ResetCardsWhoActed()
     {

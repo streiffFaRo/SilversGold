@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DamageCounter : MonoBehaviour
 {
+    //Verantwortlich verursachen Schaden nachvollziehbar anzuzeigen
+    
     private GameObject number;
     public TextMeshProUGUI numberText;
     private Tween fadeTween;

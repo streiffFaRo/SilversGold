@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
     [SerializeField] private List<State> states;
-    
     
     public State Get(string id)
     {

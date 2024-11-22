@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RetreatEffects : MonoBehaviour
+public class RetreatEffects : MonoBehaviour 
 {
+    //Verantwortlich für Karten mit einem Effekt nachdem sie sich zurückziehen
+    
+    //Private Scripts
     private CardManager card;
     private PlayerManager playerManager;
     private DeckManager deckManager;
     private EnemyManager enemyManager;
-    private BattleSystem battleSystem;
     
     private void Start()
     {
@@ -16,10 +16,9 @@ public class RetreatEffects : MonoBehaviour
         playerManager = FindObjectOfType<PlayerManager>();
         deckManager = FindObjectOfType<DeckManager>();
         enemyManager = FindObjectOfType<EnemyManager>();
-        battleSystem = FindObjectOfType<BattleSystem>();
     }
 
-    public void TriggerRetreatEffect()
+    public void TriggerRetreatEffect() //Wählt gewünschten Effekt
     {
         switch (card.cardStats.para1)
         {
@@ -35,11 +34,10 @@ public class RetreatEffects : MonoBehaviour
             case 4:
                 ChangeCommandPower();
                 break;
-            
         }
     }
 
-    public void ShuffleCardIntoDeck()
+    public void ShuffleCardIntoDeck() //Mischt X tote Karten wieder ins Deck
     {
         if (card.owner == Owner.PLAYER)
         {
@@ -63,7 +61,7 @@ public class RetreatEffects : MonoBehaviour
         }
     }
 
-    public void DrawCard()
+    public void DrawCard() //Zieht X Karten
     {
         if (card.owner == Owner.PLAYER)
         {
@@ -83,7 +81,7 @@ public class RetreatEffects : MonoBehaviour
         }
     }
 
-    public void ChangeShipHealth()
+    public void ChangeShipHealth() //Heilt oder schädigt das eigene Schiff für X
     {
         if (card.owner == Owner.PLAYER)
         {
@@ -95,7 +93,7 @@ public class RetreatEffects : MonoBehaviour
         }
     }
 
-    public void ChangeCommandPower()
+    public void ChangeCommandPower() //Gibt diesen Zug X CommandPower mehr oder weniger
     {
         if (card.owner == Owner.PLAYER)
         {

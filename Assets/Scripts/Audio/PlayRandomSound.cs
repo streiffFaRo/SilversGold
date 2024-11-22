@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayRandomSound : MonoBehaviour
 {
+    
     public AudioSource[] sounds;
     public bool pitch;
     public float pitchAmount;
     
     
-    
-    public void PlaySound()
+    public void PlaySound() //Spielt zufälligen Sound aus einem Array, auch mit zufälligem Pitch
     {
         int randomSound = Random.Range(0, sounds.Length);
 
@@ -24,6 +22,5 @@ public class PlayRandomSound : MonoBehaviour
         }
         
         soundToPlay.Play();
-        
     }
 }

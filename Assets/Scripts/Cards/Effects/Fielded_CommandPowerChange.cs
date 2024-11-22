@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class Fielded_CommandPowerChange : MonoBehaviour
+public class Fielded_CommandPowerChange : MonoBehaviour 
 {
+    //Verantwortlich für Karten die während Existenz jeden Zug CommandPower geben oder nehmen
 
+    //Private Scripts
     private CardManager card;
     private PlayerManager playerManager;
     private EnemyManager enemyManager;
@@ -29,7 +31,7 @@ public class Fielded_CommandPowerChange : MonoBehaviour
         BattleSystem.onEnemyTurnEvent -= ChangeCommandPowerEffect;
     }
 
-    public void ChangeCommandPowerEffect()
+    public void ChangeCommandPowerEffect() //Setzt jeden Zug den CommandPower Bonus oder Malus
     {
         if (card.currentCardMode == CardMode.INPLAY)
         {

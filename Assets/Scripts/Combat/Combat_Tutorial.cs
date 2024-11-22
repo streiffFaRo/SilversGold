@@ -5,10 +5,16 @@ using UnityEngine;
 
 public class Combat_Tutorial : MonoBehaviour
 {
+    //Verantwortlich dem Spieler das Spiel anhand von Infoboxen zu erklären
+    
+    //TODO Tutorial noch mehr aufsplitten für bessere Verträglichkeit und keine Überlastung
+    
+    [Header("General")]
     public GameObject[] tutorialBoxes;
     public GameObject blur;
     public bool combatScene; //Im Inspektor gesetzt
 
+    //Private Variablen
     private int currentBox;
 
     private void Start()
@@ -20,7 +26,7 @@ public class Combat_Tutorial : MonoBehaviour
         }
     }
 
-    private IEnumerator FireBaseTutorial()
+    private IEnumerator FireBaseTutorial() //Startet das Tutorial
     {
         if (!combatScene)
         {
@@ -34,8 +40,6 @@ public class Combat_Tutorial : MonoBehaviour
             tutorialBoxes[0].SetActive(true);
             blur.SetActive(true);
         }
-        
-        
     }
 
     public void HandleBoxClosure()

@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyActionExecuter : MonoBehaviour
 {
-    //verantwortlich für Strategiefinmdung und Ausführung
+    //Verantwortlich für Strategiefinmdung und Ausführung
 
     public EnemyManager enemyManager; //Referenz zum EnemyManager (Deck, Handkarten, Leben, CommandPower etc)
     public EnemyAnalysis enemyAnalysis;
@@ -15,7 +14,6 @@ public class EnemyActionExecuter : MonoBehaviour
     
 
     #region Debug/Rdm Actions
-    //Ausführuhng
 
     public void PlayRdmCard()
     {
@@ -62,7 +60,7 @@ public class EnemyActionExecuter : MonoBehaviour
         
     }
 
-    public void LetAllEnemysAttack()
+    public void LetAllEnemysAttack() //Methode zum Testen, lässt alle Karten angreiffen
     {
         CardManager[] cardsInPlay = FindObjectsOfType<CardManager>();
         
@@ -92,16 +90,19 @@ public class EnemyActionExecuter : MonoBehaviour
 
     #region ExecuteAction
 
+    //Führt besten Play aus, der in EnemyAnalysis.cs ermittelt wurde
+    
     public void ExecuteAction(int actionIndex)
     {
         int executionActionIndex = 1;
         
         List<CardManager> cardsInHand = new();
+        
         foreach (CardManager card in enemyManager.cardsInHand)
         {
             cardsInHand.Add(card);
         }
-
+        
         if (enemyManager.enemyCurrentCommandPower >= 2)
         {
             if (executionActionIndex == actionIndex)
@@ -114,7 +115,7 @@ public class EnemyActionExecuter : MonoBehaviour
                 executionActionIndex++;
             }
         }
-
+        
         if (enemyManager.enemyCurrentCommandPower >= 2)
         {
             if (executionActionIndex == actionIndex)
@@ -127,8 +128,6 @@ public class EnemyActionExecuter : MonoBehaviour
                 executionActionIndex++;
             }
         }
-        
-        
         
         foreach (CardManager cardToPlay in cardsInHand)
         {
@@ -242,6 +241,8 @@ public class EnemyActionExecuter : MonoBehaviour
     
     #region PossibleActions
 
+    //Alle möglichen Aktionen die der Gegner ausführen kann
+    
     public void DrawCard()
     {
         enemyManager.BuyCard();

@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 
 public class RecruitManager : MonoBehaviour
 {
+    //Verantwortlich für das Rekrutieren neuer Karten am Ende eines Levels
 
     public GameObject displayCardPrefab;
     
@@ -74,7 +75,7 @@ public class RecruitManager : MonoBehaviour
 
     public void ShowRecruitmentOptions()
     {
-        //TODO Animation & Sound
+        //TODO Animation
         SelectCurrentTier();
         
         if (GameManager.instance.playerDeck.Count+1 <= GameManager.instance.deckCardLimit)

@@ -1,12 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerInputManager : MonoBehaviour
 {
+    //Verantwortlich für das Verartbeiten und Weiterleiten der Tasteninputs des Spielers
     
     public bool allowInput = true;
     

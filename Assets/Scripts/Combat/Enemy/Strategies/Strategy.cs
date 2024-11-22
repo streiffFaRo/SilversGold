@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -7,10 +5,10 @@ using UnityEngine;
 public class Strategy : ScriptableObject
 {
     public new string name;
-    public float drawMod =1;
-    public float playMod =1;
-    public float emptyLaneMod =1;
-    public float attackMod =1;
-    public float retreatMod =1;
-    public float broadsideMod =1;
+    public float drawMod =1; //Verlangen Karten zu ziehen
+    public float playMod =1; //Verlangen Karten zu spielen
+    public float emptyLaneMod =1; //Verlangen Karten auf offene Linien zu platzieren
+    public float attackMod =1; //Verlangen mit Karten anzugreiffen
+    public float retreatMod =1; //Verlangen Karten zurück zu ziehen
+    public float broadsideMod =1; //Verlangen Breitseiten zu schiessen
 }

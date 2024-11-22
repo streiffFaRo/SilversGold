@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class VolumeManager : MonoBehaviour
+public class VolumeManager : MonoBehaviour //Läd Volumes
 {
     public static VolumeManager instance;
 
@@ -29,7 +27,7 @@ public class VolumeManager : MonoBehaviour
         LoadVolume();
     }
 
-    private void LoadVolume() //Volume saved in VolumeSettings.cs
+    private void LoadVolume() //Volume gespeichert in VolumeSettings.cs
     {
         float masterVolume = PlayerPrefs.GetFloat(MASTER_KEY, 1f);
         float musicVolume = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);

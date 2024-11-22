@@ -1,11 +1,8 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
 using WaitForSeconds = UnityEngine.WaitForSeconds;
 
 public class BattleSystem : MonoBehaviour
@@ -42,10 +39,11 @@ public class BattleSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         VolumeManager.instance.GetComponent<AudioManager>().PLayEndTurnBellSound();
+        //Levelbanner Einblendung
         levelInfo.SetActive(true);
         levelInfo.GetComponentInChildren<TextMeshProUGUI>().text = "Level " + GameManager.instance.currentLevel;
         yield return new WaitForSeconds(1f);
-        StartCoroutine(DrawStartCards());
+        StartCoroutine(DrawStartCards()); //Startkaten werden gezogen
         yield return new WaitForSeconds(1f);
         levelInfo.SetActive(false);
         blurImage.SetActive(false);

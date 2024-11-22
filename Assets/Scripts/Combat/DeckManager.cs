@@ -38,7 +38,7 @@ public class DeckManager : MonoBehaviour
     {
         InitilizeDeck();
         
-        //Prepare Card Display when Player Hovers over Card
+        //Vorschaukarte wenn Spieler über gespielte Karte hovered
         GameObject displayObj = Instantiate(displayCardPrefab, new Vector3(0, 0, 0), Quaternion.identity, displayStand.transform);
         displayObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
         displayUI = displayStand.GetComponentInChildren<CardDisplay>();
@@ -46,7 +46,7 @@ public class DeckManager : MonoBehaviour
         currentFatigueDamage = 1;
     }
 
-    private void InitilizeDeck()
+    private void InitilizeDeck() //Baut Spielerdeck
     {
         deckToPrepare = GameManager.instance.playerDeck;
         
@@ -61,8 +61,9 @@ public class DeckManager : MonoBehaviour
 
     private void Update()
     {
-        //TODO beide nachfolgenden Zeilen neu eingliedern, ausserhalb von Update
+        //TODO nachfolgenden Zeilen neu eingliedern, ausserhalb von Update
         playerManager.deckSizeText.text = deck.Count.ToString();
+        playerManager.discardPileText.text = discardPile.Count.ToString();
         if (deck.Count <= 0)
         {
             playerManager.deckSizeText.color = Color.red;
@@ -71,7 +72,6 @@ public class DeckManager : MonoBehaviour
         {
             playerManager.deckSizeText.color = Color.white;
         }
-        playerManager.discardPileText.text = discardPile.Count.ToString();
     }
     
     public void DrawCards()
@@ -111,7 +111,6 @@ public class DeckManager : MonoBehaviour
                     DrawCards();
                 }
             }
-            
         }
         else
         {
@@ -127,7 +126,7 @@ public class DeckManager : MonoBehaviour
         StartCoroutine(BurnTopDeckCardBanner());
     }
 
-    public IEnumerator BurnTopDeckCardBanner()
+    public IEnumerator BurnTopDeckCardBanner() //Burned Card Info an Spieler
     {
         infoBanner.SetActive(true);
         infoBanner.GetComponentInChildren<TextMeshProUGUI>().text = "Hand full; Card lost!";
@@ -144,7 +143,7 @@ public class DeckManager : MonoBehaviour
         currentFatigueDamage++;
     }
 
-    public IEnumerator FatigueBanner()
+    public IEnumerator FatigueBanner() //Fatigue Info an Spieler
     {
         infoBanner.SetActive(true);
         infoBanner.GetComponentInChildren<TextMeshProUGUI>().text = "Deck empty! Ship explodes!";
@@ -170,7 +169,6 @@ public class DeckManager : MonoBehaviour
                     VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
                     deckAnimator.SetTrigger("trigger_warn");
                 }
-                
             }
             else
             {
@@ -187,10 +185,8 @@ public class DeckManager : MonoBehaviour
             playerManager.commandPowerAnimator.SetTrigger("trigger_commandpower_warn");
         }
     }
-    
-    
 
-    public void Shuffle()
+    public void Shuffle() //Für Testen, Mischt alle Karten vom Ablagestapel ins Spielerdeck
     {
         if (discardPile.Count >=1 && battleSystem.state == BattleState.PLAYERTURN)
         {
@@ -243,7 +239,7 @@ public class DeckManager : MonoBehaviour
         
     }
 
-    public void EndTurn()
+    public void EndTurn() //Beendet den Spielerzug
     {
         if (battleSystem.state == BattleState.PLAYERTURN)
         {
@@ -259,7 +255,7 @@ public class DeckManager : MonoBehaviour
         }
     }
 
-    public void ShowDisplayCard(CardManager cardManager)
+    public void ShowDisplayCard(CardManager cardManager) //Zeigt Kartenvorschau, einer gespielten Karte über die gehovered wird
     {
         displayStand.SetActive(true);
         displayUI.card = cardManager.cardStats;
@@ -267,13 +263,13 @@ public class DeckManager : MonoBehaviour
         displayUI.ShowKeyWordBox();
     }
 
-    public void HideDisplayCard()
+    public void HideDisplayCard() //Versteckt Kartenvorschau
     {
         displayStand.SetActive(false);
         displayUI.HideKeyWordBox();
     }
 
-    public void SetAllOtherButtonsPassive(CardManager targetCardManager)
+    public void SetAllOtherButtonsPassive(CardManager targetCardManager) //Versteckt alle Aktionenbuttons ausser dem aktuellen
     {
         if (!targetCardManager.cardActed)
         {
@@ -300,7 +296,7 @@ public class DeckManager : MonoBehaviour
         
     }
 
-    public void SetAllOtherButtonsPassive()
+    public void SetAllOtherButtonsPassive() //Versteckt alle Aktionenbuttons
     {
         allPresentCards = FindObjectsOfType<CardManager>();
 

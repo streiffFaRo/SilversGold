@@ -1,15 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
-public class CardIngameSlot : MonoBehaviour, IDropHandler
+public class CardIngameSlot : MonoBehaviour, IDropHandler 
 {
     //Verantwortlich für das Kontrollieren und Platzieren der Karten
 
+    [Header("General")]
     public string slotPosition;
     public CardIngameSlot enemyInfantryLine;
     public CardIngameSlot enemyArtilleryLine;
@@ -25,7 +22,7 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
         playerManager = FindObjectOfType<PlayerManager>();
     }
 
-    public void OnDrop(PointerEventData eventData)
+    public void OnDrop(PointerEventData eventData) //Wenn Karte auf Slot gezogen: Setzt Karte auf ihren Slot
     {
         if (eventData.pointerDrag != null && battleSystem.state == BattleState.PLAYERTURN)
         {
@@ -58,7 +55,7 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
         }
     }
 
-    public void EnemyCardPlacedOnThisSlot(CardManager cardToPlaceOnSlot)
+    public void EnemyCardPlacedOnThisSlot(CardManager cardToPlaceOnSlot) //Setzt gegnerische Karte auf ihren Slot
     {
         currentCard = cardToPlaceOnSlot;
         currentCard.GetComponentInChildren<DragDrop>().rectTransform.position = GetComponent<RectTransform>().position;

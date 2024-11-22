@@ -1,16 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class DeathEffects : MonoBehaviour
+public class DeathEffects : MonoBehaviour 
 {
+    //Verantwortlich für Todeseffekte der Karten
+    
+    //Private Scripts
     private CardManager card;
     private PlayerManager playerManager;
     private DeckManager deckManager;
     private EnemyManager enemyManager;
-    private BattleSystem battleSystem;
     
     private void Start()
     {
@@ -18,11 +17,9 @@ public class DeathEffects : MonoBehaviour
         playerManager = FindObjectOfType<PlayerManager>();
         deckManager = FindObjectOfType<DeckManager>();
         enemyManager = FindObjectOfType<EnemyManager>();
-        battleSystem = FindObjectOfType<BattleSystem>();
     }
-    
 
-    public void TriggerDeathEffect()
+    public void TriggerDeathEffect() //Führt gewünschten Effekt aus
     {
         switch (card.cardStats.para1)
         {
@@ -47,7 +44,7 @@ public class DeathEffects : MonoBehaviour
         }
     }
 
-    public void RecruitCardToDeck()
+    public void RecruitCardToDeck() //Fügt dem Deck X Karten hinzu
     {
         if (card.owner == Owner.PLAYER)
         {
@@ -73,7 +70,7 @@ public class DeathEffects : MonoBehaviour
         }
     }
 
-    public void ShuffleCardIntoDeck()
+    public void ShuffleCardIntoDeck() //Mischt X tote Karten wieder ins Deck
     {
         if (card.owner == Owner.PLAYER)
         {
@@ -97,7 +94,7 @@ public class DeathEffects : MonoBehaviour
         }
     }
 
-    public void DrawCard()
+    public void DrawCard() //Zieht X Karten
     {
         if (card.owner == Owner.PLAYER)
         {
@@ -115,7 +112,7 @@ public class DeathEffects : MonoBehaviour
         }
     }
 
-    public void AllPlayersDrawCard()
+    public void AllPlayersDrawCard() //Zieht X Karten für beide Spieler
     {
         for (int i = 0; i < card.cardStats.para2; i++)
         {
@@ -124,7 +121,7 @@ public class DeathEffects : MonoBehaviour
         }
     }
 
-    public void ChangeShipHealth()
+    public void ChangeShipHealth() //Heilt oder schädigt das eigene Schiff für X
     {
         if (card.owner == Owner.PLAYER)
         {
@@ -136,7 +133,7 @@ public class DeathEffects : MonoBehaviour
         }
     }
 
-    public void ChangeCommandPower()
+    public void ChangeCommandPower() //Gibt nächsten Zug X CommandPower mehr oder weniger
     {
         if (card.owner == Owner.PLAYER)
         {

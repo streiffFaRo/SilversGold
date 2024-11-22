@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class ShipUpgradeArea : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    //Verantwortlich die Infos über den momentanen Stand der Upgrades, Autausch der Schiffsteile bei upgrades
+    //Verantwortlich die Infos über den momentanen Stand der Upgrades, Austausch der Schiffsteile bei upgrades
 
     public UpgradeType upgradeType;
     public UpgradeInfoWindowUI infoWindow;

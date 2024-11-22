@@ -22,11 +22,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public GameObject cardBG;
     public GameObject hasActedRim;
     public int handIndex;
-    
-    [Header("Other")]
-    public GameObject damageCounterFolder;
-    public GameObject damageCounterPrefab;
-    [HideInInspector]public int cardCommandPowerCost;
 
     [Header("CardInPlayInformation")]
     public bool cardActed;
@@ -40,6 +35,11 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     [Header("Animation")]
     public Animator animator;
     public GameObject cannonBallVisualRoot;
+    
+    [Header("Other")]
+    public GameObject damageCounterFolder;
+    public GameObject damageCounterPrefab;
+    [HideInInspector]public int cardCommandPowerCost;
 
     //Private Scripts
     private DeckManager deckManager;
@@ -63,6 +63,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     private void Start()
     {
+        //Setzt alle Variablen
         deckManager = FindObjectOfType<DeckManager>();
         battleSystem = FindObjectOfType<BattleSystem>();
         playerManager = FindObjectOfType<PlayerManager>();
@@ -72,12 +73,14 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         recruitManager = FindObjectOfType<RecruitManager>();
         presentDeck = FindObjectOfType<PresentDeck>();
         rectTransform = GetComponent<RectTransform>();
+        damageCounterFolder = FindObjectOfType<DamageCounterFolder>().gameObject;
         
+        //Setzt schnellzugriffe für häufig genutzte Variablen
         cardCommandPowerCost = cardStats.cost;
         currentHealth = cardStats.defense;
+        
         hoverTimer = 0;
-
-        damageCounterFolder = FindObjectOfType<DamageCounterFolder>().gameObject;
+        
     }
 
     private void Update()
@@ -94,7 +97,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
     }
 
-    public void CardPlayed()
+    public void CardPlayed() //Wenn Karte Slot gefundet hat, siehe CardIngameSlot.cs, wird sie gespielt
     {
         cardActed = true;
         
@@ -122,7 +125,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     #region CardInteraction
     
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData) //Effekt wenn man auf Karte klickt
     {
         if (battleSystem != null)
         {
@@ -130,7 +133,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             {
                 if (!attackButton.gameObject.activeInHierarchy)
                 {
-                    deckManager.SetAllOtherButtonsPassive(this);
+                    deckManager.SetAllOtherButtonsPassive(this); //Zeigt Aktionensbuttons
                 }
                 else
                 {
@@ -139,26 +142,27 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             }
             else if (currentCardMode == CardMode.INRECRUIT)
             {
-                recruitManager.CardChoosen(cardStats);
+                recruitManager.CardChoosen(cardStats); //Rekrutiert Karte ins Spielerdeck
             }
             else if (currentCardMode == CardMode.TODISCARD)
             {
-                presentDeck.DiscardCard(cardStats);
+                presentDeck.DiscardCard(cardStats); //Verwirft die Karte aus dem Deck um Platz zu machen
             }
         }
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnPointerEnter(PointerEventData eventData) //Effekt wenn man auf Karte hovered
     {
         if (battleSystem != null)
         {
             if (currentCardMode == CardMode.INPLAY && battleSystem.state != BattleState.WON && battleSystem.state != BattleState.LOST)
             {
-                isHovering = true;
+                isHovering = true; //Aktiviert Hovering-Timer
             }
             else if (currentCardMode == CardMode.INHAND && battleSystem.state != BattleState.WON && battleSystem.state != BattleState.LOST)
             {
-                VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
+                //Vergrössert die Karte in der Hand
+                VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound(); 
                 transform.SetSiblingIndex(transform.parent.childCount-1);
                 transform.localScale = new Vector3(2f, 2f, 2f);
                 cardDisplay.ShowKeyWordBox();
@@ -166,11 +170,13 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             }
             else if (currentCardMode == CardMode.INRECRUIT)
             {
-                VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
+                //Sound wenn man über Karte hovered im Rekrutierungsmodus
+                VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound(); 
             }
             else if (currentCardMode == CardMode.INDECK && battleSystem.state != BattleState.PLAYERTURN && battleSystem.state != BattleState.ENEMYTURN)
             {
-                transform.SetSiblingIndex(transform.parent.childCount-1);
+                //Vergrössert die Karte im Deckanschaumodus
+                transform.SetSiblingIndex(transform.parent.childCount-1); 
                 transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
                 cardDisplay.ShowKeyWordBox();
                 VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
@@ -178,55 +184,58 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnPointerExit(PointerEventData eventData) //Effekt wenn man nicht mehr auf der Karte hovered
     {
         if (battleSystem != null)
         {
             if (currentCardMode == CardMode.INPLAY)
             {
-                deckManager.HideDisplayCard();
+                deckManager.HideDisplayCard(); //Zeigt keine Kartenvorschau mehr
             }
             else if (currentCardMode == CardMode.INHAND)
             {
+                //Verkleinert Karte in der Hand wieder
                 transform.localScale = new Vector3(1f, 1f, 1f);
                 cardDisplay.HideKeyWordBox();
                 rectTransform.localPosition += new Vector3(0, -175);
             }
             else if (currentCardMode == CardMode.INDECK && battleSystem.state != BattleState.PLAYERTURN && battleSystem.state != BattleState.ENEMYTURN)
             {
+                //Verkleinert Karte in der Deckanschau wieder
                 transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
                 cardDisplay.HideKeyWordBox();
             }
+            //Beendet den Hover-Timer
             hoverTimer = 0;
             isHovering = false;
         }
         
     }
     
-    #endregion
-    
-    public void SetButtonsActive()
+    public void SetButtonsActive() //Zeigt Aktionsbuttons im Kampf (Angriff/Rückzug)
     {
         attackButton.gameObject.SetActive(true);
         retreatButton.gameObject.SetActive(true);
     }
 
-    public void SetButtonsPassive()
+    public void SetButtonsPassive() //Versteckt Aktionsbuttons
     {
         attackButton.gameObject.SetActive(false);
         retreatButton.gameObject.SetActive(false);
     }
+    
+    #endregion
 
     #region Attack
     
     public void Attack()
     {
-        
+        //Player Attack
         if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower > 0 && owner == Owner.PLAYER)
         {
             if (cardStats.attack >= 1)
             {
-                HandleAttack();
+                HandleAttack(); //Führt Aktionen vor Angriffsanimation aus
                 
                 if (cardStats.position == "I")
                 {
@@ -247,16 +256,16 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                     }
                 }
                 
-                animator.SetTrigger("trigger_player_attack");
+                animator.SetTrigger("trigger_player_attack"); //Startet Angriffsanimation
 
-                if (cardAttacked != null) //If a Card is attacked -> Play Defense Animation
+                if (cardAttacked != null) //Wenn eine Karte angegriffen wird -> Spielt die Verteidigungsanimation
                 {
                     cardAttacked.animator.SetTrigger("trigger_defense");
                 }
-                
             }
             else
             {
+                //Info an Spieler, dass Karten mit 0 Angriff nicht angreiffen können
                 Debug.LogWarning("Karte hat 0 Attack");
                 animator.SetTrigger("trigger_attack_warn");
                 VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
@@ -274,7 +283,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         //ENEMY ATTACK
         else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
         {
-            HandleAttack();
+            HandleAttack(); //Führt Aktionen vor Angriffsanimation aus
             
             if (cardStats.position == "I")
             {
@@ -294,9 +303,9 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                     cardAttacked = cardIngameSlot.enemyArtilleryLine.currentCard;
                 }
             }
-            animator.SetTrigger("trigger_enemy_attack");
+            animator.SetTrigger("trigger_enemy_attack"); //Startet Angriffsanimation
             
-            if (cardAttacked != null) //If a Card is attacked -> Play Defense Animation
+            if (cardAttacked != null) //Wenn eine Karte angegriffen wird -> Spielt die Verteidigungsanimation
             {
                 cardAttacked.animator.SetTrigger("trigger_defense");
             }
@@ -309,7 +318,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
     }
 
-    public void HandleAttack()
+    public void HandleAttack() //Entzieht Command Power & zeigt, dass Karte gehandelt hat
     {
         cardActed = true;
         if (owner == Owner.PLAYER)
@@ -323,9 +332,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
     }
 
-    public void DealAttackDamage()
+    public void DealAttackDamage() //Verrechnet Schaden
     {
-        //Damage dealt
         if (cardAttacked != null)
         {
             UpdateCardHealth(cardAttacked.cardStats.attack);
@@ -352,20 +360,14 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         cardAttacked = null; //reset
         
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardAttackSound();
+        
         if (GetComponent<DiesAfterAttack>() != null)
         {
-            Death();
+            Death(); //Töten Karten, die nach angreiffen sterben
         }
     }
     
     #endregion
-
-    public void SpawnDamageCounter(Vector3 position, int amount)
-    {
-        GameObject createdDamageCounter = Instantiate(damageCounterPrefab, position, Quaternion.identity,
-            damageCounterFolder.transform);
-        createdDamageCounter.GetComponent<DamageCounter>().numberText.text = "-"+amount.ToString();
-    }
 
     #region Retreat
     
@@ -373,6 +375,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     {
         if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower > 0 && owner == Owner.PLAYER)
         {
+            //Spieler Karte zieht sich zurück
             playerManager.UpdateCommandPower(1);
             SetButtonsPassive();
             cardActed = true;
@@ -390,6 +393,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
         else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
         {
+            //Gegner Karte zieht sich zurück
             enemyManager.UpdateEnemyCommandPower(1);
             cardActed = true;
             VolumeManager.instance.GetComponent<AudioManager>().PlayCardRetreatSound();
@@ -401,13 +405,9 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
     }
 
-    public void StartHandleRetreatStats()
+    public void HandleRetreatStats()
     {
-        StartCoroutine(HandleRetreatStats());
-    }
-
-    public IEnumerator HandleRetreatStats()
-    {
+        //Setzt Karte zurück ins Deck
         if (owner == Owner.PLAYER)
         {
             deckManager.deck.Add(this);
@@ -419,25 +419,27 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             cardBG.SetActive(true);
         }
         currentCardMode = CardMode.INDECK;
-        GetComponent<RetreatEffects>()?.TriggerRetreatEffect();
-        //Hier war mal Verzögerung drin, bei problemen wieder einfügen
-        currentHealth = cardStats.defense;
-        deckManager.HideDisplayCard();
-        cardIngameSlot.currentCard = null;
-        foreach (DiesWhenAlone var in FindObjectsOfType<DiesWhenAlone>())
+        
+        GetComponent<RetreatEffects>()?.TriggerRetreatEffect(); //Löst Effekt aus
+        currentHealth = cardStats.defense; //Setzt Leben der Karte zurück
+        deckManager.HideDisplayCard(); //Schaltet Kartenvorschau aus
+        cardIngameSlot.currentCard = null; //Leert Kartenslot
+        
+        //Prüft ob Karten sterben weil sie den Effekt haben
+        foreach (DiesWhenAlone var in FindObjectsOfType<DiesWhenAlone>()) 
         {
             if (var.GetComponent<CardManager>().currentCardMode == CardMode.INPLAY)
             {
                 var.CheckIfAlone();
             }
         }
-        handCard.SetActive(true);
-        handCard.transform.localScale = new Vector3(1f, 1f, 1f);
-        GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
-        GetComponentInChildren<DragDrop>().foundSlot = false;
-        inGameCard.SetActive(false);
-        gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.05f);
+        
+        handCard.SetActive(true); //Setzt visuell die Handkarte wieder aktiv
+        handCard.transform.localScale = new Vector3(1f, 1f, 1f); //Setzt Kartengrösse zurück
+        GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true); //Karte kann wieder bewegt werden
+        GetComponentInChildren<DragDrop>().foundSlot = false; //Leert Kartenslot
+        inGameCard.SetActive(false); //Setzt visuell Ingame Karte passiv
+        gameObject.SetActive(false); //Setzt Karte als ganzes Passiv
     }
 
     #endregion
@@ -446,7 +448,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     
     public void Broadside()
     {
-        cannonBallVisualRoot.SetActive(true);
+        cannonBallVisualRoot.SetActive(true); //Kanonenkugel wird sichtbar geschalten
         
         if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
@@ -481,6 +483,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             { 
                 CannonBallAnimation(-1100f,0.8f, BroadsideEffects);
             }
+            
         }
         else
         {
@@ -488,7 +491,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
     }
 
-    private void BroadsideEffects()
+    private void BroadsideEffects() //Verursacht Schaden, wir über Animation Event aufgerufen
     {
         cannonBallVisualRoot.SetActive(false);
 
@@ -513,10 +516,17 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     }
 
     #endregion
+    
+    public void SpawnDamageCounter(Vector3 position, int amount)
+    {
+        GameObject createdDamageCounter = Instantiate(damageCounterPrefab, position, Quaternion.identity,
+            damageCounterFolder.transform);
+        createdDamageCounter.GetComponent<DamageCounter>().numberText.text = "-"+ amount.ToString();
+    }
 
     public void DidCardAct()
     {
-        //Zeigt ob die Karte schon gehandelt hat
+        //Zeigt ob die Karte schon gehandelt hat & Setzt Rand entsprechned
         if (!cardActed && currentCardMode == CardMode.INPLAY && battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
             hasActedRim.SetActive(true);
@@ -527,7 +537,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
     }
 
-    public void UpdateCardHealth(int damage)
+    public void UpdateCardHealth(int damage) //Setzt Kartenleben neu
     {
         currentHealth -= damage;
         
@@ -549,6 +559,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     
     public void Death()
     {
+        //Leer Kartenslot
         if (cardIngameSlot != null)
         {
             if (cardIngameSlot.currentCard != null)
@@ -557,6 +568,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             }
         }
         
+        //Setzt Karte zurück und verschiebt sie in den Ablagestapel
         if (owner == Owner.PLAYER)
         {
             deckManager.discardPile.Add(this);
@@ -601,9 +613,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         hasActedRim.SetActive(false);
     }
     
-    private void CannonBallAnimation(float distance, float duration, TweenCallback onEnd)
+    private void CannonBallAnimation(float distance, float duration, TweenCallback onEnd) //Animation der Broadside
     {
-
         if (moveTween!= null)
         {
             moveTween.Kill(false);
@@ -619,12 +630,12 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     
 }
 
-public enum Owner
+public enum Owner //Von wem die Karte genutzt wird
 {
     PLAYER, ENEMY
 }
 
-public enum CardMode
+public enum CardMode //In welchem Modus sich die Karte befindet
 {
     INHAND, INPLAY, INRECRUIT, INDECK, TODISCARD
 }
