@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Settings")]
     public bool showKeyWords = true;
+    public float typingSpeed = 0.03f;
     
     private void Awake()
     {

@@ -2612,9 +2612,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e2aaea983369814cae1b1957eccdc49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialBoxes:
+  tutorialBoxes1:
   - {fileID: 1786158560}
   - {fileID: 1373641617}
+  tutorialBoxes2: []
   blur: {fileID: 82274030}
   combatScene: 0
 --- !u!1001 &1373641615

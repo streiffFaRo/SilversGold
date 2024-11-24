@@ -22,9 +22,6 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject continueButton;
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
-
-    [Header("Other")]
-    [SerializeField] private float typingSpeed = 0.03f;
     public static event Action<string> InkEvent;
     
     //Private Variablen
@@ -32,6 +29,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine displayLineCorutine;
     private bool canContinueToNextLine = false;
     private bool breakLineFormationChain = false;
+    
     public GameState gameState;
     
 
@@ -52,6 +50,7 @@ public class DialogueManager : MonoBehaviour
     
     void Start()
     {
+        
         SelectCurrentStory();
         
         GameManager.instance.SetUpForNextLevel();
@@ -132,7 +131,7 @@ public class DialogueManager : MonoBehaviour
             }
             
             textUI.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+            yield return new WaitForSeconds(GameManager.instance.typingSpeed);
         }
         
         DisplayChoices();

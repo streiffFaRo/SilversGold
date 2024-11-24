@@ -8,6 +8,7 @@ public class VolumeSettings : MonoBehaviour //Setzt Volumes
     [SerializeField] private Slider masterSlider;
     [SerializeField] private Slider musicSlider;
     [SerializeField] private Slider sfxSlider;
+    [SerializeField] private Slider textSlider;
 
     public const string MIXER_MUSIC = "MusicVolume";
     public const string MIXER_SFX = "SFXVolume";
@@ -18,6 +19,7 @@ public class VolumeSettings : MonoBehaviour //Setzt Volumes
         masterSlider.onValueChanged.AddListener(SetMasterVolume);
         musicSlider.onValueChanged.AddListener(SetMusicVolume);
         sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+        textSlider.onValueChanged.AddListener(SetTextSpeed);
     }
 
     private void Start()
@@ -25,6 +27,7 @@ public class VolumeSettings : MonoBehaviour //Setzt Volumes
         masterSlider.value = PlayerPrefs.GetFloat(VolumeManager.MASTER_KEY, 1f);
         musicSlider.value = PlayerPrefs.GetFloat(VolumeManager.MUSIC_KEY, 1f);
         sfxSlider.value = PlayerPrefs.GetFloat(VolumeManager.SFX_KEY, 1f);
+        textSlider.value = PlayerPrefs.GetFloat(VolumeManager.TXT_KEY, 0.0315f);
     }
 
     private void OnDisable()
@@ -32,6 +35,7 @@ public class VolumeSettings : MonoBehaviour //Setzt Volumes
         PlayerPrefs.SetFloat(VolumeManager.MASTER_KEY, masterSlider.value);
         PlayerPrefs.SetFloat(VolumeManager.MUSIC_KEY, musicSlider.value);
         PlayerPrefs.SetFloat(VolumeManager.SFX_KEY, sfxSlider.value);
+        PlayerPrefs.SetFloat(VolumeManager.TXT_KEY, textSlider.value);
     }
 
     private void SetMusicVolume(float value)
@@ -47,5 +51,10 @@ public class VolumeSettings : MonoBehaviour //Setzt Volumes
     private void SetMasterVolume(float value)
     {
         mixer.SetFloat(MIXER_MASTER, Mathf.Log10(value) * 20);
+    }
+
+    private void SetTextSpeed(float value)
+    {
+        GameManager.instance.typingSpeed = value;
     }
 }

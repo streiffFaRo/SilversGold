@@ -107,6 +107,10 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             playerManager.UpdateCommandPower(cardCommandPowerCost);
             deckManager.cardsInHand.Remove(this);
             DidCardAct();
+            if (!GameManager.instance.tutorialDone)
+            {
+                FindObjectOfType<Combat_Tutorial>()?.InitTutorial2();
+            }
         }
         else if (owner == Owner.ENEMY)
         {
