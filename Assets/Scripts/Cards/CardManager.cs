@@ -107,7 +107,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             playerManager.UpdateCommandPower(cardCommandPowerCost);
             deckManager.cardsInHand.Remove(this);
             DidCardAct();
-            if (!GameManager.instance.tutorialDone)
+            if (!GameManager.instance.tutorialDone && GameManager.instance.currentLevel == 1)
             {
                 FindObjectOfType<Combat_Tutorial>()?.InitTutorial2();
             }
@@ -411,6 +411,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void HandleRetreatStats()
     {
+        Debug.Log("Anfang");
         //Setzt Karte zurück ins Deck
         if (owner == Owner.PLAYER)
         {
