@@ -77,7 +77,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         currentHealth = cardStats.defense;
         
         hoverTimer = 0;
-        
     }
 
     private void Update()

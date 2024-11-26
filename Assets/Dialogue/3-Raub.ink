@@ -1,7 +1,7 @@
 INCLUDE Utility.ink
 ->main
 ===main===
-A pirate is a very simple being; he loves his freedom and takes what he wants. He doesn’t need much to live—just rum, gold, and the sea. When we anchored the ship at a trading port to replenish our supplies, some of my men approached me and spoke of a plantation they wanted to raid. They said there was plenty to loot and that the risk was manageable. It’s not uncommon for some of my men to come to me with such a request. Basically, I don't want to stand in the way of my men's wishes, but if things go wrong, it would result in unnecessary losses. However, since we won't set sail again until tomorrow morning anyway, we wouldn't lose any time if they plunder the plantation.
+A pirate is a very simple being; he loves his freedom and takes what he wants. He doesn’t need much to live—just rum, gold, and the sea. When we anchored the ship at a trading port to replenish our supplies, some of my men approached me and spoke of a plantation they wanted to raid. They said there was plenty to loot and that the risk was manageable. It’s not uncommon for some of my men to come to me with such a request. While I don’t want to stand in the way of their ambitions, I know that if things go wrong, it could lead to unnecessary losses. Still, with our ship remaining here until tomorrow morning, it wouldn’t cost us any time to let them plunder the plantation.
 *[Send Raiders]->Raub
 *[Continue travelling]->Weiterziehen
 

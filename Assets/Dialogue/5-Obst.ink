@@ -17,7 +17,7 @@ When I saw the prices, I realised that we no longer had enough booty to buy the 
 ->endScene
 
 ===kaufen===
-Despite the high prices, it was worth spending the money on my men.  So I bought enough fruits for the whole crew so that we don't have any more cases of scurvy. Those affected should recover after a few days.
+Despite the high prices, it was worth spending the money on my men.  So I bought enough fruits for the whole crew , that we don't have any more cases of scurvy. Those affected should recover after a few days.
 ~Unity_Event("fruits")
 ->endScene
 

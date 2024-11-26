@@ -1,7 +1,7 @@
 INCLUDE Utility.ink
 ->main
 ===main===
-According to the map, we should come across the marked route of the ship with the treasure in a few days. The ship supposedly belongs to a pirate called Silver. But I think it's more likely that this ship sank somewhere along this route some time ago, given how old and disintegrated the map is. As soon as we find the wreck we will have to check if we need more tenders. 
+According to the map, we should come across the marked route of the ship with the treasure in a few days. The ship supposedly belongs to a pirate called Silver. But I think it's more likely that this ship sank somewhere along this route some time ago, given how old and disintegrated the map is.
 ->endScene
 
 ===endScene===

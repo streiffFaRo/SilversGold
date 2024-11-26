@@ -2,7 +2,7 @@ INCLUDE Utility.ink
 ->main
 ===main===
 ~Unity_Event("chooseRdmCard")
-Our journey is going better than expected so far. I was planning on more encounters with pirates. Besides, we only had to stand our ground against individual ships, there are also many pirates who command entire fleets. But there's something coming up today that I'm not looking forward to at all. Last night my navigator fell asleep during his night shift and we sailed the wrong course all night because of it. It's now up to me to decide whether to send him over the plank or spare him. If I spare him it will make me look weak and further misdemeanours by my men could follow, but is it appropriate to send him over the plank because he fell asleep once? What am I supposed to do?
+Our journey is going better than expected so far. I was planning on more encounters with pirates. Besides, we only had to stand our ground against individual ships, there are also many pirates who command entire fleets. But there's something coming up today that I'm not looking forward to at all. Last night my navigator fell asleep during his night shift and we sailed the wrong course all night because of it. It's now up to me to decide whether to send him over the plank or spare him. If I let him go unpunished, it may make me look weak, and it could encourage further misbehavior among the crew. But is it truly fair to send him to his death for something as simple as falling asleep once? What should I do?
 *[Punish]->Planke
 *[Spare]->Weiterziehen
 

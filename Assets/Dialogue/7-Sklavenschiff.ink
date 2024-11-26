@@ -6,8 +6,8 @@ After the soldiers were defeated, we only really realised what kind of ship it w
 *[Free them]->befreien
 
 ===verkaufen===
-~Unity_Event("sell")
 I decided to exchange the slaves for good money at a sugar plantation. It was nothing personal, but we can make good use of the money. If we are defeated, the freed slaves won't be able to help us. So at least we were able to gain an advantage for ourselves and we weren't the ones who drove these people into slavery, rather we passed them on to an interested party. (+100 Booty)
+~Unity_Event("sell")
 ->endScene
 
 ===befreien===
