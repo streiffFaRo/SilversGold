@@ -411,7 +411,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void HandleRetreatStats()
     {
-        Debug.Log("Anfang");
         //Setzt Karte zurück ins Deck
         if (owner == Owner.PLAYER)
         {
@@ -423,28 +422,11 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             enemyManager.UpdateEnemyUI();
             cardBG.SetActive(true);
         }
-        currentCardMode = CardMode.INDECK;
-        
         GetComponent<RetreatEffects>()?.TriggerRetreatEffect(); //Löst Effekt aus
-        currentHealth = cardStats.defense; //Setzt Leben der Karte zurück
-        deckManager.HideDisplayCard(); //Schaltet Kartenvorschau aus
-        cardIngameSlot.currentCard = null; //Leert Kartenslot
-        
-        //Prüft ob Karten sterben weil sie den Effekt haben
-        foreach (DiesWhenAlone var in FindObjectsOfType<DiesWhenAlone>()) 
-        {
-            if (var.GetComponent<CardManager>().currentCardMode == CardMode.INPLAY)
-            {
-                var.CheckIfAlone();
-            }
-        }
-        
-        handCard.SetActive(true); //Setzt visuell die Handkarte wieder aktiv
         handCard.transform.localScale = new Vector3(1f, 1f, 1f); //Setzt Kartengrösse zurück
         GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true); //Karte kann wieder bewegt werden
         GetComponentInChildren<DragDrop>().foundSlot = false; //Leert Kartenslot
-        inGameCard.SetActive(false); //Setzt visuell Ingame Karte passiv
-        gameObject.SetActive(false); //Setzt Karte als ganzes Passiv
+        ResetCard();
     }
 
     #endregion
@@ -564,15 +546,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     
     public void Death()
     {
-        //Leer Kartenslot
-        if (cardIngameSlot != null)
-        {
-            if (cardIngameSlot.currentCard != null)
-            {
-                cardIngameSlot.currentCard = null;
-            }
-        }
-        
         //Setzt Karte zurück und verschiebt sie in den Ablagestapel
         if (owner == Owner.PLAYER)
         {
@@ -589,7 +562,11 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
         GetComponent<DeathEffects>()?.TriggerDeathEffect();
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardDeathSound();
-        
+        ResetCard();
+    }
+
+    private void ResetCard()
+    {
         foreach (DiesWhenAlone var in FindObjectsOfType<DiesWhenAlone>())
         {
             if (var.GetComponent<CardManager>().currentCardMode == CardMode.INPLAY)
@@ -597,9 +574,10 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 var.CheckIfAlone();
             }
         }
-        
         currentCardMode = CardMode.INDECK;
         currentHealth = cardStats.defense;
+        deckManager.HideDisplayCard();
+        cardIngameSlot.currentCard = null; //BUG: cardIngameSlot manchmal null
         cardDisplay.SetUpCardUI();
         handCard.SetActive(true);
         inGameCard.SetActive(false);

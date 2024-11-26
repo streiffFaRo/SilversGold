@@ -30,7 +30,7 @@ public class UpgradeInfoWindowUI : MonoBehaviour
 
     public void BuyUpgrade()
     {
-        if (upgradeCostWhenBought != null)
+        if (upgradeCostWhenBought != 0)
         {
             if (GameManager.instance.booty >= upgradeCostWhenBought)
             {
@@ -43,8 +43,13 @@ public class UpgradeInfoWindowUI : MonoBehaviour
             }
             else
             {
+                VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
                 Debug.LogWarning("Nicht genug Beute!");
             }
+        }
+        else
+        {
+            VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
         }
     }
 

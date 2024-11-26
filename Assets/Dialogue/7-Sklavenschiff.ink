@@ -2,12 +2,12 @@ INCLUDE Utility.ink
 ->main
 ===main===
 After the soldiers were defeated, we only really realised what kind of ship it was. It was a slave ship. That's nothing unusual for the navy. One of my men claims that slaves can be sold very expensively and that this could be to our advantage. Others of my crew urge me to release the slaves at the next harbour. They say that every man should have the opportunity to choose his own fate. I am faced with another decision. We could certainly use the money from the slave sale to upgrade the ship, which will be necessary for the coming confrontations with other frigates. What should I do?
-*[sell them(100 Booty)]->verkaufen
-*[free them]->befreien
+*[Sell them (100 Booty)]->verkaufen
+*[Free them]->befreien
 
 ===verkaufen===
 ~Unity_Event("sell")
-I decided to exchange the slaves for good money at a sugar plantation. It was nothing personal, but we can make good use of the money. If we are defeated, the freed slaves won't be able to help us. So at least we were able to gain an advantage for ourselves and we weren't the ones who drove these people into slavery, rather we passed them on to an interested party.
+I decided to exchange the slaves for good money at a sugar plantation. It was nothing personal, but we can make good use of the money. If we are defeated, the freed slaves won't be able to help us. So at least we were able to gain an advantage for ourselves and we weren't the ones who drove these people into slavery, rather we passed them on to an interested party. (+100 Booty)
 ->endScene
 
 ===befreien===

@@ -17,6 +17,6 @@ I have decided to spare him. I want to give him a second chance. He is very loya
 ->endScene
 
 ===endScene===
-I have the ship brought back on course. It has cost us unnecessary time and supplies to take this diversions, and soon we will have to set course for a harbour. A ship of the royal navy is following us. I wonder what they want? It's not usual for them to attack neutral ships, even if these are their waters. There must be something fishy going on. They're catching up and seem to be heading for a confrontation. So let's give them what they deserve: A watery grave!
+I have the ship brought back on course. It has cost us unnecessary time and supplies to take this diversion, and soon we will have to set course for a harbour. A ship of the royal navy is following us. I wonder what they want? It's not usual for them to attack neutral ships, even if these are their waters. There must be something fishy going on. They're catching up and seem to be heading for a confrontation. So let's give them what they deserve: A watery grave!
 ~Unity_Event("endScene")
 -->END

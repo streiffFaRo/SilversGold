@@ -2751,9 +2751,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7505634158202512027, guid: 7c0cccc7865bc9e459a0d488f0b575d1, type: 3}
       propertyPath: m_text
-      value: 'There are 4 ship areas which, you can upgrade: The steering wheel,
-        the cannon, the quaters and the hull. You won''t be able to upgrade all befor
-        the end of your journey, so choose whisely.'
+      value: 'There are <color="yellow">4 ship areas</color> which, you can upgrade:
+        <color="yellow">The steering wheel, the cannon, the quaters and the hull</color>.
+        You won''t be able to upgrade all before the end of your journey, so choose
+        whisely.'
       objectReference: {fileID: 0}
     - target: {fileID: 7505634158202512027, guid: 7c0cccc7865bc9e459a0d488f0b575d1, type: 3}
       propertyPath: m_VerticalAlignment
