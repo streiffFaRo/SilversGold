@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
-using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using Button = UnityEngine.UI.Button;
 
 
@@ -99,14 +96,16 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     public void CardPlayed() //Wenn Karte Slot gefundet hat, siehe CardIngameSlot.cs, wird sie gespielt
     {
-        cardActed = true;
+        cardActed = true; //Karte kann im ersten Zug nichts machen
         
         if (owner == Owner.PLAYER)
         {
-            deckManager.availableCardSlots[handIndex] = true;
-            playerManager.UpdateCommandPower(cardCommandPowerCost);
-            deckManager.cardsInHand.Remove(this);
-            DidCardAct();
+            deckManager.availableCardSlots[handIndex] = true; //Handposition der Karte wird frei
+            playerManager.UpdateCommandPower(cardCommandPowerCost); //Command Power wird abgezogen
+            deckManager.cardsInHand.Remove(this); //Entfernt Karte aus der Liste der Handkarten
+            DidCardAct(); //Rand wird gesetzt
+            
+            //Tutorial wird gezündet
             if (!GameManager.instance.tutorialDone && GameManager.instance.currentLevel == 1)
             {
                 FindObjectOfType<Combat_Tutorial>()?.InitTutorial2();
@@ -114,17 +113,17 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
         else if (owner == Owner.ENEMY)
         {
-            cardBG.SetActive(false);
-            enemyManager.availableHandCardSlots[handIndex] = true;
-            enemyManager.UpdateEnemyCommandPower(cardCommandPowerCost);
-            enemyManager.cardsInHand.Remove(this);
+            cardBG.SetActive(false);//Kartenrücken wird ausgeschaltet
+            enemyManager.availableHandCardSlots[handIndex] = true; //Handposition der Karte wird frei
+            enemyManager.UpdateEnemyCommandPower(cardCommandPowerCost); //Command Power wird abgezogen
+            enemyManager.cardsInHand.Remove(this); //Entfernt Karte aus der Liste der Handkarten
         }
         
-        handCard.SetActive(false);
-        inGameCard.SetActive(true);
-        currentCardMode = CardMode.INPLAY;
+        handCard.SetActive(false); //Visuell wird Handkarte passiv geschalten
+        inGameCard.SetActive(true); //Visuell wird Spielkarte aktiv geschalten
+        currentCardMode = CardMode.INPLAY; //Kartenmodus wird geändert
         GetComponent<DiesWhenAlone>()?.CheckIfAlone();
-        VolumeManager.instance.GetComponent<AudioManager>().PlayCardPlaySound();
+        VolumeManager.instance.GetComponent<AudioManager>().PlayCardPlaySound(); //Sound
     }
 
     #region CardInteraction
@@ -419,13 +418,9 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         else if (owner == Owner.ENEMY)
         {
             enemyManager.deck.Add(this);
-            enemyManager.UpdateEnemyUI();
-            cardBG.SetActive(true);
         }
         GetComponent<RetreatEffects>()?.TriggerRetreatEffect(); //Löst Effekt aus
-        handCard.transform.localScale = new Vector3(1f, 1f, 1f); //Setzt Kartengrösse zurück
-        GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true); //Karte kann wieder bewegt werden
-        GetComponentInChildren<DragDrop>().foundSlot = false; //Leert Kartenslot
+        
         ResetCard();
     }
 
@@ -546,42 +541,55 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     
     public void Death()
     {
-        //Setzt Karte zurück und verschiebt sie in den Ablagestapel
+        //Verschiebt Karte in den Ablagestapel
         if (owner == Owner.PLAYER)
         {
             deckManager.discardPile.Add(this);
-            GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true);
-            GetComponentInChildren<DragDrop>().foundSlot = false;
-            hasActedRim.SetActive(false);
+            
         }
         else if (owner == Owner.ENEMY)
         {
             enemyManager.discardPile.Add(this);
-            enemyManager.UpdateEnemyUI();
-            cardBG.SetActive(true);
         }
-        GetComponent<DeathEffects>()?.TriggerDeathEffect();
-        VolumeManager.instance.GetComponent<AudioManager>().PlayCardDeathSound();
+        GetComponent<DeathEffects>()?.TriggerDeathEffect(); //Todeseffekte, wenn vorhanden
+        VolumeManager.instance.GetComponent<AudioManager>().PlayCardDeathSound(); //Todessound
+        
         ResetCard();
     }
 
-    private void ResetCard()
+    private void ResetCard() //Für Karten die gestorben sind oder sich zurückziehen
     {
-        foreach (DiesWhenAlone var in FindObjectsOfType<DiesWhenAlone>())
+        if (owner == Owner.PLAYER)
+        {
+            GetComponentInChildren<DragDrop>(true).gameObject.SetActive(true); //Karte kann wieder bewegt werden
+            GetComponentInChildren<DragDrop>().foundSlot = false; //Leert Kartenslot
+            hasActedRim.SetActive(false);
+        }
+        else if (owner == Owner.ENEMY)
+        {
+            enemyManager.UpdateEnemyUI();
+            cardBG.SetActive(true);
+        }
+        
+        handCard.transform.localScale = new Vector3(1f, 1f, 1f); //Setzt Kartengrösse zurück
+        currentCardMode = CardMode.INDECK; //Setzt Karte in einen passiven Modus
+        currentHealth = cardStats.defense; //Setzt Leben der Karte zurück
+        cardDisplay.SetUpCardUI();  //Setzt UI Werte der Karte
+        deckManager.HideDisplayCard(); //Vorschau Karte wird ausgeschaltet
+        cardIngameSlot.currentCard = null; //Leert Kartenreferenz auf dem Slot //BUG: cardIngameSlot manchmal null
+        cardIngameSlot = null; //Leet verbundener Slot
+        
+        foreach (DiesWhenAlone var in FindObjectsOfType<DiesWhenAlone>()) //Karten mit deisem Effekt überprüfen ob sie alleine sind
         {
             if (var.GetComponent<CardManager>().currentCardMode == CardMode.INPLAY)
             {
                 var.CheckIfAlone();
             }
         }
-        currentCardMode = CardMode.INDECK;
-        currentHealth = cardStats.defense;
-        deckManager.HideDisplayCard();
-        cardIngameSlot.currentCard = null; //BUG: cardIngameSlot manchmal null
-        cardDisplay.SetUpCardUI();
-        handCard.SetActive(true);
-        inGameCard.SetActive(false);
-        gameObject.SetActive(false);
+        
+        handCard.SetActive(true); //Setzt visuell Handkarte aktiv
+        inGameCard.SetActive(false); //Setzt ingmae Karte pasiv
+        gameObject.SetActive(false); //Setzt Karte an sich passiv
     }
 
     #region Animation

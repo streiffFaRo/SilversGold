@@ -82,12 +82,12 @@ public class BattleSystem : MonoBehaviour
 
     public IEnumerator EnemyTurn()
     {
+        state = BattleState.ENEMYTURN;
         VolumeManager.instance.GetComponent<AudioManager>().PLayEndTurnBellSound();
         enemyTurnInfo.SetActive(true);
         deckManager.SetAllOtherButtonsPassive();
         yield return new WaitForSeconds(1f);
         enemyTurnInfo.SetActive(false);
-        state = BattleState.ENEMYTURN;
         enemyManager.StartNewEnemyTurn();
         if (onEnemyTurnEvent != null)
         {

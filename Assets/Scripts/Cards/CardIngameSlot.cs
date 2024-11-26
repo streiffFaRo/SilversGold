@@ -33,9 +33,8 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
             {
                 if (currentCard.cardCommandPowerCost <= playerManager.currentCommandPower)
                 {
-                    currentCard.currentCardMode = CardMode.INPLAY;
-                    dragDrop.foundSlot = true;
-                    currentCard.cardIngameSlot = this;
+                    currentCard.cardIngameSlot = this; //Auf der Karte wird der gefundene Slot gesetzt
+                    dragDrop.foundSlot = true; //DragDrop Komponente wird informiert dass ein Slot gefunden wurde
                     currentCard.CardPlayed();
                     eventData.pointerDrag.GetComponent<DragDrop>().rectTransform.position =
                         GetComponent<RectTransform>().position;
@@ -63,7 +62,6 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
         currentCard.currentCardMode = CardMode.INPLAY;
         currentCard.CardPlayed();
         currentCard.GetComponentInChildren<DragDrop>().GameObject().SetActive(false);
-        
         
     }
 }
