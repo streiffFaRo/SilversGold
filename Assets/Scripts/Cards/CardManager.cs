@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Button = UnityEngine.UI.Button;
@@ -31,6 +32,9 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     [Header("Animation")]
     public Animator animator;
     public GameObject cannonBallVisualRoot;
+
+    [Header("Particles")] 
+    public ParticleSystem particleBlood;
     
     [Header("Other")]
     public DamageCounterFolder damageCounterFolder;
@@ -338,8 +342,13 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             UpdateCardHealth(cardAttacked.cardStats.attack);
             cardAttacked.UpdateCardHealth(cardStats.attack);
-            
+
+            ParticleSystem particlesAttacker = Instantiate(particleBlood, rectTransform.position, quaternion.identity, damageCounterFolder.transform); //Blood Particles Attacker
+            particlesAttacker.Play();
             damageCounterFolder.SpawnDamageCounter(rectTransform.position + new Vector3(75, 75,0), cardAttacked.cardStats.attack);
+            
+            ParticleSystem particlesDefender = Instantiate(particleBlood, cardAttacked.rectTransform.position, quaternion.identity, damageCounterFolder.transform); //Blood Particles Defender
+            particlesDefender.Play();
             damageCounterFolder.SpawnDamageCounter(cardAttacked.rectTransform.position + new Vector3(75, 75, 0), cardStats.attack);
         }
         else
@@ -428,6 +437,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public void Broadside()
     {
         cannonBallVisualRoot.SetActive(true); //Kanonenkugel wird sichtbar geschalten
+        VolumeManager.instance.GetComponent<AudioManager>().PlayCannonSound(); //Sound
         
         if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
@@ -437,7 +447,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             
             if (cardIngameSlot.enemyArtilleryLine.currentCard != null) //Spieler Kanonier greift gegnerische Arty Karte an
             { 
-                
                 CannonBallAnimation(900f,0.8f, BroadsideEffects);
                 cannoneerAttacked = cardIngameSlot.enemyArtilleryLine.currentCard;
                 broadsideDamage = GameManager.instance.shipCannonLevel + 1;

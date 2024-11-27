@@ -49,7 +49,7 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
             }
             else
             {
-                currentCard.animator.SetTrigger("trigger_position_warn");
+                cardToCheck.animator.SetTrigger("trigger_position_warn");
                 VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
             }
         }

@@ -228,8 +228,7 @@ public class DeckManager : MonoBehaviour
                     card.Broadside();
                     yield return new WaitForSeconds(0.2f);
                 }
-                VolumeManager.instance.GetComponent<AudioManager>().PlayCannonSound();
-                playerManager.UpdateCommandPower(2);
+                playerManager.UpdateCommandPower(2); //Zieht CommandPower beim Spieler ab
             }
             else
             {
