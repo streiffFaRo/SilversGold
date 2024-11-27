@@ -264,18 +264,42 @@ public class EnemyActionExecuter : MonoBehaviour
     
     public void PlayCard(CardManager cardToPlay, CardIngameSlot slot)
     {
-        slot.EnemyCardPlacedOnThisSlot(cardToPlay);
-        cardToPlay.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        if (cardToPlay != null && slot != null)
+        {
+            slot.EnemyCardPlacedOnThisSlot(cardToPlay);
+            cardToPlay.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        }
+        else
+        {
+            StartCoroutine(enemyManager.EndTurn());
+            Debug.LogWarning("EnemyPlayCard gescheitert!");
+        }
     }
 
     public void AttackWithCard(CardManager cardToAttackWith)
     {
-        cardToAttackWith.Attack();
+        if (cardToAttackWith != null)
+        {
+            cardToAttackWith.Attack();
+        }
+        else
+        {
+            StartCoroutine(enemyManager.EndTurn());
+            Debug.LogWarning("EnemyAttack gescheitert!");
+        }
     }
 
     public void RetreatCard(CardManager cardToRetreat)
     {
-        cardToRetreat.Retreat();
+        if (cardToRetreat != null)
+        {
+            cardToRetreat.Retreat();
+        }
+        else
+        {
+            StartCoroutine(enemyManager.EndTurn());
+            Debug.LogWarning("EnemyRetreat gescheitert!");
+        }
     }
 
     #endregion

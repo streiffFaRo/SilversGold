@@ -57,9 +57,9 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
     public void EnemyCardPlacedOnThisSlot(CardManager cardToPlaceOnSlot) //Setzt gegnerische Karte auf ihren Slot
     {
         currentCard = cardToPlaceOnSlot;
-        currentCard.GetComponentInChildren<DragDrop>().rectTransform.position = GetComponent<RectTransform>().position;
         currentCard.cardIngameSlot = this;
         currentCard.currentCardMode = CardMode.INPLAY;
+        currentCard.GetComponentInChildren<DragDrop>().rectTransform.position = GetComponent<RectTransform>().position;
         currentCard.CardPlayed();
         currentCard.GetComponentInChildren<DragDrop>().GameObject().SetActive(false);
         

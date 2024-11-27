@@ -33,6 +33,7 @@ public class DeckManager : MonoBehaviour
     [Header("Scripts")]
     public BattleSystem battleSystem;
     public PlayerManager playerManager;
+    public DamageCounterFolder damageCounterFolder;
     
     private void Start()
     {
@@ -137,6 +138,7 @@ public class DeckManager : MonoBehaviour
     public void Fatigue()
     {
         playerManager.UpdateHealth(currentFatigueDamage, false);
+        damageCounterFolder.SpawnDamageCounter(playerManager.healthText.rectTransform.position+ new Vector3(75,75,0), currentFatigueDamage);
         Debug.LogWarning("You fatigued for " + currentFatigueDamage);
         VolumeManager.instance.GetComponent<AudioManager>().PlayShipHitSound();
         StartCoroutine(FatigueBanner());
@@ -226,7 +228,6 @@ public class DeckManager : MonoBehaviour
             {
                 Debug.LogWarning("Keine Arty Einheiten für Breitseite!");
                 VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
-                //TODO Animation
             }
         }
         else

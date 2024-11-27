@@ -9690,6 +9690,7 @@ MonoBehaviour:
   availableCardSlots: 0101010101
   battleSystem: {fileID: 2071210394}
   playerManager: {fileID: 170767408}
+  damageCounterFolder: {fileID: 1697295640}
 --- !u!224 &1502925738
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10608,6 +10609,7 @@ MonoBehaviour:
   enemyActionExecuter: {fileID: 1587372868}
   enemyAnalysis: {fileID: 1587372867}
   battleSystem: {fileID: 2071210394}
+  damageCounterFolder: {fileID: 1697295640}
 --- !u!114 &1587372867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11378,6 +11380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1ba7b75779eed04e8527eb288f74bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageCounterPrefab: {fileID: 635359216239170621, guid: 417dcf969eb5ea8448c1e179c2a86d65, type: 3}
 --- !u!1 &1723583489
 GameObject:
   m_ObjectHideFlags: 0

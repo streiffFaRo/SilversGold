@@ -34,8 +34,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public GameObject cannonBallVisualRoot;
     
     [Header("Other")]
-    public GameObject damageCounterFolder;
-    public GameObject damageCounterPrefab;
+    public DamageCounterFolder damageCounterFolder;
     [HideInInspector]public int cardCommandPowerCost;
 
     //Private Scripts
@@ -70,7 +69,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         recruitManager = FindObjectOfType<RecruitManager>();
         presentDeck = FindObjectOfType<PresentDeck>();
         rectTransform = GetComponent<RectTransform>();
-        damageCounterFolder = FindObjectOfType<DamageCounterFolder>().gameObject;
+        damageCounterFolder = FindObjectOfType<DamageCounterFolder>();
         
         //Setzt schnellzugriffe für häufig genutzte Variablen
         cardCommandPowerCost = cardStats.cost;
@@ -341,8 +340,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             UpdateCardHealth(cardAttacked.cardStats.attack);
             cardAttacked.UpdateCardHealth(cardStats.attack);
             
-            SpawnDamageCounter(rectTransform.position + new Vector3(75, 75,0), cardAttacked.cardStats.attack);
-            SpawnDamageCounter(cardAttacked.rectTransform.position + new Vector3(75, 75, 0), cardStats.attack);
+            damageCounterFolder.SpawnDamageCounter(rectTransform.position + new Vector3(75, 75,0), cardAttacked.cardStats.attack);
+            damageCounterFolder.SpawnDamageCounter(cardAttacked.rectTransform.position + new Vector3(75, 75, 0), cardStats.attack);
         }
         else
         {
@@ -350,13 +349,13 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             {
                 enemyManager.UpdateEnemyHealth(cardStats.attack, false);
                 
-                SpawnDamageCounter(enemyManager.enemyHealthText.rectTransform.position + new Vector3(75,-75,0), cardStats.attack);
+                damageCounterFolder.SpawnDamageCounter(enemyManager.enemyHealthText.rectTransform.position + new Vector3(75,-75,0), cardStats.attack);
             }
             else if (owner == Owner.ENEMY)
             {
                 playerManager.UpdateHealth(cardStats.attack, false);
                 
-                SpawnDamageCounter(playerManager.healthText.rectTransform.position+ new Vector3(75,75,0), cardStats.attack);
+                damageCounterFolder.SpawnDamageCounter(playerManager.healthText.rectTransform.position+ new Vector3(75,75,0), cardStats.attack);
             }
         }
         cardAttacked = null; //reset
@@ -478,32 +477,25 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
         if (cannoneerAttacked != null)
         {
-            SpawnDamageCounter(cannoneerAttacked.rectTransform.position + new Vector3(75,-75,0), broadsideDamage);
+            damageCounterFolder.SpawnDamageCounter(cannoneerAttacked.rectTransform.position + new Vector3(75,-75,0), broadsideDamage);
             cannoneerAttacked.UpdateCardHealth(broadsideDamage);
         }
         else
         {
             if (owner == Owner.PLAYER)
             {
-                SpawnDamageCounter(enemyManager.enemyHealthText.rectTransform.position + new Vector3(75,-75,0), GameManager.instance.shipCannonLevel+1);
+                damageCounterFolder.SpawnDamageCounter(enemyManager.enemyHealthText.rectTransform.position + new Vector3(75,-75,0), GameManager.instance.shipCannonLevel+1);
                 enemyManager.UpdateEnemyHealth(GameManager.instance.shipCannonLevel+1, false);
             }
             else if (owner == Owner.ENEMY)
             {
                 playerManager.UpdateHealth(enemyManager.enemyCannonLevel, false);
-                SpawnDamageCounter(playerManager.healthText.rectTransform.position+ new Vector3(75,75,0), cardStats.attack);
+                damageCounterFolder.SpawnDamageCounter(playerManager.healthText.rectTransform.position+ new Vector3(75,75,0), cardStats.attack);
             }
         }
     }
 
     #endregion
-    
-    public void SpawnDamageCounter(Vector3 position, int amount)
-    {
-        GameObject createdDamageCounter = Instantiate(damageCounterPrefab, position, Quaternion.identity,
-            damageCounterFolder.transform);
-        createdDamageCounter.GetComponent<DamageCounter>().numberText.text = "-"+ amount.ToString();
-    }
 
     public void DidCardAct()
     {

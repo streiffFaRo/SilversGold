@@ -43,6 +43,7 @@ public class EnemyManager : MonoBehaviour
     public EnemyActionExecuter enemyActionExecuter;
     public EnemyAnalysis enemyAnalysis;
     public BattleSystem battleSystem;
+    public DamageCounterFolder damageCounterFolder;
     private GameManager gameManager;
 
     private void Start()
@@ -239,7 +240,7 @@ public class EnemyManager : MonoBehaviour
     {
         UpdateEnemyHealth(currentFatigueDamage, false);
         Debug.LogWarning("You fatigued for " + currentFatigueDamage);
-        //TODO Animation
+        damageCounterFolder.SpawnDamageCounter(enemyHealthText.rectTransform.position+ new Vector3(75,75,0), currentFatigueDamage);
         currentFatigueDamage++;
     }
 
