@@ -437,6 +437,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             
             if (cardIngameSlot.enemyArtilleryLine.currentCard != null) //Spieler Kanonier greift gegnerische Arty Karte an
             { 
+                
                 CannonBallAnimation(900f,0.8f, BroadsideEffects);
                 cannoneerAttacked = cardIngameSlot.enemyArtilleryLine.currentCard;
                 broadsideDamage = GameManager.instance.shipCannonLevel + 1;
@@ -448,7 +449,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             }
             
         }
-        else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY)
+        else if (battleSystem.state == BattleState.ENEMYTURN && owner == Owner.ENEMY) //Gegnerische Breitseite
         {
             cardActed = true;
             

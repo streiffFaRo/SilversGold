@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -203,6 +204,11 @@ public class DeckManager : MonoBehaviour
 
     public void Broadside()
     {
+        StartCoroutine(BroadsideCorutine());
+    }
+
+    public IEnumerator BroadsideCorutine()
+    {
         if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower >= 2)
         {
             List<CardManager> playerArtyCards = new List<CardManager>();
@@ -220,6 +226,7 @@ public class DeckManager : MonoBehaviour
                 foreach (CardManager card in playerArtyCards)
                 { 
                     card.Broadside();
+                    yield return new WaitForSeconds(0.2f);
                 }
                 VolumeManager.instance.GetComponent<AudioManager>().PlayCannonSound();
                 playerManager.UpdateCommandPower(2);
@@ -237,7 +244,6 @@ public class DeckManager : MonoBehaviour
             playerManager.commandPowerAnimator.SetTrigger("trigger_commandpower_warn");
         }
         VolumeManager.instance.GetComponent<AudioManager>().PlayButtonPressSound();
-        
     }
 
     public void EndTurn() //Beendet den Spielerzug

@@ -26,13 +26,14 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
     {
         if (eventData.pointerDrag != null && battleSystem.state == BattleState.PLAYERTURN)
         {
-            currentCard = eventData.pointerDrag.GetComponentInParent<CardManager>();
-            dragDrop = eventData.pointerDrag.GetComponent<DragDrop>();
+            CardManager cardToCheck = eventData.pointerDrag.GetComponentInParent<CardManager>();
 
-            if (currentCard.GetComponent<CardDisplay>().card.position == slotPosition)
+            if (cardToCheck.GetComponent<CardDisplay>().card.position == slotPosition)
             {
-                if (currentCard.cardCommandPowerCost <= playerManager.currentCommandPower)
+                if (cardToCheck.cardCommandPowerCost <= playerManager.currentCommandPower)
                 {
+                    currentCard = cardToCheck;
+                    dragDrop = eventData.pointerDrag.GetComponent<DragDrop>();
                     currentCard.cardIngameSlot = this; //Auf der Karte wird der gefundene Slot gesetzt
                     dragDrop.foundSlot = true; //DragDrop Komponente wird informiert dass ein Slot gefunden wurde
                     currentCard.CardPlayed();

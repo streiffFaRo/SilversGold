@@ -116,21 +116,20 @@ public class DialogueManager : MonoBehaviour
 
     private IEnumerator DisplayLine(string line) //Gibt Text in bestimmter Geschwindigkeit wieder
     {
-        textUI.text = "";
+        textUI.text = line;
         continueButton.SetActive(false);
         HideChoices();
 
         canContinueToNextLine = false;
 
-        foreach (char letter in line.ToString())
+        for (int i = 0; i < line.Length; i++)
         {
             if (breakLineFormationChain)
             {
-                textUI.text = line;
+                textUI.maxVisibleCharacters = line.Length;
                 break;
             }
-            
-            textUI.text += letter;
+            textUI.maxVisibleCharacters = i+1;
             yield return new WaitForSeconds(GameManager.instance.typingSpeed);
         }
         
