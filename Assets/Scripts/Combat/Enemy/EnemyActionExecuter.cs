@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -120,7 +121,7 @@ public class EnemyActionExecuter : MonoBehaviour
         {
             if (executionActionIndex == actionIndex)
             {
-                Broadside();
+                StartCoroutine(Broadside());
                 executionActionIndex++;
             }
             else
@@ -248,7 +249,7 @@ public class EnemyActionExecuter : MonoBehaviour
         enemyManager.BuyCard();
     }
     
-    public void Broadside()
+    public IEnumerator Broadside()
     {
         foreach (CardManager card in FindObjectsOfType<CardManager>())
         { 
@@ -256,8 +257,9 @@ public class EnemyActionExecuter : MonoBehaviour
             { 
                 card.Broadside();
             }
+
+            yield return new WaitForSeconds(0.2f);
         }
-        VolumeManager.instance.GetComponent<AudioManager>().PlayCannonSound();
         enemyManager.UpdateEnemyCommandPower(2);
         
     }

@@ -58,13 +58,8 @@ public class Combat_Tutorial : MonoBehaviour
             tutorialBoxes1[currentBox].SetActive(true);
         }
     }
-
-    public void InitTutorial2()
-    {
-        Invoke("Tutorial2", 0.5f);
-    }
     
-    private void Tutorial2()
+    public void Tutorial2()
     {
         currentBox = 0;
         tutorialBoxes2[0].SetActive(true);

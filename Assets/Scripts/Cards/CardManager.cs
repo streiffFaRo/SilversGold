@@ -109,7 +109,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             //Tutorial wird gezündet
             if (!GameManager.instance.tutorialDone && GameManager.instance.currentLevel == 1)
             {
-                FindObjectOfType<Combat_Tutorial>()?.InitTutorial2();
+                FindObjectOfType<Combat_Tutorial>()?.Tutorial2();
             }
         }
         else if (owner == Owner.ENEMY)
@@ -163,7 +163,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             {
                 isHovering = true; //Aktiviert Hovering-Timer
             }
-            else if (currentCardMode == CardMode.INHAND && battleSystem.state != BattleState.WON && battleSystem.state != BattleState.LOST)
+            else if (currentCardMode == CardMode.INHAND && battleSystem.state != BattleState.WON && battleSystem.state != BattleState.LOST && owner == Owner.PLAYER)
             {
                 //Vergrössert die Karte in der Hand
                 VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound(); 
@@ -213,7 +213,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             hoverTimer = 0;
             isHovering = false;
         }
-        
     }
     
     public void SetButtonsActive() //Zeigt Aktionsbuttons im Kampf (Angriff/Rückzug)
@@ -439,7 +438,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         cannonBallVisualRoot.SetActive(true); //Kanonenkugel wird sichtbar geschalten
         VolumeManager.instance.GetComponent<AudioManager>().PlayCannonSound(); //Sound
         
-        if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
+        if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER) //Spieler Breitseite
         {
             SetButtonsPassive();
             cardActed = true;
@@ -455,6 +454,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             else //Spieler Kanonier greift gegnerisches Schiff an
             { 
                 CannonBallAnimation(1100f,0.8f, BroadsideEffects);
+                cannoneerAttacked = null;
             }
             
         }
@@ -462,15 +462,16 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             cardActed = true;
             
-            if (cardIngameSlot.enemyArtilleryLine.currentCard != null) //Gegner Kanonier greift spieler Artya Karte an
+            if (cardIngameSlot.enemyArtilleryLine.currentCard != null) //Gegner Kanonier greift spieler Arty Karte an
             { 
                 CannonBallAnimation(-900f,0.8f, BroadsideEffects);
                 cannoneerAttacked = cardIngameSlot.enemyArtilleryLine.currentCard;
                 broadsideDamage = enemyManager.enemyCannonLevel;
             }
-            else //Gegner greift spieler Schiff an
+            else //Gegner greift Spieler Schiff an
             { 
                 CannonBallAnimation(-1100f,0.8f, BroadsideEffects);
+                cannoneerAttacked = null;
             }
             
         }
@@ -484,12 +485,12 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     {
         cannonBallVisualRoot.SetActive(false);
 
-        if (cannoneerAttacked != null)
+        if (cannoneerAttacked != null) //Wenn Karte Gesetzt -> Schaden wird an Karte gemacht
         {
             damageCounterFolder.SpawnDamageCounter(cannoneerAttacked.rectTransform.position + new Vector3(75,-75,0), broadsideDamage);
             cannoneerAttacked.UpdateCardHealth(broadsideDamage);
         }
-        else
+        else //Wenn keine Karte, wird entsprechendes Schiff angegriffen
         {
             if (owner == Owner.PLAYER)
             {
@@ -569,6 +570,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             enemyManager.UpdateEnemyUI();
             cardBG.SetActive(true);
+            GetComponent<CanvasGroup>().blocksRaycasts = false;
         }
         
         handCard.transform.localScale = new Vector3(1f, 1f, 1f); //Setzt Kartengrösse zurück
