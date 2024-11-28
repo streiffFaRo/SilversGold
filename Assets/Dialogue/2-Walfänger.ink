@@ -10,7 +10,6 @@ On our trip today we came across <color="blue">a lone sailor whose boat had load
 I waited patiently until he had finished his story and then politely offered him the chance to become part of our crew.
 {Get_State("gotBooty") ==1: ->Rekrutieren}->NoBooty
 
-
 ===Rekrutieren===
 He replied hesitantly, but <color="red">when I offered him certain payment</color>, he agreed. I'm not sure but I think it was more the camaraderie than the gold that convinced him to join us. In any case, I'm very happy to have him with us. In bad times, we can rely on his stories to give us new courage. <color="blue">(+Whaler)</color>
   ~Unity_Event("whaler")

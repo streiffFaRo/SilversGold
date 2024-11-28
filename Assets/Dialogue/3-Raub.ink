@@ -1,7 +1,7 @@
 INCLUDE Utility.ink
 ->main
 ===main===
-A pirate is a very simple being; he loves his freedom and takes what he wants. He doesn’t need much to live—just rum, gold, and the sea. When we anchored the ship at a trading port to replenish our supplies, <color="red">some of my men approached me and spoke of a plantation they wanted to raid</color>. They said there was plenty to loot and that the risk was manageable. It’s not uncommon for some of my men to come to me with such a request. While I don’t want to stand in the way of their ambitions, I know that if things go wrong, it <color="red">could lead to unnecessary losses</color>. Still, with our ship remaining here until tomorrow morning, it wouldn’t cost us any time to let them plunder the plantation.
+A pirate is a very simple being; he loves his freedom and takes what he wants. He doesn’t need much to live — just rum, gold, and the sea. When we anchored the ship at a trading port to replenish our supplies, <color="red">some of my men approached me and spoke of a plantation they wanted to raid</color>. They said there was plenty to loot and that the risk was manageable. It’s not uncommon for some of my men to come to me with such a request. While I don’t want to stand in the way of their ambitions, I know that if things go wrong, it <color="red">could lead to unnecessary losses</color>. Still, with our ship remaining here until tomorrow morning, it wouldn’t cost us any time to let them plunder the plantation.
 *[Send Raiders]->Raub
 *[Continue travelling]->Weiterziehen
 
@@ -15,6 +15,6 @@ A pirate is a very simple being; he loves his freedom and takes what he wants. H
 ->endScene
 
 ===endScene===
-The next morning, we set off again into the open sea. Soon we would leave the troublesome waters behind. <color="blue">We are heading into a region controlled by the Navy—ships that serve the King</color>. I’m not sure if I’d rather face them than the mostly poorly organized pirate crews that have attacked us so far. <color="blue">It seems we’re about to get one last taste of a pirate attack</color>. A ship with crossed sabers on its banner is heading towards us, preparing for battle. But we will defy this lot as well—attack!
+The next morning, we set off again into the open sea. Soon we would leave the troublesome waters behind. <color="blue">We are heading into a region controlled by the Navy — ships that serve the King</color>. I’m not sure if I’d rather face them than the mostly poorly organized pirate crews that have attacked us so far. <color="blue">It seems we’re about to get one last taste of a pirate attack</color>. A ship with crossed sabers on its banner is heading towards us, preparing for battle. But we will defy this lot as well. Attack!
 ~Unity_Event("endScene")
 -->END

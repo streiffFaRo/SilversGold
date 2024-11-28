@@ -12,7 +12,7 @@ After the soldiers were defeated, we only really realised what kind of ship it w
 
 ===befreien===
 ~Unity_Event("free")
-<color="red">Most of the crew wanted to see the slaves free</color> and I saw that as the right thing to do. I, who strive for freedom myself, felt connected to them. Now they can do whatever they want. My decision was very popular with the crew. As a pirate, you don't just rob, sometimes you're also the good guy in the story. <color="red">(+1 Command Power next Battle)</color>
+<color="red">Most of the crew wanted to see the slaves free</color> and I agreed that was the right thing to do. I, who strive for justice myself, felt connected to them. Now they can do whatever they want. My decision was very popular with the crew. As a pirate, you don't just rob, sometimes you're also the good guy in the story. <color="red">(+1 Command Power next Battle)</color>
 ->endScene
 
 ===endScene===

@@ -1,7 +1,7 @@
 INCLUDE Utility.ink
 ->main
 ===main===
-Not much was left of Fleming's beautiful warship after our victory. It is off to join the other wrecks of the seas. That should give the navy a good blow. But they shouldn't be our biggest concern for now. <color="blue">My navigator reports an unusual sighting, a ship with old grey sails, as big as Fleming's warship</color>. It flies no flag and is travelling according to the course on the treasure map. I get the feeling that <color="blue">Silver's ship is not a wreck on the bottom of the sea after all, but a ghost ship</color>, doomed to sail this course forever. Forever, or until we have freed it from its booty.
+Not much was left of Fleming's beautiful warship after our victory. It is off to join the other wrecks at the bottom of the sea. That should give the navy a good blow. But they won't be our biggest concern for now. <color="blue">My navigator reports an unusual sighting, a ship with old grey sails, as big as Fleming's warship</color>. It flies no flag and is travelling according to the course on the treasure map. I get the feeling that <color="blue">Silver's ship is not a wreck in the deep after all, but a ghost ship</color>, doomed to sail this course forever. Forever, or until we have freed it from its booty.
 ->endScene
 
 ===endScene===

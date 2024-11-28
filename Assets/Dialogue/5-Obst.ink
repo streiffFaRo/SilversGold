@@ -27,6 +27,6 @@ Despite the high prices, <color="red">it was worth spending the money on my men<
 ->endScene
 
 ===endScene===
-I hope that another illness will not hinder us on our journey. If it is contagious, it could mean the premature end of our treasure hunt. As we all live very close to each other, this illness would spread like wildfire. But as I see it, the navy is still our biggest problem. <color="blue">A new ship with the royal banner is heading our way</color>. Men, get ready for battle!
+I hope that another illness will not hinder us on our journey. If it is contagious, it could mean the premature end of our treasure hunt. As we all live very close to each other, this illness would spread like a wildfire. But the way I see it, the navy is still our biggest problem. <color="blue">A new ship with the royal banner is heading our way</color>. Men, get ready for battle!
 ~Unity_Event("endScene")
 -->END
