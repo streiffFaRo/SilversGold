@@ -53,6 +53,14 @@ public class UISound : MonoBehaviour //Einfacher Weg um UI Sounds auf dem Audiom
             audioManager.PLayEndTurnBellSound();
         }
     }
+    
+    public void PlayCardSound()
+    {
+        if (audioManager != null)
+        {
+            audioManager.PlayCardHandHoverSound();
+        }
+    }
 
     #endregion
 
