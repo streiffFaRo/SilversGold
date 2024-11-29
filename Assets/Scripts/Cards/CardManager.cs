@@ -384,7 +384,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     {
         if (battleSystem.state == BattleState.PLAYERTURN && playerManager.currentCommandPower > 0 && owner == Owner.PLAYER)
         {
-            ParticleSystem particles = Instantiate(particleSmoke, rectTransform.position, quaternion.identity, damageCounterFolder.transform); //Smoke
             //Spieler Karte zieht sich zurück
             playerManager.UpdateCommandPower(1);
             SetButtonsPassive();
@@ -392,7 +391,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             hasActedRim.SetActive(false);
             VolumeManager.instance.GetComponent<AudioManager>().PlayCardRetreatSound();
             animator.SetTrigger("trigger_retreat");
-            particles.Play();
         }
         else if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER)
         {
@@ -407,8 +405,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             enemyManager.UpdateEnemyCommandPower(1);
             cardActed = true;
             VolumeManager.instance.GetComponent<AudioManager>().PlayCardRetreatSound();
-            ParticleSystem particles = Instantiate(particleSmoke, rectTransform.position, quaternion.identity, damageCounterFolder.transform); //Smoke
-            particles.Play();
             animator.SetTrigger("trigger_retreat");
         }
         else
@@ -621,6 +617,12 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         cannonBallVisualRoot.transform.position = transform.position;
         moveTween = cannonBallVisualRoot.transform.DOMoveY(distance, duration);
         moveTween.onComplete += onEnd;
+    }
+
+    public void SmokeParticles()
+    {
+        ParticleSystem particles = Instantiate(particleSmoke, rectTransform.position, quaternion.identity, damageCounterFolder.transform); //Smoke
+        particles.Play();
     }
 
     #endregion
