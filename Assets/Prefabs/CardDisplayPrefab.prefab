@@ -1974,6 +1974,7 @@ MonoBehaviour:
   animator: {fileID: 2798129822402181407}
   cannonBallVisualRoot: {fileID: 157508007729694555}
   particleBlood: {fileID: 3016826025003053072, guid: eb25dadce43d3f94fbf6a4f628beb933, type: 3}
+  particleSmoke: {fileID: 6072039209663470754, guid: 97c35538d8465544996760b37496e043, type: 3}
   damageCounterFolder: {fileID: 0}
   cardCommandPowerCost: 0
   cardStats: {fileID: 0}
