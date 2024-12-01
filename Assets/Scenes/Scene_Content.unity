@@ -10582,7 +10582,7 @@ MonoBehaviour:
   - enemyTitle: (10) Silvers Ghost Crew
     health: 50
     commandPower: 6
-    cannonLevel: 3
+    cannonLevel: 2
     strategy: {fileID: 11400000, guid: fdf58552267de254cb169f2d6fe14fe2, type: 2}
     deckToPrepare:
     - {fileID: 11400000, guid: db3d7d98d13bc274a9fa9a6334af3042, type: 2}
