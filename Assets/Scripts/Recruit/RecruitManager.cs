@@ -75,7 +75,6 @@ public class RecruitManager : MonoBehaviour
 
     public void ShowRecruitmentOptions()
     {
-        //TODO Animation
         SelectCurrentTier();
         
         if (GameManager.instance.playerDeck.Count+1 <= GameManager.instance.deckCardLimit)

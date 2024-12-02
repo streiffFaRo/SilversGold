@@ -20,6 +20,11 @@ public class CheatMenu : MonoBehaviour
         audioManager = VolumeManager.instance.GetComponent<AudioManager>();
     }
 
+    public void SkipLevel(int levelToSkipTo)
+    {
+        gameManager.currentLevel = levelToSkipTo;
+    }
+    
     public void CheatBooty()
     {
         gameManager.booty += 100;

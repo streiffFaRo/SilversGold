@@ -113,7 +113,14 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(3f);
         recruitManager.HideBootyReward();
         yield return new WaitForSeconds(1f);
-        recruitManager.ShowRecruitmentOptions();
+        if (GameManager.instance.currentLevel >= 11)
+        {
+            SceneManager.LoadScene("Scene_Log");
+        }
+        else
+        {
+            recruitManager.ShowRecruitmentOptions();
+        }
     }
 
     public void GameOver()
