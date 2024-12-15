@@ -1084,7 +1084,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Silvers Gold
+  m_text: Silver's Gold
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8e79c4927fe748548ad784c2dfa6595b, type: 2}
   m_sharedMaterial: {fileID: 7049020175757930699, guid: 8e79c4927fe748548ad784c2dfa6595b, type: 2}

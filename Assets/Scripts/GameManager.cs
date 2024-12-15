@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -45,11 +46,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        VolumeManager.instance.GetComponent<AudioManager>().PlayPirateMusic();
+    }
+
     public void UpdateLevel() //Lädt neue Levels und Tiers
     {
         
         currentLevel++;
 
+        //Select Tier
         if (currentLevel >= 11)
         {
             currentTier = 4;
@@ -61,6 +68,16 @@ public class GameManager : MonoBehaviour
         else if (currentLevel >= 4)
         {
             currentTier = 2;
+        }
+
+        //Select Music
+        if (currentLevel == 11)
+        {
+            VolumeManager.instance.GetComponent<AudioManager>().PlaySilverMusic1();
+        }
+        else if (currentLevel == 4)
+        {
+            VolumeManager.instance.GetComponent<AudioManager>().PlayNavy1Music();
         }
         
     }

@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class AudioManager : MonoBehaviour
 {
@@ -23,8 +25,14 @@ public class AudioManager : MonoBehaviour
     public PlayRandomSound buttonHoverSound;
     
     [Header("Music")] 
-    public AudioSource menuMusic;
-    public AudioSource gameMusic;
+    public AudioSource pirateMusic;
+    public AudioSource navyMusic1;
+    public AudioSource navyMusic2;
+    public AudioSource silverMusic1;
+    public AudioSource silverMusic2;
+    public AudioSource silverMusic3;
+
+    private AudioSource currentMusic;
     
     [Header("Other")] 
     public PlayRandomSound cannonSound;
@@ -33,6 +41,10 @@ public class AudioManager : MonoBehaviour
     public AudioSource endTurnBellSound;
     public PlayRandomSound denySound;
 
+    private void Start()
+    {
+        currentMusic = null;
+    }
 
     #region Platzhalter
     
@@ -112,24 +124,63 @@ public class AudioManager : MonoBehaviour
 
     #region Music
 
-    public void PlayMenuMusic()
+    public void PlayPirateMusic()
     {
-        menuMusic.Play();
+        if (currentMusic != null)
+        {
+            currentMusic.Stop();
+        }
+        currentMusic = pirateMusic;
+        pirateMusic.Play();
     }
 
-    public void StopMenuMusic()
+    public void PlayNavy1Music()
     {
-        menuMusic.Stop();
+        if (currentMusic != null)
+        {
+            currentMusic.Stop();
+        }
+        currentMusic = navyMusic1;
+        navyMusic1.Play();
+    }
+    public void PlayNavy2Music()
+    {
+        if (currentMusic != null)
+        {
+            currentMusic.Stop();
+        }
+        currentMusic = navyMusic2;
+        navyMusic2.Play();
     }
 
-    public void PlayGameMusic()
+    public void PlaySilverMusic1()
     {
-        gameMusic.Play();
+        if (currentMusic != null)
+        {
+            currentMusic.Stop();
+        }
+        currentMusic = silverMusic1;
+        silverMusic1.Play();
     }
 
-    public void StopGameMusic()
+    public void PlaySilverMusic2()
     {
-        gameMusic.Stop();
+        if (currentMusic != null)
+        {
+            currentMusic.Stop();
+        }
+        currentMusic = silverMusic2;
+        silverMusic2.Play();
+    }
+
+    public void PlaySilverMusic3()
+    {
+        if (currentMusic != null)
+        {
+            currentMusic.Stop();
+        }
+        currentMusic = silverMusic3;
+        silverMusic3.Play();
     }
 
     #endregion
