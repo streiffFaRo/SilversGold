@@ -23,6 +23,7 @@ public class BattleSystem : MonoBehaviour
     public GameObject levelInfo;
     public GameObject playerTurnInfo;
     public GameObject enemyTurnInfo;
+    public GameObject fogEffect;
     
     //Events
     public static event Action onPlayerTurnEvent;
@@ -33,6 +34,15 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.START;
         blurImage.SetActive(true);
         StartCoroutine(SetUpBattle());
+
+        if (GameManager.instance.currentLevel == 1)
+        {
+            fogEffect.SetActive(true);
+        }
+        else
+        {
+            fogEffect.SetActive(false);
+        }
     }
 
     private IEnumerator SetUpBattle()
