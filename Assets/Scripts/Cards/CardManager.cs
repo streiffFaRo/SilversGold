@@ -40,13 +40,13 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     [Header("Other")]
     public DamageCounterFolder damageCounterFolder;
     [HideInInspector]public int cardCommandPowerCost;
+    public CardDisplay cardDisplay;
 
     //Private Scripts
     private DeckManager deckManager;
     private BattleSystem battleSystem;
     private PlayerManager playerManager;
     private EnemyManager enemyManager;
-    private CardDisplay cardDisplay;
     private RecruitManager recruitManager;
     private PresentDeck presentDeck;
     [HideInInspector]public Card cardStats;

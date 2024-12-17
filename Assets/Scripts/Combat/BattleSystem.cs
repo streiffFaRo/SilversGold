@@ -35,13 +35,9 @@ public class BattleSystem : MonoBehaviour
         blurImage.SetActive(true);
         StartCoroutine(SetUpBattle());
 
-        if (GameManager.instance.currentLevel == 1)
+        if (GameManager.instance.currentLevel == 11)
         {
             fogEffect.SetActive(true);
-        }
-        else
-        {
-            fogEffect.SetActive(false);
         }
     }
 

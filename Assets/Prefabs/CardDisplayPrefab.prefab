@@ -1977,6 +1977,7 @@ MonoBehaviour:
   particleSmoke: {fileID: 6072039209663470754, guid: 97c35538d8465544996760b37496e043, type: 3}
   damageCounterFolder: {fileID: 0}
   cardCommandPowerCost: 0
+  cardDisplay: {fileID: 0}
   cardStats: {fileID: 0}
 --- !u!114 &3752291792545165605
 MonoBehaviour:
@@ -2905,8 +2906,9 @@ GameObject:
   - component: {fileID: 4272343015285693780}
   - component: {fileID: 1300545637203237769}
   - component: {fileID: 2829980149627318642}
+  - component: {fileID: 2345714571888777950}
   m_Layer: 5
-  m_Name: Attack
+  m_Name: AttackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3026,6 +3028,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2345714571888777950}
+        m_TargetAssemblyTypeName: AttackButtonPreview, Assembly-CSharp
+        m_MethodName: HideAttackPreview
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2345714571888777950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6689710890217882600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76d085c77e64124e84384b869d725e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCardManager: {fileID: 8976938372475544222}
+  damagePreviewTokenPrefab: {fileID: 3746490338358841285, guid: 002617c4d0ab63942a0fbb1296a46e38, type: 3}
+  damageCounterFolder: {fileID: 0}
 --- !u!1 &7244801058244912876
 GameObject:
   m_ObjectHideFlags: 0
@@ -3539,7 +3568,7 @@ GameObject:
   - component: {fileID: 8658295651297194403}
   - component: {fileID: 8585612792520405240}
   m_Layer: 5
-  m_Name: Retreat
+  m_Name: RetreatButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
