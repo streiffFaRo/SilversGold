@@ -125,7 +125,8 @@ public class BattleSystem : MonoBehaviour
         }
         else
         {
-            recruitManager.ShowRecruitmentOptions();
+            StartCoroutine(recruitManager.ShowRecruitmentOptions());
+
         }
     }
 

@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class RecruitManager : MonoBehaviour
 {
@@ -73,7 +74,7 @@ public class RecruitManager : MonoBehaviour
         }
     }
 
-    public void ShowRecruitmentOptions()
+    public IEnumerator ShowRecruitmentOptions()
     {
         SelectCurrentTier();
         
@@ -98,6 +99,9 @@ public class RecruitManager : MonoBehaviour
             currentCardPrefab.GetComponentInChildren<DragDrop>().GameObject().SetActive(false);
             selectedCardStack.Remove(randCard);
         }
+
+        yield return new WaitForSeconds(0.1f);
+        Destroy(recruitCardDisplay.GetComponent<HorizontalLayoutGroup>());
     }
     
     public void SelectCurrentTier()

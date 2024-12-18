@@ -58,6 +58,7 @@ public class PresentDeck : MonoBehaviour
             cardToAddSlot.SetActive(true);
             GameObject currentCardPrefab = Instantiate(displayCardPrefab, new Vector3(0, 0, 0), Quaternion.identity, cardToAddSlot.transform);
             currentCardPrefab.GetComponent<CardDisplay>().card = cardToAdd;
+            currentCardPrefab.GetComponent<CardManager>().handCard.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
             currentCardPrefab.GetComponentInChildren<DragDrop>().GameObject().SetActive(false);
         }
     }

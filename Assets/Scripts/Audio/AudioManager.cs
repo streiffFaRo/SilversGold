@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource silverMusic2;
     public AudioSource silverMusic3;
 
-    private AudioSource currentMusic;
+    public AudioSource currentMusic;
     
     [Header("Other")] 
     public PlayRandomSound cannonSound;

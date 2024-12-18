@@ -184,13 +184,15 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             else if (currentCardMode == CardMode.INRECRUIT)
             {
                 //Vergrössert die Karte im Rekrutierungsmodus
+                transform.SetSiblingIndex(transform.parent.childCount-1);
                 handCardScaler.Resize(2.5f);
+                cardDisplay.ShowKeyWordBox();
                 VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound(); 
             }
             else if (currentCardMode == CardMode.INDECK && battleSystem.state != BattleState.PLAYERTURN && battleSystem.state != BattleState.ENEMYTURN)
             {
                 //Vergrössert die Karte im Deckanschaumodus
-                transform.SetSiblingIndex(transform.parent.childCount-1); 
+                transform.SetSiblingIndex(transform.parent.childCount-1);
                 handCardScaler.Resize(1.35f);
                 cardDisplay.ShowKeyWordBox();
                 VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
@@ -200,6 +202,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             //Vergrössert die Karte in der LogScene
             handCardScaler.Resize(2f);
+            cardDisplay.ShowKeyWordBox();
             VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
         }
     }
@@ -223,6 +226,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             {
                 //Verkleinert die Karte im Rekrutierungsmodus
                 handCardScaler.Resize(2f);
+                cardDisplay.HideKeyWordBox();
             }
             else if (currentCardMode == CardMode.INDECK && battleSystem.state != BattleState.PLAYERTURN && battleSystem.state != BattleState.ENEMYTURN)
             {
@@ -238,6 +242,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             //Verkleinert die Karte in der LogScene
             handCardScaler.Resize(1f);
+            cardDisplay.HideKeyWordBox();
         }
         
     }

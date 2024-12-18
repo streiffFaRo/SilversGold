@@ -556,6 +556,7 @@ MonoBehaviour:
   silverMusic1: {fileID: 501186116664339762}
   silverMusic2: {fileID: 3831825876036358594}
   silverMusic3: {fileID: 7185160540548528364}
+  currentMusic: {fileID: 0}
   cannonSound: {fileID: 3147638096975340597}
   upgradeSound: {fileID: 1566155256609223207}
   bootySound: {fileID: 819321437069854272}
@@ -988,7 +989,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -6310162579560550030, guid: b1c27c1d3695c5f4f9b9666c959ec311, type: 2}
   m_audioClip: {fileID: 8300000, guid: 5dff3110bd5687648bbd9d8b34ad90c2, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.05
   m_Pitch: 1
   Loop: 1
