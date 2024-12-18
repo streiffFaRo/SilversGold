@@ -373,7 +373,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             particlesAttacker.Play();
             damageCounterFolder.SpawnDamageCounter(rectTransform.position + new Vector3(75, 75,0), cardAttacked.cardStats.attack);
             
-            ParticleSystem particlesDefender = Instantiate(particleBlood, cardAttacked.rectTransform.position, quaternion.identity, damageCounterFolder.transform); //Blood Particles Defender
+            ParticleSystem particlesDefender = Instantiate(cardAttacked.particleBlood, cardAttacked.rectTransform.position, quaternion.identity, damageCounterFolder.transform); //Blood Particles Defender
             particlesDefender.Play();
             damageCounterFolder.SpawnDamageCounter(cardAttacked.rectTransform.position + new Vector3(75, 75, 0), cardStats.attack);
         }

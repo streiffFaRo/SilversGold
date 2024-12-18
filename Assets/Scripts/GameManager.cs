@@ -71,11 +71,12 @@ public class GameManager : MonoBehaviour
         }
 
         //Select Music
+        Debug.Log(currentLevel);
         if (currentLevel == 11)
         {
             VolumeManager.instance.GetComponent<AudioManager>().PlaySilverMusic1();
         }
-        else if (currentLevel == 4)
+        else if (currentLevel == 5)
         {
             VolumeManager.instance.GetComponent<AudioManager>().PlayNavy1Music();
         }

@@ -37,7 +37,7 @@ public class BattleSystem : MonoBehaviour
 
         if (GameManager.instance.currentLevel == 11)
         {
-            fogEffect.SetActive(true);
+            //TODO fogEffect.SetActive(true);
         }
     }
 
