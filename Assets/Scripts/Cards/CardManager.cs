@@ -19,6 +19,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public GameObject cardBG;
     public GameObject hasActedRim;
     public int handIndex;
+    public CreditsCardDOScale handCardScaler;
 
     [Header("CardInPlayInformation")]
     public bool cardActed;
@@ -74,12 +75,19 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         presentDeck = FindObjectOfType<PresentDeck>();
         rectTransform = GetComponent<RectTransform>();
         damageCounterFolder = FindObjectOfType<DamageCounterFolder>();
+        handCardScaler = GetComponentInChildren<CreditsCardDOScale>();
         
         //Setzt schnellzugriffe für häufig genutzte Variablen
         cardCommandPowerCost = cardStats.cost;
         currentHealth = cardStats.defense;
         
         hoverTimer = 0;
+        
+        //Blutpartikel setzen
+        if (cardStats.particleBlood != null)
+        {
+            particleBlood = cardStats.particleBlood;
+        }
     }
 
     private void Update()
@@ -175,17 +183,24 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             }
             else if (currentCardMode == CardMode.INRECRUIT)
             {
-                //Sound wenn man über Karte hovered im Rekrutierungsmodus
+                //Vergrössert die Karte im Rekrutierungsmodus
+                handCardScaler.Resize(2.5f);
                 VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound(); 
             }
             else if (currentCardMode == CardMode.INDECK && battleSystem.state != BattleState.PLAYERTURN && battleSystem.state != BattleState.ENEMYTURN)
             {
                 //Vergrössert die Karte im Deckanschaumodus
                 transform.SetSiblingIndex(transform.parent.childCount-1); 
-                transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+                handCardScaler.Resize(1.75f);
                 cardDisplay.ShowKeyWordBox();
                 VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
             }
+        }
+        else if (currentCardMode == CardMode.INDECK && deckManager == null)
+        {
+            //Vergrössert die Karte in der LogScene
+            handCardScaler.Resize(2f);
+            VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
         }
     }
 
@@ -204,16 +219,27 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 cardDisplay.HideKeyWordBox();
                 rectTransform.localPosition += new Vector3(0, -175);
             }
+            else if (currentCardMode == CardMode.INRECRUIT)
+            {
+                //Verkleinert die Karte im Rekrutierungsmodus
+                handCardScaler.Resize(2f);
+            }
             else if (currentCardMode == CardMode.INDECK && battleSystem.state != BattleState.PLAYERTURN && battleSystem.state != BattleState.ENEMYTURN)
             {
                 //Verkleinert Karte in der Deckanschau wieder
-                transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+                handCardScaler.Resize(0.75f);
                 cardDisplay.HideKeyWordBox();
             }
             //Beendet den Hover-Timer
             hoverTimer = 0;
             isHovering = false;
         }
+        else if (currentCardMode == CardMode.INDECK && deckManager == null)
+        {
+            //Verkleinert die Karte in der LogScene
+            handCardScaler.Resize(1f);
+        }
+        
     }
     
     public void SetButtonsActive() //Zeigt Aktionsbuttons im Kampf (Angriff/Rückzug)

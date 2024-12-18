@@ -16,6 +16,7 @@ MonoBehaviour:
   description: 'Cannoneer, Death: -5 Shiphealth'
   position: A
   artwork: {fileID: 21300000, guid: 5d37d08bd6ed9044b9822f180947ae82, type: 3}
+  particleBlood: {fileID: 681266934518048766, guid: 58910f837aaf7a64397f7b45f6e9ccd4, type: 3}
   cost: 2
   attack: 0
   defense: 2

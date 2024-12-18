@@ -16,6 +16,7 @@ MonoBehaviour:
   description: 
   position: A
   artwork: {fileID: 21300000, guid: 8fcf71b9721cbff4690e1b99c1cf3dce, type: 3}
+  particleBlood: {fileID: 1168420486235891662, guid: 9b476020aa56058468f2fb11334b2651, type: 3}
   cost: 2
   attack: 0
   defense: 1

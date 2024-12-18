@@ -16,6 +16,7 @@ MonoBehaviour:
   description: 'Death: -20 Shiphealth'
   position: I
   artwork: {fileID: 21300000, guid: bb8421b210173a94c88697a289c5c246, type: 3}
+  particleBlood: {fileID: 681266934518048766, guid: 58910f837aaf7a64397f7b45f6e9ccd4, type: 3}
   cost: 5
   attack: 6
   defense: 6

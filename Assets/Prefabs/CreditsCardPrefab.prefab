@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4068480513726788549}
   - component: {fileID: 4068480513726788570}
   - component: {fileID: 5948031897783604496}
+  - component: {fileID: 9099153701534941968}
   - component: {fileID: 7076757012633179778}
   m_Layer: 5
   m_Name: CreditsCardPrefab
@@ -109,6 +110,46 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 9099153701534941968}
+          m_TargetAssemblyTypeName: CreditsCardDOScale, Assembly-CSharp
+          m_MethodName: Resize
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 2
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 9099153701534941968}
+          m_TargetAssemblyTypeName: CreditsCardDOScale, Assembly-CSharp
+          m_MethodName: Resize
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 1.5
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &9099153701534941968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4068480513726788568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9e42b9d5657d44da493040468d709a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7076757012633179778
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class Card : ScriptableObject
     public string description;
     public string position;
     public Sprite artwork;
+    public ParticleSystem particleBlood;
     
     [Header("Stats")]
     public int cost;
