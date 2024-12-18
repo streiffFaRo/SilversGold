@@ -121,7 +121,7 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(1f);
         if (GameManager.instance.currentLevel >= 11)
         {
-            SceneManager.LoadScene("Scene_Log");
+            SceneManager.LoadScene("Scene_Ship");
         }
         else
         {

@@ -70,13 +70,12 @@ public class PresentDeck : MonoBehaviour
         
         foreach (Card card in deckToPrepare)
         {
-
             Transform slot = FindSlot();
             
             GameObject currentCardPrefab = Instantiate(displayCardPrefab, new Vector3(0, 0, 0), Quaternion.identity, slot);
             currentCardPrefab.GetComponent<CardDisplay>().card = card;
             currentCardPrefab.GetComponentInChildren<DragDrop>().GameObject().SetActive(false);
-            currentCardPrefab.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+            currentCardPrefab.GetComponent<CardManager>().handCard.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
             if (cardToAdd != null)
             {
                 currentCardPrefab.GetComponent<CardManager>().currentCardMode = CardMode.TODISCARD;

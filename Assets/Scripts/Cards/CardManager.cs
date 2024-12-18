@@ -179,7 +179,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 transform.SetSiblingIndex(transform.parent.childCount-1);
                 transform.localScale = new Vector3(2f, 2f, 2f);
                 cardDisplay.ShowKeyWordBox();
-                rectTransform.localPosition += new Vector3(0, 175);
+                rectTransform.localPosition += new Vector3(0, 165);
             }
             else if (currentCardMode == CardMode.INRECRUIT)
             {
@@ -191,7 +191,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             {
                 //Vergrössert die Karte im Deckanschaumodus
                 transform.SetSiblingIndex(transform.parent.childCount-1); 
-                handCardScaler.Resize(1.75f);
+                handCardScaler.Resize(1.35f);
                 cardDisplay.ShowKeyWordBox();
                 VolumeManager.instance.GetComponent<AudioManager>().PlayCardHandHoverSound();
             }
@@ -217,7 +217,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
                 //Verkleinert Karte in der Hand wieder
                 transform.localScale = new Vector3(1f, 1f, 1f);
                 cardDisplay.HideKeyWordBox();
-                rectTransform.localPosition += new Vector3(0, -175);
+                rectTransform.localPosition += new Vector3(0, -165);
             }
             else if (currentCardMode == CardMode.INRECRUIT)
             {

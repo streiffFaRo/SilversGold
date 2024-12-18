@@ -2713,6 +2713,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5009873004467945756, guid: 7c0cccc7865bc9e459a0d488f0b575d1, type: 3}
+      propertyPath: m_text
+      value: Aye!
+      objectReference: {fileID: 0}
     - target: {fileID: 5288617477419859395, guid: 7c0cccc7865bc9e459a0d488f0b575d1, type: 3}
       propertyPath: m_text
       value: Upgrades
@@ -3317,6 +3321,10 @@ PrefabInstance:
     - target: {fileID: 2890814392388273118, guid: 7c0cccc7865bc9e459a0d488f0b575d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5009873004467945756, guid: 7c0cccc7865bc9e459a0d488f0b575d1, type: 3}
+      propertyPath: m_text
+      value: Aye!
       objectReference: {fileID: 0}
     - target: {fileID: 5288617477419859395, guid: 7c0cccc7865bc9e459a0d488f0b575d1, type: 3}
       propertyPath: m_text

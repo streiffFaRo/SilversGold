@@ -56,7 +56,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         if (!foundSlot)
         {
             rectTransform.position = startDragPos; //Setzt sich auf Handposition zurück
-            rectTransform.position -= new Vector3(0, 175*canvas.scaleFactor); //Negate Card Hover Position
+            rectTransform.position -= new Vector3(0, 165*canvas.scaleFactor); //Negate Card Hover Position
         }
         else
         {
