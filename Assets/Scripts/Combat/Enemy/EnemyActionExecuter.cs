@@ -251,6 +251,7 @@ public class EnemyActionExecuter : MonoBehaviour
     
     public IEnumerator Broadside()
     {
+        enemyManager.UpdateEnemyCommandPower(2);
         foreach (CardManager card in FindObjectsOfType<CardManager>())
         { 
             if (card.owner == Owner.ENEMY && card.currentCardMode == CardMode.INPLAY && !card.cardActed && card.cardStats.keyWordCannoneer) 
@@ -260,8 +261,6 @@ public class EnemyActionExecuter : MonoBehaviour
 
             yield return new WaitForSeconds(0.2f);
         }
-        enemyManager.UpdateEnemyCommandPower(2);
-        
     }
     
     public void PlayCard(CardManager cardToPlay, CardIngameSlot slot)

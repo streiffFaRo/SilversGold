@@ -76,17 +76,16 @@ public class DeathEffects : MonoBehaviour
         {
             for (int i = 0; i < card.cardStats.para2; i++)
             {
-                CardManager randCard = deckManager.deck[Random.Range(0, deckManager.discardPile.Count)];
+                CardManager randCard = deckManager.discardPile[Random.Range(0, deckManager.discardPile.Count)];
                 deckManager.deck.Add(randCard);
                 deckManager.discardPile.Remove(randCard);
-
             }
         }
         else if (card.owner == Owner.ENEMY)
         {
             for (int i = 0; i < card.cardStats.para2; i++)
             {
-                CardManager randCard = enemyManager.deck[Random.Range(0, enemyManager.discardPile.Count)];
+                CardManager randCard = enemyManager.discardPile[Random.Range(0, enemyManager.discardPile.Count)];
                 enemyManager.deck.Add(randCard);
                 enemyManager.discardPile.Remove(randCard);
                 enemyManager.UpdateEnemyUI();

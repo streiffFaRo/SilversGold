@@ -29,10 +29,6 @@ public class ShipUpgradeArea : MonoBehaviour, IPointerClickHandler, IPointerEnte
 
     private void Start()
     {
-        var color = image.color;
-        color.a = 0;
-        image.color = color;
-        
         LoadCurrentUpgradeLevel();
     }
 
@@ -82,15 +78,15 @@ public class ShipUpgradeArea : MonoBehaviour, IPointerClickHandler, IPointerEnte
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Fade(0.6f, 0.5f, () => { });
+        Scale(2f, 0.5f, () => { });
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Fade(0, 0.2f, () => { });
+        Scale(1, 0.2f, () => { });
     }
 
-    private void Fade(float endValue, float duration, TweenCallback onEnd)
+    private void Scale(float endValue, float duration, TweenCallback onEnd)
     {
 
         if (fadeTween!= null)
@@ -98,7 +94,7 @@ public class ShipUpgradeArea : MonoBehaviour, IPointerClickHandler, IPointerEnte
             fadeTween.Kill(false);
         }
 
-        fadeTween = image.DOFade(endValue, duration);
+        fadeTween = image.transform.DOScale(endValue, duration);
         fadeTween.onComplete += onEnd;
     }
 

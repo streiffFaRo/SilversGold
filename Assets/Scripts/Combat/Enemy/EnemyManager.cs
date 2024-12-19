@@ -143,7 +143,10 @@ public class EnemyManager : MonoBehaviour
         {
             enemyHealthText.text = enemyCurrentHealth.ToString();
             enemyHealthText.color = Color.red;
-            battleSystem.PlayerWon();
+            if (battleSystem.state == BattleState.PLAYERTURN || battleSystem.state == BattleState.ENEMYTURN)
+            {
+                battleSystem.PlayerWon();
+            }
         }
         else if (enemyCurrentHealth >= enemyMaxHealth)
         {

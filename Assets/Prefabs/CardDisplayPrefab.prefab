@@ -1973,7 +1973,7 @@ MonoBehaviour:
   attackButton: {fileID: 2829980149627318642}
   retreatButton: {fileID: 8585612792520405240}
   animator: {fileID: 2798129822402181407}
-  cannonBallVisualRoot: {fileID: 157508007729694555}
+  cannonBallPrefab: {fileID: 8030970972533169932, guid: 7a33893b88f1a3f40af53b7ac6fd33ad, type: 3}
   particleBlood: {fileID: 3016826025003053072, guid: eb25dadce43d3f94fbf6a4f628beb933, type: 3}
   particleSmoke: {fileID: 6072039209663470754, guid: 97c35538d8465544996760b37496e043, type: 3}
   damageCounterFolder: {fileID: 0}

@@ -97,7 +97,10 @@ public class PlayerManager : MonoBehaviour
         {
             healthText.text = currentHealth.ToString();
             healthText.color = Color.red;
-            battleSystem.GameOver();
+            if (battleSystem.state == BattleState.PLAYERTURN || battleSystem.state == BattleState.ENEMYTURN)
+            {
+                battleSystem.GameOver();
+            }
         }
         else if (currentHealth >= maxHealth)
         {

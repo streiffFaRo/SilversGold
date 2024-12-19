@@ -42,7 +42,7 @@ public class CardIngameSlot : MonoBehaviour, IDropHandler
                 }
                 else
                 {
-                    currentCard.animator.SetTrigger("trigger_cost_warn");
+                    cardToCheck.animator.SetTrigger("trigger_cost_warn");
                     playerManager.commandPowerAnimator.SetTrigger("trigger_commandpower_warn");
                     VolumeManager.instance.GetComponent<AudioManager>().PlayDenySound();
                 }

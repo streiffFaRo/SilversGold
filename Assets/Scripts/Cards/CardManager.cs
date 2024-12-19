@@ -2,6 +2,7 @@ using DG.Tweening;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 using Button = UnityEngine.UI.Button;
 
 
@@ -32,7 +33,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     [Header("Animation")]
     public Animator animator;
-    public GameObject cannonBallVisualRoot;
+    public GameObject cannonBallPrefab;
 
     [Header("Particles")] 
     public ParticleSystem particleBlood;
@@ -60,6 +61,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     private CardManager cannoneerAttacked = null;
     private int broadsideDamage;
     private Tween moveTween;
+    private GameObject cannonBallRef;
+    private Canvas canvas;
     
 
     private void Start()
@@ -87,6 +90,15 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         if (cardStats.particleBlood != null)
         {
             particleBlood = cardStats.particleBlood;
+        }
+        
+        //Referenz auf HauptCanvas
+        foreach (Canvas can in FindObjectsOfType<Canvas>())
+        {
+            if (can.CompareTag("Content"))
+            {
+                canvas = can;
+            }
         }
     }
 
@@ -466,7 +478,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     
     public void Broadside()
     {
-        cannonBallVisualRoot.SetActive(true); //Kanonenkugel wird sichtbar geschalten
+        cannonBallRef = Instantiate(cannonBallPrefab, rectTransform.position, Quaternion.identity, damageCounterFolder.transform); //Cannonball wird erschaffen
         VolumeManager.instance.GetComponent<AudioManager>().PlayCannonSound(); //Sound
         
         if (battleSystem.state == BattleState.PLAYERTURN && owner == Owner.PLAYER) //Spieler Breitseite
@@ -477,14 +489,21 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             
             if (cardIngameSlot.enemyArtilleryLine.currentCard != null) //Spieler Kanonier greift gegnerische Arty Karte an
             { 
-                CannonBallAnimation(900f,0.8f, BroadsideEffects);
                 cannoneerAttacked = cardIngameSlot.enemyArtilleryLine.currentCard;
+                
+                float distance = cannoneerAttacked.rectTransform.localPosition.y -
+                                           rectTransform.localPosition.y;
+                
+                CannonBallAnimation(distance,0.8f, BroadsideEffects);
+                
                 broadsideDamage = GameManager.instance.shipCannonLevel + 1;
 
             }
             else //Spieler Kanonier greift gegnerisches Schiff an
             { 
-                CannonBallAnimation(1100f,0.8f, BroadsideEffects);
+                float distance = (canvas.GetComponent<RectTransform>().rect.height/2) -
+                                 rectTransform.localPosition.y;
+                CannonBallAnimation(distance,0.8f, BroadsideEffects);
                 cannoneerAttacked = null;
             }
             
@@ -495,13 +514,19 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             
             if (cardIngameSlot.enemyArtilleryLine.currentCard != null) //Gegner Kanonier greift spieler Arty Karte an
             { 
-                CannonBallAnimation(-900f,0.8f, BroadsideEffects);
                 cannoneerAttacked = cardIngameSlot.enemyArtilleryLine.currentCard;
+                
+                float distance = cannoneerAttacked.rectTransform.localPosition.y -
+                                 rectTransform.localPosition.y;
+                
+                CannonBallAnimation(distance,0.8f, BroadsideEffects);
                 broadsideDamage = enemyManager.enemyCannonLevel;
             }
             else //Gegner greift Spieler Schiff an
             { 
-                CannonBallAnimation(-1100f,0.8f, BroadsideEffects);
+                float distance = (canvas.GetComponent<RectTransform>().rect.height/-2) -
+                                 rectTransform.localPosition.y;
+                CannonBallAnimation(distance,0.8f, BroadsideEffects);
                 cannoneerAttacked = null;
             }
             
@@ -514,7 +539,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
 
     private void BroadsideEffects() //Verursacht Schaden, wir über Animation Event aufgerufen
     {
-        cannonBallVisualRoot.SetActive(false);
+        Destroy(cannonBallRef);
 
         if (cannoneerAttacked != null) //Wenn Karte Gesetzt -> Schaden wird an Karte gemacht
         {
@@ -531,7 +556,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             else if (owner == Owner.ENEMY)
             {
                 playerManager.UpdateHealth(enemyManager.enemyCannonLevel, false);
-                damageCounterFolder.SpawnDamageCounter(playerManager.healthText.rectTransform.position+ new Vector3(75,75,0), cardStats.attack);
+                damageCounterFolder.SpawnDamageCounter(playerManager.healthText.rectTransform.position+ new Vector3(75,75,0), enemyManager.enemyCannonLevel);
             }
         }
     }
@@ -644,9 +669,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
             moveTween.Kill(false);
         }
 
-        cannonBallVisualRoot.SetActive(true);
-        cannonBallVisualRoot.transform.position = transform.position;
-        moveTween = cannonBallVisualRoot.transform.DOMoveY(distance, duration);
+        moveTween = cannonBallRef.GetComponent<RectTransform>().DOAnchorPosY(distance, duration);
         moveTween.onComplete += onEnd;
     }
 
