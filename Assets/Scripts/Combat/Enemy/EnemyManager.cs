@@ -2,19 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using Image = UnityEngine.UI.Image;
 using Random = UnityEngine.Random;
 
 public class EnemyManager : MonoBehaviour
 {
     //Verantwortlich für Kernvariablen des Gegners und deren UI Anpassung
 
-    [Header("UI Elements")]
+    [Header("UI Elements")] 
     public TextMeshProUGUI enemyCommandPowerText;
     public TextMeshProUGUI enemyHealthText;
     public TextMeshProUGUI enemyDeckText;
     public TextMeshProUGUI enemyDiscardText;
     public TextMeshProUGUI enemyCannonLevelText;
 
+    [Header("Commandpower Images")] 
+    public Image enemyCommandPowerImage;
+    public Texture2D navyCommandPowerSprite;
+    public Texture2D silverCommandPowerSprite;
+    
     [Header("EnemyStats")] 
     public string enemyName; //Name wird im Inspektior gestzt
     public int enemyMaxCommandPower;
@@ -50,6 +56,7 @@ public class EnemyManager : MonoBehaviour
     {
         gameManager = GameManager.instance; //für einfacheren Zugriff
         
+        SetCommandPowerImage();
         ConvertEnemyData();
         InitiateDeck();
         MarkCardsAsEnemy();
@@ -63,6 +70,24 @@ public class EnemyManager : MonoBehaviour
     }
 
     #region SetUp
+
+    private void SetCommandPowerImage()
+    {
+        if (gameManager.currentLevel == 11)
+        {
+            Sprite sprite = Sprite.Create(silverCommandPowerSprite, new Rect(0,0, silverCommandPowerSprite.width, silverCommandPowerSprite.height),new Vector2(0.5f, 0.5f));
+
+            enemyCommandPowerImage.sprite = sprite;
+        }
+        else if (gameManager.currentLevel == 5)
+        {
+            Sprite sprite = Sprite.Create(navyCommandPowerSprite, new Rect(0,0, navyCommandPowerSprite.width, navyCommandPowerSprite.height),new Vector2(0.5f, 0.5f));
+
+            enemyCommandPowerImage.sprite = sprite;
+        }
+        
+        
+    }
 
     public void ConvertEnemyData() //Lädt Gegnerdaten für momentanes Level
     {

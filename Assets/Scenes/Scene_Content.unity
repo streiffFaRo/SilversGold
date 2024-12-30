@@ -16459,6 +16459,9 @@ MonoBehaviour:
   enemyDeckText: {fileID: 488414488}
   enemyDiscardText: {fileID: 741907689}
   enemyCannonLevelText: {fileID: 1723583491}
+  enemyCommandPowerImage: {fileID: 1649246354}
+  navyCommandPowerSprite: {fileID: 2800000, guid: 818ae70101d68bf499fe52a6dbf175e9, type: 3}
+  silverCommandPowerSprite: {fileID: 2800000, guid: ae99aca751739e942be90ef94acbb220, type: 3}
   enemyName: 
   enemyMaxCommandPower: 0
   enemyCurrentCommandPower: 0
@@ -21195,7 +21198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1505530162881684072, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}
       propertyPath: currentLevel
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3709199457768638472, guid: 30d3b0a2b10d4cf49a933aa772bd8e94, type: 3}
       propertyPath: m_Name
