@@ -73,13 +73,13 @@ public class EnemyManager : MonoBehaviour
 
     private void SetCommandPowerImage()
     {
-        if (gameManager.currentLevel == 11)
+        if (gameManager.currentLevel >= 11)
         {
             Sprite sprite = Sprite.Create(silverCommandPowerSprite, new Rect(0,0, silverCommandPowerSprite.width, silverCommandPowerSprite.height),new Vector2(0.5f, 0.5f));
 
             enemyCommandPowerImage.sprite = sprite;
         }
-        else if (gameManager.currentLevel == 5)
+        else if (gameManager.currentLevel >= 5)
         {
             Sprite sprite = Sprite.Create(navyCommandPowerSprite, new Rect(0,0, navyCommandPowerSprite.width, navyCommandPowerSprite.height),new Vector2(0.5f, 0.5f));
 
