@@ -529,11 +529,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5362287381502034285, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
       propertyPath: m_text
-      value: Continue Story
+      value: Continue
       objectReference: {fileID: 0}
     - target: {fileID: 5362287381502034285, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
       propertyPath: m_fontSize
-      value: 30.4
+      value: 52.6
       objectReference: {fileID: 0}
     - target: {fileID: 5362287381502034285, guid: de509b0761d3eef4c9adedcb43a29558, type: 3}
       propertyPath: m_fontAsset

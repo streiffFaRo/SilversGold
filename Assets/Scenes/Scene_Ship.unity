@@ -2321,15 +2321,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentEffect.Array.data[0]
-      value: 'Command Power: 5'
+      value: 'Command   Power: 5'
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentEffect.Array.data[1]
-      value: 'Command Power: 6'
+      value: 'Command   Power: 6'
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentEffect.Array.data[2]
-      value: 'Command Power: 7'
+      value: 'Command   Power: 7'
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentEffect.Array.data[3]
@@ -2337,11 +2337,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeEffect.Array.data[0]
-      value: 'Command Power: 6'
+      value: 'Command   Power: 6'
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeEffect.Array.data[1]
-      value: 'Command Power: 7'
+      value: 'Command   Power: 7'
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeEffect.Array.data[2]
@@ -3848,15 +3848,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentEffect.Array.data[0]
-      value: 'Cannoneer damage: 1'
+      value: 'Cannoneer   damage: 1'
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentEffect.Array.data[1]
-      value: 'Cannoneer damage: 2'
+      value: 'Cannoneer   damage: 2'
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentEffect.Array.data[2]
-      value: 'Cannoneer damage: 3'
+      value: 'Cannoneer   damage: 3'
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: currentEffect.Array.data[3]
@@ -3864,11 +3864,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeEffect.Array.data[0]
-      value: 'Cannoneer damage: 2'
+      value: 'Cannoneer   damage: 2'
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeEffect.Array.data[1]
-      value: 'Cannoneer damage: 3'
+      value: 'Cannoneer   damage: 3'
       objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradeEffect.Array.data[2]

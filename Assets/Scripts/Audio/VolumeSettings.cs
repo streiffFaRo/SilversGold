@@ -10,6 +10,9 @@ public class VolumeSettings : MonoBehaviour //Setzt Volumes
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Slider textSlider;
 
+    private float minValue = 0.005f;
+    private float maxValue = 0.06f;
+    
     public const string MIXER_MUSIC = "MusicVolume";
     public const string MIXER_SFX = "SFXVolume";
     public const string MIXER_MASTER = "MasterVolume";
@@ -55,6 +58,7 @@ public class VolumeSettings : MonoBehaviour //Setzt Volumes
 
     private void SetTextSpeed(float value)
     {
-        GameManager.instance.typingSpeed = value;
+        float invertedValue = maxValue - (value - minValue);
+        GameManager.instance.typingSpeed = invertedValue;
     }
 }

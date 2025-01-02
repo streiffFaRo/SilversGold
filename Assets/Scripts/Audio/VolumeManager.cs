@@ -8,6 +8,9 @@ public class VolumeManager : MonoBehaviour //Läd Volumes
 
     [SerializeField] private AudioMixer Mixer;
     
+    private float minValue = 0.005f;
+    private float maxValue = 0.06f;
+    
     public const string MASTER_KEY = "masterVolume";
     public const string MUSIC_KEY = "musicVolume";
     public const string SFX_KEY = "sfxVolume";
@@ -42,6 +45,8 @@ public class VolumeManager : MonoBehaviour //Läd Volumes
         Mixer.SetFloat(VolumeSettings.MIXER_MASTER, Mathf.Log10(masterVolume) * 20);
         Mixer.SetFloat(VolumeSettings.MIXER_MUSIC, Mathf.Log10(musicVolume) * 20);
         Mixer.SetFloat(VolumeSettings.MIXER_SFX, Mathf.Log10(sfxVolume) * 20);
-        GameManager.instance.typingSpeed = txtSpeed;
+        
+        float invertedValue = maxValue - (txtSpeed - minValue);
+        GameManager.instance.typingSpeed = invertedValue;
     }
 }
