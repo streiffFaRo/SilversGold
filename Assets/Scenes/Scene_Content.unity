@@ -668,6 +668,10 @@ PrefabInstance:
       propertyPath: enemyInfanteryLine
       value: 
       objectReference: {fileID: 1421388021}
+    - target: {fileID: 5340882846262428980, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fe7d910acf7c39e4ca00d54ebae09145, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &60549849 stripped
@@ -7959,6 +7963,10 @@ PrefabInstance:
       propertyPath: enemyInfanteryLine
       value: 
       objectReference: {fileID: 819942799}
+    - target: {fileID: 5340882846262428980, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fe7d910acf7c39e4ca00d54ebae09145, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &318059899 stripped
@@ -8914,6 +8922,10 @@ PrefabInstance:
       propertyPath: enemyInfanteryLine
       value: 
       objectReference: {fileID: 654774393}
+    - target: {fileID: 5340882846262428980, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fe7d910acf7c39e4ca00d54ebae09145, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &489569641 stripped
@@ -11581,6 +11593,10 @@ PrefabInstance:
       propertyPath: enemyInfanteryLine
       value: 
       objectReference: {fileID: 1490917195}
+    - target: {fileID: 5340882846262428980, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fe7d910acf7c39e4ca00d54ebae09145, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &935863498 stripped
@@ -14637,6 +14653,10 @@ PrefabInstance:
       propertyPath: enemyInfanteryLine
       value: 
       objectReference: {fileID: 1428571176}
+    - target: {fileID: 5340882846262428980, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fe7d910acf7c39e4ca00d54ebae09145, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &1421388018 stripped
@@ -15235,6 +15255,10 @@ PrefabInstance:
       propertyPath: enemyInfanteryLine
       value: 
       objectReference: {fileID: 981340338}
+    - target: {fileID: 5340882846262428980, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fe7d910acf7c39e4ca00d54ebae09145, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4c93023aa7d6e54595329ac6545b046, type: 3}
 --- !u!224 &1490917192 stripped

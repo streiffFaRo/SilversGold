@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class CardDisplay : MonoBehaviour 
@@ -13,7 +14,8 @@ public class CardDisplay : MonoBehaviour
     [Header("HandCard")]
     public TextMeshProUGUI handNameText;
     public TextMeshProUGUI handDescriptionText;
-    public TextMeshProUGUI handPositionText;
+    public Image handPositionImage;
+    public Texture2D infIcon;
     
     public Image handArtworkImage;
     
@@ -55,7 +57,12 @@ public class CardDisplay : MonoBehaviour
         {
             handDescriptionText.text = card.description;
         }
-        handPositionText.text = card.position;
+
+        if (card.position == "I")
+        {
+            Sprite sprite = Sprite.Create(infIcon, new Rect(0,0, infIcon.width, infIcon.height),new Vector2(0.5f, 0.5f));
+            handPositionImage.sprite = sprite;
+        }
         handArtworkImage.sprite = card.artwork;
         inGameArtworkImage.sprite = card.artwork;
         handCostText.text = card.cost.ToString();
@@ -68,7 +75,7 @@ public class CardDisplay : MonoBehaviour
 
     public void ShowKeyWordBox() //Zeigt Box mit Hilfstext zum Effekt der Karte
     {
-        if (GameManager.instance.showKeyWords) //TODO Mögliche Option -> Keywordboxes ausschalten
+        if (GameManager.instance.showKeyWords)
         {
             if (card.keyWordCannoneer)
                 keyWords.Add(keyWordCannoneerBox);
