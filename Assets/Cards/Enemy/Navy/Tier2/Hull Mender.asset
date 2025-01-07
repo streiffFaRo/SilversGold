@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Hull Mender
   m_EditorClassIdentifier: 
   name: Hull Mender
-  description: 'Retreat: +5 Shiphealth'
+  description: 'Retreat: Restores 5 Shiphealth'
   position: A
   artwork: {fileID: 21300000, guid: 2180dea38b86dab4da1153f71418b3c7, type: 3}
+  particleBlood: {fileID: 0}
   cost: 3
   attack: 2
   defense: 2
