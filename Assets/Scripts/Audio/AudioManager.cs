@@ -136,11 +136,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayNavy1Music()
     {
-        if (currentMusic != null)
-        {
-            currentMusic.Stop();
-        }
-        currentMusic = navyMusic1;
+        pirateMusic.Stop();
         navyMusic1.Play();
     }
     public void PlayNavy2Music()
@@ -155,11 +151,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySilverMusic1()
     {
-        if (currentMusic != null)
-        {
-            currentMusic.Stop();
-        }
-        currentMusic = silverMusic1;
+        navyMusic1.Stop();
         silverMusic1.Play();
     }
 

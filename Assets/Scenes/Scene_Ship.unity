@@ -3790,26 +3790,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CannonArea
       objectReference: {fileID: 0}
-    - target: {fileID: 542958197877413286, guid: 401022def6367674c9c0468c8137d88f, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ecbbfcc7ea01fa848b6cd27beea9baf2, type: 3}
-    - target: {fileID: 542958197877413286, guid: 401022def6367674c9c0468c8137d88f, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 542958197877413286, guid: 401022def6367674c9c0468c8137d88f, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 542958197877413286, guid: 401022def6367674c9c0468c8137d88f, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 542958197877413286, guid: 401022def6367674c9c0468c8137d88f, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: infoWindow
       value: 
@@ -3909,6 +3889,18 @@ PrefabInstance:
     - target: {fileID: 542958197877413287, guid: 401022def6367674c9c0468c8137d88f, type: 3}
       propertyPath: upgradedObjectName.Array.data[2]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694365564153960108, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: m_Size.x
+      value: 124.953575
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694365564153960108, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: m_Size.y
+      value: 86.62812
+      objectReference: {fileID: 0}
+    - target: {fileID: 8694365564153960108, guid: 401022def6367674c9c0468c8137d88f, type: 3}
+      propertyPath: m_Offset.y
+      value: -30.848812
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 401022def6367674c9c0468c8137d88f, type: 3}
