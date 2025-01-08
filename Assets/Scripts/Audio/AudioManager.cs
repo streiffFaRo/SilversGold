@@ -151,6 +151,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySilverMusic1()
     {
+        pirateMusic.Stop();
         navyMusic1.Stop();
         silverMusic1.Play();
     }

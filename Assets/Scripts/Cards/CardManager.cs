@@ -51,6 +51,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     private EnemyManager enemyManager;
     private RecruitManager recruitManager;
     private PresentDeck presentDeck;
+    private ShakeManager shakeManager;
     [HideInInspector]public Card cardStats;
     
     //Private Variablen
@@ -76,6 +77,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         cardDisplay = GetComponent<CardDisplay>();
         recruitManager = FindObjectOfType<RecruitManager>();
         presentDeck = FindObjectOfType<PresentDeck>();
+        shakeManager = FindObjectOfType<ShakeManager>();
         rectTransform = GetComponent<RectTransform>();
         damageCounterFolder = FindObjectOfType<DamageCounterFolder>();
         handCardScaler = GetComponentInChildren<CreditsCardDOScale>();
@@ -377,6 +379,11 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             enemyManager.UpdateEnemyCommandPower(1);
         }
+    }
+
+    public void ScreenShake()
+    {
+        shakeManager.ScreenShake();
     }
 
     public void DealAttackDamage() //Verrechnet Schaden
