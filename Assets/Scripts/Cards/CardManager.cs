@@ -43,6 +43,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     public DamageCounterFolder damageCounterFolder;
     [HideInInspector]public int cardCommandPowerCost;
     public CardDisplay cardDisplay;
+    public Color damagedHealthColor;
 
     //Private Scripts
     private DeckManager deckManager;
@@ -51,7 +52,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     private EnemyManager enemyManager;
     private RecruitManager recruitManager;
     private PresentDeck presentDeck;
-    private ShakeManager shakeManager;
     [HideInInspector]public Card cardStats;
     
     //Private Variablen
@@ -77,7 +77,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         cardDisplay = GetComponent<CardDisplay>();
         recruitManager = FindObjectOfType<RecruitManager>();
         presentDeck = FindObjectOfType<PresentDeck>();
-        shakeManager = FindObjectOfType<ShakeManager>();
         rectTransform = GetComponent<RectTransform>();
         damageCounterFolder = FindObjectOfType<DamageCounterFolder>();
         handCardScaler = GetComponentInChildren<CreditsCardDOScale>();
@@ -381,11 +380,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         }
     }
 
-    public void ScreenShake()
-    {
-        shakeManager.ScreenShake();
-    }
-
     public void DealAttackDamage() //Verrechnet Schaden
     {
         if (cardAttacked != null)
@@ -599,7 +593,7 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         else
         {
             cardDisplay.inGameDefenseText.text = currentHealth.ToString();
-            cardDisplay.inGameDefenseText.color = Color.red;
+            cardDisplay.inGameDefenseText.color = damagedHealthColor;
         }
     }
     

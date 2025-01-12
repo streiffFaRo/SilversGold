@@ -18,6 +18,7 @@ public class PlayerManager : MonoBehaviour
     public TextMeshProUGUI commandPowerText;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI canonLevelText;
+    public Color damagedHealthColor;
 
     [Header("Animation")]
     public Animator commandPowerAnimator;
@@ -96,7 +97,7 @@ public class PlayerManager : MonoBehaviour
         if (currentHealth <= 0)
         {
             healthText.text = currentHealth.ToString();
-            healthText.color = Color.red;
+            healthText.color = damagedHealthColor;
             if (battleSystem.state == BattleState.PLAYERTURN || battleSystem.state == BattleState.ENEMYTURN)
             {
                 battleSystem.GameOver();
@@ -111,7 +112,7 @@ public class PlayerManager : MonoBehaviour
         else
         {
             healthText.text = currentHealth.ToString();
-            healthText.color = Color.red;
+            healthText.color = damagedHealthColor;
         }
     }
 }

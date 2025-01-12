@@ -1920,6 +1920,7 @@ MonoBehaviour:
   damageCounterFolder: {fileID: 0}
   cardCommandPowerCost: 0
   cardDisplay: {fileID: 0}
+  damagedHealthColor: {r: 0.58431375, g: 0.023529412, b: 0.023529412, a: 1}
   cardStats: {fileID: 0}
 --- !u!114 &3752291792545165605
 MonoBehaviour:

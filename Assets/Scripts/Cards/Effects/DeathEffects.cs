@@ -72,23 +72,26 @@ public class DeathEffects : MonoBehaviour
 
     public void ShuffleCardIntoDeck() //Mischt X tote Karten wieder ins Deck
     {
-        if (card.owner == Owner.PLAYER)
+        if (card.cardStats.para2 <= deckManager.discardPile.Count)
         {
-            for (int i = 0; i < card.cardStats.para2; i++)
+            if (card.owner == Owner.PLAYER)
             {
-                CardManager randCard = deckManager.discardPile[Random.Range(0, deckManager.discardPile.Count)];
-                deckManager.deck.Add(randCard);
-                deckManager.discardPile.Remove(randCard);
+                for (int i = 0; i < card.cardStats.para2; i++)
+                {
+                    CardManager randCard = deckManager.discardPile[Random.Range(0, deckManager.discardPile.Count)];
+                    deckManager.deck.Add(randCard);
+                    deckManager.discardPile.Remove(randCard);
+                }
             }
-        }
-        else if (card.owner == Owner.ENEMY)
-        {
-            for (int i = 0; i < card.cardStats.para2; i++)
+            else if (card.owner == Owner.ENEMY)
             {
-                CardManager randCard = enemyManager.discardPile[Random.Range(0, enemyManager.discardPile.Count)];
-                enemyManager.deck.Add(randCard);
-                enemyManager.discardPile.Remove(randCard);
-                enemyManager.UpdateEnemyUI();
+                for (int i = 0; i < card.cardStats.para2; i++)
+                {
+                    CardManager randCard = enemyManager.discardPile[Random.Range(0, enemyManager.discardPile.Count)];
+                    enemyManager.deck.Add(randCard);
+                    enemyManager.discardPile.Remove(randCard);
+                    enemyManager.UpdateEnemyUI();
+                }
             }
         }
     }

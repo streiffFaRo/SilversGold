@@ -15,6 +15,7 @@ public class EnemyManager : MonoBehaviour
     public TextMeshProUGUI enemyDeckText;
     public TextMeshProUGUI enemyDiscardText;
     public TextMeshProUGUI enemyCannonLevelText;
+    public Color damagedHealthColor;
 
     [Header("Commandpower Images")] 
     public Image enemyCommandPowerImage;
@@ -167,7 +168,7 @@ public class EnemyManager : MonoBehaviour
         if (enemyCurrentHealth <= 0)
         {
             enemyHealthText.text = enemyCurrentHealth.ToString();
-            enemyHealthText.color = Color.red;
+            enemyHealthText.color = damagedHealthColor;
             if (battleSystem.state == BattleState.PLAYERTURN || battleSystem.state == BattleState.ENEMYTURN)
             {
                 battleSystem.PlayerWon();
@@ -182,7 +183,7 @@ public class EnemyManager : MonoBehaviour
         else
         {
             enemyHealthText.text = enemyCurrentHealth.ToString();
-            enemyHealthText.color = Color.red;
+            enemyHealthText.color = damagedHealthColor;
         }
     }
 

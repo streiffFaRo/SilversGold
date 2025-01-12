@@ -41,8 +41,7 @@ public class HoverInfoBox : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform,
-            Input.mousePosition,
-            canvas.worldCamera,
+            Input.mousePosition, null,
             out localPoint);
         
         localPoint += tooltipOffset;
