@@ -599,6 +599,8 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
     
     public void Death()
     {
+        GetComponent<DeathEffects>()?.TriggerDeathEffect(); //Todeseffekte, wenn vorhanden
+        
         //Verschiebt Karte in den Ablagestapel
         if (owner == Owner.PLAYER)
         {
@@ -609,7 +611,6 @@ public class CardManager : MonoBehaviour, IPointerClickHandler, IPointerEnterHan
         {
             enemyManager.discardPile.Add(this);
         }
-        GetComponent<DeathEffects>()?.TriggerDeathEffect(); //Todeseffekte, wenn vorhanden
         VolumeManager.instance.GetComponent<AudioManager>().PlayCardDeathSound(); //Todessound
         
         ResetCard();
