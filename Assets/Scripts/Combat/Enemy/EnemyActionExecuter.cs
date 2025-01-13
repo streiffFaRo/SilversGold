@@ -95,147 +95,153 @@ public class EnemyActionExecuter : MonoBehaviour
     
     public void ExecuteAction(int actionIndex)
     {
-        int executionActionIndex = 1;
-        
-        List<CardManager> cardsInHand = new();
-        
-        foreach (CardManager card in enemyManager.cardsInHand)
+        if (enemyManager.battleSystem.state == BattleState.ENEMYTURN)
         {
-            cardsInHand.Add(card);
-        }
+            int executionActionIndex = 1;
         
-        if (enemyManager.enemyCurrentCommandPower >= 2)
-        {
-            if (executionActionIndex == actionIndex)
-            {
-                DrawCard();
-                executionActionIndex++;
-            }
-            else
-            {
-                executionActionIndex++;
-            }
-        }
+            List<CardManager> cardsInHand = new();
         
-        if (enemyManager.enemyCurrentCommandPower >= 2)
-        {
-            if (executionActionIndex == actionIndex)
+            foreach (CardManager card in enemyManager.cardsInHand)
             {
-                StartCoroutine(Broadside());
-                executionActionIndex++;
+                cardsInHand.Add(card);
             }
-            else
-            {
-                executionActionIndex++;
-            }
-        }
         
-        foreach (CardManager cardToPlay in cardsInHand)
-        {
-            if (cardToPlay.cardStats.cost <= enemyManager.enemyCurrentCommandPower)
+            if (enemyManager.enemyCurrentCommandPower >= 2)
             {
-                
-                if (cardToPlay.cardStats.position == "I")
+                if (executionActionIndex == actionIndex)
                 {
-                    
-                    foreach (CardIngameSlot slot in infSlots)
-                    {
-                        if (slot.currentCard == null)
-                        {
-                            if (executionActionIndex == actionIndex)
-                            {
-                                PlayCard(cardToPlay, slot);
-                                executionActionIndex++;
-                            }
-                            else
-                            {
-                                executionActionIndex++;
-                            }
-                        }
-                    }
-                }
-                else if (cardToPlay.cardStats.position == "A")
-                {
-                    foreach (CardIngameSlot slot in artySlots)
-                    {
-                        if (slot.currentCard == null)
-                        {
-                            
-                            if (executionActionIndex == actionIndex)
-                            {
-                                PlayCard(cardToPlay, slot);
-                                executionActionIndex++;
-                            }
-                            else
-                            {
-                                executionActionIndex++;
-                            }
-                        }
-                    }
+                    DrawCard();
+                    executionActionIndex++;
                 }
                 else
                 {
-                    Debug.LogError("Problem with Cardposition!");
+                    executionActionIndex++;
                 }
             }
-        }
-
-        if (enemyManager.enemyCurrentCommandPower >= 1)
-        {
-            foreach (CardManager cardToAttackWith in FindObjectsOfType<CardManager>())
+        
+            if (enemyManager.enemyCurrentCommandPower >= 2)
             {
-                if (cardToAttackWith.owner == Owner.ENEMY && !cardToAttackWith.cardActed && cardToAttackWith.currentCardMode == CardMode.INPLAY)
+                if (executionActionIndex == actionIndex)
                 {
-                    if (executionActionIndex == actionIndex)
-                    {
-                        AttackWithCard(cardToAttackWith);
-                        executionActionIndex++;
-                    }
-                    else
-                    {
-                        executionActionIndex++;
-                    }
+                    StartCoroutine(Broadside());
+                    executionActionIndex++;
+                }
+                else
+                {
+                    executionActionIndex++;
                 }
             }
-        }
-
-        if (enemyManager.enemyCurrentCommandPower >= 1)
-        {
-            foreach (CardManager cardToRetreat in FindObjectsOfType<CardManager>())
+        
+            foreach (CardManager cardToPlay in cardsInHand)
             {
-                if (cardToRetreat.owner == Owner.ENEMY && !cardToRetreat.cardActed && cardToRetreat.currentCardMode == CardMode.INPLAY)
+                if (cardToPlay.cardStats.cost <= enemyManager.enemyCurrentCommandPower)
                 {
-                    if (executionActionIndex == actionIndex)
+                
+                    if (cardToPlay.cardStats.position == "I")
                     {
-                        RetreatCard(cardToRetreat);
-                        executionActionIndex++;
-                    }
-                    else
-                    {
-                        executionActionIndex++;
-                    }
                     
+                        foreach (CardIngameSlot slot in infSlots)
+                        {
+                            if (slot.currentCard == null)
+                            {
+                                if (executionActionIndex == actionIndex)
+                                {
+                                    PlayCard(cardToPlay, slot);
+                                    executionActionIndex++;
+                                }
+                                else
+                                {
+                                    executionActionIndex++;
+                                }
+                            }
+                        }
+                    }
+                    else if (cardToPlay.cardStats.position == "A")
+                    {
+                        foreach (CardIngameSlot slot in artySlots)
+                        {
+                            if (slot.currentCard == null)
+                            {
+                            
+                                if (executionActionIndex == actionIndex)
+                                {
+                                    PlayCard(cardToPlay, slot);
+                                    executionActionIndex++;
+                                }
+                                else
+                                {
+                                    executionActionIndex++;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("Problem with Cardposition!");
+                    }
                 }
             }
-        }
 
-        if (enemyManager.enemyCurrentCommandPower <= 0)
-        {
-            if (showDebug)
+            if (enemyManager.enemyCurrentCommandPower >= 1)
             {
-                Debug.Log("No more Command Power");
+                foreach (CardManager cardToAttackWith in FindObjectsOfType<CardManager>())
+                {
+                    if (cardToAttackWith.owner == Owner.ENEMY && !cardToAttackWith.cardActed && cardToAttackWith.currentCardMode == CardMode.INPLAY)
+                    {
+                        if (executionActionIndex == actionIndex)
+                        {
+                            AttackWithCard(cardToAttackWith);
+                            executionActionIndex++;
+                        }
+                        else
+                        {
+                            executionActionIndex++;
+                        }
+                    }
+                }
             }
-            StartCoroutine(enemyManager.EndTurn());
+
+            if (enemyManager.enemyCurrentCommandPower >= 1)
+            {
+                foreach (CardManager cardToRetreat in FindObjectsOfType<CardManager>())
+                {
+                    if (cardToRetreat.owner == Owner.ENEMY && !cardToRetreat.cardActed && cardToRetreat.currentCardMode == CardMode.INPLAY)
+                    {
+                        if (executionActionIndex == actionIndex)
+                        {
+                            RetreatCard(cardToRetreat);
+                            executionActionIndex++;
+                        }
+                        else
+                        {
+                            executionActionIndex++;
+                        }
+                    
+                    }
+                }
+            }
+
+            if (enemyManager.enemyCurrentCommandPower <= 0)
+            {
+                if (showDebug)
+                {
+                    Debug.Log("No more Command Power");
+                }
+                StartCoroutine(enemyManager.EndTurn());
+            }
+            else
+            {
+                if (showDebug)
+                {
+                    Debug.Log("NEW PLAY");
+                }
+                StartCoroutine(enemyManager.DoEnemyStuff());
+            }
         }
         else
         {
-            if (showDebug)
-            {
-                Debug.Log("NEW PLAY");
-            }
-            StartCoroutine(enemyManager.DoEnemyStuff());
+            Debug.Log("Konnte keine Plays ausführen - nicht mehr Gegnerzug!");
         }
-        
     }
 
     #endregion
