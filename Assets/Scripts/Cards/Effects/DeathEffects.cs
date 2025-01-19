@@ -63,6 +63,9 @@ public class DeathEffects : MonoBehaviour
             {
                 GameObject cardToAdd = Instantiate(enemyManager.displayCardPrefab, new Vector3(0, 0, 0), Quaternion.identity, enemyManager.enemyDeckHolder.transform);
                 cardToAdd.GetComponent<CardDisplay>().card = card.cardStats.para5;
+                cardToAdd.GetComponent<CardManager>().owner = Owner.ENEMY;
+                cardToAdd.GetComponent<CardManager>().cardBG.SetActive(true);
+                cardToAdd.GetComponent<CanvasGroup>().blocksRaycasts = false;
                 cardToAdd.SetActive(false);
                 enemyManager.deck.Add(cardToAdd.GetComponent<CardManager>());
                 enemyManager.UpdateEnemyUI();
